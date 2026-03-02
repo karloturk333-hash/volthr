@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { m, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react"
+import { usePathname } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
@@ -15,6 +16,7 @@ const fadeUp = {
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -26,8 +28,9 @@ export function Nav() {
       <m.header
         className="fixed top-0 left-0 right-0 z-50"
         animate={{
-          backgroundColor: scrolled ? "var(--surface)" : "transparent",
+          backgroundColor: scrolled ? "rgba(5,5,5,0.92)" : "transparent",
           borderBottomColor: scrolled ? "var(--border)" : "transparent",
+          backdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
         }}
         style={{ borderBottomWidth: 1, borderBottomStyle: "solid" }}
       >
@@ -45,15 +48,22 @@ export function Nav() {
 
           {/* Desktop links */}
           <div className="hidden items-center gap-8 lg:flex">
-            {NAV.links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-[var(--text-2)] hover:text-[var(--text)]"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV.links.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={
+                    isActive
+                      ? "text-sm font-medium text-[var(--text)] underline underline-offset-4 decoration-[var(--accent)]"
+                      : "text-sm font-medium text-[var(--text-2)] hover:text-[var(--text)]"
+                  }
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </div>
 
           {/* Desktop CTA */}
@@ -103,17 +113,24 @@ export function Nav() {
                 visible: { transition: { staggerChildren: 0.08 } },
               }}
             >
-              {NAV.links.map((link) => (
-                <m.div key={link.href} variants={fadeUp}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="font-playfair text-2xl font-bold text-[var(--text)]"
-                  >
-                    {link.label}
-                  </Link>
-                </m.div>
-              ))}
+              {NAV.links.map((link) => {
+                const isActive = pathname === link.href
+                return (
+                  <m.div key={link.href} variants={fadeUp}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={
+                        isActive
+                          ? "font-playfair text-2xl font-bold text-[var(--text)] underline underline-offset-4 decoration-[var(--accent)]"
+                          : "font-playfair text-2xl font-bold text-[var(--text)]"
+                      }
+                    >
+                      {link.label}
+                    </Link>
+                  </m.div>
+                )
+              })}
               <m.div variants={fadeUp}>
                 <Link
                   href={NAV.cta.href}

@@ -11,7 +11,7 @@ const fadeUp = {
 
 export function EuGrantBanner() {
   return (
-    <section className="px-6 py-24" style={{ background: "var(--frame)" }}>
+    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--frame)" }}>
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -36,7 +36,7 @@ export function EuGrantBanner() {
         <m.p
           variants={fadeUp}
           className="mt-4 max-w-2xl text-base leading-relaxed"
-          style={{ color: "rgba(5, 5, 5, 0.7)" }}
+          style={{ color: "var(--surface-70)" }}
         >
           {EU_GRANT.body}
         </m.p>
@@ -48,8 +48,8 @@ export function EuGrantBanner() {
               variants={fadeUp}
               className="border p-6"
               style={{
-                background: "rgba(255, 255, 255, 0.6)",
-                borderColor: "rgba(5, 5, 5, 0.1)",
+                background: "var(--glass-light)",
+                borderColor: "var(--surface-10)",
                 borderRadius: "var(--r-lg)",
               }}
             >
@@ -70,7 +70,7 @@ export function EuGrantBanner() {
               </h3>
               <p
                 className="mt-2 text-sm leading-relaxed"
-                style={{ color: "rgba(5, 5, 5, 0.7)" }}
+                style={{ color: "var(--surface-70)" }}
               >
                 {item.description}
               </p>
@@ -94,7 +94,7 @@ export function EuGrantBanner() {
         <m.p
           variants={fadeUp}
           className="mt-8 text-xs leading-relaxed"
-          style={{ color: "rgba(5, 5, 5, 0.5)" }}
+          style={{ color: "var(--surface-50)" }}
         >
           {EU_GRANT.disclaimer}
         </m.p>

@@ -13,7 +13,7 @@ const fadeUp = {
 
 export function ServicesGrid() {
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-20 md:py-28 lg:py-32">
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"

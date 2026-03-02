@@ -12,7 +12,7 @@ const fadeUp = {
 
 export function PortfolioGrid() {
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-20 md:py-28 lg:py-32">
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -48,22 +48,32 @@ export function PortfolioGrid() {
             <m.div
               key={i}
               variants={fadeUp}
-              className="group relative aspect-[16/10] overflow-hidden border"
+              whileHover={{ borderColor: "var(--accent-border)" }}
+              className="group relative aspect-[16/10] overflow-hidden"
               style={{
-                background: "var(--surface-card)",
-                borderColor: "var(--border)",
+                background: "linear-gradient(135deg, #0E0E0E, #111111)",
+                border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: "var(--r-lg)",
               }}
             >
+              {/* Subtle internal gradient */}
               <div
-                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                className="absolute inset-0 opacity-0 group-hover:opacity-100"
                 style={{
-                  background: "rgba(5, 5, 5, 0.8)",
-                  transition: "opacity 0.3s ease",
+                  background: "radial-gradient(circle at 50% 50%, rgba(90,236,200,0.05), transparent 70%)",
+                  transition: "opacity 0.4s ease",
                 }}
-              >
-                <span className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--accent)" }}>
-                  Uskoro <ArrowUpRight size={16} />
+              />
+              {/* Always-visible label */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                <div
+                  className="flex h-10 w-10 items-center justify-center rounded-full"
+                  style={{ background: "var(--accent-soft)", border: "1px solid var(--accent-border)" }}
+                >
+                  <ArrowUpRight size={16} style={{ color: "var(--accent)" }} />
+                </div>
+                <span className="text-sm font-medium" style={{ color: "var(--text-3)" }}>
+                  {PORTFOLIO.comingSoon}
                 </span>
               </div>
             </m.div>

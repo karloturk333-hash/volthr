@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { m, AnimatePresence } from "motion/react"
 import { Plus, Minus } from "lucide-react"
-import { FAQ, SCHEMA_ORG } from "@/lib/content"
+import { FAQ } from "@/lib/content"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -18,14 +18,7 @@ export function FaqAccordion() {
   }
 
   return (
-    <section className="px-6 py-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(SCHEMA_ORG.faqPage),
-        }}
-      />
-
+    <section className="px-6 py-20 md:py-28 lg:py-32">
       <m.div
         className="mx-auto max-w-[800px]"
         initial="hidden"

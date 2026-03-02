@@ -12,13 +12,13 @@ const fadeUp = {
 
 export function CtaPanel() {
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-20 md:py-28 lg:py-32">
       <m.div
         className="relative mx-auto max-w-[700px] overflow-hidden border p-12 text-center md:p-16"
         style={{
           borderRadius: "var(--r-xl)",
           borderColor: "var(--accent-border)",
-          background: "rgba(14, 14, 14, 0.6)",
+          background: "var(--glass-bg)",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
         }}

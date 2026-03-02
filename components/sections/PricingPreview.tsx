@@ -12,7 +12,7 @@ const fadeUp = {
 
 export function PricingPreview() {
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-20 md:py-28 lg:py-32">
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -42,28 +42,30 @@ export function PricingPreview() {
           {PRICING_PREVIEW.subheading}
         </m.p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid items-start gap-6 md:grid-cols-3">
           {PRICING_PREVIEW.tiers.map((tier) => (
             <m.div
               key={tier.name}
               variants={fadeUp}
-              whileHover={{ y: -4, borderColor: "var(--accent)" }}
+              whileHover={{ y: -4 }}
               className="relative flex flex-col border p-8"
               style={{
                 background: "var(--surface-card)",
-                borderColor: tier.popular ? "var(--accent)" : "var(--border)",
+                borderColor: tier.popular ? "var(--accent-border)" : "var(--border)",
                 borderRadius: "var(--r-lg)",
+                marginTop: tier.popular ? "0px" : "0px",
+                overflow: "visible",
               }}
             >
               {tier.popular && (
                 <div
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-semibold"
+                  className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-bold"
                   style={{
-                    background: "var(--accent)",
+                    background: "linear-gradient(135deg, var(--accent), var(--accent-end))",
                     color: "var(--text-on-accent)",
                   }}
                 >
-                  Najpopularniji
+                  {PRICING_PREVIEW.popularBadge}
                 </div>
               )}
 
@@ -79,7 +81,7 @@ export function PricingPreview() {
                   className="font-playfair text-4xl font-bold"
                   style={{ color: "var(--text)" }}
                 >
-                  €{tier.price}
+                  {PRICING_PREVIEW.currency}{tier.price}
                 </span>
                 <span className="ml-2 text-sm" style={{ color: "var(--text-3)" }}>
                   {tier.period}
@@ -87,7 +89,7 @@ export function PricingPreview() {
               </div>
 
               <p className="mt-1 text-sm" style={{ color: "var(--text-3)" }}>
-                +€{tier.maintenance}/mj
+                +{PRICING_PREVIEW.currency}{tier.maintenance}{PRICING_PREVIEW.maintenanceLabel}
               </p>
 
               <p className="mt-4 text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>

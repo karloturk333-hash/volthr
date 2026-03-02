@@ -14,7 +14,7 @@ function Counter({
   displayValue?: string
 }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
+  const isInView = useInView(ref, { once: true, margin: "-80px 0px" })
   const motionValue = useMotionValue(0)
   const rounded = useTransform(motionValue, (v) => Math.round(v))
   const [display, setDisplay] = useState(displayValue ?? "0")
@@ -47,7 +47,7 @@ const fadeUp = {
 
 export function StatsCounters() {
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-20 md:py-28 lg:py-32">
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"

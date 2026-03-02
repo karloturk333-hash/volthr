@@ -28,7 +28,7 @@ export function Testimonials() {
   }, [next])
 
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-20 md:py-28 lg:py-32">
       <m.div
         className="mx-auto max-w-[800px]"
         initial="hidden"
@@ -103,7 +103,7 @@ export function Testimonials() {
                     background: i === current ? "var(--accent)" : "var(--text-3)",
                     transition: "width 0.3s ease, background 0.3s ease",
                   }}
-                  aria-label={`Testimonial ${i + 1}`}
+                  aria-label={`Izjava ${i + 1}`}
                 />
               ))}
             </div>
