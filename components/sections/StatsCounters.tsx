@@ -17,14 +17,10 @@ function Counter({
   const isInView = useInView(ref, { once: true, amount: 0.5 })
   const motionValue = useMotionValue(0)
   const rounded = useTransform(motionValue, (v) => Math.round(v))
-  const [display, setDisplay] = useState("0")
+  const [display, setDisplay] = useState(displayValue ?? "0")
 
   useEffect(() => {
-    if (isInView) {
-      if (displayValue) {
-        setDisplay(displayValue)
-        return
-      }
+    if (isInView && !displayValue) {
       const controls = animate(motionValue, value, {
         duration: 2,
         ease: "easeOut" as const,

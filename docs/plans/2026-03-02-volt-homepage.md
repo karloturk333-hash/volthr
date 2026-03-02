@@ -50,14 +50,17 @@ Replace `app/globals.css` with Volt design tokens. Must include:
 :root {
   --accent: #5AECC8;
   --accent-end: #2DD4A8;
+  --accent-soft: rgba(90, 236, 200, 0.08);
+  --accent-border: rgba(90, 236, 200, 0.18);
+  --accent-glow: rgba(90, 236, 200, 0.15);
   --surface: #050505;
-  --text: #F2F2F2;
-  --frame: #D4DBC4;
   --surface-card: #0E0E0E;
+  --text: #F2F2F2;
   --text-2: #999999;
   --text-3: #555555;
+  --text-on-accent: #060606;
+  --frame: #D4DBC4;
   --border: rgba(255, 255, 255, 0.05);
-  --accent-glow: rgba(90, 236, 200, 0.15);
   --r-sm: 12px;
   --r-md: 18px;
   --r-lg: 26px;

@@ -65,11 +65,41 @@ IMPORTANT: Every color, radius, and font must come from these tokens.
   --text-3: #555555;        /* Tertiary text */
   --border: rgba(255,255,255,0.05);
   --accent-glow: rgba(90,236,200,0.15);
+  --accent-soft: rgba(90, 236, 200, 0.08);  /* Subtle accent bg */
+  --accent-border: rgba(90, 236, 200, 0.18); /* Accent-tinted borders */
+  --text-on-accent: #060606;  /* Text on mint buttons */
   --r-sm: 12px; --r-md: 18px; --r-lg: 26px; --r-xl: 36px;
 }
 ```
 
 Fonts: Playfair Display (display/headings) + Outfit (body/UI). Load via Google Fonts with `display=swap`.
+
+### Gradients
+
+| Name | CSS | Usage |
+|------|-----|-------|
+| Primary CTA | `linear-gradient(135deg, #5AECC8, #2DD4A8)` | Buttons, tags |
+| CTA Panel | `linear-gradient(160deg, #5AECC8, #3DD4A8, #72F2D8)` | Footer CTA section |
+| Accent Text | `linear-gradient(135deg, #5AECC8, #A6F5DE, #2DD4A8)` | Hero italic text |
+
+### Type Hierarchy
+
+| Level | Font | Size | Weight | Spacing |
+|-------|------|------|--------|---------|
+| Hero H1 | Playfair Display | clamp(3rem, 5vw, 6.2rem) | 700 | -0.035em |
+| Section H2 | Playfair Display | clamp(1.8rem, 3vw, 2.9rem) | 700 | -0.025em |
+| Card Title | Playfair Display | 1.2rem | 700 | 0 |
+| Section Label | Outfit | 11px | 800 | 0.14em (uppercase) |
+| Body | Outfit | 14–15px | 400 | 0 |
+| Button | Outfit | 14px | 700 | 0 |
+
+### Spacing & Container
+
+Base unit: 4px. Use multiples: 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 72px.
+
+Container: max-width 1100px, padding 48px (desktop) / 24px (mobile).
+
+Frame inner radius: 34px desktop / 24px mobile.
 
 ## Homepage Section Flow
 
