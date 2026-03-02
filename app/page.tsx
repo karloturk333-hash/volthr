@@ -6,6 +6,7 @@ import { KeywordMarquee } from "@/components/sections/KeywordMarquee"
 import { PortfolioGrid } from "@/components/sections/PortfolioGrid"
 import { StatsCounters } from "@/components/sections/StatsCounters"
 import { Testimonials } from "@/components/sections/Testimonials"
+import { PricingPreview } from "@/components/sections/PricingPreview"
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <PortfolioGrid />
       <StatsCounters />
       <Testimonials />
+      <PricingPreview />
     </main>
   )
 }
