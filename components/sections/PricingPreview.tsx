@@ -12,7 +12,7 @@ const fadeUp = {
 
 export function PricingPreview() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32">
+    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--surface-card)" }}>
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -20,16 +20,14 @@ export function PricingPreview() {
         viewport={{ once: true, amount: 0.1 }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
       >
-        <m.p
-          variants={fadeUp}
-          className="mb-3 text-center text-sm font-semibold uppercase tracking-wider"
-          style={{ color: "var(--accent)" }}
-        >
-          {PRICING_PREVIEW.label}
-        </m.p>
+        <m.div variants={fadeUp} className="mb-4 flex items-center justify-center gap-3">
+          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
+          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{PRICING_PREVIEW.label}</span>
+          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
+        </m.div>
         <m.h2
           variants={fadeUp}
-          className="text-center font-playfair text-3xl font-bold leading-tight md:text-4xl"
+          className="text-center font-playfair text-4xl font-bold leading-tight md:text-5xl"
           style={{ color: "var(--text)" }}
         >
           {PRICING_PREVIEW.heading}

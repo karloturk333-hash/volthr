@@ -20,28 +20,28 @@ export function Nav() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 50)
+    setScrolled(latest > 100)
   })
 
   return (
     <>
       <m.header
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-0 w-full z-50"
         animate={{
-          backgroundColor: scrolled ? "rgba(5,5,5,0.92)" : "transparent",
+          backgroundColor: scrolled ? "rgba(5,5,5,0.9)" : "transparent",
           borderBottomColor: scrolled ? "var(--border)" : "transparent",
-          backdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
+          backdropFilter: scrolled ? "blur(24px)" : "blur(0px)",
         }}
         style={{ borderBottomWidth: 1, borderBottomStyle: "solid" }}
       >
         <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
           {/* Logo */}
-          <Link href="/" className="relative z-10">
+          <Link href="/" className="relative z-10 min-w-[120px]">
             <Image
               src="/images/volt-logo-dark-bg.svg"
               alt={SITE.fullName}
-              width={90}
-              height={32}
+              width={120}
+              height={40}
               priority
             />
           </Link>
@@ -56,8 +56,8 @@ export function Nav() {
                   href={link.href}
                   className={
                     isActive
-                      ? "text-sm font-medium text-[var(--text)] underline underline-offset-4 decoration-[var(--accent)]"
-                      : "text-sm font-medium text-[var(--text-2)] hover:text-[var(--text)]"
+                      ? "text-sm font-medium text-white underline underline-offset-4 decoration-[var(--accent)]"
+                      : "text-sm font-medium text-[#999] hover:text-white"
                   }
                 >
                   {link.label}

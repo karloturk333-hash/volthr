@@ -1,10 +1,20 @@
+"use client"
+
+import { m } from "motion/react"
 import { CLIENT_LOGOS } from "@/lib/content"
 
 export function ClientLogos() {
   const items = CLIENT_LOGOS.placeholders
 
   return (
-    <section className="py-12">
+    <m.section
+      className="py-12"
+      style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.6 }}
+    >
       <p
         className="mb-8 text-center text-sm font-medium tracking-wide uppercase"
         style={{ color: "var(--text-3)" }}
@@ -27,6 +37,6 @@ export function ClientLogos() {
           ))}
         </div>
       </div>
-    </section>
+    </m.section>
   )
 }

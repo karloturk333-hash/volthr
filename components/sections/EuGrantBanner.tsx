@@ -19,16 +19,13 @@ export function EuGrantBanner() {
         viewport={{ once: true, amount: 0.1 }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
       >
-        <m.p
-          variants={fadeUp}
-          className="mb-3 text-sm font-semibold uppercase tracking-wider"
-          style={{ color: "var(--surface)" }}
-        >
-          {EU_GRANT.label}
-        </m.p>
+        <m.div variants={fadeUp} className="mb-5 flex items-center gap-3">
+          <span style={{ width: 28, height: 2, background: "var(--surface)", flexShrink: 0, display: "block", borderRadius: 2, opacity: 0.5 }} />
+          <span className="text-xs font-bold uppercase" style={{ color: "var(--surface)", letterSpacing: "0.15em", opacity: 0.7 }}>{EU_GRANT.label}</span>
+        </m.div>
         <m.h2
           variants={fadeUp}
-          className="font-playfair text-3xl font-bold leading-tight md:text-4xl"
+          className="font-playfair text-4xl font-bold leading-tight md:text-5xl"
           style={{ color: "var(--surface)" }}
         >
           {EU_GRANT.heading}

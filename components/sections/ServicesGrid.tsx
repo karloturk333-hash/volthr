@@ -13,7 +13,7 @@ const fadeUp = {
 
 export function ServicesGrid() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32">
+    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--surface-card)" }}>
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -21,16 +21,13 @@ export function ServicesGrid() {
         viewport={{ once: true, amount: 0.1 }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
       >
-        <m.p
-          variants={fadeUp}
-          className="mb-3 text-sm font-semibold uppercase tracking-wider"
-          style={{ color: "var(--accent)" }}
-        >
-          {SERVICES.label}
-        </m.p>
+        <m.div variants={fadeUp} className="mb-5 flex items-center gap-3">
+          <span style={{ width: 28, height: 2, background: "var(--accent)", flexShrink: 0, display: "block", borderRadius: 2 }} />
+          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{SERVICES.label}</span>
+        </m.div>
         <m.h2
           variants={fadeUp}
-          className="font-playfair text-3xl font-bold leading-tight md:text-4xl"
+          className="font-playfair text-4xl font-bold leading-tight md:text-5xl"
           style={{ color: "var(--text)" }}
         >
           {SERVICES.heading}
@@ -50,31 +47,45 @@ export function ServicesGrid() {
               <m.div
                 key={item.number}
                 variants={fadeUp}
-                whileHover={{ y: -4, borderColor: "var(--accent)" }}
-                className="border p-8"
+                whileHover={{ y: -4 }}
+                className="relative overflow-hidden border p-8"
                 style={{
-                  background: "var(--surface-card)",
+                  background: "var(--surface)",
                   borderColor: "var(--border)",
                   borderRadius: "var(--r-lg)",
+                  borderTop: "2px solid var(--accent-border)",
                 }}
               >
-                <div className="mb-6 flex items-center justify-between">
+                {/* Large faint number in background */}
+                <span
+                  className="pointer-events-none absolute -right-2 -top-4 font-playfair font-black select-none"
+                  style={{ fontSize: 100, color: "var(--accent)", opacity: 0.05, lineHeight: 1 }}
+                  aria-hidden="true"
+                >
+                  {item.number}
+                </span>
+                <div className="relative mb-6 flex items-center justify-between">
                   <span
-                    className="font-playfair text-3xl font-bold"
-                    style={{ color: "var(--accent)" }}
+                    className="font-playfair text-sm font-bold"
+                    style={{ color: "var(--accent)", letterSpacing: "0.05em" }}
                   >
                     {item.number}
                   </span>
-                  <Icon size={24} style={{ color: "var(--text-3)" }} />
+                  <div
+                    className="flex h-10 w-10 items-center justify-center rounded-xl"
+                    style={{ background: "var(--accent-soft)", border: "1px solid var(--accent-border)" }}
+                  >
+                    <Icon size={18} style={{ color: "var(--accent)" }} />
+                  </div>
                 </div>
                 <h3
-                  className="font-playfair text-xl font-bold"
+                  className="relative font-playfair text-xl font-bold"
                   style={{ color: "var(--text)" }}
                 >
                   {item.title}
                 </h3>
                 <p
-                  className="mt-3 text-sm leading-relaxed"
+                  className="relative mt-3 text-sm leading-relaxed"
                   style={{ color: "var(--text-2)" }}
                 >
                   {item.description}

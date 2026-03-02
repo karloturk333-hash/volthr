@@ -1,3 +1,4 @@
+import { SCHEMA_ORG } from "@/lib/content"
 import { Hero } from "@/components/sections/Hero"
 import { ClientLogos } from "@/components/sections/ClientLogos"
 import { AboutSplit } from "@/components/sections/AboutSplit"
@@ -26,6 +27,12 @@ export default function HomePage() {
       <EuGrantBanner />
       <FaqAccordion />
       <CtaPanel />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(SCHEMA_ORG.faqPage),
+        }}
+      />
     </main>
   )
 }

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { FOOTER, SITE } from "@/lib/content"
+import { FOOTER, SITE, CONTACT_PAGE } from "@/lib/content"
 
 export function Footer() {
   return (
@@ -75,7 +75,7 @@ export function Footer() {
               className="mb-4 text-sm font-semibold uppercase tracking-wider"
               style={{ color: "var(--text)" }}
             >
-              Kontakt
+              {FOOTER.columns.contact.title}
             </h4>
             <ul className="flex flex-col gap-3 text-sm" style={{ color: "var(--text-2)" }}>
               <li>
@@ -94,7 +94,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   style={{ color: "var(--accent)" }}
                 >
-                  WhatsApp
+                  {CONTACT_PAGE.alternatives.whatsapp.label}
                 </a>
               </li>
             </ul>

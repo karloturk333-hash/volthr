@@ -38,7 +38,7 @@ export function CtaPanel() {
 
         <m.h2
           variants={fadeUp}
-          className="relative font-playfair text-3xl font-bold leading-tight md:text-4xl"
+          className="relative font-playfair text-4xl font-bold leading-tight md:text-5xl"
           style={{ color: "var(--text)" }}
         >
           {CTA_SECTION.heading}

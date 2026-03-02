@@ -20,16 +20,13 @@ export function PortfolioGrid() {
         viewport={{ once: true, amount: 0.1 }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
       >
-        <m.p
-          variants={fadeUp}
-          className="mb-3 text-sm font-semibold uppercase tracking-wider"
-          style={{ color: "var(--accent)" }}
-        >
-          {PORTFOLIO.label}
-        </m.p>
+        <m.div variants={fadeUp} className="mb-5 flex items-center gap-3">
+          <span style={{ width: 28, height: 2, background: "var(--accent)", flexShrink: 0, display: "block", borderRadius: 2 }} />
+          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{PORTFOLIO.label}</span>
+        </m.div>
         <m.h2
           variants={fadeUp}
-          className="font-playfair text-3xl font-bold leading-tight md:text-4xl"
+          className="font-playfair text-4xl font-bold leading-tight md:text-5xl"
           style={{ color: "var(--text)" }}
         >
           {PORTFOLIO.heading}

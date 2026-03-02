@@ -160,6 +160,7 @@ export const PORTFOLIO = {
   emptyState:
     "Upravo gradimo naš portfolio. U međuvremenu, pogledajte naše cijene ili nas kontaktirajte za besplatnu konzultaciju.",
   cta: { label: "Svi projekti", href: "/projekti" },
+  comingSoon: "Uskoro",
 } as const
 
 export const STATS = {
@@ -268,6 +269,9 @@ export const PRICING_PREVIEW = {
   ],
   cta: { label: "Pogledaj sve detalje", href: "/cijene" },
   note: "Svi paketi uključuju: SSL certifikat, hosting, tehničku podršku. Cijene u EUR bez PDV-a.",
+  popularBadge: "Najpopularniji",
+  currency: "€",
+  maintenanceLabel: "/mj",
 } as const
 
 export const EU_GRANT = {
@@ -373,6 +377,9 @@ export const FOOTER = {
         { label: "Web shopovi", href: "/usluge#web-shop" },
         { label: "Održavanje", href: "/usluge#odrzavanje" },
       ],
+    },
+    contact: {
+      title: "Kontakt",
     },
   },
   legal: {

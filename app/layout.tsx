@@ -22,9 +22,12 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: SEO.home.title,
+  title: {
+    default: SEO.home.title,
+    template: "%s | Volt Web Studio",
+  },
   description: SEO.home.description,
-  keywords: SEO.home.keywords as unknown as string[],
+  keywords: [...SEO.home.keywords],
   openGraph: {
     title: SEO.home.title,
     description: SEO.home.description,

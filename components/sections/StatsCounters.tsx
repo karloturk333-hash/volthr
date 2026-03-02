@@ -47,7 +47,7 @@ const fadeUp = {
 
 export function StatsCounters() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32">
+    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -55,13 +55,11 @@ export function StatsCounters() {
         viewport={{ once: true, amount: 0.1 }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
       >
-        <m.p
-          variants={fadeUp}
-          className="mb-14 text-center text-sm font-semibold uppercase tracking-wider"
-          style={{ color: "var(--accent)" }}
-        >
-          {STATS.label}
-        </m.p>
+        <m.div variants={fadeUp} className="mb-14 flex items-center justify-center gap-3">
+          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
+          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{STATS.label}</span>
+          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
+        </m.div>
 
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {STATS.items.map((item, i) => (
