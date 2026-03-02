@@ -51,13 +51,15 @@ export function PricingPreview() {
                   ? "0 8px 40px rgba(90,236,200,0.12)"
                   : "0 8px 32px rgba(0,0,0,0.3)",
               }}
-              className="relative flex flex-col border p-8"
+              className={[
+                "relative flex flex-col border p-6 sm:p-8",
+                tier.popular ? "" : "md:mt-4",
+              ].join(" ")}
               style={{
                 background: "var(--surface)",
                 borderColor: tier.popular ? "var(--accent-border)" : "var(--border)",
                 borderRadius: "var(--r-lg)",
                 overflow: "visible",
-                marginTop: tier.popular ? 0 : "16px",
               }}
             >
               {tier.popular && (

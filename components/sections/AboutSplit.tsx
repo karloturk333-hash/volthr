@@ -14,7 +14,7 @@ export function AboutSplit() {
       <div className="mx-auto grid max-w-[1100px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Left: Image placeholder */}
         <m.div
-          className="relative aspect-[4/5] w-full overflow-hidden"
+          className="relative aspect-square w-full overflow-hidden lg:aspect-[4/5]"
           style={{
             borderRadius: "var(--r-xl)",
             background: "linear-gradient(135deg, #0E0E0E, #141414)",

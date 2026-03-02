@@ -23,7 +23,7 @@ export function CtaPanel() {
         />
 
         <m.div
-          className="relative overflow-hidden p-12 text-center md:p-16 lg:p-20"
+          className="relative overflow-hidden px-6 py-12 text-center sm:px-12 md:p-16 lg:p-20"
           style={{
             borderRadius: "var(--r-xl)",
             border: "1px solid rgba(255,255,255,0.08)",
@@ -67,7 +67,7 @@ export function CtaPanel() {
           >
             <Link
               href={CTA_SECTION.cta.primary.href}
-              className="rounded-full px-10 py-4 text-base font-bold"
+              className="w-full rounded-full px-10 py-4 text-center text-base font-bold sm:w-auto"
               style={{
                 background: "linear-gradient(135deg, var(--accent), var(--accent-end))",
                 color: "var(--text-on-accent)",
@@ -78,7 +78,7 @@ export function CtaPanel() {
             </Link>
             <Link
               href={CTA_SECTION.cta.whatsapp.href}
-              className="flex items-center gap-2 rounded-full border px-8 py-4 text-base font-medium"
+              className="flex w-full items-center justify-center gap-2 rounded-full border px-8 py-4 text-base font-medium sm:w-auto"
               style={{
                 borderColor: "var(--accent-border)",
                 color: "var(--accent)",

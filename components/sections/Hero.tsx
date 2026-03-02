@@ -164,10 +164,10 @@ export function Hero() {
         </m.p>
 
         {/* CTAs */}
-        <m.div variants={fadeUp} className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
+        <m.div variants={fadeUp} className="mt-12 flex w-full max-w-md flex-col items-center gap-4 sm:w-auto sm:max-w-none sm:flex-row">
           <Link
             href={HERO.cta.primary.href}
-            className="rounded-full px-10 py-4 text-base font-bold"
+            className="w-full rounded-full px-10 py-4 text-center text-base font-bold sm:w-auto"
             style={{
               background: "linear-gradient(135deg, var(--accent), var(--accent-end))",
               color: "var(--text-on-accent)",
@@ -178,7 +178,7 @@ export function Hero() {
           </Link>
           <Link
             href={HERO.cta.secondary.href}
-            className="rounded-full px-10 py-4 text-base font-medium"
+            className="w-full rounded-full px-10 py-4 text-center text-base font-medium sm:w-auto"
             style={{
               border: "1px solid rgba(255,255,255,0.14)",
               color: "var(--text-2)",

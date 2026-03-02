@@ -51,7 +51,7 @@ export function FaqAccordion() {
             >
               <button
                 onClick={() => toggle(i)}
-                className="flex w-full items-center justify-between py-6 text-left"
+                className="flex w-full items-center justify-between py-5 text-left sm:py-6"
               >
                 <span
                   className="pr-4 text-base font-semibold"

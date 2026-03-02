@@ -49,7 +49,7 @@ export function PortfolioGrid() {
                 borderColor: "rgba(90,236,200,0.18)",
                 y: -4,
               }}
-              className="group relative aspect-[4/3] overflow-hidden"
+              className="group relative aspect-[16/10] overflow-hidden sm:aspect-[4/3]"
               style={{
                 background: "linear-gradient(145deg, #0E0E0E, #161616)",
                 border: "1px solid var(--border)",
@@ -96,6 +96,15 @@ export function PortfolioGrid() {
             style={{
               borderColor: "var(--border)",
               color: "var(--text)",
+              transition: "border-color 0.2s ease, box-shadow 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "rgba(90,236,200,0.3)"
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(90,236,200,0.08)"
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border)"
+              e.currentTarget.style.boxShadow = "none"
             }}
           >
             {PORTFOLIO.cta.label}

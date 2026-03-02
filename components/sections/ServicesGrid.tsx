@@ -52,7 +52,7 @@ export function ServicesGrid() {
                   borderColor: "rgba(90,236,200,0.18)",
                   boxShadow: "0 8px 32px rgba(90,236,200,0.08)",
                 }}
-                className="relative overflow-hidden border p-8"
+                className="relative overflow-hidden border p-6 sm:p-8"
                 style={{
                   background: "var(--surface)",
                   borderColor: "var(--border)",

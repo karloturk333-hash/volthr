@@ -58,6 +58,18 @@ body::after {
   z-index: 9999;
 }
 
+/* Focus-visible ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Smooth link underlines in footer */
+footer a:hover {
+  color: var(--text) !important;
+}
+
 /* Marquee keyframes */
 @keyframes marquee {
   0% { transform: translateX(0); }

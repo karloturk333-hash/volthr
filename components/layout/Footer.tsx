@@ -6,9 +6,9 @@ export function Footer() {
   return (
     <footer style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)" }}>
       <div className="mx-auto max-w-[1100px] px-6 py-16 md:px-12">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Column 1: Logo + description */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <Image
               src="/images/volt-logo-dark-bg.svg"
               alt={SITE.fullName}
@@ -70,7 +70,7 @@ export function Footer() {
           </div>
 
           {/* Column 4: Contact */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h4
               className="mb-4 text-sm font-semibold uppercase tracking-wider"
               style={{ color: "var(--text)" }}

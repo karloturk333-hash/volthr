@@ -38,7 +38,7 @@ function Counter({
   return (
     <span
       ref={ref}
-      className="font-playfair text-5xl font-bold md:text-6xl"
+      className="font-playfair text-4xl font-bold sm:text-5xl md:text-6xl"
       style={{ color: "var(--accent)" }}
     >
       {prefix}{count}{suffix}
@@ -74,14 +74,14 @@ export function StatsCounters() {
           <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
         </m.div>
 
-        <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 sm:gap-12 lg:grid-cols-4">
           {STATS.items.map((item, i) => {
             const hasDisplayValue = "displayValue" in item
             return (
               <m.div key={i} variants={fadeUp} className="text-center">
                 {hasDisplayValue ? (
                   <span
-                    className="font-playfair text-5xl font-bold md:text-6xl"
+                    className="font-playfair text-4xl font-bold sm:text-5xl md:text-6xl"
                     style={{ color: "var(--accent)" }}
                   >
                     {item.displayValue}
