@@ -4,6 +4,7 @@ import "./globals.css"
 import { SEO, SCHEMA_ORG } from "@/lib/content"
 import { MotionProvider } from "@/components/providers/MotionProvider"
 import { Nav } from "@/components/layout/Nav"
+import { Footer } from "@/components/layout/Footer"
 
 const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
@@ -51,6 +52,7 @@ export default function RootLayout({
         <MotionProvider>
           <Nav />
           {children}
+          <Footer />
         </MotionProvider>
       </body>
     </html>

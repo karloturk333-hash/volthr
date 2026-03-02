@@ -1,0 +1,134 @@
+import Link from "next/link"
+import Image from "next/image"
+import { FOOTER, SITE } from "@/lib/content"
+
+export function Footer() {
+  return (
+    <footer style={{ background: "var(--surface-card)" }}>
+      <div className="mx-auto max-w-[1200px] px-6 py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {/* Column 1: Logo + description */}
+          <div>
+            <Image
+              src="/images/volt-logo-dark-bg.svg"
+              alt={SITE.fullName}
+              width={90}
+              height={32}
+            />
+            <p
+              className="mt-4 text-sm leading-relaxed"
+              style={{ color: "var(--text-2)" }}
+            >
+              {FOOTER.description}
+            </p>
+          </div>
+
+          {/* Column 2: Navigation */}
+          <div>
+            <h4
+              className="mb-4 text-sm font-semibold uppercase tracking-wider"
+              style={{ color: "var(--text)" }}
+            >
+              {FOOTER.columns.navigation.title}
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {FOOTER.columns.navigation.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm"
+                    style={{ color: "var(--text-2)" }}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Services */}
+          <div>
+            <h4
+              className="mb-4 text-sm font-semibold uppercase tracking-wider"
+              style={{ color: "var(--text)" }}
+            >
+              {FOOTER.columns.services.title}
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {FOOTER.columns.services.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm"
+                    style={{ color: "var(--text-2)" }}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Contact */}
+          <div>
+            <h4
+              className="mb-4 text-sm font-semibold uppercase tracking-wider"
+              style={{ color: "var(--text)" }}
+            >
+              Kontakt
+            </h4>
+            <ul className="flex flex-col gap-3 text-sm" style={{ color: "var(--text-2)" }}>
+              <li>
+                {SITE.address.street}, {SITE.address.zip} {SITE.address.city}
+              </li>
+              <li>
+                <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a>
+              </li>
+              <li>
+                <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              </li>
+              <li>
+                <a
+                  href={SITE.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--accent)" }}
+                >
+                  WhatsApp
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div
+        className="border-t"
+        style={{ borderColor: "var(--border)" }}
+      >
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row">
+          <p className="text-xs" style={{ color: "var(--text-3)" }}>
+            {SITE.copyright}
+          </p>
+          <div className="flex gap-6">
+            <Link
+              href={FOOTER.legal.privacy.href}
+              className="text-xs"
+              style={{ color: "var(--text-3)" }}
+            >
+              {FOOTER.legal.privacy.label}
+            </Link>
+            <Link
+              href={FOOTER.legal.terms.href}
+              className="text-xs"
+              style={{ color: "var(--text-3)" }}
+            >
+              {FOOTER.legal.terms.label}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
