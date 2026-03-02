@@ -58,18 +58,10 @@ export const NAV = {
 // ---------------------------------------------------------------------------
 
 export const HERO = {
-  badge: "5★ web studio iz Vrbovca",
-  heading: "Radimo web stranice za",
-  // These rotate in the hero animation
-  rotatingWords: [
-    "obrtnike",
-    "poduzetnike",
-    "trgovce",
-    "ugostitelje",
-    "servise",
-  ],
-  subheading:
-    "Profesionalna web stranica u 7 dana — ne 7 tjedana. Fiksna cijena, bez skrivenih troškova, bez cjenkanja.",
+  label: "Web studio iz Vrbovca",
+  heading: "Radimo web stranice za poduzetnike",
+  descriptor:
+    "Od dizajna do lansiranja — profesionalna web stranica za vaš obrt u 7 dana.",
   cta: {
     primary: { label: "Besplatna konzultacija", href: "/kontakt" },
     secondary: { label: "Pogledaj cijene", href: "/cijene" },
@@ -136,6 +128,88 @@ export const SERVICES = {
       description:
         "Postavljamo domenu, SSL, analitiku i predajemo vam ključeve. Plus — obučimo vas da sami možete ažurirati sadržaj.",
       icon: "rocket",
+    },
+  ],
+} as const
+
+// Services accordion for redesigned homepage
+export const SERVICES_ACCORDION = {
+  label: "Usluge",
+  items: [
+    {
+      title: "Web dizajn",
+      description:
+        "Kreiramo vizualni identitet koji odgovara vašem poslu. Moderno, čisto, profesionalno — bez generičnih predložaka.",
+    },
+    {
+      title: "Branding",
+      description:
+        "Cjelovit vizualni identitet — od logotipa do boja i tipografije. Sve usklađeno s vašom web stranicom.",
+    },
+    {
+      title: "SEO optimizacija",
+      description:
+        "Strukturirani podaci, brzina učitavanja, meta tagovi — sve što Google traži da vas klijenti pronađu.",
+    },
+    {
+      title: "E-commerce",
+      description:
+        "Potpuni web shop s košaricom, sigurnim plaćanjem i upravljanjem proizvodima. Vi dodajete proizvode, kupci plaćaju.",
+    },
+  ],
+} as const
+
+// Why Us section — 3 value cards
+export const WHY_US = {
+  label: "Zašto Volt",
+  items: [
+    {
+      title: "Brza isporuka",
+      body: "Gotova web stranica u 7 dana. Ako zakasnimo — 10% popusta po danu kašnjenja. Bez izgovora.",
+    },
+    {
+      title: "Fiksna cijena",
+      body: "Znate točno koliko plaćate prije nego što krenemo. Nema ponuda na upit, nema varijabilnih stavki.",
+    },
+    {
+      title: "Rezultati koji prodaju",
+      body: "Ne prodajemo piksele — gradimo web stranice koje privlače kupce i pretvaraju posjetitelje u klijente.",
+    },
+  ],
+} as const
+
+// Testimonials table format for redesigned homepage
+export const TESTIMONIALS_TABLE = {
+  label: "Recenzije klijenata",
+  heading: "Rezultati govore glasnije od obećanja.",
+  items: [
+    {
+      number: "01",
+      client: "Marko P.",
+      role: "Vlasnik autoservisa",
+      services: ["Web dizajn", "SEO"],
+      year: "2026",
+    },
+    {
+      number: "02",
+      client: "Ana K.",
+      role: "Frizerski salon",
+      services: ["Web dizajn", "Branding"],
+      year: "2026",
+    },
+    {
+      number: "03",
+      client: "Ivan S.",
+      role: "Obrt za građevinu",
+      services: ["Web dizajn", "E-commerce"],
+      year: "2025",
+    },
+    {
+      number: "04",
+      client: "Petra M.",
+      role: "Cvjećarnica",
+      services: ["Web dizajn"],
+      year: "2025",
     },
   ],
 } as const
@@ -274,6 +348,99 @@ export const PRICING_PREVIEW = {
   maintenanceLabel: "/mj",
 } as const
 
+export const PRICING_PAGE = {
+  hero: {
+    label: "Cijene",
+    heading: "Transparentne cijene. Bez sitnog tiska.",
+    subheading: "Znate točno koliko plaćate — prije nego što krenemo. Bez ponuda na upit, bez skrivenih troškova.",
+    trustBadges: [
+      { icon: "zap", text: "Gotovo za 7 dana" },
+      { icon: "shield-check", text: "Fiksne cijene" },
+      { icon: "file-x", text: "Bez ugovora o vezanju" },
+    ],
+  },
+  tiers: [
+    {
+      name: "Start",
+      price: "399",
+      period: "jednokratno",
+      maintenance: "49",
+      description: "Za obrtnike koji trebaju profesionalnu online prisutnost.",
+      features: [
+        "Do 3 stranice (naslovnica, o nama, kontakt)",
+        "Mobilno prilagođen dizajn",
+        "Osnovna SEO optimizacija",
+        "Kontakt forma s email obavijestima",
+        "SSL certifikat uključen",
+        "Google Maps integracija",
+        "Povezivanje s društvenim mrežama",
+        "Obuka za ažuriranje sadržaja",
+      ],
+      popular: false,
+      whatsappMessage: "Bok! Zanima me Start paket (€399) za izradu web stranice. Možemo li dogovoriti besplatnu konzultaciju?",
+    },
+    {
+      name: "Profesionalni",
+      price: "699",
+      period: "jednokratno",
+      maintenance: "79",
+      description: "Za poduzetnike koji žele rast i nove klijente.",
+      features: [
+        "Do 10 stranica",
+        "Custom dizajn prilagođen vašem brandu",
+        "CMS sustav za samostalno ažuriranje",
+        "Napredna SEO optimizacija",
+        "Google Analytics postavljanje",
+        "WhatsApp integracija za brzi kontakt",
+        "Blog sustav",
+        "Schema.org strukturirani podaci",
+        "Brzina učitavanja < 2 sekunde",
+        "2 runde revizija dizajna",
+      ],
+      popular: true,
+      whatsappMessage: "Bok! Zanima me Profesionalni paket (€699) za izradu web stranice. Možemo li dogovoriti besplatnu konzultaciju?",
+    },
+    {
+      name: "Premium",
+      price: "1.299",
+      period: "jednokratno",
+      maintenance: "129",
+      description: "Za tvrtke kojima web donosi stvarni prihod.",
+      features: [
+        "Neograničen broj stranica",
+        "Web shop ili booking sustav",
+        "Višejezični sadržaj (HR + EN)",
+        "Blog sustav s kategorijama",
+        "Premium SEO paket s mjesečnim praćenjem",
+        "Mjesečno izvješće o performansama",
+        "Prioritetna podrška (odgovor unutar 4h)",
+        "Stripe integracija za plaćanje",
+        "Automatski emailovi za narudžbe",
+        "A/B testiranje landing stranica",
+        "Google Search Console postavljanje",
+        "Prilagođene animacije i interakcije",
+      ],
+      popular: false,
+      whatsappMessage: "Bok! Zanima me Premium paket (€1.299) za izradu web stranice. Možemo li dogovoriti besplatnu konzultaciju?",
+    },
+  ],
+  allInclude: {
+    heading: "Svi paketi uključuju",
+    items: ["SSL certifikat", "Hosting prvi mjesec", "Tehničku podršku", "Mobilni dizajn", "Obuku za korištenje", "GDPR kolačići"],
+  },
+  guarantee: {
+    heading: "Naše jamstvo",
+    text: "Ako zakasnimo s isporukom, dobivate 10% popusta po danu kašnjenja. Bez izgovora.",
+  },
+  currency: "€",
+  maintenanceLabel: "/mj",
+  popularBadge: "Najpopularniji",
+  ctaPrimary: "Piši na WhatsApp",
+  ctaSecondary: "Pošalji upit",
+  maintenanceNote: "održavanje (opcionalno)",
+  note: "Sve cijene su u EUR bez PDV-a. Održavanje je opcionalno — bez ugovora o vezanju.",
+} as const
+
 export const EU_GRANT = {
   label: "EU Potpore",
   heading: "Do 85% troška pokriveno EU vaučerima.",
@@ -342,12 +509,12 @@ export const FAQ = {
 } as const
 
 export const CTA_SECTION = {
-  heading: "Spreman za web koji zarađuje?",
+  heading: "Izgradimo nešto zajedno",
   subheading:
-    "Javite nam se danas — besplatna konzultacija, bez obveza. U 30 minuta ćete znati točno što trebate, koliko košta i kad je gotovo.",
+    "Vaš obrt zaslužuje web stranicu koja prodaje.",
   cta: {
-    primary: { label: "Pošalji upit", href: "/kontakt" },
-    whatsapp: { label: "Piši na WhatsApp", href: "https://wa.me/385XXXXXXXXX" },
+    primary: { label: "Besplatna konzultacija →", href: "/kontakt" },
+    whatsapp: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
   },
   trust: "Odgovaramo unutar 2 sata radnim danom.",
 } as const

@@ -3,14 +3,12 @@ import { Hero } from "@/components/sections/Hero"
 import { ClientLogos } from "@/components/sections/ClientLogos"
 import { AboutSplit } from "@/components/sections/AboutSplit"
 import { ServicesGrid } from "@/components/sections/ServicesGrid"
-import { KeywordMarquee } from "@/components/sections/KeywordMarquee"
 import { PortfolioGrid } from "@/components/sections/PortfolioGrid"
-import { StatsCounters } from "@/components/sections/StatsCounters"
+import { WhyUs } from "@/components/sections/WhyUs"
 import { Testimonials } from "@/components/sections/Testimonials"
-import { PricingPreview } from "@/components/sections/PricingPreview"
-import { EuGrantBanner } from "@/components/sections/EuGrantBanner"
-import { FaqAccordion } from "@/components/sections/FaqAccordion"
 import { CtaPanel } from "@/components/sections/CtaPanel"
+import { PricingPreview } from "@/components/sections/PricingPreview"
+import { FaqAccordion } from "@/components/sections/FaqAccordion"
 
 export default function HomePage() {
   return (
@@ -19,14 +17,12 @@ export default function HomePage() {
       <ClientLogos />
       <AboutSplit />
       <ServicesGrid />
-      <KeywordMarquee />
       <PortfolioGrid />
-      <StatsCounters />
+      <WhyUs />
       <Testimonials />
-      <PricingPreview />
-      <EuGrantBanner />
-      <FaqAccordion />
       <CtaPanel />
+      <PricingPreview />
+      <FaqAccordion />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -2,115 +2,90 @@
 
 import { m } from "motion/react"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { PORTFOLIO } from "@/lib/content"
+import { projectCard, staggerContainerProjects } from "@/lib/animations"
+import { TextRevealByWord } from "@/components/ui/text-reveal"
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-}
+const projects = [
+  { name: "AutoServis Pro", category: "Web dizajn", gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
+  { name: "Salon Ljepote", category: "Branding", gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
+  { name: "Pekara Sunce", category: "E-commerce", gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
+  { name: "Stolarija Hrast", category: "Web dizajn", gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
+  { name: "Elektro Servis", category: "SEO", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
+  { name: "Cvjećarnica Flora", category: "Web dizajn", gradient: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" },
+]
 
 export function PortfolioGrid() {
   return (
-    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36">
+    <section id="projects" className="bg-[#F5F4F0]">
+
+      {/* Section label */}
+      <div className="px-6 pt-24 md:px-12 md:pt-32 lg:pt-36">
+        <div className="mx-auto max-w-7xl">
+          <m.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={projectCard}
+          >
+            <span className="section-label">{PORTFOLIO.label}</span>
+          </m.div>
+        </div>
+      </div>
+
+      {/* Scroll-reveal heading */}
+      <TextRevealByWord text={PORTFOLIO.heading} />
+
+      {/* Project grid + CTA */}
       <m.div
-        className="mx-auto max-w-[1100px]"
+        className="mx-auto max-w-7xl px-6 pb-24 md:px-12 md:pb-32 lg:pb-36"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+        viewport={{ once: true, amount: 0.05 }}
+        variants={staggerContainerProjects}
       >
-        <m.div variants={fadeUp} className="mb-5 flex items-center gap-3">
-          <span style={{ width: 28, height: 2, background: "var(--accent)", flexShrink: 0, display: "block", borderRadius: 2 }} />
-          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{PORTFOLIO.label}</span>
-        </m.div>
-        <m.h2
-          variants={fadeUp}
-          className="font-playfair text-4xl font-bold leading-tight md:text-5xl"
-          style={{ color: "var(--text)" }}
-        >
-          {PORTFOLIO.heading}
-        </m.h2>
-        <m.p
-          variants={fadeUp}
-          className="mt-4 text-base"
-          style={{ color: "var(--text-2)" }}
-        >
-          {PORTFOLIO.subheading}
-        </m.p>
-
-        {/* Placeholder grid */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[0, 1, 2].map((i) => (
+        {/* 2-col grid */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {projects.map((project) => (
             <m.div
-              key={i}
-              variants={fadeUp}
-              whileHover={{
-                borderColor: "rgba(90,236,200,0.18)",
-                y: -4,
-              }}
-              className="group relative aspect-[16/10] overflow-hidden sm:aspect-[4/3]"
-              style={{
-                background: "linear-gradient(145deg, #0E0E0E, #161616)",
-                border: "1px solid var(--border)",
-                borderRadius: "var(--r-lg)",
-              }}
+              key={project.name}
+              variants={projectCard}
+              whileHover={{ scale: 1.02 }}
+              className="group cursor-pointer overflow-hidden rounded-2xl"
             >
-              {/* Subtle internal gradient */}
+              {/* Gradient placeholder image */}
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                style={{
-                  background: "radial-gradient(circle at 50% 50%, rgba(90,236,200,0.05), transparent 70%)",
-                  transition: "opacity 0.4s ease",
-                }}
+                className="aspect-[4/3] w-full"
+                style={{ background: project.gradient }}
               />
-              {/* Always-visible label */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                <div
-                  className="flex h-10 w-10 items-center justify-center rounded-full"
-                  style={{ background: "var(--accent-soft)", border: "1px solid var(--accent-border)" }}
-                >
-                  <ArrowUpRight size={16} style={{ color: "var(--accent)" }} />
+              {/* Info */}
+              <div className="mt-4 flex items-center justify-between">
+                <div>
+                  <h3 className="font-space text-lg font-bold text-[#0D0D0D]">
+                    {project.name}
+                  </h3>
+                  <span className="mt-1 inline-block rounded-full bg-[rgba(139,92,246,0.08)] px-3 py-1 text-xs font-medium text-[#8B5CF6]">
+                    {project.category}
+                  </span>
                 </div>
-                <span className="text-sm font-medium" style={{ color: "var(--text-3)" }}>
-                  {PORTFOLIO.comingSoon}
-                </span>
               </div>
             </m.div>
           ))}
         </div>
 
-        {/* Empty state message */}
-        <m.p
-          variants={fadeUp}
-          className="mt-8 text-center text-sm"
-          style={{ color: "var(--text-3)" }}
-        >
-          {PORTFOLIO.emptyState}
-        </m.p>
-
-        <m.div variants={fadeUp} className="mt-8 text-center">
+        {/* View all link */}
+        <m.div variants={projectCard} className="mt-12 flex justify-end">
           <Link
             href={PORTFOLIO.cta.href}
-            className="inline-block rounded-full border px-6 py-3 text-sm font-medium"
-            style={{
-              borderColor: "var(--border)",
-              color: "var(--text)",
-              transition: "border-color 0.2s ease, box-shadow 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(90,236,200,0.3)"
-              e.currentTarget.style.boxShadow = "0 0 20px rgba(90,236,200,0.08)"
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "var(--border)"
-              e.currentTarget.style.boxShadow = "none"
-            }}
+            className="inline-flex items-center gap-2 font-dm text-sm font-medium text-[#0D0D0D] hover:text-[#8B5CF6]"
           >
             {PORTFOLIO.cta.label}
+            <ArrowRight size={16} />
           </Link>
         </m.div>
       </m.div>
+
     </section>
   )
 }

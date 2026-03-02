@@ -1,23 +1,22 @@
 import type { Metadata } from "next"
-import { Playfair_Display, Outfit } from "next/font/google"
+import { Space_Grotesk, DM_Sans } from "next/font/google"
 import "./globals.css"
 import { SEO, SCHEMA_ORG } from "@/lib/content"
 import { MotionProvider } from "@/components/providers/MotionProvider"
 import { Nav } from "@/components/layout/Nav"
 import { Footer } from "@/components/layout/Footer"
 
-const playfair = Playfair_Display({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "700", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space",
   display: "swap",
 })
 
-const outfit = Outfit({
+const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-outfit",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-dm",
   display: "swap",
 })
 
@@ -42,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="hr" className={`${playfair.variable} ${outfit.variable}`}>
+    <html lang="hr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -51,7 +50,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-outfit antialiased">
+      <body className="font-dm antialiased">
         <MotionProvider>
           <Nav />
           {children}

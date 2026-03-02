@@ -1,128 +1,74 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
-import { m, AnimatePresence } from "motion/react"
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
-import { TESTIMONIALS } from "@/lib/content"
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-}
+import { m } from "motion/react"
+import { TESTIMONIALS_TABLE } from "@/lib/content"
+import { testimonialRow, staggerContainerTestimonials, fadeUp } from "@/lib/animations"
 
 export function Testimonials() {
-  const [current, setCurrent] = useState(0)
-  const items = TESTIMONIALS.items
-
-  const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % items.length)
-  }, [items.length])
-
-  const prev = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + items.length) % items.length)
-  }, [items.length])
-
-  useEffect(() => {
-    const interval = setInterval(next, 5000)
-    return () => clearInterval(interval)
-  }, [next])
-
   return (
-    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36">
+    <section id="testimonials" className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32 lg:py-36">
       <m.div
-        className="mx-auto max-w-[800px]"
+        className="mx-auto max-w-7xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+        variants={staggerContainerTestimonials}
       >
-        <m.div variants={fadeUp} className="mb-4 flex items-center justify-center gap-3">
-          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
-          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{TESTIMONIALS.label}</span>
-          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
+        <m.div variants={fadeUp} className="mb-5">
+          <span className="section-label">{TESTIMONIALS_TABLE.label}</span>
         </m.div>
         <m.h2
           variants={fadeUp}
-          className="text-center font-playfair text-4xl font-bold leading-tight md:text-5xl"
-          style={{ color: "var(--text)" }}
+          className="mb-14 font-space text-3xl font-bold leading-tight text-[#0D0D0D] md:text-4xl lg:text-5xl"
         >
-          {TESTIMONIALS.heading}
+          {TESTIMONIALS_TABLE.heading}
         </m.h2>
 
-        <m.div variants={fadeUp} className="mt-14">
-          <div className="relative overflow-hidden" style={{ minHeight: 200 }}>
-            <AnimatePresence mode="wait">
-              <m.div
-                key={current}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.4, ease: "easeInOut" as const }}
-                className="text-center"
-              >
-                {/* Large decorative quote */}
-                <div
-                  className="mx-auto mb-6 font-playfair text-7xl leading-none select-none"
-                  style={{ color: "var(--accent)", opacity: 0.2 }}
-                  aria-hidden="true"
-                >
-                  &ldquo;
-                </div>
-                <p
-                  className="font-playfair text-xl leading-relaxed italic md:text-2xl"
-                  style={{ color: "var(--text)" }}
-                >
-                  &ldquo;{items[current].quote}&rdquo;
-                </p>
-                <div className="mt-8">
-                  <p className="text-base font-semibold" style={{ color: "var(--text)" }}>
-                    {items[current].client}
-                  </p>
-                  <p className="mt-1 text-sm" style={{ color: "var(--text-3)" }}>
-                    {items[current].role} · {items[current].location}
-                  </p>
-                </div>
-              </m.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Navigation */}
-          <div className="mt-10 flex items-center justify-center gap-6">
-            <button
-              onClick={prev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border"
-              style={{ borderColor: "var(--border)", color: "var(--text-2)" }}
-              aria-label="Prethodni"
+        {/* Table rows */}
+        <div className="border-t border-[#E8E6E0]">
+          {TESTIMONIALS_TABLE.items.map((item) => (
+            <m.div
+              key={item.number}
+              variants={testimonialRow}
+              className="grid grid-cols-[40px_1fr_1fr_60px] items-center gap-4 border-b border-[#E8E6E0] px-2 py-5 hover:bg-white md:grid-cols-[60px_1fr_1fr_80px] md:gap-6 md:px-4 md:py-6"
             >
-              <ChevronLeft size={18} />
-            </button>
+              {/* Number */}
+              <span className="font-space text-lg font-medium text-[#CCC] md:text-xl">
+                {item.number}
+              </span>
 
-            <div className="flex gap-2">
-              {items.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className="h-2 rounded-full"
-                  style={{
-                    width: i === current ? 24 : 8,
-                    background: i === current ? "var(--accent)" : "var(--text-3)",
-                    transition: "width 0.3s ease, background 0.3s ease",
-                  }}
-                  aria-label={`Izjava ${i + 1}`}
-                />
-              ))}
-            </div>
+              {/* Client name + avatar */}
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E8E6E0] font-space text-xs font-bold text-[#555550]">
+                  {item.client[0]}
+                </div>
+                <div>
+                  <p className="font-dm text-sm font-semibold text-[#0D0D0D]">
+                    {item.client}
+                  </p>
+                  <p className="text-xs text-[#888880]">{item.role}</p>
+                </div>
+              </div>
 
-            <button
-              onClick={next}
-              className="flex h-10 w-10 items-center justify-center rounded-full border"
-              style={{ borderColor: "var(--border)", color: "var(--text-2)" }}
-              aria-label="Sljedeći"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        </m.div>
+              {/* Service tags */}
+              <div className="flex flex-wrap gap-2">
+                {item.services.map((service) => (
+                  <span
+                    key={service}
+                    className="rounded-full bg-[rgba(139,92,246,0.08)] px-3 py-1 text-xs font-medium text-[#8B5CF6]"
+                  >
+                    {service}
+                  </span>
+                ))}
+              </div>
+
+              {/* Year */}
+              <span className="text-right font-dm text-sm text-[#888880]">
+                {item.year}
+              </span>
+            </m.div>
+          ))}
+        </div>
       </m.div>
     </section>
   )

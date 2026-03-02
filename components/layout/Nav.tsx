@@ -4,9 +4,9 @@ import { useState } from "react"
 import { m, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { NAV, SITE } from "@/lib/content"
+import { RainbowButton } from "@/components/ui/rainbow-button"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -25,31 +25,25 @@ export function Nav() {
 
   return (
     <>
-      <m.header
-        className="fixed top-0 w-full z-50"
-        animate={{
-          backgroundColor: scrolled ? "rgba(5,5,5,0.92)" : "rgba(5,5,5,0)",
-          borderBottomColor: scrolled ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0)",
-          backdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
-        }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        style={{ borderBottomWidth: 1, borderBottomStyle: "solid" }}
+      <header
+        className="fixed top-0 left-0 right-0 z-50 border-b border-[#E8E6E0] bg-[#F5F4F0] lg:border-0 lg:bg-transparent lg:px-6 lg:pt-3"
       >
-        <div className="mx-auto grid max-w-[1100px] grid-cols-[1fr_auto_1fr] items-center px-6 py-4 md:px-12">
-
-          {/* Col 1 — Logo left */}
+        <div
+          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:rounded-2xl lg:border lg:border-[#E8E6E0] lg:bg-white"
+          style={{
+            boxShadow: scrolled
+              ? "0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)"
+              : "0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03)",
+            transition: "box-shadow 0.3s ease",
+          }}
+        >
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2" aria-label={SITE.fullName}>
-            <Image
-              src="/images/volt-logo-dark-bg.svg"
-              alt={SITE.fullName}
-              width={100}
-              height={36}
-              priority
-              className="h-8 w-auto"
-            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/volt-v-monogram.svg" alt={SITE.fullName} className="h-9 w-9 lg:h-10 lg:w-10" />
           </Link>
 
-          {/* Col 2 — Nav links, truly centered */}
+          {/* Desktop links */}
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Glavna navigacija">
             {NAV.links.map((link) => {
               const isActive = pathname === link.href
@@ -57,19 +51,18 @@ export function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={[
-                    "relative font-outfit text-[13px] font-medium tracking-wide",
-                    isActive
-                      ? "text-white"
-                      : "text-[#777] hover:text-white",
-                  ].join(" ")}
-                  style={{ transition: "color 0.2s ease" }}
+                  className="relative font-dm text-[14px] font-medium hover:text-[#0D0D0D]"
+                  style={{
+                    color: isActive ? "#0D0D0D" : "#333333",
+                    transition: "color 0.2s ease",
+                  }}
                 >
                   {link.label}
                   {isActive && (
-                    <span
-                      className="absolute -bottom-1 left-0 h-[2px] w-full rounded-full"
-                      style={{ background: "var(--accent)" }}
+                    <m.span
+                      layoutId="nav-indicator"
+                      className="absolute -bottom-1.5 left-0 right-0 h-[2px] rounded-full bg-[#8B5CF6]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
                 </Link>
@@ -77,25 +70,20 @@ export function Nav() {
             })}
           </nav>
 
-          {/* Col 3 — CTA right on desktop, hamburger right on mobile */}
-          <div className="flex items-center justify-end gap-4">
-            <Link
+          {/* CTA + hamburger */}
+          <div className="flex items-center gap-4">
+            <RainbowButton
               href={NAV.cta.href}
-              className="hidden items-center rounded-full px-6 py-2.5 font-outfit text-[13px] font-bold lg:flex"
-              style={{
-                background: "linear-gradient(135deg, var(--accent), var(--accent-end))",
-                color: "var(--text-on-accent)",
-                boxShadow: "0 0 24px rgba(90,236,200,0.2)",
-              }}
+              className="hidden lg:inline-flex h-auto rounded-full px-7 py-2.5 font-dm text-[13px] font-bold"
             >
               {NAV.cta.label}
-            </Link>
+            </RainbowButton>
 
-            {/* Hamburger — mobile only */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="flex items-center justify-center lg:hidden"
               aria-label={mobileOpen ? "Zatvori izbornik" : "Otvori izbornik"}
+              aria-expanded={mobileOpen}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {mobileOpen ? (
@@ -106,7 +94,7 @@ export function Nav() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.15 }}
                   >
-                    <X size={24} color="var(--text)" />
+                    <X size={24} color="#0D0D0D" />
                   </m.span>
                 ) : (
                   <m.span
@@ -116,21 +104,20 @@ export function Nav() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.15 }}
                   >
-                    <Menu size={24} color="var(--text)" />
+                    <Menu size={24} color="#0D0D0D" />
                   </m.span>
                 )}
               </AnimatePresence>
             </button>
           </div>
         </div>
-      </m.header>
+      </header>
 
-      {/* Mobile full-screen overlay */}
+      {/* Mobile overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <m.div
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center lg:hidden"
-            style={{ background: "var(--surface)" }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#F5F4F0] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -151,11 +138,11 @@ export function Nav() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className={[
-                        "font-playfair text-3xl font-bold tracking-tight",
-                        isActive ? "text-white" : "text-[#555] hover:text-white",
-                      ].join(" ")}
-                      style={{ transition: "color 0.15s ease" }}
+                      className="font-space text-3xl font-bold tracking-tight"
+                      style={{
+                        color: isActive ? "#0D0D0D" : "#888880",
+                        transition: "color 0.15s ease",
+                      }}
                     >
                       {link.label}
                     </Link>
@@ -166,11 +153,7 @@ export function Nav() {
                 <Link
                   href={NAV.cta.href}
                   onClick={() => setMobileOpen(false)}
-                  className="inline-block rounded-full px-10 py-3.5 font-outfit text-base font-semibold"
-                  style={{
-                    background: "linear-gradient(135deg, var(--accent), var(--accent-end))",
-                    color: "var(--text-on-accent)",
-                  }}
+                  className="inline-block rounded-full bg-[#0D0D0D] px-10 py-3.5 font-dm text-base font-semibold text-white"
                 >
                   {NAV.cta.label}
                 </Link>

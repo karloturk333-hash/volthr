@@ -3,72 +3,48 @@
 import { m } from "motion/react"
 import Link from "next/link"
 import { EU_GRANT } from "@/lib/content"
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-}
+import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function EuGrantBanner() {
   return (
-    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36" style={{ background: "var(--frame)" }}>
+    <section className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32">
       <m.div
-        className="mx-auto max-w-[1100px]"
+        className="mx-auto max-w-7xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+        variants={staggerContainer}
       >
-        <m.div variants={fadeUp} className="mb-5 flex items-center gap-3">
-          <span style={{ width: 28, height: 2, background: "var(--surface)", flexShrink: 0, display: "block", borderRadius: 2, opacity: 0.5 }} />
-          <span className="text-xs font-bold uppercase" style={{ color: "var(--surface)", letterSpacing: "0.15em", opacity: 0.7 }}>{EU_GRANT.label}</span>
+        <m.div variants={fadeUp} className="mb-5">
+          <span className="section-label">{EU_GRANT.label}</span>
         </m.div>
         <m.h2
           variants={fadeUp}
-          className="font-playfair text-4xl font-bold leading-tight md:text-5xl"
-          style={{ color: "var(--surface)" }}
+          className="font-space text-4xl font-bold leading-tight text-[#0D0D0D] md:text-5xl"
         >
           {EU_GRANT.heading}
         </m.h2>
         <m.p
           variants={fadeUp}
-          className="mt-4 max-w-2xl text-base leading-relaxed"
-          style={{ color: "var(--surface-70)" }}
+          className="mt-4 max-w-2xl text-base leading-relaxed text-[#555550]"
         >
           {EU_GRANT.body}
         </m.p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
           {EU_GRANT.highlights.map((item) => (
             <m.div
               key={item.title}
               variants={fadeUp}
-              className="border p-6"
-              style={{
-                background: "var(--glass-light)",
-                borderColor: "var(--surface-10)",
-                borderRadius: "var(--r-lg)",
-              }}
+              className="rounded-xl border border-[#E8E6E0] bg-white p-6"
             >
-              <div
-                className="mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold"
-                style={{
-                  background: "var(--surface)",
-                  color: "var(--accent)",
-                }}
-              >
+              <div className="mb-4 inline-block rounded-full bg-[#8B5CF6] px-3 py-1 text-xs font-bold text-white">
                 {item.intensity}
               </div>
-              <h3
-                className="font-playfair text-lg font-bold"
-                style={{ color: "var(--surface)" }}
-              >
+              <h3 className="font-space text-lg font-bold text-[#0D0D0D]">
                 {item.title}
               </h3>
-              <p
-                className="mt-2 text-sm leading-relaxed"
-                style={{ color: "var(--surface-70)" }}
-              >
+              <p className="mt-2 text-sm leading-relaxed text-[#555550]">
                 {item.description}
               </p>
             </m.div>
@@ -78,11 +54,7 @@ export function EuGrantBanner() {
         <m.div variants={fadeUp} className="mt-10">
           <Link
             href={EU_GRANT.cta.href}
-            className="inline-block rounded-full px-8 py-3.5 text-base font-semibold"
-            style={{
-              background: "var(--surface)",
-              color: "var(--accent)",
-            }}
+            className="inline-block rounded-full bg-[#8B5CF6] px-8 py-3.5 text-base font-semibold text-white"
           >
             {EU_GRANT.cta.label}
           </Link>
@@ -90,8 +62,7 @@ export function EuGrantBanner() {
 
         <m.p
           variants={fadeUp}
-          className="mt-8 text-xs leading-relaxed"
-          style={{ color: "var(--surface-50)" }}
+          className="mt-8 text-xs leading-relaxed text-[#888880]"
         >
           {EU_GRANT.disclaimer}
         </m.p>

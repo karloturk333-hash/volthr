@@ -1,34 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  --accent: #5AECC8;
-  --accent-end: #2DD4A8;
-  --accent-soft: rgba(90, 236, 200, 0.08);
-  --accent-border: rgba(90, 236, 200, 0.18);
-  --accent-glow: rgba(90, 236, 200, 0.15);
-  --surface: #050505;
-  --surface-card: #111111;
-  --text: #F2F2F2;
-  --text-2: #999999;
-  --text-3: #555555;
-  --text-on-accent: #060606;
-  --frame: #D4DBC4;
-  --border: rgba(255, 255, 255, 0.08);
-  --r-sm: 12px;
-  --r-md: 18px;
-  --r-lg: 26px;
-  --r-xl: 36px;
-  --surface-70: rgba(5, 5, 5, 0.7);
-  --surface-80: rgba(5, 5, 5, 0.8);
-  --surface-50: rgba(5, 5, 5, 0.5);
-  --surface-10: rgba(5, 5, 5, 0.1);
-  --glass-bg: rgba(14, 14, 14, 0.6);
-  --glass-light: rgba(255, 255, 255, 0.6);
+  /* ── Rainbow button colors ── */
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
+
+  /* ── Core palette ── */
+  --bg: #F5F4F0;
+  --bg-card: #FFFFFF;
+  --bg-dark: #0D0D0D;
+  --text: #0D0D0D;
+  --text-2: #555550;
+  --text-3: #888880;
+  --text-on-dark: #F5F4F0;
+  --accent: #8B5CF6;
+  --accent-soft: rgba(139, 92, 246, 0.08);
+  --accent-border: rgba(139, 92, 246, 0.2);
+  --border: #E8E6E0;
+  --border-hover: #D0CEC8;
+
+  /* ── Radius ── */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
 }
 
 @theme inline {
-  --font-playfair: var(--font-playfair);
-  --font-outfit: var(--font-outfit);
+  --font-space: var(--font-space);
+  --font-dm: var(--font-dm);
+
+  /* ── Rainbow animation ── */
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+
+  /* ── Shimmer button animations ── */
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+}
+
+@keyframes rainbow {
+  0%   { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+@keyframes spin-around {
+  0%       { transform: translateZ(0) rotate(0); }
+  15%, 35% { transform: translateZ(0) rotate(90deg); }
+  65%, 85% { transform: translateZ(0) rotate(270deg); }
+  100%     { transform: translateZ(0) rotate(360deg); }
+}
+
+@keyframes shimmer-slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
 }
 
 *,
@@ -42,40 +68,47 @@ html {
 }
 
 body {
-  background: var(--surface);
+  background: var(--bg);
   color: var(--text);
 }
 
-/* Subtle film grain — adds depth to dark backgrounds */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 96px 96px;
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* Focus-visible ring for keyboard navigation */
+/* ── Focus ring ── */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Smooth link underlines in footer */
-footer a:hover {
-  color: var(--text) !important;
+/* ── Section label style (✦ prefix, purple, uppercase) ── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
 }
 
-/* Marquee keyframes */
+.section-label::before {
+  content: '✦';
+}
+
+/* ── Marquee ── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

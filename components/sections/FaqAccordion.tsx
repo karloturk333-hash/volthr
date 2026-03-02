@@ -4,11 +4,7 @@ import { useState } from "react"
 import { m, AnimatePresence } from "motion/react"
 import { ChevronDown } from "lucide-react"
 import { FAQ } from "@/lib/content"
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-}
+import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -18,78 +14,82 @@ export function FaqAccordion() {
   }
 
   return (
-    <section className="px-6 py-24 md:px-12 md:py-32" style={{ background: "var(--surface-card)" }}>
+    <section className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32">
       <m.div
         className="mx-auto max-w-[800px]"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+        variants={staggerContainer}
       >
         <m.div variants={fadeUp} className="mb-4 flex items-center justify-center gap-3">
-          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
-          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{FAQ.label}</span>
-          <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
+          <span className="section-label">{FAQ.label}</span>
         </m.div>
         <m.h2
           variants={fadeUp}
-          className="text-center font-playfair text-4xl font-bold leading-tight md:text-5xl"
-          style={{ color: "var(--text)" }}
+          className="text-center font-space text-4xl font-bold leading-tight text-[#0D0D0D] md:text-5xl"
         >
           {FAQ.heading}
         </m.h2>
 
         <div className="mt-14 flex flex-col">
-          {FAQ.items.map((item, i) => (
-            <m.div
-              key={i}
-              variants={fadeUp}
-              className="overflow-hidden"
-              style={{
-                borderBottom: "1px solid var(--border)",
-              }}
-            >
-              <button
-                onClick={() => toggle(i)}
-                className="flex w-full items-center justify-between py-5 text-left sm:py-6"
+          {FAQ.items.map((item, i) => {
+            const isOpen = openIndex === i
+            return (
+              <m.div
+                key={i}
+                variants={fadeUp}
+                className="relative overflow-hidden border-b border-[#E8E6E0]"
               >
-                <span
-                  className="pr-4 text-base font-semibold"
-                  style={{ color: openIndex === i ? "var(--text)" : "var(--text-2)" }}
-                >
-                  {item.question}
-                </span>
-                <m.span
-                  animate={{ rotate: openIndex === i ? 180 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="shrink-0"
-                >
-                  <ChevronDown
-                    size={18}
-                    style={{ color: openIndex === i ? "var(--accent)" : "var(--text-3)" }}
-                  />
-                </m.span>
-              </button>
-
-              <AnimatePresence>
-                {openIndex === i && (
+                {/* Purple left accent when open */}
+                {isOpen && (
                   <m.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" as const }}
-                  >
-                    <p
-                      className="pb-6 text-sm leading-relaxed"
-                      style={{ color: "var(--text-2)" }}
-                    >
-                      {item.answer}
-                    </p>
-                  </m.div>
+                    className="absolute bottom-0 left-0 top-0 w-[2px] bg-[#8B5CF6]"
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 )}
-              </AnimatePresence>
-            </m.div>
-          ))}
+
+                <button
+                  onClick={() => toggle(i)}
+                  className="flex w-full items-center justify-between py-5 text-left sm:py-6"
+                  style={{ paddingLeft: isOpen ? 16 : 0, transition: "padding-left 0.3s ease" }}
+                >
+                  <span
+                    className={`pr-4 text-base font-semibold ${isOpen ? "text-[#0D0D0D]" : "text-[#555550]"}`}
+                  >
+                    {item.question}
+                  </span>
+                  <m.span
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="shrink-0"
+                  >
+                    <ChevronDown
+                      size={18}
+                      className={isOpen ? "text-[#8B5CF6]" : "text-[#888880]"}
+                    />
+                  </m.span>
+                </button>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <m.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" as const }}
+                    >
+                      <p className="pb-6 pl-4 text-sm leading-relaxed text-[#555550]">
+                        {item.answer}
+                      </p>
+                    </m.div>
+                  )}
+                </AnimatePresence>
+              </m.div>
+            )
+          })}
         </div>
       </m.div>
     </section>

@@ -1,102 +1,104 @@
 "use client"
 
 import { m } from "motion/react"
-import { Phone, Palette, Code, Rocket } from "lucide-react"
-import { SERVICES } from "@/lib/content"
+import { Layout, Palette, Search, ShoppingCart } from "lucide-react"
+import { SERVICES_ACCORDION } from "@/lib/content"
+import { fadeUp, staggerContainer } from "@/lib/animations"
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
 
-const icons = { phone: Phone, palette: Palette, code: Code, rocket: Rocket } as const
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-}
+const serviceConfig = [
+  {
+    Icon: Layout,
+    href: "/usluge",
+    cta: "Saznaj više",
+    background: (
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          background: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)",
+        }}
+      />
+    ),
+    className:
+      "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+  },
+  {
+    Icon: Palette,
+    href: "/usluge",
+    cta: "Saznaj više",
+    background: (
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          background: "linear-gradient(135deg, #0D0D0D 0%, #555 100%)",
+        }}
+      />
+    ),
+    className:
+      "lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2",
+  },
+  {
+    Icon: Search,
+    href: "/usluge",
+    cta: "Saznaj više",
+    background: (
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          background: "linear-gradient(135deg, #059669 0%, #065F46 100%)",
+        }}
+      />
+    ),
+    className:
+      "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+  },
+  {
+    Icon: ShoppingCart,
+    href: "/usluge",
+    cta: "Saznaj više",
+    background: (
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          background: "linear-gradient(135deg, #D97706 0%, #92400E 100%)",
+        }}
+      />
+    ),
+    className:
+      "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",
+  },
+] as const
 
 export function ServicesGrid() {
+  const cards = SERVICES_ACCORDION.items.map((item, i) => ({
+    name: item.title,
+    description: item.description,
+    ...serviceConfig[i],
+  }))
+
   return (
-    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36" style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+    <section
+      id="services"
+      className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32 lg:py-36"
+    >
       <m.div
-        className="mx-auto max-w-[1100px]"
+        className="mx-auto max-w-7xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+        variants={staggerContainer}
       >
-        <m.div variants={fadeUp} className="mb-5 flex items-center gap-3">
-          <span style={{ width: 28, height: 2, background: "var(--accent)", flexShrink: 0, display: "block", borderRadius: 2 }} />
-          <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{SERVICES.label}</span>
+        <m.div variants={fadeUp} className="mb-14">
+          <span className="section-label">{SERVICES_ACCORDION.label}</span>
         </m.div>
-        <m.h2
-          variants={fadeUp}
-          className="font-playfair text-4xl font-bold leading-tight md:text-5xl"
-          style={{ color: "var(--text)" }}
-        >
-          {SERVICES.heading}
-        </m.h2>
-        <m.p
-          variants={fadeUp}
-          className="mt-4 text-base"
-          style={{ color: "var(--text-2)" }}
-        >
-          {SERVICES.subheading}
-        </m.p>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {SERVICES.items.map((item) => {
-            const Icon = icons[item.icon as keyof typeof icons]
-            return (
-              <m.div
-                key={item.number}
-                variants={fadeUp}
-                whileHover={{
-                  y: -4,
-                  borderColor: "rgba(90,236,200,0.18)",
-                  boxShadow: "0 8px 32px rgba(90,236,200,0.08)",
-                }}
-                className="relative overflow-hidden border p-6 sm:p-8"
-                style={{
-                  background: "var(--surface)",
-                  borderColor: "var(--border)",
-                  borderRadius: "var(--r-lg)",
-                }}
-              >
-                {/* Large faint number in background */}
-                <span
-                  className="pointer-events-none absolute -right-2 -top-4 font-playfair font-black select-none"
-                  style={{ fontSize: 100, color: "var(--accent)", opacity: 0.05, lineHeight: 1 }}
-                  aria-hidden="true"
-                >
-                  {item.number}
-                </span>
-                <div className="relative mb-6 flex items-center justify-between">
-                  <span
-                    className="font-playfair text-sm font-bold"
-                    style={{ color: "var(--accent)", letterSpacing: "0.05em" }}
-                  >
-                    {item.number}
-                  </span>
-                  <div
-                    className="flex h-10 w-10 items-center justify-center rounded-xl"
-                    style={{ background: "var(--accent-soft)", border: "1px solid var(--accent-border)" }}
-                  >
-                    <Icon size={18} style={{ color: "var(--accent)" }} />
-                  </div>
-                </div>
-                <h3
-                  className="relative font-playfair text-xl font-bold"
-                  style={{ color: "var(--text)" }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="relative mt-3 text-sm leading-relaxed"
-                  style={{ color: "var(--text-2)" }}
-                >
-                  {item.description}
-                </p>
-              </m.div>
-            )
-          })}
-        </div>
+        <m.div variants={fadeUp}>
+          <BentoGrid>
+            {cards.map((card) => (
+              <BentoCard key={card.name} {...card} />
+            ))}
+          </BentoGrid>
+        </m.div>
       </m.div>
     </section>
   )

@@ -1,38 +1,98 @@
-# CLAUDE.md — Volt Web Studio
+# Volt Studio — Project Context for Claude
 
-Next.js 16 + React 19.2 + TypeScript 5.7 agency website for Volt, a solo web studio in Vrbovec, Croatia. Targets micro-entrepreneurs (obrtnici) who need professional sites fast. Design heavily inspired by Crafto ThemeForest web-agency demo.
+## What this project is
+Croatian web studio landing page. Next.js 16 App Router + React 19 + Tailwind CSS 4. Deployed on Vercel at volthr.vercel.app. Language: Croatian (HR). Never change any copy unless explicitly asked.
+
+## Stack
+- Framework: Next.js 16 (App Router, Turbopack default)
+- Styling: Tailwind CSS 4 utility classes — no inline styles, no CSS modules unless they already exist
+- Animations: Motion 12.x — import from `motion/react`, NOT `framer-motion`
+- Icons: lucide-react
+- Deployment: Vercel (auto-deploy on push to main)
+- No backend — static/marketing site
+- Dev tooling: Playwright (visual regression via scripts/design-check.js)
 
 ## Commands
 
 ```bash
 npm run dev          # Start dev server (Turbopack, localhost:3000)
 npm run build        # Production build
-npm run lint         # ESLint check
-npm run type-check   # TypeScript strict
-npx lighthouse http://localhost:3000 --output=html  # Performance audit
+npm run lint         # ESLint (bare `eslint`, no path arg)
+npx tsc --noEmit     # Type-check (no npm script defined)
 ```
+
+## Design system (non-negotiable)
+- Background base: #F5F4F0 (warm off-white) — never pure white, never dark
+- Text primary: #0D0D0D
+- Text secondary: #555550
+- Accent: #8B5CF6 (Volt purple) — used on labels, CTAs, accents only
+- Dark section: #0D0D0D (CTA footer only)
+- Cards: #FFFFFF with border 1px #E8E6E0, rounded-xl
+- Zero glassmorphism — no backdrop-blur, no bg-white/10, no frosted glass anywhere
+- Zero dark backgrounds except the single CTA footer section
+
+## Typography rules
+- Fonts: Space Grotesk (display/headings, `--font-space`) + DM Sans (body/UI, `--font-dm`). Loaded via next/font/google.
+- Hero H1: 72-90px, font-black, line-height 1.05
+- Section labels: 11px uppercase tracking-widest text-purple-500, always prefixed with ✦
+- Body: 16-18px text-[#555550] leading-relaxed
+- Stats: 48px+ font-bold text-[#0D0D0D] + 13px label
+- Nav links: 14px text-[#333]
+- NEVER use Inter, Roboto, Arial, Playfair Display, or system fonts in visible UI.
+
+## Component rules
+- Nav: full-width, flat, border-b border-[#E8E6E0], no pill/container wrapper
+- Buttons primary: bg-[#0D0D0D] text-white rounded-full — or bg-[#8B5CF6] text-white rounded-full
+- Buttons secondary: border border-[#0D0D0D] text-[#0D0D0D] rounded-full bg-transparent
+- Cards: bg-white border border-[#E8E6E0] rounded-xl — never add blur or transparency
+- Section spacing: py-24 minimum on all top-level sections
+- Container: max-w-7xl mx-auto px-6
+
+## Animation rules (Motion 12.x)
+- Hero headline: words stagger in, y: 40→0, opacity: 0→1, staggerChildren: 0.08
+- Scroll sections: whileInView + viewport={{ once: true, amount: 0.1 }}, y: 28→0 fade in (via lib/animations.ts fadeUp)
+- Hero specifically uses y: 40→0 (local override for larger viewport)
+- Cards hover: scale 1.02, transition 0.2s
+- Accordion: AnimatePresence + height auto
+- Stats: count up from 0 on scroll enter
+- Logo marquee: CSS infinite scroll, 30s linear
+- Never use heavy spring animations — ease or easeOut only
+- NEVER use `transform: scale()` on cards beyond 1.02
+- Components use `m` (not `motion`) from `motion/react` — lighter weight
+- Import pattern: `import { m, AnimatePresence } from "motion/react"` (add useScroll, useMotionValueEvent as needed)
+- Shared animation variants live in `lib/animations.ts` — import `fadeUp`, `staggerContainer`, etc. instead of defining inline
+- MotionProvider (LazyMotion wrapper) exists at components/providers/MotionProvider.tsx but is NOT fully utilized — components import `m` directly
+- Remove ALL Tailwind `transition-*` classes from Motion-animated elements (conflicts)
+
+## File structure conventions
+- Components: /components/[ComponentName].tsx or /components/ui/[name].tsx
+- Sections: /components/sections/[SectionName].tsx
+- Layout: /components/layout/ (Nav, Footer)
+- Lib: /lib/ (content.ts, utils.ts, animations.ts)
+- Globals: app/globals.css (design tokens as CSS vars)
+- Always read the file before editing it
 
 ## Architecture
 
 ```
 app/                  # Next.js 16 App Router (Turbopack default)
-├── layout.tsx        # Root: fonts (Playfair + Outfit), metadata, analytics
+├── layout.tsx        # Root: fonts (Space Grotesk + DM Sans), metadata, analytics
+├── globals.css       # Design tokens as CSS vars
 ├── page.tsx          # Homepage — 13 sections, see below
-├── o-nama/           # About page
-├── usluge/           # Services detail
-├── projekti/         # Portfolio (Sanity-powered)
-├── cijene/           # Pricing — ALREADY BUILT, port into shell
-├── kontakt/          # Contact form + Leaflet map
-├── blog/[slug]/      # Blog (Sanity-powered)
-└── api/contact/      # Resend + WhatsApp redirect
+├── o-nama/           # About page (NOT YET BUILT — content ready in lib/content.ts)
+├── usluge/           # Services detail (NOT YET BUILT)
+├── projekti/         # Portfolio, Sanity-powered (NOT YET BUILT)
+├── cijene/           # Pricing (NOT YET BUILT — port from reference/volt-pricing.html)
+├── kontakt/          # Contact form + Leaflet map (NOT YET BUILT)
+├── blog/[slug]/      # Blog, Sanity-powered (NOT YET BUILT)
+└── api/contact/      # Resend + WhatsApp redirect (NOT YET BUILT)
 components/
-├── layout/           # Nav, Footer, SectionWrapper
-├── ui/               # Button, Card, Badge, Input
+├── layout/           # Nav, Footer
+├── ui/               # Currently only LightningBolt.tsx (Button, Card, Badge, Input NOT YET BUILT)
 ├── sections/         # Hero, Services, Portfolio, CTA, Stats, FAQ
-└── animations/       # ScrollReveal, Counter, Marquee, TextSplit
-lib/                  # sanity.ts, seo.ts, utils.ts
+└── providers/        # MotionProvider (LazyMotion wrapper)
+lib/                  # content.ts, seo.ts, utils.ts, animations.ts
 sanity/schemas/       # blog, project, testimonial
-styles/globals.css    # Design tokens as CSS vars
 ```
 
 ## Code Style
@@ -40,66 +100,10 @@ styles/globals.css    # Design tokens as CSS vars
 - TypeScript strict. No `any`.
 - Tailwind CSS 4 utility classes. No custom CSS files except globals.css.
 - Named exports everywhere. No default exports except pages.
-- Motion 12.x for ALL animations. Import from `motion/react`, NOT `framer-motion`.
-- Use `LazyMotion` + `m` components for bundle optimization (4.6KB vs 34KB).
-- Remove ALL Tailwind `transition-*` classes from Motion-animated elements (conflicts).
-- NEVER use Inter, Roboto, Arial, or system fonts in visible UI.
 - All user-facing text in **Croatian**.
 - Components: functional only, with explicit prop types.
 - Pages with params: ALWAYS use `Promise<>` types and `await` (Next.js 16 breaking change).
 - Server Components are default. Only add `"use client"` when actually needed (hooks, browser APIs, event handlers).
-
-## Design System
-
-IMPORTANT: Every color, radius, and font must come from these tokens.
-
-```css
-:root {
-  --accent: #5AECC8;        /* Volt Mint — CTAs, links, highlights */
-  --accent-end: #2DD4A8;    /* Gradient endpoint, hover */
-  --surface: #050505;        /* Primary dark bg */
-  --text: #F2F2F2;          /* Primary text on dark */
-  --frame: #D4DBC4;         /* Sage — section wrapper bg */
-  --surface-card: #0E0E0E;  /* Card bg */
-  --text-2: #999999;        /* Secondary text */
-  --text-3: #555555;        /* Tertiary text */
-  --border: rgba(255,255,255,0.05);
-  --accent-glow: rgba(90,236,200,0.15);
-  --accent-soft: rgba(90, 236, 200, 0.08);  /* Subtle accent bg */
-  --accent-border: rgba(90, 236, 200, 0.18); /* Accent-tinted borders */
-  --text-on-accent: #060606;  /* Text on mint buttons */
-  --r-sm: 12px; --r-md: 18px; --r-lg: 26px; --r-xl: 36px;
-}
-```
-
-Fonts: Playfair Display (display/headings) + Outfit (body/UI). Load via Google Fonts with `display=swap`.
-
-### Gradients
-
-| Name | CSS | Usage |
-|------|-----|-------|
-| Primary CTA | `linear-gradient(135deg, #5AECC8, #2DD4A8)` | Buttons, tags |
-| CTA Panel | `linear-gradient(160deg, #5AECC8, #3DD4A8, #72F2D8)` | Footer CTA section |
-| Accent Text | `linear-gradient(135deg, #5AECC8, #A6F5DE, #2DD4A8)` | Hero italic text |
-
-### Type Hierarchy
-
-| Level | Font | Size | Weight | Spacing |
-|-------|------|------|--------|---------|
-| Hero H1 | Playfair Display | clamp(3rem, 5vw, 6.2rem) | 700 | -0.035em |
-| Section H2 | Playfair Display | clamp(1.8rem, 3vw, 2.9rem) | 700 | -0.025em |
-| Card Title | Playfair Display | 1.2rem | 700 | 0 |
-| Section Label | Outfit | 11px | 800 | 0.14em (uppercase) |
-| Body | Outfit | 14–15px | 400 | 0 |
-| Button | Outfit | 14px | 700 | 0 |
-
-### Spacing & Container
-
-Base unit: 4px. Use multiples: 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 72px.
-
-Container: max-width 1100px, padding 48px (desktop) / 24px (mobile).
-
-Frame inner radius: 34px desktop / 24px mobile.
 
 ## Homepage Section Flow
 
@@ -107,7 +111,7 @@ Build in order. Each is a separate component in `components/sections/`.
 
 | # | Section | Key Details |
 |---|---------|-------------|
-| 1 | Hero | Large Playfair heading + word rotation ("obrtnike · poduzetnike · trgovce") + CTA + "5★ web studio" badge |
+| 1 | Hero | Large heading + word rotation ("obrtnike · poduzetnike · trgovce") + CTA + badge |
 | 2 | Client Logos | Greyscale horizontal marquee. Placeholder text until real clients exist |
 | 3 | About Split | Image left (rounded-xl) + vision/mission text right |
 | 4 | Services Grid | 4 numbered cards (01–04): Konzultacija, Dizajn, Razvoj, Lansiranje |
@@ -118,28 +122,15 @@ Build in order. Each is a separate component in `components/sections/`.
 | 9 | Pricing Preview | 3 tier cards linking to /cijene |
 | 10 | EU Grant Banner | "Do 85% financirano" — ITP digitalizacija + digital vouchers |
 | 11 | FAQ Accordion | 6 questions. Schema.org FAQPage JSON-LD |
-| 12 | CTA Panel | Glassmorphism: "Spreman za web koji zarađuje?" + WhatsApp button |
+| 12 | CTA Panel | Dark section (#0D0D0D): "Spreman za web koji zarađuje?" + WhatsApp button |
 | 13 | Footer | Logo, Vrbovec address, WhatsApp, email, nav links, ©2026 |
-
-## Animation Rules
-
-- Scroll reveals: Motion `m.div` with `fadeUp`, 0.6s ease, `viewport={{ once: true, amount: 0.1 }}`
-- Staggered children: 0.05–0.1s delay via `staggerChildren`
-- Hero text: word-split animation on mount with `clipPath` reveal
-- Marquee: CSS `@keyframes translateX` infinite, 30s, `linear`
-- Counters: `useInView` + `animate()` from 0 to target (from `motion/react`)
-- Card hover: `translateY(-4px)` + `borderColor: var(--accent)` + subtle shadow
-- Page transitions: fade 0.3s via AnimatePresence
-- NEVER use `transform: scale()` on cards — only translateY.
-- ALWAYS wrap app in `<LazyMotion features={domAnimation}>` for bundle savings.
-- Import pattern: `import { m, LazyMotion, domAnimation, AnimatePresence, useScroll, useTransform } from "motion/react"`
 
 ## Navigation
 
-- Transparent header over hero → solid `--surface` bg on scroll (`useScroll`)
-- Left: Volt logo (bolt-V SVG). Center: nav links. Right: CTA button
+- Flat header, full-width, border-b border-[#E8E6E0] on #F5F4F0 background
+- Left: Volt logo. Center: nav links. Right: CTA button
 - Mobile: hamburger → full-screen overlay with staggered link reveals
-- Active link: `--accent` underline offset
+- Active link: purple underline offset
 
 ## SEO
 
@@ -154,12 +145,21 @@ Build in order. Each is a separate component in `components/sections/`.
 - **Turbopack is default**: Some Webpack-only plugins won't work. Check compatibility before adding.
 - **Motion + Tailwind conflict**: Remove `transition-*`, `duration-*`, `ease-*` Tailwind classes from any element animated by Motion.
 - **"use client" boundary**: Keep it as high as possible. Don't sprinkle on every component.
-- **Must be on Next.js 16.1.1+** — 3 security CVEs patched in Dec 2025.
+- **Light background is non-negotiable**: #F5F4F0 everywhere. Never revert to dark theme.
+- **Space Grotesk max weight is 700**: `font-black` (900) silently falls back to 700. Use `font-bold` (700) or load weight 800/900 in layout.tsx.
 - /cijene page is ALREADY BUILT as standalone HTML. Port preserving exact visuals. Ref: @volt-pricing.html
 - EU grant info (ITP + digital vouchers) changes often. Keep banner Sanity-editable.
 - WhatsApp is primary contact for obrtnici. Every CTA needs WhatsApp option.
-- Playfair Display italic (500) used for accent text — load explicitly.
-- NEVER hardcode content strings. Use constants file or Sanity.
+- NEVER hardcode content strings. Use constants file or Sanity. Import from lib/content.ts.
+- All content objects in lib/content.ts use `as const` for full TypeScript inference.
+
+## What NOT to do
+- Never add glassmorphism (no backdrop-blur, no bg-white/10, no frosted glass)
+- Never use dark backgrounds outside the CTA footer section
+- Never hardcode colors outside the design system above
+- Never change Croatian copy
+- Never install dependencies without asking first (exception: motion is pre-approved)
+- Never use arbitrary Tailwind values not in this system without asking
 
 ## Brand Positioning
 
@@ -171,8 +171,8 @@ Voice: direct, specific numbers, Croatian-first, zero jargon.
 
 ## Reference Files
 
-- @volt-brand-guidelines.docx — Full brand system (colors, typography, logo usage, spacing)
-- @volt-pricing.html — Existing pricing page to port
+- docs/brand-guidelines.md — Brand system (colors, typography, logo usage, spacing)
+- reference/demo-web-agency.html — Crafto HTML5 template used as design reference
 - @content.ts — ALL Croatian content, SEO meta, JSON-LD schemas. Import from lib/content.ts. NEVER hardcode strings.
 - @sanity-skill/SKILL.md — Sanity CMS integration patterns
-- Design reference: Crafto ThemeForest demo-web-agency.html
+- scripts/design-check.js — Playwright visual comparison (captures localhost:3000 vs eloqwnt.com reference)
