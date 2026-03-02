@@ -4,6 +4,7 @@ import { AboutSplit } from "@/components/sections/AboutSplit"
 import { ServicesGrid } from "@/components/sections/ServicesGrid"
 import { KeywordMarquee } from "@/components/sections/KeywordMarquee"
 import { PortfolioGrid } from "@/components/sections/PortfolioGrid"
+import { StatsCounters } from "@/components/sections/StatsCounters"
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <ServicesGrid />
       <KeywordMarquee />
       <PortfolioGrid />
+      <StatsCounters />
     </main>
   )
 }
