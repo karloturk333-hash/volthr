@@ -7,6 +7,38 @@
 import { useRef } from "react"
 import { m, useInView, useReducedMotion } from "motion/react"
 
+// Hoisted to module level — string is constant, no need to recreate per render
+const KEYFRAMES = `
+  @keyframes orb-pulse-tl {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.15); opacity: 0.55; }
+  }
+  @keyframes orb-pulse-br {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.45; }
+  }
+  @keyframes v-glow-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes circuit-dot-blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.4; }
+  }
+`
+
+// Chrome button config — hoisted so the array is not recreated on every render
+const CHROME_BUTTONS = [
+  { color: "#FF5F57", shadow: "rgba(255, 95, 87, 0.65)" },
+  { color: "#FFBD2E", shadow: "rgba(255, 189, 46, 0.65)" },
+  { color: "#28C840", shadow: "rgba(40, 200, 64, 0.65)" },
+] as const
+
+const chromeButtonVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
+}
+
 export default function BrowserMockup() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.25 })
@@ -15,53 +47,28 @@ export default function BrowserMockup() {
   return (
     <div ref={ref} className="overflow-hidden rounded-2xl shadow-2xl">
       {/* CSS keyframes for ambient animations — compositor-friendly */}
-      <style>{`
-        @keyframes orb-pulse-tl {
-          0%, 100% { transform: scale(1); opacity: 0.4; }
-          50% { transform: scale(1.15); opacity: 0.55; }
-        }
-        @keyframes orb-pulse-br {
-          0%, 100% { transform: scale(1); opacity: 0.3; }
-          50% { transform: scale(1.2); opacity: 0.45; }
-        }
-        @keyframes v-glow-pulse {
-          0%, 100% { opacity: 0.2; }
-          50% { opacity: 0.4; }
-        }
-        @keyframes circuit-dot-blink {
-          0%, 100% { opacity: 0; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
+      <style>{KEYFRAMES}</style>
 
       {/* Browser chrome bar */}
       <div className="flex items-center gap-2 bg-[#1e1e2e] px-4 py-3">
-        <div className="flex gap-2">
-          <m.div
-            className="h-3 w-3 cursor-pointer rounded-full bg-[#FF5F57]"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-            transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.3, boxShadow: "0 0 12px 3px rgba(255, 95, 87, 0.65)" }}
-            whileTap={{ scale: 0.85 }}
-          />
-          <m.div
-            className="h-3 w-3 cursor-pointer rounded-full bg-[#FFBD2E]"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-            transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.3, boxShadow: "0 0 12px 3px rgba(255, 189, 46, 0.65)" }}
-            whileTap={{ scale: 0.85 }}
-          />
-          <m.div
-            className="h-3 w-3 cursor-pointer rounded-full bg-[#28C840]"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-            transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.3, boxShadow: "0 0 12px 3px rgba(40, 200, 64, 0.65)" }}
-            whileTap={{ scale: 0.85 }}
-          />
-        </div>
+        {/* Single stagger container replaces three individual animated divs */}
+        <m.div
+          className="flex gap-2"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
+        >
+          {CHROME_BUTTONS.map(({ color, shadow }) => (
+            <m.div
+              key={color}
+              className="h-3 w-3 cursor-pointer rounded-full"
+              style={{ backgroundColor: color }}
+              variants={chromeButtonVariants}
+              whileHover={{ scale: 1.3, boxShadow: `0 0 12px 3px ${shadow}` }}
+              whileTap={{ scale: 0.85 }}
+            />
+          ))}
+        </m.div>
         <m.div
           className="ml-4 flex-1 rounded-md bg-white/8 px-4 py-1.5 text-center text-xs text-white/40 font-dm"
           initial={{ opacity: 0 }}

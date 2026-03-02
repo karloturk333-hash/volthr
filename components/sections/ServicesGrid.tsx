@@ -99,12 +99,14 @@ const serviceConfig = [
   },
 ] as const
 
+// Pre-computed at module level — both sources are constants
+const cards = SERVICES_ACCORDION.items.map((item, i) => ({
+  name: item.title,
+  description: item.description,
+  ...serviceConfig[i],
+}))
+
 export function ServicesGrid() {
-  const cards = SERVICES_ACCORDION.items.map((item, i) => ({
-    name: item.title,
-    description: item.description,
-    ...serviceConfig[i],
-  }))
 
   return (
     <section

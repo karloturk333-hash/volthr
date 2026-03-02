@@ -14,6 +14,9 @@ const BrowserMockup = dynamic(() => import("@/components/ui/BrowserMockup"), {
 
 const MotionLink = m(Link)
 
+// Pre-split at module level — HERO.heading is a constant
+const HERO_WORDS = HERO.heading.split(" ")
+
 export function Hero() {
   const mockupRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -21,9 +24,6 @@ export function Hero() {
     offset: ["start end", "end start"],
   })
   const mockupY = useTransform(scrollYProgress, [0, 1], [0, -80])
-
-  // Split heading into words for stagger animation
-  const words = HERO.heading.split(" ")
 
   return (
     <section id="hero" className="bg-[#F5F4F0] px-6 pt-32 pb-12 md:px-12 md:pt-40 md:pb-16 lg:pt-48">
@@ -48,7 +48,7 @@ export function Hero() {
                 letterSpacing: "-0.035em",
               }}
             >
-              {words.map((word, i) => (
+              {HERO_WORDS.map((word, i) => (
                 <m.span
                   key={i}
                   variants={heroWord}

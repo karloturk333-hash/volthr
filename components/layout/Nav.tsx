@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { m, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
@@ -20,19 +20,21 @@ export function Nav() {
     setScrolled(latest > 60)
   })
 
+  // Stable object reference — only recreates when scrolled boolean flips
+  const navStyle = useMemo(() => ({
+    boxShadow: scrolled
+      ? "0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)"
+      : "0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03)",
+  }), [scrolled])
+
   return (
     <>
       <header
         className="fixed top-0 left-0 right-0 z-50 border-b border-[#E8E6E0] bg-[#F5F4F0] lg:border-0 lg:bg-transparent lg:px-6 lg:pt-3"
       >
         <div
-          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:rounded-2xl lg:border lg:border-[#E8E6E0] lg:bg-white"
-          style={{
-            boxShadow: scrolled
-              ? "0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)"
-              : "0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03)",
-            transition: "box-shadow 0.3s ease",
-          }}
+          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 [transition:box-shadow_0.3s_ease] lg:rounded-2xl lg:border lg:border-[#E8E6E0] lg:bg-white"
+          style={navStyle}
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2" aria-label={SITE.fullName}>
@@ -47,11 +49,8 @@ export function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative font-dm text-[14px] font-medium hover:text-[#0D0D0D]"
-                  style={{
-                    color: isActive ? "#0D0D0D" : "#333333",
-                    transition: "color 0.2s ease",
-                  }}
+                  className="relative font-dm text-[14px] font-medium [transition:color_0.2s_ease] hover:text-[#0D0D0D]"
+                  style={{ color: isActive ? "#0D0D0D" : "#333333" }}
                 >
                   {link.label}
                   {isActive && (

@@ -1,7 +1,6 @@
 "use client"
 
 import { useId } from "react"
-import { m } from "motion/react"
 
 // ViewBox dimensions
 const VW = 200
@@ -31,6 +30,7 @@ export function LightningBolt({
   style,
 }: LightningBoltProps) {
   const gradientId = useId()
+  const dur = `${animationDuration}s`
 
   return (
     <svg
@@ -43,27 +43,23 @@ export function LightningBolt({
       aria-hidden="true"
     >
       <defs>
-        {/* Gradient band that sweeps diagonally across the bolt */}
-        <m.linearGradient
+        {/* Gradient band that sweeps diagonally — native SMIL, compositor-friendly */}
+        <linearGradient
           id={gradientId}
           gradientUnits="userSpaceOnUse"
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          animate={{
-            x1: [-120, VW + 60],
-            y1: [-VH * 0.6, VH * 1.2],
-            x2: [0, VW * 1.6],
-            y2: [0, VH * 1.8],
-          } as any}
-          transition={{
-            duration: animationDuration,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          x1={-120}
+          y1={-VH * 0.6}
+          x2={0}
+          y2={0}
         >
+          <animate attributeName="x1" from={`${-120}`} to={`${VW + 60}`} dur={dur} repeatCount="indefinite" calcMode="linear" />
+          <animate attributeName="y1" from={`${-VH * 0.6}`} to={`${VH * 1.2}`} dur={dur} repeatCount="indefinite" calcMode="linear" />
+          <animate attributeName="x2" from="0" to={`${VW * 1.6}`} dur={dur} repeatCount="indefinite" calcMode="linear" />
+          <animate attributeName="y2" from="0" to={`${VH * 1.8}`} dur={dur} repeatCount="indefinite" calcMode="linear" />
           <stop offset="0%" stopColor="#5AECC8" stopOpacity="0" />
           <stop offset="50%" stopColor="#A6F5DE" stopOpacity="1" />
           <stop offset="100%" stopColor="#2DD4A8" stopOpacity="0" />
-        </m.linearGradient>
+        </linearGradient>
       </defs>
 
       {/* Layer 1 — Filled bolt mass (editorial depth like DigiCore's rock) */}

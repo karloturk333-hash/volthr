@@ -3,6 +3,7 @@
 import { m } from "motion/react"
 import Link from "next/link"
 import { Check } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { PRICING_PREVIEW } from "@/lib/content"
 import { fadeUp, staggerContainer } from "@/lib/animations"
 
@@ -40,12 +41,10 @@ export function PricingPreview() {
               key={tier.name}
               variants={fadeUp}
               whileHover={{ y: -4 }}
-              className={[
+              className={cn(
                 "relative flex flex-col rounded-xl border bg-white p-6 sm:p-8",
-                tier.popular
-                  ? "border-[#8B5CF6]"
-                  : "border-[#E8E6E0] md:mt-4",
-              ].join(" ")}
+                tier.popular ? "border-[#8B5CF6]" : "border-[#E8E6E0] md:mt-4",
+              )}
             >
               {/* Solid top stripe for popular */}
               {tier.popular && (
@@ -94,12 +93,12 @@ export function PricingPreview() {
 
               <Link
                 href="/cijene"
-                className={[
+                className={cn(
                   "mt-8 block rounded-full py-3 text-center text-sm font-semibold",
                   tier.popular
                     ? "bg-[#8B5CF6] text-white"
                     : "border border-[#0D0D0D] bg-transparent text-[#0D0D0D]",
-                ].join(" ")}
+                )}
               >
                 {PRICING_PREVIEW.cta.label}
               </Link>

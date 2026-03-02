@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, ReactNode, useRef } from "react"
+import { FC, ReactNode, useRef, useMemo } from "react"
 import { m, MotionValue, useScroll, useTransform, easeOut } from "motion/react"
 import { cn } from "@/lib/utils"
 
@@ -12,7 +12,7 @@ interface TextRevealByWordProps {
 const TextRevealByWord: FC<TextRevealByWordProps> = ({ text, className }) => {
   const targetRef = useRef<HTMLDivElement | null>(null)
   const { scrollYProgress } = useScroll({ target: targetRef })
-  const words = text.split(" ")
+  const words = useMemo(() => text.split(" "), [text])
 
   // Each word animates over 40% of the scroll range.
   // Step between word starts = (1 - 0.4) / (n - 1), so words cascade-overlap.

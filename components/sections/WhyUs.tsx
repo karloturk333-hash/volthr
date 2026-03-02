@@ -26,7 +26,7 @@ export function WhyUs() {
               whileHover={{ scale: 1.02 }}
               className="rounded-xl border border-[#E8E6E0] bg-white p-8"
             >
-              <span className="section-label mb-6 block text-[#8B5CF6]" aria-hidden="true" />
+              <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.15em] text-[#8B5CF6]" aria-hidden="true">✦</div>
               <h3 className="font-space text-xl font-bold text-[#0D0D0D]">
                 {item.title}
               </h3>
