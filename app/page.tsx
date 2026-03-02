@@ -5,6 +5,7 @@ import { ServicesGrid } from "@/components/sections/ServicesGrid"
 import { KeywordMarquee } from "@/components/sections/KeywordMarquee"
 import { PortfolioGrid } from "@/components/sections/PortfolioGrid"
 import { StatsCounters } from "@/components/sections/StatsCounters"
+import { Testimonials } from "@/components/sections/Testimonials"
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <KeywordMarquee />
       <PortfolioGrid />
       <StatsCounters />
+      <Testimonials />
     </main>
   )
 }
