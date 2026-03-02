@@ -5,14 +5,35 @@
 "use client"
 
 import { useRef } from "react"
-import { m, useInView } from "motion/react"
+import { m, useInView, useReducedMotion } from "motion/react"
 
 export default function BrowserMockup() {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.25 })
+  const prefersReducedMotion = useReducedMotion()
 
   return (
     <div ref={ref} className="overflow-hidden rounded-2xl shadow-2xl">
+      {/* CSS keyframes for ambient animations — compositor-friendly */}
+      <style>{`
+        @keyframes orb-pulse-tl {
+          0%, 100% { transform: scale(1); opacity: 0.4; }
+          50% { transform: scale(1.15); opacity: 0.55; }
+        }
+        @keyframes orb-pulse-br {
+          0%, 100% { transform: scale(1); opacity: 0.3; }
+          50% { transform: scale(1.2); opacity: 0.45; }
+        }
+        @keyframes v-glow-pulse {
+          0%, 100% { opacity: 0.2; }
+          50% { opacity: 0.4; }
+        }
+        @keyframes circuit-dot-blink {
+          0%, 100% { opacity: 0; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
+
       {/* Browser chrome bar */}
       <div className="flex items-center gap-2 bg-[#1e1e2e] px-4 py-3">
         <div className="flex gap-2">
@@ -63,20 +84,24 @@ export default function BrowserMockup() {
           ].join(", "),
         }}
       >
-        {/* Ambient orb glow — top left */}
-        <m.div
-          className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full opacity-40"
-          style={{ background: "radial-gradient(circle, #8B5CF6 0%, transparent 70%)" }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.55, 0.4] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        {/* Ambient orb glow — top left (CSS animation) */}
+        <div
+          className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full"
+          style={{
+            background: "radial-gradient(circle, #8B5CF6 0%, transparent 70%)",
+            animation: prefersReducedMotion ? "none" : "orb-pulse-tl 4s ease-in-out infinite",
+            opacity: 0.4,
+          }}
         />
 
-        {/* Ambient orb glow — bottom right */}
-        <m.div
-          className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full opacity-30"
-          style={{ background: "radial-gradient(circle, #6D28D9 0%, transparent 70%)" }}
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.45, 0.3] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        {/* Ambient orb glow — bottom right (CSS animation) */}
+        <div
+          className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full"
+          style={{
+            background: "radial-gradient(circle, #6D28D9 0%, transparent 70%)",
+            animation: prefersReducedMotion ? "none" : "orb-pulse-br 5s ease-in-out 1.5s infinite",
+            opacity: 0.3,
+          }}
         />
 
         {/* Grid lines — finer tech texture */}
@@ -126,14 +151,14 @@ export default function BrowserMockup() {
           <path d="M176,150 L144,192" stroke="#8B5CF6" strokeWidth="0.8" strokeLinecap="round" opacity="0.5" fill="none" />
         </svg>
 
-        {/* ── Lightning strike — periodic bright flash ── */}
+        {/* ── Lightning strike — periodic bright flash (kept as Motion for complex keyframes) ── */}
         <m.svg
           className="pointer-events-none absolute inset-0 h-full w-full"
           viewBox="0 0 400 300"
           preserveAspectRatio="xMidYMid slice"
           aria-hidden="true"
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: [0, 0, 0, 0, 1, 0.4, 1, 0] } : { opacity: 0 }}
+          animate={isInView && !prefersReducedMotion ? { opacity: [0, 0, 0, 0, 1, 0.4, 1, 0] } : { opacity: 0 }}
           transition={{
             duration: 0.6,
             repeat: Infinity,
@@ -174,7 +199,7 @@ export default function BrowserMockup() {
           <circle cx="158" cy="208" r="20" fill="#8B5CF6" opacity="0.12" filter="url(#boltGlow)" />
         </m.svg>
 
-        {/* Screen flash on strike */}
+        {/* Screen flash on strike (kept as Motion — tied to lightning timing) */}
         <m.div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -182,7 +207,7 @@ export default function BrowserMockup() {
               "radial-gradient(ellipse at 55% 35%, rgba(167,139,250,0.3) 0%, transparent 55%)",
           }}
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: [0, 0, 0, 0, 1, 0] } : { opacity: 0 }}
+          animate={isInView && !prefersReducedMotion ? { opacity: [0, 0, 0, 0, 1, 0] } : { opacity: 0 }}
           transition={{
             duration: 0.4,
             repeat: Infinity,
@@ -192,11 +217,13 @@ export default function BrowserMockup() {
           }}
         />
 
-        {/* V monogram — large glow layer */}
-        <m.div
+        {/* V monogram — large glow layer (CSS animation) */}
+        <div
           className="absolute"
-          animate={{ opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            animation: prefersReducedMotion ? "none" : "v-glow-pulse 3s ease-in-out infinite",
+            opacity: 0.2,
+          }}
         >
           <svg
             viewBox="0 0 200 200"
@@ -212,7 +239,7 @@ export default function BrowserMockup() {
               strokeLinejoin="round"
             />
           </svg>
-        </m.div>
+        </div>
 
         {/* V monogram — main SVG */}
         <m.svg
@@ -309,22 +336,22 @@ export default function BrowserMockup() {
             transition={{ delay: 2.1, duration: 0.5 }}
           />
 
-          {/* Small accent dots on circuit lines */}
-          <m.circle
+          {/* Small accent dots on circuit lines (CSS animation) */}
+          <circle
             cx="37" cy="53" r="2.5"
             fill="#8B5CF6"
-            opacity="0.4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.4, 0] }}
-            transition={{ delay: 2.5, duration: 2, repeat: Infinity }}
+            style={{
+              animation: prefersReducedMotion ? "none" : "circuit-dot-blink 2s ease-in-out 2.5s infinite",
+              opacity: 0,
+            }}
           />
-          <m.circle
+          <circle
             cx="163" cy="53" r="2.5"
             fill="#8B5CF6"
-            opacity="0.4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.4, 0] }}
-            transition={{ delay: 3, duration: 2, repeat: Infinity }}
+            style={{
+              animation: prefersReducedMotion ? "none" : "circuit-dot-blink 2s ease-in-out 3s infinite",
+              opacity: 0,
+            }}
           />
 
           {/* Gradients */}

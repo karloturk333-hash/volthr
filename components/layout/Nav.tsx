@@ -3,15 +3,12 @@
 import { useState } from "react"
 import { m, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { NAV, SITE } from "@/lib/content"
 import { RainbowButton } from "@/components/ui/rainbow-button"
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0 },
-}
+import { fadeUpSmall } from "@/lib/animations"
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -39,8 +36,7 @@ export function Nav() {
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2" aria-label={SITE.fullName}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/volt-v-monogram.svg" alt={SITE.fullName} className="h-9 w-9 lg:h-10 lg:w-10" />
+            <Image src="/images/volt-v-monogram.svg" alt={SITE.fullName} width={40} height={40} priority className="h-9 w-9 lg:h-10 lg:w-10" />
           </Link>
 
           {/* Desktop links */}
@@ -62,7 +58,7 @@ export function Nav() {
                     <m.span
                       layoutId="nav-indicator"
                       className="absolute -bottom-1.5 left-0 right-0 h-[2px] rounded-full bg-[#8B5CF6]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
                     />
                   )}
                 </Link>
@@ -134,7 +130,7 @@ export function Nav() {
               {NAV.links.map((link) => {
                 const isActive = pathname === link.href
                 return (
-                  <m.div key={link.href} variants={fadeUp}>
+                  <m.div key={link.href} variants={fadeUpSmall}>
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
@@ -149,7 +145,7 @@ export function Nav() {
                   </m.div>
                 )
               })}
-              <m.div variants={fadeUp} className="mt-3">
+              <m.div variants={fadeUpSmall} className="mt-3">
                 <Link
                   href={NAV.cta.href}
                   onClick={() => setMobileOpen(false)}

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Instagram, Linkedin, Facebook } from "lucide-react"
 import { FOOTER, SITE, NAV } from "@/lib/content"
@@ -17,8 +18,7 @@ export function Footer() {
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
           {/* Logo */}
           <div className="shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/volt-v-monogram-dark.svg" alt={SITE.fullName} className="h-10 w-10" />
+            <Image src="/images/volt-v-monogram-dark.svg" alt={SITE.fullName} width={40} height={40} className="h-10 w-10" />
           </div>
 
           {/* Nav links */}
@@ -59,7 +59,7 @@ export function Footer() {
       <div className="border-t border-[#222]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row md:px-12">
           <p className="text-xs text-[#555550]">
-            © 2026 Volt Web Studio
+            {SITE.copyright}
           </p>
           <div className="flex gap-6">
             <Link href={FOOTER.legal.privacy.href} className="text-xs text-[#555550] hover:text-[#888880]">

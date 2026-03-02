@@ -1,39 +1,9 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
-import { m, useInView } from "motion/react"
+import { m } from "motion/react"
 import { ABOUT_SECTION } from "@/lib/content"
 import { fadeUp, staggerContainer } from "@/lib/animations"
-
-function Counter({ target, suffix, prefix }: { target: number; suffix: string; prefix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px 0px" })
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    if (!isInView) return
-    const duration = 1500
-    const steps = 60
-    const increment = target / steps
-    let current = 0
-    const timer = setInterval(() => {
-      current += increment
-      if (current >= target) {
-        setCount(target)
-        clearInterval(timer)
-      } else {
-        setCount(Math.round(current))
-      }
-    }, duration / steps)
-    return () => clearInterval(timer)
-  }, [isInView, target])
-
-  return (
-    <span ref={ref} className="font-space text-4xl font-bold text-[#0D0D0D] sm:text-5xl">
-      {prefix}{count}{suffix}
-    </span>
-  )
-}
+import { Counter } from "@/components/ui/Counter"
 
 const stats: readonly { value: number; suffix: string; label: string; prefix?: string }[] = [
   { value: 7, suffix: "", label: "dana isporuke" },
@@ -80,7 +50,7 @@ export function AboutSplit() {
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center lg:text-left">
-                <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
+                <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} duration={1500} className="font-space text-4xl font-bold text-[#0D0D0D] sm:text-5xl" />
                 <p className="mt-2 text-[13px] font-medium text-[#888880]">
                   {stat.label}
                 </p>

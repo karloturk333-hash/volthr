@@ -1,16 +1,17 @@
+import type { Variants } from "motion/react"
+
 export const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const } },
 }
 
-export const blurIn = {
-  hidden: { opacity: 0, filter: "blur(8px)", y: 16 },
-  visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
-}
-
-export const scaleUp = {
-  hidden: { opacity: 0, scale: 0.92 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+export const fadeUpSmall: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
 }
 
 export const slideFromLeft = {
@@ -26,11 +27,6 @@ export const slideFromRight = {
 export const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
-}
-
-export const staggerContainerFast = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } },
 }
 
 export const staggerContainerSlow = {

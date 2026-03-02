@@ -1,12 +1,16 @@
 "use client"
 
 import { useRef } from "react"
+import dynamic from "next/dynamic"
 import { m, useScroll, useTransform } from "motion/react"
 import Link from "next/link"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { HERO } from "@/lib/content"
-import { heroStagger, heroWord, fadeUp } from "@/lib/animations"
-import BrowserMockup from "@/components/ui/BrowserMockup"
+import { heroStagger, heroWord } from "@/lib/animations"
+
+const BrowserMockup = dynamic(() => import("@/components/ui/BrowserMockup"), {
+  loading: () => <div className="aspect-video w-full max-w-2xl rounded-2xl bg-[#1a1a2e]/5 animate-pulse" />,
+})
 
 const MotionLink = m(Link)
 

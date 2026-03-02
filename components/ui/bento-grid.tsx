@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 const BentoGrid = ({
   children,
@@ -83,12 +82,13 @@ const BentoCard = ({
         "sm:transition-all sm:duration-300 sm:group-hover:translate-y-0 sm:group-hover:opacity-100",
       )}
     >
-      <Button variant="ghost" asChild size="sm" className="pointer-events-auto">
-        <a href={href}>
-          {cta}
-          <ArrowRightIcon className="ml-2 h-4 w-4" />
-        </a>
-      </Button>
+      <a
+        href={href}
+        className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-md px-3 text-sm font-medium hover:bg-[#f4f4f5] hover:text-[#0D0D0D]"
+      >
+        {cta}
+        <ArrowRight className="ml-2 h-4 w-4" />
+      </a>
     </div>
 
     {/* Hover overlay — sm+ only, no visual change on touch */}

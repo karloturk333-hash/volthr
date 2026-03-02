@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="vg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <!-- Warm off-white background with rounded corners -->
+  <rect width="800" height="800" rx="160" fill="#F5F4F0"/>
+  <!-- Bold V letterform -->
+  <path d="M 220 180 L 400 580 L 580 180 L 500 180 L 400 460 L 300 180 Z" fill="url(#vg)"/>
+  <!-- Lightning bolt negative-space cut through the right arm -->
+  <path d="M 468 240 L 448 320 L 478 320 L 452 400 L 496 300 L 466 300 L 488 240 Z" fill="#F5F4F0"/>
+</svg>

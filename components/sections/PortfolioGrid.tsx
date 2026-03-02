@@ -7,15 +7,6 @@ import { PORTFOLIO } from "@/lib/content"
 import { projectCard, staggerContainerProjects } from "@/lib/animations"
 import { TextRevealByWord } from "@/components/ui/text-reveal"
 
-const projects = [
-  { name: "AutoServis Pro", category: "Web dizajn", gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-  { name: "Salon Ljepote", category: "Branding", gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
-  { name: "Pekara Sunce", category: "E-commerce", gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
-  { name: "Stolarija Hrast", category: "Web dizajn", gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
-  { name: "Elektro Servis", category: "SEO", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
-  { name: "Cvjećarnica Flora", category: "Web dizajn", gradient: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" },
-]
-
 export function PortfolioGrid() {
   return (
     <section id="projects" className="bg-[#F5F4F0]">
@@ -47,7 +38,7 @@ export function PortfolioGrid() {
       >
         {/* 2-col grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project) => (
+          {PORTFOLIO.projects.map((project) => (
             <m.div
               key={project.name}
               variants={projectCard}
