@@ -1,0 +1,19 @@
+{
+  "enabledPlugins": {
+    "everything-claude-code@everything-claude-code": true,
+    "playwright@claude-plugins-official": true
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /mnt/c/Users/Karlo/Downloads/volthr && npx tsc --noEmit 2>&1 | head -30"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -143,6 +143,67 @@ export function PricingTiers() {
         >
           {PRICING_PAGE.note}
         </m.p>
+
+        {/* Add-ons */}
+        <m.div variants={fadeUp} className="mt-20">
+          <div className="mb-10 text-center">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-[#8B5CF6]">
+              ✦ {PRICING_PAGE.addons.heading}
+            </p>
+            <p className="text-sm text-[#555550]">{PRICING_PAGE.addons.subheading}</p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {PRICING_PAGE.addons.items.map((addon) => (
+              <m.div
+                key={addon.name}
+                variants={fadeUp}
+                whileHover={{ y: -4 }}
+                className="relative flex flex-col rounded-xl border border-[#E8E6E0] bg-white p-6 sm:p-8"
+              >
+                {addon.badge && (
+                  <span className="absolute top-5 right-5 rounded-full bg-[#8B5CF6] px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                    {addon.badge}
+                  </span>
+                )}
+
+                <h3 className="font-space text-lg font-bold text-[#0D0D0D]">{addon.name}</h3>
+
+                <div className="mt-3">
+                  <span className="font-space text-3xl font-bold text-[#0D0D0D]">
+                    {PRICING_PAGE.currency}{addon.price}
+                  </span>
+                  <span className="ml-1 text-sm text-[#888880]">{addon.period}</span>
+                </div>
+
+                <p className="mt-3 text-sm leading-relaxed text-[#555550]">{addon.description}</p>
+
+                {addon.note && (
+                  <p className="mt-2 text-xs text-[#888880]">{addon.note}</p>
+                )}
+
+                <ul className="mt-5 flex flex-1 flex-col gap-2.5">
+                  {addon.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3 text-sm">
+                      <Check size={15} className="mt-0.5 shrink-0 text-[#8B5CF6]" />
+                      <span className="text-[#555550]">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={buildWhatsAppUrl(addon.whatsappMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-7 flex items-center justify-center gap-2 rounded-full bg-[#0D0D0D] py-3 text-sm font-semibold text-white"
+                >
+                  <MessageCircle size={16} />
+                  {PRICING_PAGE.ctaPrimary}
+                </a>
+              </m.div>
+            ))}
+          </div>
+        </m.div>
       </m.div>
     </section>
   )

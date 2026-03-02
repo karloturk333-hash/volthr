@@ -310,7 +310,7 @@ export const PRICING_PREVIEW = {
       name: "Start",
       price: "399",
       period: "jednokratno",
-      maintenance: "49",
+      maintenance: "55",
       description: "Za obrtnike koji trebaju profesionalnu online prisutnost.",
       features: ["Do 3 stranice", "Mobilni dizajn", "Osnovna SEO optimizacija", "Kontakt forma"],
       popular: false,
@@ -319,7 +319,7 @@ export const PRICING_PREVIEW = {
       name: "Profesionalni",
       price: "699",
       period: "jednokratno",
-      maintenance: "79",
+      maintenance: "85",
       description: "Za poduzetnike koji žele rast i nove klijente.",
       features: [
         "Do 10 stranica",
@@ -335,7 +335,7 @@ export const PRICING_PREVIEW = {
       name: "Premium",
       price: "1.299",
       period: "jednokratno",
-      maintenance: "129",
+      maintenance: "149",
       description: "Za tvrtke kojima web donosi stvarni prihod.",
       features: [
         "Neograničen broj stranica",
@@ -372,7 +372,7 @@ export const PRICING_PAGE = {
       name: "Start",
       price: "399",
       period: "jednokratno",
-      maintenance: "49",
+      maintenance: "55",
       description: "Za obrtnike koji trebaju profesionalnu online prisutnost.",
       features: [
         "Do 3 stranice (naslovnica, o nama, kontakt)",
@@ -391,7 +391,7 @@ export const PRICING_PAGE = {
       name: "Profesionalni",
       price: "699",
       period: "jednokratno",
-      maintenance: "79",
+      maintenance: "85",
       description: "Za poduzetnike koji žele rast i nove klijente.",
       features: [
         "Do 10 stranica",
@@ -412,7 +412,7 @@ export const PRICING_PAGE = {
       name: "Premium",
       price: "1.299",
       period: "jednokratno",
-      maintenance: "129",
+      maintenance: "149",
       description: "Za tvrtke kojima web donosi stvarni prihod.",
       features: [
         "Neograničen broj stranica",
@@ -447,6 +447,44 @@ export const PRICING_PAGE = {
   ctaSecondary: "Pošalji upit",
   maintenanceNote: "održavanje (opcionalno)",
   note: "Sve cijene su u EUR bez PDV-a. Održavanje je opcionalno — bez ugovora o vezanju.",
+  addons: {
+    heading: "Dodaci za rast",
+    subheading: "Nadogradite plan kad budete spremni. Bez ugovora o vezanju.",
+    items: [
+      {
+        name: "Google Ads upravljanje",
+        price: "99",
+        period: "/mj",
+        description: "Mi vodimo vaše Google oglase. Vi dižete telefon.",
+        note: "Minimalni oglasni budget: €200/mj (plaćate direktno Googleu)",
+        features: [
+          "Postavljanje kampanja za lokalnu uslugu",
+          "Tjedna optimizacija ključnih riječi",
+          "Negativni pojmovi — filtrir tražitelje posla",
+          "A/B testiranje oglasa",
+          "Mjesečni izvještaj s brojem poziva i leadova",
+        ],
+        badge: "Novo",
+        whatsappMessage: "Bok! Zanima me Google Ads upravljanje add-on za €99/mj. Možemo li dogovoriti poziv?",
+      },
+      {
+        name: "Google Business upravljanje",
+        price: "29",
+        period: "/mj",
+        description: "Vaš profil na Google Mapama — aktivan i optimiziran svaki tjedan.",
+        note: null,
+        features: [
+          "Tjedne objave na Google Businessu",
+          "Odgovaranje na recenzije",
+          "Ažuriranje radnog vremena i usluga",
+          "Upload novih fotografija radova",
+          "Praćenje pozicije na Google Mapama",
+        ],
+        badge: null,
+        whatsappMessage: "Bok! Zanima me Google Business upravljanje add-on za €29/mj. Možemo li dogovoriti poziv?",
+      },
+    ],
+  },
 } as const
 
 export const EU_GRANT = {
