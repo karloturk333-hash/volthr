@@ -1,0 +1,57 @@
+"use client"
+
+import { m } from "motion/react"
+import { ABOUT_PAGE } from "@/lib/content"
+import { slideFromLeft, slideFromRight } from "@/lib/animations"
+
+export function AboutStory() {
+  return (
+    <section className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+
+          {/* Left — text */}
+          <m.div
+            variants={slideFromLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <span className="section-label mb-4 block">Naša priča</span>
+            <h2 className="font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl lg:text-5xl">
+              {ABOUT_PAGE.story.heading}
+            </h2>
+            <div className="mt-6 flex flex-col gap-4">
+              {ABOUT_PAGE.story.paragraphs.map((p, i) => (
+                <p key={i} className="text-base leading-relaxed text-[#555550] md:text-lg">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </m.div>
+
+          {/* Right — stock portrait */}
+          <m.div
+            variants={slideFromRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="relative"
+          >
+            {/* Decorative ✦ */}
+            <span className="absolute right-4 top-4 z-10 text-2xl text-[#8B5CF6] opacity-70 select-none">
+              ✦
+            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&auto=format&fit=crop&q=80"
+              alt="Razvoj web stranice"
+              className="aspect-[4/5] w-full rounded-2xl border border-[#E8E6E0] object-cover"
+            />
+          </m.div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
