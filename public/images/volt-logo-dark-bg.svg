@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" width="360" height="100">
+  <defs>
+    <linearGradient id="volt-mint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5AECC8"/>
+      <stop offset="100%" stop-color="#2DD4A8"/>
+    </linearGradient>
+  </defs>
+  <path d="M12 14L30 14L46 46L57 24L74 24L50 78L33 78Z" fill="url(#volt-mint)"/>
+  <text x="86" y="71" font-family="'Outfit','Helvetica Neue',sans-serif" font-size="58" font-weight="900" letter-spacing="-2.5" fill="#F2F2F2">olt</text>
+</svg>
