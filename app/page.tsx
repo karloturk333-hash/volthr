@@ -7,6 +7,7 @@ import { PortfolioGrid } from "@/components/sections/PortfolioGrid"
 import { StatsCounters } from "@/components/sections/StatsCounters"
 import { Testimonials } from "@/components/sections/Testimonials"
 import { PricingPreview } from "@/components/sections/PricingPreview"
+import { EuGrantBanner } from "@/components/sections/EuGrantBanner"
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <StatsCounters />
       <Testimonials />
       <PricingPreview />
+      <EuGrantBanner />
     </main>
   )
 }

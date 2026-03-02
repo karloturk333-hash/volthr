@@ -70,7 +70,7 @@ export function StatsCounters() {
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {STATS.items.map((item, i) => (
             <m.div key={i} variants={fadeUp} className="text-center">
-              <Counter value={item.value} suffix={item.suffix} displayValue={item.displayValue} />
+              <Counter value={item.value} suffix={item.suffix} displayValue={"displayValue" in item ? item.displayValue : undefined} />
               <p className="mt-3 text-sm font-medium" style={{ color: "var(--text-2)" }}>
                 {item.label}
               </p>
