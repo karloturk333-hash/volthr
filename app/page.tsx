@@ -9,6 +9,7 @@ import { Testimonials } from "@/components/sections/Testimonials"
 import { PricingPreview } from "@/components/sections/PricingPreview"
 import { EuGrantBanner } from "@/components/sections/EuGrantBanner"
 import { FaqAccordion } from "@/components/sections/FaqAccordion"
+import { CtaPanel } from "@/components/sections/CtaPanel"
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
       <PricingPreview />
       <EuGrantBanner />
       <FaqAccordion />
+      <CtaPanel />
     </main>
   )
 }
