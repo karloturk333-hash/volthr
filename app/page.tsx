@@ -8,6 +8,7 @@ import { StatsCounters } from "@/components/sections/StatsCounters"
 import { Testimonials } from "@/components/sections/Testimonials"
 import { PricingPreview } from "@/components/sections/PricingPreview"
 import { EuGrantBanner } from "@/components/sections/EuGrantBanner"
+import { FaqAccordion } from "@/components/sections/FaqAccordion"
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Testimonials />
       <PricingPreview />
       <EuGrantBanner />
+      <FaqAccordion />
     </main>
   )
 }
