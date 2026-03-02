@@ -3,6 +3,7 @@ import { ClientLogos } from "@/components/sections/ClientLogos"
 import { AboutSplit } from "@/components/sections/AboutSplit"
 import { ServicesGrid } from "@/components/sections/ServicesGrid"
 import { KeywordMarquee } from "@/components/sections/KeywordMarquee"
+import { PortfolioGrid } from "@/components/sections/PortfolioGrid"
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <AboutSplit />
       <ServicesGrid />
       <KeywordMarquee />
+      <PortfolioGrid />
     </main>
   )
 }
