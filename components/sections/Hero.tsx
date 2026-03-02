@@ -164,21 +164,21 @@ export function Hero() {
         </m.p>
 
         {/* CTAs */}
-        <m.div variants={fadeUp} className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+        <m.div variants={fadeUp} className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href={HERO.cta.primary.href}
-            className="rounded-full px-8 py-4 text-base font-bold"
+            className="rounded-full px-10 py-4 text-base font-bold"
             style={{
               background: "linear-gradient(135deg, var(--accent), var(--accent-end))",
               color: "var(--text-on-accent)",
-              boxShadow: "0 0 32px rgba(90,236,200,0.25)",
+              boxShadow: "0 0 40px rgba(90,236,200,0.3)",
             }}
           >
             {HERO.cta.primary.label}
           </Link>
           <Link
             href={HERO.cta.secondary.href}
-            className="rounded-full px-8 py-4 text-base font-medium"
+            className="rounded-full px-10 py-4 text-base font-medium"
             style={{
               border: "1px solid rgba(255,255,255,0.14)",
               color: "var(--text-2)",

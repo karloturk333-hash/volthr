@@ -11,7 +11,7 @@ const fadeUp = {
 
 export function EuGrantBanner() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--frame)" }}>
+    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36" style={{ background: "var(--frame)" }}>
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"

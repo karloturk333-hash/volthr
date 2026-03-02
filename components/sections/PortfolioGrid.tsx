@@ -12,7 +12,7 @@ const fadeUp = {
 
 export function PortfolioGrid() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32">
+    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36">
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -45,11 +45,14 @@ export function PortfolioGrid() {
             <m.div
               key={i}
               variants={fadeUp}
-              whileHover={{ borderColor: "var(--accent-border)" }}
-              className="group relative aspect-[16/10] overflow-hidden"
+              whileHover={{
+                borderColor: "rgba(90,236,200,0.18)",
+                y: -4,
+              }}
+              className="group relative aspect-[4/3] overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, #0E0E0E, #111111)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "linear-gradient(145deg, #0E0E0E, #161616)",
+                border: "1px solid var(--border)",
                 borderRadius: "var(--r-lg)",
               }}
             >

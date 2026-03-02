@@ -10,7 +10,7 @@ const fadeUp = {
 
 export function AboutSplit() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32">
+    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36">
       <div className="mx-auto grid max-w-[1100px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Left: Image placeholder */}
         <m.div

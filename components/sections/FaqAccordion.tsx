@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { m, AnimatePresence } from "motion/react"
-import { Plus, Minus } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { FAQ } from "@/lib/content"
 
 const fadeUp = {
@@ -18,7 +18,7 @@ export function FaqAccordion() {
   }
 
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32">
+    <section className="px-6 py-24 md:px-12 md:py-32" style={{ background: "var(--surface-card)" }}>
       <m.div
         className="mx-auto max-w-[800px]"
         initial="hidden"
@@ -39,33 +39,36 @@ export function FaqAccordion() {
           {FAQ.heading}
         </m.h2>
 
-        <div className="mt-14 flex flex-col gap-3">
+        <div className="mt-14 flex flex-col">
           {FAQ.items.map((item, i) => (
             <m.div
               key={i}
               variants={fadeUp}
-              className="overflow-hidden border"
+              className="overflow-hidden"
               style={{
-                borderColor: openIndex === i ? "var(--accent-border)" : "var(--border)",
-                borderRadius: "var(--r-md)",
-                background: "var(--surface-card)",
+                borderBottom: "1px solid var(--border)",
               }}
             >
               <button
                 onClick={() => toggle(i)}
-                className="flex w-full items-center justify-between px-6 py-5 text-left"
+                className="flex w-full items-center justify-between py-6 text-left"
               >
                 <span
                   className="pr-4 text-base font-semibold"
-                  style={{ color: "var(--text)" }}
+                  style={{ color: openIndex === i ? "var(--text)" : "var(--text-2)" }}
                 >
                   {item.question}
                 </span>
-                {openIndex === i ? (
-                  <Minus size={18} className="shrink-0" style={{ color: "var(--accent)" }} />
-                ) : (
-                  <Plus size={18} className="shrink-0" style={{ color: "var(--text-3)" }} />
-                )}
+                <m.span
+                  animate={{ rotate: openIndex === i ? 180 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="shrink-0"
+                >
+                  <ChevronDown
+                    size={18}
+                    style={{ color: openIndex === i ? "var(--accent)" : "var(--text-3)" }}
+                  />
+                </m.span>
               </button>
 
               <AnimatePresence>
@@ -77,7 +80,7 @@ export function FaqAccordion() {
                     transition={{ duration: 0.3, ease: "easeInOut" as const }}
                   >
                     <p
-                      className="px-6 pb-5 text-sm leading-relaxed"
+                      className="pb-6 text-sm leading-relaxed"
                       style={{ color: "var(--text-2)" }}
                     >
                       {item.answer}

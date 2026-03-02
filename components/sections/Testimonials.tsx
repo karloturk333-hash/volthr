@@ -28,7 +28,7 @@ export function Testimonials() {
   }, [next])
 
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32">
+    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36">
       <m.div
         className="mx-auto max-w-[800px]"
         initial="hidden"
@@ -60,7 +60,14 @@ export function Testimonials() {
                 transition={{ duration: 0.4, ease: "easeInOut" as const }}
                 className="text-center"
               >
-                <Quote size={32} style={{ color: "var(--accent)", opacity: 0.3 }} className="mx-auto mb-6" />
+                {/* Large decorative quote */}
+                <div
+                  className="mx-auto mb-6 font-playfair text-7xl leading-none select-none"
+                  style={{ color: "var(--accent)", opacity: 0.2 }}
+                  aria-hidden="true"
+                >
+                  &ldquo;
+                </div>
                 <p
                   className="font-playfair text-xl leading-relaxed italic md:text-2xl"
                   style={{ color: "var(--text)" }}

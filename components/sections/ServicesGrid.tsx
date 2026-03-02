@@ -13,7 +13,7 @@ const fadeUp = {
 
 export function ServicesGrid() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--surface-card)" }}>
+    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36" style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -47,13 +47,16 @@ export function ServicesGrid() {
               <m.div
                 key={item.number}
                 variants={fadeUp}
-                whileHover={{ y: -4 }}
+                whileHover={{
+                  y: -4,
+                  borderColor: "rgba(90,236,200,0.18)",
+                  boxShadow: "0 8px 32px rgba(90,236,200,0.08)",
+                }}
                 className="relative overflow-hidden border p-8"
                 style={{
                   background: "var(--surface)",
                   borderColor: "var(--border)",
                   borderRadius: "var(--r-lg)",
-                  borderTop: "2px solid var(--accent-border)",
                 }}
               >
                 {/* Large faint number in background */}

@@ -1,41 +1,47 @@
 "use client"
 
 import { useRef, useEffect, useState } from "react"
-import { m, useInView, useMotionValue, useTransform, animate } from "motion/react"
+import { m, useInView } from "motion/react"
 import { STATS } from "@/lib/content"
 
 function Counter({
-  value,
+  target,
   suffix,
-  displayValue,
+  prefix,
 }: {
-  value: number
+  target: number
   suffix: string
-  displayValue?: string
+  prefix?: string
 }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px 0px" })
-  const motionValue = useMotionValue(0)
-  const rounded = useTransform(motionValue, (v) => Math.round(v))
-  const [display, setDisplay] = useState(displayValue ?? "0")
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px 0px" })
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    if (isInView && !displayValue) {
-      const controls = animate(motionValue, value, {
-        duration: 2,
-        ease: "easeOut" as const,
-      })
-      const unsubscribe = rounded.on("change", (v) => setDisplay(`${v}${suffix}`))
-      return () => {
-        controls.stop()
-        unsubscribe()
+    if (!isInView) return
+    const duration = 2000
+    const steps = 60
+    const increment = target / steps
+    let current = 0
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= target) {
+        setCount(target)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(current))
       }
-    }
-  }, [isInView, motionValue, rounded, value, suffix, displayValue])
+    }, duration / steps)
+    return () => clearInterval(timer)
+  }, [isInView, target])
 
   return (
-    <span ref={ref} className="font-playfair text-4xl font-bold md:text-5xl" style={{ color: "var(--accent)" }}>
-      {display}
+    <span
+      ref={ref}
+      className="font-playfair text-5xl font-bold md:text-6xl"
+      style={{ color: "var(--accent)" }}
+    >
+      {prefix}{count}{suffix}
     </span>
   )
 }
@@ -47,7 +53,14 @@ const fadeUp = {
 
 export function StatsCounters() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+    <section
+      className="px-6 py-24 md:px-12 md:py-32"
+      style={{
+        background: "var(--surface-card)",
+        borderTop: "1px solid var(--border)",
+        borderBottom: "1px solid var(--border)",
+      }}
+    >
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -55,21 +68,33 @@ export function StatsCounters() {
         viewport={{ once: true, amount: 0.1 }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
       >
-        <m.div variants={fadeUp} className="mb-14 flex items-center justify-center gap-3">
+        <m.div variants={fadeUp} className="mb-16 flex items-center justify-center gap-3">
           <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
           <span className="text-xs font-bold uppercase" style={{ color: "var(--accent)", letterSpacing: "0.15em" }}>{STATS.label}</span>
           <span style={{ width: 20, height: 1, background: "var(--accent)", display: "block", borderRadius: 2, opacity: 0.6 }} />
         </m.div>
 
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
-          {STATS.items.map((item, i) => (
-            <m.div key={i} variants={fadeUp} className="text-center">
-              <Counter value={item.value} suffix={item.suffix} displayValue={"displayValue" in item ? item.displayValue : undefined} />
-              <p className="mt-3 text-sm font-medium" style={{ color: "var(--text-2)" }}>
-                {item.label}
-              </p>
-            </m.div>
-          ))}
+        <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
+          {STATS.items.map((item, i) => {
+            const hasDisplayValue = "displayValue" in item
+            return (
+              <m.div key={i} variants={fadeUp} className="text-center">
+                {hasDisplayValue ? (
+                  <span
+                    className="font-playfair text-5xl font-bold md:text-6xl"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    {item.displayValue}
+                  </span>
+                ) : (
+                  <Counter target={item.value} suffix={item.suffix} />
+                )}
+                <p className="mt-4 text-sm font-medium" style={{ color: "var(--text-2)" }}>
+                  {item.label}
+                </p>
+              </m.div>
+            )
+          })}
         </div>
       </m.div>
     </section>

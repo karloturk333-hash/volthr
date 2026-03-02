@@ -12,7 +12,7 @@ const fadeUp = {
 
 export function PricingPreview() {
   return (
-    <section className="px-6 py-20 md:py-28 lg:py-32" style={{ background: "var(--surface-card)" }}>
+    <section className="px-6 py-24 md:px-12 md:py-32 lg:py-36" style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
       <m.div
         className="mx-auto max-w-[1100px]"
         initial="hidden"
@@ -45,22 +45,28 @@ export function PricingPreview() {
             <m.div
               key={tier.name}
               variants={fadeUp}
-              whileHover={{ y: -4 }}
+              whileHover={{
+                y: -4,
+                boxShadow: tier.popular
+                  ? "0 8px 40px rgba(90,236,200,0.12)"
+                  : "0 8px 32px rgba(0,0,0,0.3)",
+              }}
               className="relative flex flex-col border p-8"
               style={{
-                background: "var(--surface-card)",
+                background: "var(--surface)",
                 borderColor: tier.popular ? "var(--accent-border)" : "var(--border)",
                 borderRadius: "var(--r-lg)",
-                marginTop: tier.popular ? "0px" : "0px",
                 overflow: "visible",
+                marginTop: tier.popular ? 0 : "16px",
               }}
             >
               {tier.popular && (
                 <div
-                  className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-bold"
+                  className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full px-5 py-1.5 text-xs font-bold"
                   style={{
                     background: "linear-gradient(135deg, var(--accent), var(--accent-end))",
                     color: "var(--text-on-accent)",
+                    boxShadow: "0 4px 16px rgba(90,236,200,0.2)",
                   }}
                 >
                   {PRICING_PREVIEW.popularBadge}

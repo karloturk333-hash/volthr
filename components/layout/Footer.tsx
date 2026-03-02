@@ -4,8 +4,8 @@ import { FOOTER, SITE, CONTACT_PAGE } from "@/lib/content"
 
 export function Footer() {
   return (
-    <footer style={{ background: "var(--surface-card)" }}>
-      <div className="mx-auto max-w-[1200px] px-6 py-16">
+    <footer style={{ background: "var(--surface-card)", borderTop: "1px solid var(--border)" }}>
+      <div className="mx-auto max-w-[1100px] px-6 py-16 md:px-12">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: Logo + description */}
           <div>
@@ -107,7 +107,7 @@ export function Footer() {
         className="border-t"
         style={{ borderColor: "var(--border)" }}
       >
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row">
+        <div className="mx-auto flex max-w-[1100px] flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row md:px-12">
           <p className="text-xs" style={{ color: "var(--text-3)" }}>
             {SITE.copyright}
           </p>
