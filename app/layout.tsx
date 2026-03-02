@@ -3,6 +3,7 @@ import { Playfair_Display, Outfit } from "next/font/google"
 import "./globals.css"
 import { SEO, SCHEMA_ORG } from "@/lib/content"
 import { MotionProvider } from "@/components/providers/MotionProvider"
+import { Nav } from "@/components/layout/Nav"
 
 const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
@@ -48,6 +49,7 @@ export default function RootLayout({
       </head>
       <body className="font-outfit antialiased">
         <MotionProvider>
+          <Nav />
           {children}
         </MotionProvider>
       </body>
