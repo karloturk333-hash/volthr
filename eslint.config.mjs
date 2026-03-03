@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party tool directories (not project source)
+    "everything-claude-code/**",
+    "scripts/**",
   ]),
 ]);
 
