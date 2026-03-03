@@ -15,6 +15,7 @@ export const FALLBACK_PROJECTS: SanityProject[] = [
       "Luksuzna web stranica za smještaj na otoku Hvaru. Panoramski parallax, apartmani s cijenama, Google Maps, direktno booking.",
     category: "Web stranice",
     url: "https://villa-aurea.vercel.app",
+    staticImage: "/images/portfolio/villa-aurea.png",
     technologies: ["Next.js", "React", "Tailwind CSS"],
     features: [
       "Višestranična arhitektura",
@@ -40,6 +41,7 @@ export const FALLBACK_PROJECTS: SanityProject[] = [
       "Web stranica za servis dubinskog čišćenja iz Vrbovca i Zagreba. Interaktivni kalkulator cijena, before/after slider, WhatsApp booking.",
     category: "Web stranice",
     url: "https://nemafleka.vercel.app",
+    staticImage: "/images/portfolio/nema-fleka.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "Motion"],
     features: [
       "Interaktivni kalkulator cijena",

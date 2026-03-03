@@ -14,6 +14,7 @@ export interface SanityProject {
     asset: { _ref: string; _type: "reference" }
     hotspot?: { x: number; y: number; height: number; width: number }
   }
+  staticImage?: string // local path in /public for fallback projects
   technologies: string[]
   features: string[]
   featured: boolean

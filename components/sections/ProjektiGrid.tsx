@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { m } from "motion/react"
 import Image from "next/image"
-import { ExternalLink, MapPin } from "lucide-react"
+import { ArrowUpRight, MapPin } from "lucide-react"
 import { PROJECTS_PAGE } from "@/lib/content"
 import { projectCard, staggerContainerProjects, fadeUp } from "@/lib/animations"
 import type { SanityProject } from "@/lib/sanity/types"
@@ -40,7 +40,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
               onClick={() => setActiveCategory(cat)}
               className={`rounded-full px-4 py-2 font-dm text-sm font-medium ${
                 activeCategory === cat
-                  ? "bg-[#0D0D0D] text-white"
+                  ? "bg-[#8B5CF6] text-white"
                   : "border border-[#E8E6E0] bg-white text-[#555550] hover:border-[#D0CEC8]"
               }`}
             >
@@ -67,14 +67,14 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={projectCard}
-                whileHover={{ y: -4 }}
+                whileHover={{ y: -6, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.12)" }}
                 className="group overflow-hidden rounded-xl border border-[#E8E6E0] bg-white"
               >
-                {/* Cover image or gradient */}
+                {/* Cover image, static image, or gradient fallback */}
                 <div
-                  className="relative h-56 w-full overflow-hidden md:h-64"
+                  className="relative h-60 w-full overflow-hidden md:h-72"
                   style={
-                    project.coverImage
+                    project.coverImage || project.staticImage
                       ? undefined
                       : { background: GRADIENT_FALLBACKS[i % GRADIENT_FALLBACKS.length] }
                   }
@@ -87,6 +87,14 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
+                  ) : project.staticImage ? (
+                    <Image
+                      src={project.staticImage}
+                      alt={`${project.title} — ${project.category}`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   ) : (
                     <div className="flex h-full items-center justify-center">
                       <span className="font-space text-3xl font-bold text-white/80">
@@ -94,12 +102,14 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                       </span>
                     </div>
                   )}
+                  {/* Bottom gradient overlay for depth */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                 </div>
 
                 {/* Card body */}
-                <div className="p-6">
+                <div className="p-7">
                   <div className="mb-3 flex items-center gap-2">
-                    <span className="rounded-full bg-[#F5F4F0] px-3 py-1 font-dm text-xs font-medium text-[#555550]">
+                    <span className="rounded-full bg-[#F5F4F0] px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-[#555550]">
                       {project.category}
                     </span>
                     {project.location && (
@@ -110,10 +120,10 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                     )}
                   </div>
 
-                  <h3 className="mb-2 font-space text-xl font-bold text-[#0D0D0D]">
+                  <h3 className="mb-2 font-space text-2xl leading-snug font-bold text-[#0D0D0D]">
                     {project.title}
                   </h3>
-                  <p className="mb-4 line-clamp-2 font-dm text-sm leading-relaxed text-[#555550]">
+                  <p className="mb-5 line-clamp-2 font-dm text-[15px] leading-relaxed text-[#555550]">
                     {project.description}
                   </p>
 
@@ -122,7 +132,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-md bg-[#F5F4F0] px-2 py-0.5 font-dm text-xs text-[#555550]"
+                        className="rounded-md border border-[#E8E6E0] bg-transparent px-2.5 py-1 font-dm text-[11px] uppercase tracking-wide text-[#888880]"
                       >
                         {tech}
                       </span>
@@ -132,7 +142,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                   {/* External link indicator */}
                   <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
                     Posjeti stranicu
-                    <ExternalLink size={14} />
+                    <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
               </m.a>
