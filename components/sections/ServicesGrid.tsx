@@ -20,13 +20,16 @@ const serviceConfig = [
           src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900&q=75&auto=format&fit=crop"
           alt=""
           fill
-          className="object-cover opacity-[0.18]"
+          className="object-cover opacity-30"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+        {/* Tint */}
         <div
-          className="absolute inset-0 opacity-[0.18]"
+          className="absolute inset-0 opacity-10"
           style={{ background: "linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)" }}
         />
+        {/* Bottom scrim — keeps text readable */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/90 to-transparent" />
       </>
     ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
@@ -42,13 +45,11 @@ const serviceConfig = [
           src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=900&q=75&auto=format&fit=crop"
           alt=""
           fill
-          className="object-cover opacity-[0.18]"
+          className="object-cover opacity-30"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
         />
-        <div
-          className="absolute inset-0 opacity-[0.18]"
-          style={{ background: "linear-gradient(135deg, #0D0D0D 0%, #555 100%)" }}
-        />
+        {/* Bottom scrim */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/90 to-transparent" />
       </>
     ),
     className: "lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2",
@@ -64,13 +65,16 @@ const serviceConfig = [
           src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=75&auto=format&fit=crop"
           alt=""
           fill
-          className="object-cover opacity-[0.18]"
+          className="object-cover opacity-30"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+        {/* Tint */}
         <div
-          className="absolute inset-0 opacity-[0.18]"
+          className="absolute inset-0 opacity-10"
           style={{ background: "linear-gradient(135deg, #059669 0%, #065F46 100%)" }}
         />
+        {/* Bottom scrim */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/90 to-transparent" />
       </>
     ),
     className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3",
@@ -86,13 +90,16 @@ const serviceConfig = [
           src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=75&auto=format&fit=crop"
           alt=""
           fill
-          className="object-cover opacity-[0.18]"
+          className="object-cover opacity-30"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+        {/* Tint */}
         <div
-          className="absolute inset-0 opacity-[0.18]"
+          className="absolute inset-0 opacity-10"
           style={{ background: "linear-gradient(135deg, #D97706 0%, #92400E 100%)" }}
         />
+        {/* Bottom scrim */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/90 to-transparent" />
       </>
     ),
     className: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3",

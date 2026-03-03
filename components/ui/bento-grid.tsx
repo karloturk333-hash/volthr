@@ -75,12 +75,12 @@ const BentoCard = ({
         <div>{background}</div>
 
         {/* Content: no animations on mobile (touch), hover-slide only on sm+ */}
-        <div className="pointer-events-none z-10 flex flex-col gap-1 p-6 sm:transform-gpu sm:transition-all sm:duration-300 sm:group-hover:-translate-y-6">
-          <Icon className="h-12 w-12 origin-left text-neutral-700 sm:transform-gpu sm:transition-all sm:duration-300 sm:ease-in-out sm:group-hover:scale-90" />
-          <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
+        <div className="pointer-events-none z-10 flex flex-col gap-2.5 p-6 sm:transform-gpu sm:transition-all sm:duration-300 sm:group-hover:-translate-y-6">
+          <Icon className="h-10 w-10 origin-left text-[#8B5CF6] sm:transform-gpu sm:transition-all sm:duration-300 sm:ease-in-out sm:group-hover:scale-90" />
+          <h3 className="text-xl font-semibold text-[#0D0D0D]">
             {name}
           </h3>
-          <p className="max-w-lg text-neutral-400">{description}</p>
+          <p className="max-w-lg text-[#555550] leading-relaxed">{description}</p>
         </div>
 
         {/*
@@ -97,7 +97,7 @@ const BentoCard = ({
         >
           <a
             href={href}
-            className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-md px-3 text-sm font-medium hover:bg-[#f4f4f5] hover:text-[#0D0D0D]"
+            className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-full px-4 text-sm font-medium text-[#8B5CF6] hover:bg-[#8B5CF6]/8 hover:text-[#6D28D9]"
           >
             {cta}
             <ArrowRight className="ml-2 h-4 w-4" />
