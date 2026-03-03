@@ -25,11 +25,11 @@
 
   /* ── Aurora background ── */
   --aurora-bg: #F5F4F0;
-  --aurora-violet: #c4b5fd;       /* violet-300 */
-  --aurora-indigo: #c7d2fe;       /* indigo-200 */
-  --aurora-blue: #bfdbfe;         /* blue-200 */
-  --aurora-violet-light: #ede9fe; /* violet-100 */
-  --aurora-indigo-dark: #a5b4fc;  /* indigo-300 */
+  --aurora-violet: #a78bfa;       /* violet-400 */
+  --aurora-indigo: #818cf8;       /* indigo-400 */
+  --aurora-blue: #60a5fa;         /* blue-400 */
+  --aurora-violet-light: #c4b5fd; /* violet-300 */
+  --aurora-indigo-dark: #6366f1;  /* indigo-500 */
 
   /* ── Radius ── */
   --r-sm: 10px;
