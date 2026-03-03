@@ -23,6 +23,14 @@
   --border-hover: #D0CEC8;
   --black: #0D0D0D;
 
+  /* ── Aurora background ── */
+  --aurora-bg: #F5F4F0;
+  --aurora-violet: #c4b5fd;       /* violet-300 */
+  --aurora-indigo: #c7d2fe;       /* indigo-200 */
+  --aurora-blue: #bfdbfe;         /* blue-200 */
+  --aurora-violet-light: #ede9fe; /* violet-100 */
+  --aurora-indigo-dark: #a5b4fc;  /* indigo-300 */
+
   /* ── Radius ── */
   --r-sm: 10px;
   --r-md: 16px;
@@ -40,6 +48,9 @@
   /* ── Shimmer button animations ── */
   --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+
+  /* ── Aurora animation ── */
+  --animate-aurora: aurora 60s linear infinite;
 }
 
 @keyframes rainbow {
@@ -56,6 +67,11 @@
 
 @keyframes shimmer-slide {
   to { transform: translate(calc(100cqw - 100%), 0); }
+}
+
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to { background-position: 350% 50%, 350% 50%; }
 }
 
 *,
