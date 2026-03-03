@@ -22,24 +22,16 @@ function isRateLimited(ip: string): boolean {
   return false
 }
 
-// Periodically clean up stale IPs (every 10 minutes)
-if (typeof globalThis !== "undefined") {
-  const cleanup = () => {
-    const now = Date.now()
-    for (const [ip, timestamps] of rateLimitMap.entries()) {
-      const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS)
-      if (recent.length === 0) {
-        rateLimitMap.delete(ip)
-      } else {
-        rateLimitMap.set(ip, recent)
-      }
-    }
-  }
-  setInterval(cleanup, 10 * 60 * 1000)
+function sanitize(str: string): string {
+  return str.replace(/[\r\n]/g, " ").trim()
 }
 
-function sanitize(str: string): string {
-  return str.replace(/[<>]/g, "").trim()
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
 }
 
 function isValidEmail(email: string): boolean {
@@ -91,10 +83,10 @@ export async function POST(request: NextRequest) {
 
     const safeName = sanitize(name)
     const safeEmail = sanitize(email)
-    const safePhone = sanitize(String(phone ?? ""))
-    const safeService = sanitize(String(service ?? ""))
+    const safePhone = sanitize(String(phone ?? "").slice(0, 30))
+    const safeService = sanitize(String(service ?? "").slice(0, 100))
     const safeMessage = sanitize(message)
-    const safeBudget = sanitize(String(budget ?? ""))
+    const safeBudget = sanitize(String(budget ?? "").slice(0, 50))
 
     // Build WhatsApp fallback URL
     const whatsappMessage = encodeURIComponent(
@@ -111,16 +103,16 @@ export async function POST(request: NextRequest) {
         from: "Volt Kontakt <onboarding@resend.dev>",
         to: SITE.email,
         replyTo: safeEmail,
-        subject: `Novi upit — ${safeName}${safeService ? ` (${safeService})` : ""}`,
+        subject: `Novi upit — ${escapeHtml(safeName)}${safeService ? ` (${escapeHtml(safeService)})` : ""}`,
         html: `
           <h2>Novi upit s web stranice</h2>
-          <p><strong>Ime:</strong> ${safeName}</p>
-          <p><strong>Email:</strong> ${safeEmail}</p>
-          ${safePhone ? `<p><strong>Telefon:</strong> ${safePhone}</p>` : ""}
-          ${safeService ? `<p><strong>Usluga:</strong> ${safeService}</p>` : ""}
-          ${safeBudget ? `<p><strong>Budžet:</strong> ${safeBudget}</p>` : ""}
+          <p><strong>Ime:</strong> ${escapeHtml(safeName)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(safeEmail)}</p>
+          ${safePhone ? `<p><strong>Telefon:</strong> ${escapeHtml(safePhone)}</p>` : ""}
+          ${safeService ? `<p><strong>Usluga:</strong> ${escapeHtml(safeService)}</p>` : ""}
+          ${safeBudget ? `<p><strong>Budžet:</strong> ${escapeHtml(safeBudget)}</p>` : ""}
           <p><strong>Poruka:</strong></p>
-          <p>${safeMessage.replace(/\n/g, "<br>")}</p>
+          <p>${escapeHtml(safeMessage).replace(/\n/g, "<br>")}</p>
         `,
       })
     }

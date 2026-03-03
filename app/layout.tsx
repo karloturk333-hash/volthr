@@ -46,7 +46,8 @@ export default async function RootLayout({
 }) {
   const cookieStore = await cookies()
   const consent = cookieStore.get("volt_consent")?.value
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  const rawGaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  const gaId = rawGaId && /^G-[A-Z0-9]+$/.test(rawGaId) ? rawGaId : null
 
   return (
     <html lang="hr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>

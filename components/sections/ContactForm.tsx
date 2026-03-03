@@ -8,6 +8,9 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 
 type FormStatus = "idle" | "submitting" | "success" | "error"
 
+const INPUT_CLASS =
+  "w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#999] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle")
   const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null)
@@ -93,7 +96,7 @@ export function ContactForm() {
                     name="name"
                     required
                     placeholder={fields.name.placeholder}
-                    className="w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#999] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
@@ -108,7 +111,7 @@ export function ContactForm() {
                     name="email"
                     required
                     placeholder={fields.email.placeholder}
-                    className="w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#999] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+                    className={INPUT_CLASS}
                   />
                 </div>
               </div>
@@ -124,7 +127,7 @@ export function ContactForm() {
                     id="phone"
                     name="phone"
                     placeholder={fields.phone.placeholder}
-                    className="w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#999] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+                    className={INPUT_CLASS}
                   />
                 </div>
 
@@ -136,7 +139,7 @@ export function ContactForm() {
                   <select
                     id="service"
                     name="service"
-                    className="w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+                    className={INPUT_CLASS}
                   >
                     <option value="">Odaberite...</option>
                     {fields.service.options.map((opt) => (
@@ -156,7 +159,7 @@ export function ContactForm() {
                 <select
                   id="budget"
                   name="budget"
-                  className="w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+                  className={INPUT_CLASS}
                 >
                   <option value="">Odaberite...</option>
                   {fields.budget.options.map((opt) => (

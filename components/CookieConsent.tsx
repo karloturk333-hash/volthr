@@ -1,40 +1,37 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useSyncExternalStore, useCallback } from "react"
 import { m, AnimatePresence } from "motion/react"
 import { fadeUp } from "@/lib/animations"
-
-function getCookie(name: string): string | null {
-  if (typeof document === "undefined") return null
-  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))
-  return match ? decodeURIComponent(match[1]) : null
-}
 
 function setCookie(name: string, value: string, days: number) {
   const maxAge = days * 24 * 60 * 60
   document.cookie = `${name}=${encodeURIComponent(value)};max-age=${maxAge};path=/;SameSite=Lax`
 }
 
+// useSyncExternalStore — reads cookie without setState-in-effect
+const subscribe = () => () => {}
+
+function getSnapshot(): boolean {
+  return !document.cookie.match(/(?:^|; )volt_consent=/)
+}
+
+function getServerSnapshot(): boolean {
+  return false // hidden on server to avoid hydration mismatch
+}
+
 export function CookieConsent() {
-  const [visible, setVisible] = useState(false)
+  const shouldShow = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 
-  useEffect(() => {
-    const consent = getCookie("volt_consent")
-    if (!consent) setVisible(true)
-  }, [])
-
-  function accept(value: "all" | "essential") {
+  const accept = useCallback((value: "all" | "essential") => {
     setCookie("volt_consent", value, 365)
-    setVisible(false)
-    if (value === "all") {
-      // Reload to let layout pick up the cookie and load GA
-      window.location.reload()
-    }
-  }
+    // Reload — layout reads cookie server-side for GA, banner re-checks
+    window.location.reload()
+  }, [])
 
   return (
     <AnimatePresence>
-      {visible && (
+      {shouldShow && (
         <m.div
           className="fixed inset-x-0 bottom-0 z-50 p-4 md:p-6"
           initial="hidden"

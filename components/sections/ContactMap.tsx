@@ -1,13 +1,12 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import { m } from "motion/react"
 import { fadeUp } from "@/lib/animations"
 import { SITE } from "@/lib/content"
 import L from "leaflet"
 
-// Fix default marker icon (Leaflet + bundlers issue)
 const markerIcon = new L.Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
   iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -19,17 +18,16 @@ const markerIcon = new L.Icon({
 })
 
 const VRBOVEC_CENTER: [number, number] = [45.8833, 16.4167]
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+const LEAFLET_CSS_ID = "leaflet-css"
+const LEAFLET_CSS_HREF = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 
 export function ContactMap() {
-  const cssLoaded = useRef(false)
-
   useEffect(() => {
-    if (cssLoaded.current) return
-    cssLoaded.current = true
+    if (document.getElementById(LEAFLET_CSS_ID)) return
     const link = document.createElement("link")
+    link.id = LEAFLET_CSS_ID
     link.rel = "stylesheet"
-    link.href = LEAFLET_CSS
+    link.href = LEAFLET_CSS_HREF
     document.head.appendChild(link)
   }, [])
 
