@@ -3,6 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const BentoGrid = ({
   children,
@@ -49,50 +50,64 @@ const BentoCard = ({
   <div
     key={name}
     className={cn(
-      "group relative flex flex-col justify-between overflow-hidden rounded-xl",
-      // Ensure comfortable height on mobile before rows are fixed at sm+
-      "min-h-[200px] sm:min-h-0",
-      // light styles
-      "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-      // dark styles (unused in this project but kept for portability)
-      "dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+      "group relative min-h-[200px] sm:min-h-0",
       className,
     )}
   >
-    <div>{background}</div>
+    {/* Outer glow border wrapper */}
+    <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-[#E8E6E0] p-2 md:rounded-[1.5rem] md:p-3">
+      <GlowingEffect
+        spread={40}
+        glow={true}
+        disabled={false}
+        proximity={64}
+        inactiveZone={0.01}
+        borderWidth={3}
+      />
 
-    {/* Content: no animations on mobile (touch), hover-slide only on sm+ */}
-    <div className="pointer-events-none z-10 flex flex-col gap-1 p-6 sm:transform-gpu sm:transition-all sm:duration-300 sm:group-hover:-translate-y-6">
-      <Icon className="h-12 w-12 origin-left text-neutral-700 sm:transform-gpu sm:transition-all sm:duration-300 sm:ease-in-out sm:group-hover:scale-90" />
-      <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
-        {name}
-      </h3>
-      <p className="max-w-lg text-neutral-400">{description}</p>
-    </div>
-
-    {/*
-      CTA:
-      - Mobile: always visible, static at the bottom of the flex column
-      - sm+: absolutely positioned, hidden (opacity-0 + translate-y-10), revealed on group-hover
-    */}
-    <div
-      className={cn(
-        "flex w-full flex-row items-center px-4 pb-4",
-        "sm:pointer-events-none sm:absolute sm:bottom-0 sm:translate-y-10 sm:opacity-0",
-        "sm:transition-all sm:duration-300 sm:group-hover:translate-y-0 sm:group-hover:opacity-100",
-      )}
-    >
-      <a
-        href={href}
-        className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-md px-3 text-sm font-medium hover:bg-[#f4f4f5] hover:text-[#0D0D0D]"
+      {/* Inner card content */}
+      <div
+        className={cn(
+          "relative flex h-full flex-col justify-between overflow-hidden rounded-xl",
+          "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
+        )}
       >
-        {cta}
-        <ArrowRight className="ml-2 h-4 w-4" />
-      </a>
-    </div>
+        <div>{background}</div>
 
-    {/* Hover overlay — sm+ only, no visual change on touch */}
-    <div className="pointer-events-none absolute inset-0 sm:transform-gpu sm:transition-all sm:duration-300 sm:group-hover:bg-black/[.03]" />
+        {/* Content: no animations on mobile (touch), hover-slide only on sm+ */}
+        <div className="pointer-events-none z-10 flex flex-col gap-1 p-6 sm:transform-gpu sm:transition-all sm:duration-300 sm:group-hover:-translate-y-6">
+          <Icon className="h-12 w-12 origin-left text-neutral-700 sm:transform-gpu sm:transition-all sm:duration-300 sm:ease-in-out sm:group-hover:scale-90" />
+          <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
+            {name}
+          </h3>
+          <p className="max-w-lg text-neutral-400">{description}</p>
+        </div>
+
+        {/*
+          CTA:
+          - Mobile: always visible, static at the bottom of the flex column
+          - sm+: absolutely positioned, hidden (opacity-0 + translate-y-10), revealed on group-hover
+        */}
+        <div
+          className={cn(
+            "flex w-full flex-row items-center px-4 pb-4",
+            "sm:pointer-events-none sm:absolute sm:bottom-0 sm:translate-y-10 sm:opacity-0",
+            "sm:transition-all sm:duration-300 sm:group-hover:translate-y-0 sm:group-hover:opacity-100",
+          )}
+        >
+          <a
+            href={href}
+            className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-md px-3 text-sm font-medium hover:bg-[#f4f4f5] hover:text-[#0D0D0D]"
+          >
+            {cta}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
+        </div>
+
+        {/* Hover overlay — sm+ only, no visual change on touch */}
+        <div className="pointer-events-none absolute inset-0 sm:transform-gpu sm:transition-all sm:duration-300 sm:group-hover:bg-black/[.03]" />
+      </div>
+    </div>
   </div>
 );
 
