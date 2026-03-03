@@ -4,7 +4,7 @@ import { m } from "motion/react"
 import Image from "next/image"
 import Link from "next/link"
 import { Check } from "lucide-react"
-import { SERVICES_PAGE } from "@/lib/content"
+import { SERVICES_PAGE, SITE } from "@/lib/content"
 import {
   fadeUp,
   staggerContainer,
@@ -72,7 +72,7 @@ export function ServicesChapters() {
                     {service.description}
                   </p>
                   <Link
-                    href="/kontakt"
+                    href={SITE.whatsapp}
                     className="mt-8 inline-block rounded-full bg-[#0D0D0D] px-8 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
                     style={{ transition: "opacity 0.2s ease" }}
                   >

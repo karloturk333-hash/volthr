@@ -63,7 +63,7 @@ export const HERO = {
   descriptor:
     "Od dizajna do lansiranja — profesionalna web stranica za vaš obrt u 7 dana.",
   cta: {
-    primary: { label: "Besplatna konzultacija", href: "/kontakt" },
+    primary: { label: "Besplatna konzultacija", href: "https://wa.me/385953765343" },
     secondary: { label: "Pogledaj cijene", href: "/cijene" },
   },
   trust: "Potpuno transparentno. Od €399.",
@@ -559,7 +559,7 @@ export const CTA_SECTION = {
   subheading:
     "Vaš obrt zaslužuje web stranicu koja prodaje.",
   cta: {
-    primary: { label: "Besplatna konzultacija →", href: "/kontakt" },
+    primary: { label: "Besplatna konzultacija →", href: "https://wa.me/385953765343" },
     whatsapp: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
   },
   trust: "Odgovaramo unutar 2 sata radnim danom.",

@@ -2,6 +2,7 @@
 
 import { m } from "motion/react"
 import Link from "next/link"
+import { MessageCircle } from "lucide-react"
 import { CTA_SECTION } from "@/lib/content"
 import { ctaHeadline, fadeUp, staggerContainer } from "@/lib/animations"
 
@@ -29,14 +30,28 @@ export function CtaPanel() {
           {CTA_SECTION.subheading}
         </m.p>
 
-        <m.div variants={fadeUp} className="mt-10">
+        <m.div variants={fadeUp} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href={CTA_SECTION.cta.primary.href}
             className="inline-flex items-center justify-center rounded-full bg-[#8B5CF6] px-8 py-4 font-dm text-base font-bold text-white hover:opacity-90"
           >
             {CTA_SECTION.cta.primary.label}
           </Link>
+          <Link
+            href={CTA_SECTION.cta.whatsapp.href}
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-4 font-dm text-base font-bold text-white hover:border-white/40"
+          >
+            <MessageCircle size={18} />
+            {CTA_SECTION.cta.whatsapp.label}
+          </Link>
         </m.div>
+
+        <m.p
+          variants={fadeUp}
+          className="mt-6 text-sm text-[#888880]"
+        >
+          {CTA_SECTION.trust}
+        </m.p>
       </m.div>
     </section>
   )

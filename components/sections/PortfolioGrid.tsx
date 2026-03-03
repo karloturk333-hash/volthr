@@ -2,9 +2,9 @@
 
 import { m } from "motion/react"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { PORTFOLIO } from "@/lib/content"
-import { projectCard, staggerContainerProjects } from "@/lib/animations"
+import { ArrowRight, MessageCircle } from "lucide-react"
+import { PORTFOLIO, SITE } from "@/lib/content"
+import { projectCard } from "@/lib/animations"
 import { TextRevealByWord } from "@/components/ui/text-reveal"
 
 export function PortfolioGrid() {
@@ -28,53 +28,35 @@ export function PortfolioGrid() {
       {/* Scroll-reveal heading */}
       <TextRevealByWord text={PORTFOLIO.heading} />
 
-      {/* Project grid + CTA */}
+      {/* Empty state */}
       <m.div
         className="mx-auto max-w-7xl px-6 pb-24 md:px-12 md:pb-32 lg:pb-36"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.05 }}
-        variants={staggerContainerProjects}
+        viewport={{ once: true, amount: 0.1 }}
+        variants={projectCard}
       >
-        {/* 2-col grid */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {PORTFOLIO.projects.map((project) => (
-            <m.div
-              key={project.name}
-              variants={projectCard}
-              whileHover={{ scale: 1.02 }}
-              className="group cursor-pointer overflow-hidden rounded-2xl"
+        <div className="mx-auto max-w-2xl rounded-xl border border-[#E8E6E0] bg-white px-8 py-12 text-center">
+          <p className="text-base leading-relaxed text-[#555550] md:text-lg">
+            {PORTFOLIO.emptyState}
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/cijene"
+              className="inline-flex items-center gap-2 rounded-full bg-[#0D0D0D] px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
             >
-              {/* Gradient placeholder image */}
-              <div
-                className="aspect-[4/3] w-full"
-                style={{ background: project.gradient }}
-              />
-              {/* Info */}
-              <div className="mt-4 flex items-center justify-between">
-                <div>
-                  <h3 className="font-space text-lg font-bold text-[#0D0D0D]">
-                    {project.name}
-                  </h3>
-                  <span className="mt-1 inline-block rounded-full bg-[rgba(139,92,246,0.08)] px-3 py-1 text-xs font-medium text-[#8B5CF6]">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-            </m.div>
-          ))}
+              Pogledaj cijene
+              <ArrowRight size={16} />
+            </Link>
+            <Link
+              href={SITE.whatsapp}
+              className="inline-flex items-center gap-2 rounded-full border border-[#0D0D0D] px-6 py-3 font-dm text-sm font-semibold text-[#0D0D0D] hover:bg-[#0D0D0D] hover:text-white"
+            >
+              <MessageCircle size={16} />
+              Besplatna konzultacija
+            </Link>
+          </div>
         </div>
-
-        {/* View all link */}
-        <m.div variants={projectCard} className="mt-12 flex justify-end">
-          <Link
-            href={PORTFOLIO.cta.href}
-            className="inline-flex items-center gap-2 font-dm text-sm font-medium text-[#0D0D0D] hover:text-[#8B5CF6]"
-          >
-            {PORTFOLIO.cta.label}
-            <ArrowRight size={16} />
-          </Link>
-        </m.div>
       </m.div>
 
     </section>
