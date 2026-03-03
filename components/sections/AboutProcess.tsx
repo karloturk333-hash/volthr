@@ -19,7 +19,7 @@ export function AboutProcess() {
           viewport={{ once: true, amount: 0.1 }}
           className="mb-16"
         >
-          <span className="section-label mb-3 block">Kako radimo</span>
+          <span className="section-label mb-3 block">{ABOUT_PAGE.process.label}</span>
           <h2 className="font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl">
             {ABOUT_PAGE.process.heading}
           </h2>

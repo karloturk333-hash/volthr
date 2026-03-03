@@ -17,7 +17,7 @@ export function AboutValues() {
           viewport={{ once: true, amount: 0.1 }}
           className="mb-12"
         >
-          <span className="section-label mb-3 block">Vrijednosti</span>
+          <span className="section-label mb-3 block">{ABOUT_PAGE.values.label}</span>
           <h2 className="font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl">
             {ABOUT_PAGE.values.heading}
           </h2>

@@ -18,7 +18,7 @@ export function AboutStory() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
           >
-            <span className="section-label mb-4 block">Naša priča</span>
+            <span className="section-label mb-4 block">{ABOUT_PAGE.story.label}</span>
             <h2 className="font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl lg:text-5xl">
               {ABOUT_PAGE.story.heading}
             </h2>
@@ -46,7 +46,7 @@ export function AboutStory() {
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#E8E6E0]">
               <Image
                 src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&auto=format&fit=crop&q=80"
-                alt="Razvoj web stranice"
+                alt={ABOUT_PAGE.story.imageAlt}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"

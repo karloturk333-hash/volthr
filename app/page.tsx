@@ -3,7 +3,17 @@ import { SCHEMA_ORG } from "@/lib/content"
 import { safeJsonLd } from "@/lib/utils"
 import { Hero } from "@/components/sections/Hero"
 import { AboutSplit } from "@/components/sections/AboutSplit"
+import { client } from "@/lib/sanity/client"
+import { FEATURED_PROJECTS_QUERY } from "@/lib/sanity/queries"
+import { FALLBACK_PROJECTS } from "@/lib/sanity/fallback"
+import type { SanityProject } from "@/lib/sanity/types"
 
+const ClientLogos = dynamic(() =>
+  import("@/components/sections/ClientLogos").then((m) => ({ default: m.ClientLogos }))
+)
+const KeywordMarquee = dynamic(() =>
+  import("@/components/sections/KeywordMarquee").then((m) => ({ default: m.KeywordMarquee }))
+)
 const ServicesGrid = dynamic(() =>
   import("@/components/sections/ServicesGrid").then((m) => ({ default: m.ServicesGrid }))
 )
@@ -32,7 +42,25 @@ const CtaPanel = dynamic(() =>
   import("@/components/sections/CtaPanel").then((m) => ({ default: m.CtaPanel }))
 )
 
-export default function HomePage() {
+async function getFeaturedProjects(): Promise<SanityProject[]> {
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+    return FALLBACK_PROJECTS
+  }
+  try {
+    const projects = await client.fetch<SanityProject[]>(
+      FEATURED_PROJECTS_QUERY,
+      {},
+      { next: { tags: ["project"] } }
+    )
+    return projects.length > 0 ? projects : FALLBACK_PROJECTS
+  } catch {
+    return FALLBACK_PROJECTS
+  }
+}
+
+export default async function HomePage() {
+  const projects = await getFeaturedProjects()
+
   return (
     <main>
       <script
@@ -42,10 +70,12 @@ export default function HomePage() {
         }}
       />
       <Hero />
+      <ClientLogos />
+      <KeywordMarquee />
       <AboutSplit />
       <ServicesGrid />
       <StatsCounters />
-      <PortfolioGrid />
+      <PortfolioGrid projects={projects} />
       <WhyUs />
       <Testimonials />
       <EuGrantBanner />

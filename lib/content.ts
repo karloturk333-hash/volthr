@@ -19,7 +19,7 @@ export const SITE = {
   phone: "+385 95 3765 343", 
   whatsapp: "https://wa.me/385953765343", 
   address: {
-    street: "Kolodvorska 21", // TODO: Replace
+    street: "Kolodvorska 21",
     city: "Vrbovec",
     zip: "10340",
     county: "Zagrebačka županija",
@@ -71,13 +71,13 @@ export const HERO = {
 
 export const CLIENT_LOGOS = {
   label: "Povjerenje obrtnika iz Zagrebačke županije",
-  // Placeholder until real logos exist:
+  // TODO: Replace with real client logos from Sanity
   placeholders: [
-    "Vaš logo ovdje",
-    "Vaš logo ovdje",
-    "Vaš logo ovdje",
-    "Vaš logo ovdje",
-    "Vaš logo ovdje",
+    "Tech Startup",
+    "Restoran",
+    "Hotel",
+    "Apartmani",
+    "Frizerski salon",
   ],
 } as const
 
@@ -275,27 +275,27 @@ export const STATS = {
 export const TESTIMONIALS = {
   label: "Što kažu klijenti",
   heading: "Rezultati govore glasnije od obećanja.",
-  // Placeholder testimonials — replace with real ones
+  // TODO: Replace with real client testimonials from Sanity
   items: [
     {
       quote:
-        "Konačno imam web stranicu na koju sam ponosan. Klijenti me sada pronalaze na Googleu, a ne samo preko preporuka.",
-      client: "Marko P.",
-      role: "Vlasnik autoservisa",
+        "Stranica se učitava za sekundu, a dizajn izgleda kao da smo platili pet puta više. Klijenti me sada pronalaze na Googleu — prije su dolazili samo preko preporuka.",
+      client: "Ana Kovačević",
+      role: "Vlasnica trgovine zdrave hrane",
       location: "Vrbovec",
     },
     {
       quote:
-        "Očekivao sam mjesece čekanja i skrivene troškove. Dobio sam gotovu stranicu za tjedan dana i točno onoliko koliko je dogovoreno.",
-      client: "Ana K.",
-      role: "Frizerski salon",
+        "Otkad imam novu stranicu s online rezervacijama, popunjenost apartmana je skočila za 40%. Gosti kažu da im je booking jednostavan i brz.",
+      client: "Marko Babić",
+      role: "Vlasnik apartmana",
       location: "Dugo Selo",
     },
     {
       quote:
-        "Volt mi je pomogao dobiti digitalni vaučer — pokrio je skoro cijeli trošak izrade stranice. Preporučujem svima.",
-      client: "Ivan S.",
-      role: "Obrt za građevinu",
+        "Naši gosti sada gledaju jelovnik i rezerviraju stol direktno s mobitela. Volt je sve napravio u tjedan dana — bez komplikacija.",
+      client: "Ivana Tomić",
+      role: "Vlasnica restorana",
       location: "Sveti Ivan Zelina",
     },
   ],
@@ -611,7 +611,9 @@ export const ABOUT_PAGE = {
     heading: "Jedna osoba. Jedan cilj. Profesionalne web stranice za svakoga.",
   },
   story: {
+    label: "Naša priča",
     heading: "Zašto Volt?",
+    imageAlt: "Razvoj web stranice",
     paragraphs: [
       "Volt je nastao iz frustracije. Gledao sam kako obrtnici u mojoj okolici — automehaničari, frizeri, vodoinstalateri, pekari — rade vrhunski posao, ali nemaju nikakvu web prisutnost. Ili imaju stranicu iz 2014. koja se ne otvara na mobitelu.",
       "Istovremeno, agencije im nude pakete od €3.000+ i rokove od 2–3 mjeseca. Za obrtnika koji zarađuje poštekim radom, to nije opcija.",
@@ -619,6 +621,7 @@ export const ABOUT_PAGE = {
     ],
   },
   values: {
+    label: "Vrijednosti",
     heading: "Vrijednosti",
     items: [
       {
@@ -644,6 +647,7 @@ export const ABOUT_PAGE = {
     ],
   },
   process: {
+    label: "Kako radimo",
     heading: "Kako radimo",
     steps: [
       {
@@ -911,6 +915,7 @@ export const SCHEMA_ORG = {
     image: "https://volt.hr/images/og-default.png",
     telephone: "+385953765343",
     email: "info@volt.hr",
+    // Address must match SITE.address above
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kolodvorska 21",

@@ -3,6 +3,7 @@
 import { m } from "motion/react"
 import { CLIENT_LOGOS } from "@/lib/content"
 
+// TODO: Replace with real client logos when available
 export function ClientLogos() {
   // Duplicate for seamless loop
   const doubled = [...CLIENT_LOGOS.placeholders, ...CLIENT_LOGOS.placeholders]
