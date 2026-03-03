@@ -65,11 +65,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* prevent Motion animation initial state (x: 32) from causing document scrollWidth overflow */
 }
 
 body {
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden; /* prevent marquee + absolute positioned elements from causing horizontal scroll */
 }
 
 /* ── Focus ring ── */
