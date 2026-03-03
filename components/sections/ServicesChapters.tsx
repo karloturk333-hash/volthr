@@ -1,6 +1,7 @@
 "use client"
 
 import { m } from "motion/react"
+import Image from "next/image"
 import Link from "next/link"
 import { Check } from "lucide-react"
 import { SERVICES_PAGE } from "@/lib/content"
@@ -84,12 +85,15 @@ export function ServicesChapters() {
                   variants={visualVariant}
                   className={isEven ? "" : "lg:order-1"}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={photoUrl}
-                    alt={service.title}
-                    className="aspect-[16/10] w-full rounded-2xl border border-[#E8E6E0] object-cover"
-                  />
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#E8E6E0]">
+                    <Image
+                      src={photoUrl}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
 
                   {/* Feature list */}
                   <m.ul
