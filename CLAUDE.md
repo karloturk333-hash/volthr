@@ -55,7 +55,8 @@ npx tsc --noEmit     # Type-check (no npm script defined)
 - Cards hover: scale 1.02, transition 0.2s
 - Accordion: AnimatePresence + height auto
 - Stats: count up from 0 on scroll enter
-- Logo marquee: CSS infinite scroll, 30s linear
+- Logo marquee: CSS infinite scroll, 30s linear (ClientLogos currently hidden from homepage)
+- Aurora background: global ambient effect in layout.tsx, fades across top half of every page
 - Never use heavy spring animations — ease or easeOut only
 - NEVER use `transform: scale()` on cards beyond 1.02
 - Components use `m` (not `motion`) from `motion/react` — lighter weight
@@ -76,20 +77,20 @@ npx tsc --noEmit     # Type-check (no npm script defined)
 
 ```
 app/                  # Next.js 16 App Router (Turbopack default)
-├── layout.tsx        # Root: fonts (Space Grotesk + DM Sans), metadata, analytics
+├── layout.tsx        # Root: fonts (Space Grotesk + DM Sans), metadata, analytics, aurora bg
 ├── globals.css       # Design tokens as CSS vars
-├── page.tsx          # Homepage — 13 sections, see below
-├── o-nama/           # About page (NOT YET BUILT — content ready in lib/content.ts)
-├── usluge/           # Services detail (NOT YET BUILT)
-├── projekti/         # Portfolio, Sanity-powered (NOT YET BUILT)
-├── cijene/           # Pricing (NOT YET BUILT — port from reference/volt-pricing.html)
+├── page.tsx          # Homepage — 11 sections (see Homepage Section Flow)
+├── o-nama/page.tsx   # About page — AboutHero, AboutStory, AboutValues, AboutProcess, CtaPanel
+├── usluge/page.tsx   # Services — ServicesHero, ServicesChapters, CtaPanel
+├── cijene/page.tsx   # Pricing — PricingHero, PricingTiers, EuGrantBanner, FaqAccordion, CtaPanel
 ├── kontakt/          # Contact form + Leaflet map (NOT YET BUILT)
+├── projekti/         # Portfolio, Sanity-powered (NOT YET BUILT)
 ├── blog/[slug]/      # Blog, Sanity-powered (NOT YET BUILT)
 └── api/contact/      # Resend + WhatsApp redirect (NOT YET BUILT)
 components/
 ├── layout/           # Nav, Footer
-├── ui/               # Currently only LightningBolt.tsx (Button, Card, Badge, Input NOT YET BUILT)
-├── sections/         # Hero, Services, Portfolio, CTA, Stats, FAQ
+├── ui/               # LightningBolt, Counter, BrowserMockup, shimmer-button, rainbow-button, text-reveal, bento-grid, glowing-effect, aurora-background
+├── sections/         # Hero, AboutSplit, ServicesGrid, StatsCounters, PortfolioGrid, WhyUs, Testimonials, EuGrantBanner, PricingPreview, FaqAccordion, CtaPanel, + page-specific sections
 └── providers/        # MotionProvider (LazyMotion wrapper)
 lib/                  # content.ts, seo.ts, utils.ts, animations.ts
 sanity/schemas/       # blog, project, testimonial
@@ -107,23 +108,24 @@ sanity/schemas/       # blog, project, testimonial
 
 ## Homepage Section Flow
 
-Build in order. Each is a separate component in `components/sections/`.
+Each is a separate component in `components/sections/`. This is the actual render order in `app/page.tsx`:
 
-| # | Section | Key Details |
-|---|---------|-------------|
-| 1 | Hero | Large heading + word rotation ("obrtnike · poduzetnike · trgovce") + CTA + badge |
-| 2 | Client Logos | Greyscale horizontal marquee. Placeholder text until real clients exist |
-| 3 | About Split | Image left (rounded-xl) + vision/mission text right |
-| 4 | Services Grid | 4 numbered cards (01–04): Konzultacija, Dizajn, Razvoj, Lansiranje |
-| 5 | Keyword Marquee | Infinite scroll: "web dizajn · razvoj · SEO · automatizacija · branding" |
-| 6 | Portfolio Grid | Thumbnails + hover overlay. Sanity schema. Placeholders until populated |
-| 7 | Stats Counters | Animated on scroll: dana isporuke, projekata, % zadovoljstva |
-| 8 | Testimonials | Quote carousel. Sanity schema. Placeholder initially |
-| 9 | Pricing Preview | 3 tier cards linking to /cijene |
-| 10 | EU Grant Banner | "Do 85% financirano" — ITP digitalizacija + digital vouchers |
-| 11 | FAQ Accordion | 6 questions. Schema.org FAQPage JSON-LD |
-| 12 | CTA Panel | Dark section (#0D0D0D): "Spreman za web koji zarađuje?" + WhatsApp button |
-| 13 | Footer | Logo, Vrbovec address, WhatsApp, email, nav links, ©2026 |
+| # | Section | Component | Key Details |
+|---|---------|-----------|-------------|
+| 1 | Hero | `Hero` (static import) | Large heading + CTA buttons (WhatsApp + /cijene) + trust badge |
+| 2 | About Split | `AboutSplit` (static import) | Image left (rounded-xl) + vision/mission text right |
+| 3 | Services Grid | `ServicesGrid` (dynamic) | Bento grid with glowing hover effect — 4 service cards |
+| 4 | Stats Counters | `StatsCounters` (dynamic) | Animated count-up: 7 days, 100% transparent, 85% EU, €0 hidden |
+| 5 | Portfolio Grid | `PortfolioGrid` (dynamic) | Empty state with CTA to /cijene + WhatsApp (no fake projects) |
+| 6 | Why Us | `WhyUs` (dynamic) | 3 value proposition cards |
+| 7 | Testimonials | `Testimonials` (dynamic) | Quote carousel (placeholder testimonials) |
+| 8 | EU Grant Banner | `EuGrantBanner` (dynamic) | "Do 85% financirano" — digital voucher info |
+| 9 | Pricing Preview | `PricingPreview` (dynamic) | 3 tier cards linking to /cijene |
+| 10 | FAQ Accordion | `FaqAccordion` (dynamic) | 6 questions + Schema.org FAQPage JSON-LD |
+| 11 | CTA Panel | `CtaPanel` (dynamic) | Dark section (#0D0D0D) + WhatsApp button + trust text |
+| — | Footer | `Footer` (in layout) | Logo, Vrbovec address, WhatsApp, email, nav links, ©2026 |
+
+**Removed from homepage:** ClientLogos (placeholder "Vaš logo ovdje" hurt credibility — component kept at `components/sections/ClientLogos.tsx` for when real logos exist).
 
 ## Navigation
 
@@ -147,9 +149,10 @@ Build in order. Each is a separate component in `components/sections/`.
 - **"use client" boundary**: Keep it as high as possible. Don't sprinkle on every component.
 - **Light background is non-negotiable**: #F5F4F0 everywhere. Never revert to dark theme.
 - **Space Grotesk max weight is 700**: `font-black` (900) silently falls back to 700. Use `font-bold` (700) or load weight 800/900 in layout.tsx.
-- /cijene page is ALREADY BUILT as standalone HTML. Port preserving exact visuals. Ref: @volt-pricing.html
+- /cijene page is BUILT (ported from reference/volt-pricing.html).
 - EU grant info (ITP + digital vouchers) changes often. Keep banner Sanity-editable.
 - WhatsApp is primary contact for obrtnici. Every CTA needs WhatsApp option.
+- All primary CTAs link to `SITE.whatsapp` (https://wa.me/385953765343) since /kontakt is NOT YET BUILT. When /kontakt is built, update `HERO.cta.primary.href` and `CTA_SECTION.cta.primary.href` in lib/content.ts.
 - NEVER hardcode content strings. Use constants file or Sanity. Import from lib/content.ts.
 - All content objects in lib/content.ts use `as const` for full TypeScript inference.
 
@@ -163,7 +166,7 @@ Build in order. Each is a separate component in `components/sections/`.
 
 ## Brand Positioning
 
-Volt fills an underserved gap: 130+ Croatian agencies target SMEs/enterprises at €3K–€20K. Volt targets obrtnici at €699 setup + €79/mo — productized, transparent, fast. Competitive edge: AI-accelerated 7-day delivery, fixed pricing (no quotes), EU grant navigation (ITP digital vouchers up to 85% co-financing, three new digital voucher types planned: AI, cybersecurity, complex solutions).
+Volt fills an underserved gap: 130+ Croatian agencies target SMEs/enterprises at €3K–€20K. Volt targets obrtnici at €399–€1.299 setup + €55–€149/mo — productized, transparent, fast. Competitive edge: AI-accelerated 7-day delivery, fixed pricing (no quotes), EU grant navigation (digital vouchers up to 90% co-financing).
 
 Voice: direct, specific numbers, Croatian-first, zero jargon.
 - ✅ "Gotovo za 7 dana. Ako zakasnimo, 10% popusta po danu."
