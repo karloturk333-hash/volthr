@@ -1,10 +1,13 @@
 import type { Metadata } from "next"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
+import Script from "next/script"
+import { cookies } from "next/headers"
 import "./globals.css"
 import { SEO } from "@/lib/content"
 import { MotionProvider } from "@/components/providers/MotionProvider"
 import { Nav } from "@/components/layout/Nav"
 import { Footer } from "@/components/layout/Footer"
+import { CookieConsent } from "@/components/CookieConsent"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin", "latin-ext"],
@@ -36,14 +39,31 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const cookieStore = await cookies()
+  const consent = cookieStore.get("volt_consent")?.value
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+
   return (
     <html lang="hr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body className="font-dm antialiased">
+        {/* Google Analytics — loads only after GDPR consent */}
+        {consent === "all" && gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-config" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}');`}
+            </Script>
+          </>
+        )}
+
         {/* Fixed aurora background — fades out in the bottom half */}
         <div
           className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
@@ -63,6 +83,8 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+          {/* GDPR Cookie Consent */}
+          <CookieConsent />
         </MotionProvider>
       </body>
     </html>
