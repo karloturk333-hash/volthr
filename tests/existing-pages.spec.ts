@@ -19,6 +19,10 @@ test.describe("Homepage", () => {
     await expect(page.getByRole("link", { name: /pogledaj cijene/i })).toBeVisible()
   })
 
+  test("Speed badge renders with Lighthouse score", async ({ page }) => {
+    await expect(page.getByText("Lighthouse Score")).toBeVisible()
+  })
+
   test("ClientLogos section renders", async ({ page }) => {
     const trustBar = page.locator("#trust-bar")
     await expect(trustBar).toBeVisible()

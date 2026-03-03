@@ -67,6 +67,11 @@ export const HERO = {
     secondary: { label: "Pogledaj cijene", href: "/cijene" },
   },
   trust: "Potpuno transparentno. Od €399.",
+  speedBadge: {
+    score: 100,
+    label: "Lighthouse Score",
+    sublabel: "Performanse",
+  },
 } as const
 
 export const CLIENT_LOGOS = {

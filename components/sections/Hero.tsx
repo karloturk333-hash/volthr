@@ -5,6 +5,7 @@ import dynamic from "next/dynamic"
 import { m, useScroll, useTransform } from "motion/react"
 import Link from "next/link"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
+import { SpeedBadge } from "@/components/ui/SpeedBadge"
 import { HERO } from "@/lib/content"
 import { heroStagger, heroWord } from "@/lib/animations"
 
@@ -96,6 +97,11 @@ export function Hero() {
               >
                 {HERO.cta.secondary.label}
               </MotionLink>
+            </div>
+
+            {/* Speed badge */}
+            <div className="mt-6">
+              <SpeedBadge />
             </div>
           </m.div>
         </div>

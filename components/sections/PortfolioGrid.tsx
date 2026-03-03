@@ -3,7 +3,7 @@
 import { m } from "motion/react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ExternalLink, MapPin, MessageCircle } from "lucide-react"
+import { ArrowRight, ArrowUpRight, MapPin, MessageCircle } from "lucide-react"
 import { PORTFOLIO, SITE } from "@/lib/content"
 import { projectCard, staggerContainerProjects } from "@/lib/animations"
 import { TextRevealByWord } from "@/components/ui/text-reveal"
@@ -59,14 +59,14 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   variants={projectCard}
-                  whileHover={{ y: -4 }}
+                  whileHover={{ y: -6, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.12)" }}
                   className="group overflow-hidden rounded-xl border border-[#E8E6E0] bg-white"
                 >
-                  {/* Cover image or gradient */}
+                  {/* Cover image, static image, or gradient fallback */}
                   <div
-                    className="relative h-48 w-full overflow-hidden md:h-56"
+                    className="relative h-60 w-full overflow-hidden md:h-72"
                     style={
-                      project.coverImage
+                      project.coverImage || project.staticImage
                         ? undefined
                         : { background: GRADIENT_FALLBACKS[i % GRADIENT_FALLBACKS.length] }
                     }
@@ -79,6 +79,14 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
+                    ) : project.staticImage ? (
+                      <Image
+                        src={project.staticImage}
+                        alt={`${project.title} — ${project.category}`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
                     ) : (
                       <div className="flex h-full items-center justify-center">
                         <span className="font-space text-2xl font-bold text-white/80">
@@ -86,12 +94,14 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                         </span>
                       </div>
                     )}
+                    {/* Bottom gradient overlay for depth */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                   </div>
 
                   {/* Card body */}
-                  <div className="p-5">
+                  <div className="p-7">
                     <div className="mb-2 flex items-center gap-2">
-                      <span className="rounded-full bg-[#F5F4F0] px-3 py-1 font-dm text-xs font-medium text-[#555550]">
+                      <span className="rounded-full bg-[#F5F4F0] px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-[#555550]">
                         {project.category}
                       </span>
                       {project.location && (
@@ -101,15 +111,15 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                         </span>
                       )}
                     </div>
-                    <h3 className="mb-1.5 font-space text-lg font-bold text-[#0D0D0D]">
+                    <h3 className="mb-1.5 font-space text-2xl leading-snug font-bold text-[#0D0D0D]">
                       {project.title}
                     </h3>
-                    <p className="mb-3 line-clamp-2 font-dm text-sm leading-relaxed text-[#555550]">
+                    <p className="mb-5 line-clamp-2 font-dm text-[15px] leading-relaxed text-[#555550]">
                       {project.description}
                     </p>
                     <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
                       Posjeti stranicu
-                      <ExternalLink size={14} />
+                      <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>
                 </m.a>
