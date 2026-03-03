@@ -14,10 +14,10 @@ test.describe("Journey 1: Homepage to pricing page", () => {
     const hero = page.locator("#hero")
     await expect(hero).toBeVisible()
 
-    // Primary CTA leads to /kontakt (multiple exist across page — check first/hero one)
+    // Primary CTA leads to WhatsApp (until /kontakt page is fully wired)
     const primaryCta = page.getByRole("link", { name: /besplatna konzultacija/i }).first()
     await expect(primaryCta).toBeVisible()
-    await expect(primaryCta).toHaveAttribute("href", "/kontakt")
+    await expect(primaryCta).toHaveAttribute("href", /wa\.me/)
 
     // Secondary CTA leads to /cijene
     const secondaryCta = page.getByRole("link", { name: /pogledaj cijene/i })
@@ -258,8 +258,8 @@ test.describe("Performance baselines", () => {
     expect(body).toContain("volt.hr/usluge")
     expect(body).toContain("volt.hr/cijene")
     expect(body).toContain("volt.hr/o-nama")
-    // Unbuilt pages must NOT be in sitemap
-    expect(body).not.toContain("volt.hr/projekti")
-    expect(body).not.toContain("volt.hr/kontakt")
+    // All built pages should be in sitemap
+    expect(body).toContain("volt.hr/projekti")
+    expect(body).toContain("volt.hr/kontakt")
   })
 })

@@ -17,7 +17,7 @@ const serviceConfig = [
       <>
         {/* Abstract fluid design — web dizajn */}
         <Image
-          src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900&q=75&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900&q=50&auto=format&fit=crop"
           alt=""
           fill
           className="object-cover opacity-30"
@@ -42,7 +42,7 @@ const serviceConfig = [
       <>
         {/* Colorful abstract paint pour — branding */}
         <Image
-          src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=900&q=75&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=900&q=50&auto=format&fit=crop"
           alt=""
           fill
           className="object-cover opacity-30"
@@ -62,7 +62,7 @@ const serviceConfig = [
       <>
         {/* Data/analytics abstract — SEO */}
         <Image
-          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=75&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=50&auto=format&fit=crop"
           alt=""
           fill
           className="object-cover opacity-30"
@@ -87,7 +87,7 @@ const serviceConfig = [
       <>
         {/* Minimal product flatlay — e-commerce */}
         <Image
-          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=75&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=50&auto=format&fit=crop"
           alt=""
           fill
           className="object-cover opacity-30"

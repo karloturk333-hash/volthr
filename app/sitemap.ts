@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/usluge`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/cijene`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/o-nama`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    // /projekti and /kontakt not yet built — add when pages ship
+    { url: `${base}/projekti`, lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${base}/kontakt`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   ]
 }
