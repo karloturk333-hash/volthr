@@ -59,7 +59,7 @@ export const NAV = {
 
 export const HERO = {
   label: "Web studio iz Vrbovca",
-  heading: "Radimo web stranice za poduzetnike",
+  heading: "Izrada web stranica za obrtnike i poduzetnike",
   descriptor:
     "Od dizajna do lansiranja — profesionalna web stranica za vaš obrt u 7 dana.",
   cta: {
@@ -850,9 +850,9 @@ export const PROJECTS_PAGE = {
 
 export const SEO = {
   home: {
-    title: "Volt — Web Stranice za Obrtnike | Web Dizajn Hrvatska",
+    title: "Izrada web stranica za obrtnike | Volt Web Studio",
     description:
-      "Profesionalna izrada web stranica u 7 dana. Fiksne cijene od €399. Web dizajn, razvoj, SEO i web shopovi za obrtnike i male poduzetnike u Hrvatskoj.",
+      "Profesionalna izrada web stranica za obrtnike u 7 dana. Od €399. Prihvaćamo digitalne vaučere — do 85% sufinanciranja. Web dizajn, SEO, web shopovi.",
     keywords: [
       "izrada web stranica",
       "web dizajn hrvatska",
@@ -903,24 +903,33 @@ export const SCHEMA_ORG = {
   localBusiness: {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://volt.hr/#business",
     name: "Volt Web Studio",
     description:
       "Web studio specijaliziran za izradu profesionalnih web stranica, web shopova i SEO optimizaciju za obrtnike i male poduzetnike u Hrvatskoj.",
     url: "https://volt.hr",
-    telephone: "+385 95 3765 343", 
+    image: "https://volt.hr/images/og-default.png",
+    telephone: "+385953765343",
     email: "info@volt.hr",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Kolodvorska 21", // TODO
+      streetAddress: "Kolodvorska 21",
       addressLocality: "Vrbovec",
       postalCode: "10340",
       addressRegion: "Zagrebačka županija",
       addressCountry: "HR",
     },
-    areaServed: {
-      "@type": "Country",
-      name: "Hrvatska",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 45.8727,
+      longitude: 16.4219,
     },
+    hasMap: "https://maps.google.com/?q=Volt+Web+Studio+Vrbovec",
+    areaServed: [
+      { "@type": "City", name: "Vrbovec" },
+      { "@type": "AdministrativeArea", name: "Zagrebačka županija" },
+      { "@type": "Country", name: "Hrvatska" },
+    ],
     priceRange: "€399 - €2500",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -987,5 +996,50 @@ export const SCHEMA_ORG = {
         },
       },
     ],
+  },
+  pricingPage: {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Web stranice — cijene i paketi",
+    url: "https://volt.hr/cijene",
+    description: "Fiksne cijene izrade web stranica za obrtnike. Start €399, Profesionalni €699, Premium €1.299.",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          item: {
+            "@type": "Offer",
+            name: "Start paket",
+            price: "399",
+            priceCurrency: "EUR",
+            description: "Do 3 stranice, mobilni dizajn, osnovna SEO optimizacija, kontakt forma",
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: {
+            "@type": "Offer",
+            name: "Profesionalni paket",
+            price: "699",
+            priceCurrency: "EUR",
+            description: "Do 10 stranica, custom dizajn, CMS sustav, napredna SEO optimizacija",
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          item: {
+            "@type": "Offer",
+            name: "Premium paket",
+            price: "1299",
+            priceCurrency: "EUR",
+            description: "Neograničen broj stranica, web shop, višejezični sadržaj, premium SEO paket",
+          },
+        },
+      ],
+    },
   },
 } as const

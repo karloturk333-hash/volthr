@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -40,8 +41,7 @@ const BentoCard = ({
   name: string;
   className: string;
   background: ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Icon: any;
+  Icon: LucideIcon;
   description: string;
   href: string;
   cta: string;

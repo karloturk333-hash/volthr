@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 import { SCHEMA_ORG } from "@/lib/content"
+import { safeJsonLd } from "@/lib/utils"
 import { Hero } from "@/components/sections/Hero"
 import { ClientLogos } from "@/components/sections/ClientLogos"
 import { AboutSplit } from "@/components/sections/AboutSplit"
@@ -29,6 +30,12 @@ const FaqAccordion = dynamic(() =>
 export default function HomePage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd(SCHEMA_ORG.localBusiness),
+        }}
+      />
       <Hero />
       <ClientLogos />
       <AboutSplit />
@@ -42,7 +49,7 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(SCHEMA_ORG.faqPage),
+          __html: safeJsonLd(SCHEMA_ORG.faqPage),
         }}
       />
     </main>

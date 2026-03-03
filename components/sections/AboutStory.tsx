@@ -1,6 +1,7 @@
 "use client"
 
 import { m } from "motion/react"
+import Image from "next/image"
 import { ABOUT_PAGE } from "@/lib/content"
 import { slideFromLeft, slideFromRight } from "@/lib/animations"
 
@@ -42,12 +43,15 @@ export function AboutStory() {
             <span className="absolute right-4 top-4 z-10 text-2xl text-[#8B5CF6] opacity-70 select-none">
               ✦
             </span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&auto=format&fit=crop&q=80"
-              alt="Razvoj web stranice"
-              className="aspect-[4/5] w-full rounded-2xl border border-[#E8E6E0] object-cover"
-            />
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#E8E6E0]">
+              <Image
+                src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&auto=format&fit=crop&q=80"
+                alt="Razvoj web stranice"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </m.div>
 
         </div>

@@ -8,9 +8,10 @@ import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { HERO } from "@/lib/content"
 import { heroStagger, heroWord } from "@/lib/animations"
 
-const BrowserMockup = dynamic(() => import("@/components/ui/BrowserMockup"), {
-  loading: () => <div className="aspect-video w-full max-w-2xl rounded-2xl bg-[#1a1a2e]/5 animate-pulse" />,
-})
+const BrowserMockup = dynamic(() =>
+  import("@/components/ui/BrowserMockup").then((m) => ({ default: m.BrowserMockup })),
+  { loading: () => <div className="aspect-video w-full max-w-2xl rounded-2xl bg-[#1a1a2e]/5 animate-pulse" /> }
+)
 
 const MotionLink = m(Link)
 
