@@ -41,3 +41,39 @@ export interface SanityEuGrant {
   link?: string
   active: boolean
 }
+
+export interface PortableTextBlock {
+  _type: "block"
+  _key: string
+  style?: string
+  children: Array<{
+    _type: "span"
+    _key: string
+    text: string
+    marks?: string[]
+  }>
+  markDefs?: Array<{
+    _type: string
+    _key: string
+    href?: string
+  }>
+  listItem?: "bullet" | "number"
+  level?: number
+}
+
+export interface SanityBlogPost {
+  _id: string
+  _type: "blogPost"
+  title: string
+  slug: { current: string }
+  excerpt?: string
+  body?: PortableTextBlock[]
+  coverImage?: {
+    _type: "image"
+    asset: { _ref: string; _type: "reference" }
+    hotspot?: { x: number; y: number; height: number; width: number }
+  }
+  author?: string
+  publishedAt?: string
+  categories?: string[]
+}

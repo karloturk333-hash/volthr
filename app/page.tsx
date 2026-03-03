@@ -8,12 +8,6 @@ import { FEATURED_PROJECTS_QUERY } from "@/lib/sanity/queries"
 import { FALLBACK_PROJECTS } from "@/lib/sanity/fallback"
 import type { SanityProject } from "@/lib/sanity/types"
 
-const ClientLogos = dynamic(() =>
-  import("@/components/sections/ClientLogos").then((m) => ({ default: m.ClientLogos }))
-)
-const KeywordMarquee = dynamic(() =>
-  import("@/components/sections/KeywordMarquee").then((m) => ({ default: m.KeywordMarquee }))
-)
 const ServicesGrid = dynamic(() =>
   import("@/components/sections/ServicesGrid").then((m) => ({ default: m.ServicesGrid }))
 )
@@ -70,8 +64,6 @@ export default async function HomePage() {
         }}
       />
       <Hero />
-      <ClientLogos />
-      <KeywordMarquee />
       <AboutSplit />
       <ServicesGrid />
       <StatsCounters />

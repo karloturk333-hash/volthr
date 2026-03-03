@@ -23,17 +23,6 @@ test.describe("Homepage", () => {
     await expect(page.getByText("Lighthouse Score")).toBeVisible()
   })
 
-  test("ClientLogos section renders", async ({ page }) => {
-    const trustBar = page.locator("#trust-bar")
-    await expect(trustBar).toBeVisible()
-  })
-
-  test("KeywordMarquee section renders", async ({ page }) => {
-    // KeywordMarquee has animate-marquee class and large text keywords
-    const marquee = page.locator(".animate-marquee").first()
-    await expect(marquee).toBeVisible()
-  })
-
   test("AboutSplit section renders", async ({ page }) => {
     const about = page.locator("#about")
     await expect(about).toBeVisible()

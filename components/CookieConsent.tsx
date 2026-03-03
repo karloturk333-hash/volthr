@@ -41,7 +41,10 @@ export function CookieConsent() {
         >
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-xl border border-[#E8E6E0] bg-white p-6 shadow-lg sm:flex-row sm:justify-between">
             <p className="text-sm text-[#555550]">
-              Koristimo kolačiće za poboljšanje iskustva.
+              Koristimo kolačiće za poboljšanje iskustva.{" "}
+              <a href="/privatnost" className="underline hover:text-[#8B5CF6]">
+                Saznaj više
+              </a>
             </p>
             <div className="flex shrink-0 gap-3">
               <button

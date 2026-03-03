@@ -100,43 +100,6 @@ export const ABOUT_SECTION = {
   },
 } as const
 
-export const SERVICES = {
-  label: "Što radimo",
-  heading: "Od ideje do web stranice koja zarađuje.",
-  subheading:
-    "Četiri koraka. Sedam dana. Nula stresa.",
-  items: [
-    {
-      number: "01",
-      title: "Konzultacija",
-      description:
-        "Besplatni poziv od 30 minuta. Razgovaramo o vašem poslu, ciljevima i željama. Vi pričate, mi slušamo i predlažemo.",
-      icon: "phone", // Lucide icon name
-    },
-    {
-      number: "02",
-      title: "Dizajn",
-      description:
-        "Kreiramo vizualni identitet koji odgovara vašem poslu. Moderno, čisto, profesionalno — bez generičnih predložaka.",
-      icon: "palette",
-    },
-    {
-      number: "03",
-      title: "Razvoj",
-      description:
-        "Kodiramo stranicu od nule. Brza, mobilno prilagođena, optimizirana za Google. Bez WordPressa i sporih tema.",
-      icon: "code",
-    },
-    {
-      number: "04",
-      title: "Lansiranje",
-      description:
-        "Postavljamo domenu, SSL, analitiku i predajemo vam ključeve. Plus — obučimo vas da sami možete ažurirati sadržaj.",
-      icon: "rocket",
-    },
-  ],
-} as const
-
 // Services accordion for redesigned homepage
 export const SERVICES_ACCORDION = {
   label: "Usluge",
@@ -240,14 +203,6 @@ export const PORTFOLIO = {
     "Upravo gradimo naš portfolio. U međuvremenu, pogledajte naše cijene ili nas kontaktirajte za besplatnu konzultaciju.",
   cta: { label: "Svi projekti", href: "/projekti" },
   comingSoon: "Uskoro",
-  projects: [
-    { name: "AutoServis Pro", category: "Web dizajn", gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-    { name: "Salon Ljepote", category: "Branding", gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
-    { name: "Pekara Sunce", category: "E-commerce", gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
-    { name: "Stolarija Hrast", category: "Web dizajn", gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
-    { name: "Elektro Servis", category: "SEO", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
-    { name: "Cvjećarnica Flora", category: "Web dizajn", gradient: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" },
-  ],
 } as const
 
 export const STATS = {
@@ -273,35 +228,6 @@ export const STATS = {
       suffix: "",
       label: "skrivenih troškova",
       displayValue: "€0",
-    },
-  ],
-} as const
-
-export const TESTIMONIALS = {
-  label: "Što kažu klijenti",
-  heading: "Rezultati govore glasnije od obećanja.",
-  // TODO: Replace with real client testimonials from Sanity
-  items: [
-    {
-      quote:
-        "Stranica se učitava za sekundu, a dizajn izgleda kao da smo platili pet puta više. Klijenti me sada pronalaze na Googleu — prije su dolazili samo preko preporuka.",
-      client: "Ana Kovačević",
-      role: "Vlasnica trgovine zdrave hrane",
-      location: "Vrbovec",
-    },
-    {
-      quote:
-        "Otkad imam novu stranicu s online rezervacijama, popunjenost apartmana je skočila za 40%. Gosti kažu da im je booking jednostavan i brz.",
-      client: "Marko Babić",
-      role: "Vlasnik apartmana",
-      location: "Dugo Selo",
-    },
-    {
-      quote:
-        "Naši gosti sada gledaju jelovnik i rezerviraju stol direktno s mobitela. Volt je sve napravio u tjedan dana — bez komplikacija.",
-      client: "Ivana Tomić",
-      role: "Vlasnica restorana",
-      location: "Sveti Ivan Zelina",
     },
   ],
 } as const
@@ -854,6 +780,122 @@ export const PROJECTS_PAGE = {
 } as const
 
 // ---------------------------------------------------------------------------
+// /PRIVATNOST PAGE
+// ---------------------------------------------------------------------------
+
+export const PRIVACY_PAGE = {
+  hero: {
+    label: "Pravila privatnosti",
+    heading: "Pravila privatnosti",
+  },
+  lastUpdated: "1. ožujka 2026.",
+  sections: [
+    {
+      title: "Voditelj obrade podataka",
+      content: "Volt Web Studio, Kolodvorska 21, 10340 Vrbovec, Hrvatska. Email: info@volt.hr. Telefon: +385 95 3765 343.",
+    },
+    {
+      title: "Koje podatke prikupljamo",
+      content: "Prikupljamo samo podatke koje nam dobrovoljno dostavite putem kontakt forme: ime i prezime, email adresa, telefonski broj (opcionalno) i sadržaj poruke. Ne prikupljamo podatke putem korisničkih računa jer ih nemamo. Ne prodajemo proizvode online.",
+    },
+    {
+      title: "Kolačići",
+      content: "Koristimo jedan funkcionalni kolačić (volt_consent) koji bilježi vašu suglasnost za kolačiće. Ako prihvatite sve kolačiće, aktiviramo Google Analytics 4 (GA4) za anonimiziranu analitiku posjeta. GA4 se učitava samo nakon vaše izričite suglasnosti.",
+    },
+    {
+      title: "Svrha obrade",
+      content: "Vaše podatke koristimo isključivo za odgovaranje na vaš upit i eventualnu pripremu ponude. Podatke ne prosljeđujemo trećim stranama, osim pružatelju email usluge (Resend) koji obrađuje slanje emailova u naše ime.",
+    },
+    {
+      title: "Pohrana podataka",
+      content: "Podatke iz kontakt forme pohranjujemo najdulje 12 mjeseci od primitka upita. Analitički podaci u GA4 anonimiziraju se i pohranjuju prema Googleovim pravilima zadržavanja podataka.",
+    },
+    {
+      title: "Vaša prava",
+      content: "Sukladno Općoj uredbi o zaštiti podataka (GDPR), imate pravo na: pristup vašim osobnim podacima, ispravak netočnih podataka, brisanje podataka (\"pravo na zaborav\"), ograničenje obrade, prenosivost podataka i prigovor na obradu. Za ostvarivanje bilo kojeg prava, kontaktirajte nas na info@volt.hr.",
+    },
+    {
+      title: "Sigurnost podataka",
+      content: "Koristimo SSL enkripciju na cijeloj web stranici. Podaci iz kontakt forme šalju se putem sigurne HTTPS veze. Pristup podacima ograničen je isključivo na ovlaštene osobe.",
+    },
+    {
+      title: "Promjene pravila",
+      content: "Zadržavamo pravo izmjene ovih pravila privatnosti. Svaka izmjena bit će objavljena na ovoj stranici s ažuriranim datumom.",
+    },
+  ],
+} as const
+
+// ---------------------------------------------------------------------------
+// /UVJETI PAGE
+// ---------------------------------------------------------------------------
+
+export const TERMS_PAGE = {
+  hero: {
+    label: "Uvjeti korištenja",
+    heading: "Uvjeti korištenja",
+  },
+  lastUpdated: "1. ožujka 2026.",
+  sections: [
+    {
+      title: "Opći uvjeti",
+      content: "Korištenjem web stranice volt.hr (u daljnjem tekstu: \"Stranica\") prihvaćate ove uvjete korištenja. Stranica je u vlasništvu Volt Web Studio, Kolodvorska 21, 10340 Vrbovec, Hrvatska.",
+    },
+    {
+      title: "Usluge",
+      content: "Volt Web Studio pruža usluge izrade web stranica, web dizajna, SEO optimizacije i srodnih digitalnih usluga. Sve cijene navedene na Stranici su u eurima (EUR) bez PDV-a, osim ako nije drugačije naznačeno. Konačni opseg i cijena usluge definiraju se pisanom ponudom.",
+    },
+    {
+      title: "Intelektualno vlasništvo",
+      content: "Sav sadržaj na Stranici — uključujući tekstove, grafiku, logotipe, ikone, slike i programski kod — vlasništvo je Volt Web Studio ili se koristi uz dopuštenje vlasnika. Zabranjena je reprodukcija, distribucija ili javno prikazivanje sadržaja bez prethodne pisane suglasnosti.",
+    },
+    {
+      title: "Isporuka projekata",
+      content: "Nakon završetka projekta i potpune uplate, klijent dobiva puna prava korištenja isporučene web stranice. Volt Web Studio zadržava pravo prikazivanja projekta u svom portfoliju, osim ako se drugačije pisano dogovori.",
+    },
+    {
+      title: "Ograničenje odgovornosti",
+      content: "Volt Web Studio ne odgovara za neizravne, posljedične ili posebne štete proizašle iz korištenja Stranice ili naših usluga. Naša ukupna odgovornost ograničena je na iznos koji je klijent platio za konkretnu uslugu. Ne garantiramo specifične rezultate u pogledu rangiranja na tražilicama ili poslovnih rezultata.",
+    },
+    {
+      title: "Otkazivanje i povrat",
+      content: "Klijent može otkazati projekt prije početka razvoja uz puni povrat uplaćenog iznosa. Nakon početka razvoja, povrat se obračunava razmjerno dovršenom poslu. Mjesečno održavanje može se otkazati u bilo kojem trenutku, bez ugovora o vezanju.",
+    },
+    {
+      title: "Privatnost",
+      content: "Obrada osobnih podataka regulirana je našim Pravilima privatnosti dostupnima na /privatnost.",
+    },
+    {
+      title: "Mjerodavno pravo",
+      content: "Na ove uvjete primjenjuje se pravo Republike Hrvatske. Za sve sporove nadležan je stvarno nadležni sud u Zagrebu.",
+    },
+    {
+      title: "Promjene uvjeta",
+      content: "Zadržavamo pravo izmjene ovih uvjeta korištenja. Nastavak korištenja Stranice nakon objave izmjena smatra se prihvaćanjem novih uvjeta.",
+    },
+  ],
+} as const
+
+// ---------------------------------------------------------------------------
+// /BLOG PAGE
+// ---------------------------------------------------------------------------
+
+export const BLOG_PAGE = {
+  hero: {
+    label: "Blog",
+    heading: "Savjeti za obrtnike i poduzetnike.",
+    subheading: "Praktični članci o web dizajnu, SEO-u, EU potporama i digitalnom rastu.",
+  },
+  emptyState: {
+    heading: "Blog se priprema.",
+    body: "Uskoro objavljujemo prve članke o web dizajnu, SEO-u i EU digitalnim vaučerima. U međuvremenu, javite nam se za besplatnu konzultaciju.",
+    cta: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
+  },
+  readMore: "Čitaj više →",
+  publishedLabel: "Objavljeno",
+  backLabel: "← Natrag na blog",
+} as const
+
+// ---------------------------------------------------------------------------
 // SEO — Meta tags per page
 // ---------------------------------------------------------------------------
 
@@ -901,6 +943,16 @@ export const SEO = {
     title: "Blog — Web Dizajn Savjeti i EU Potpore | Volt Web Studio",
     description:
       "Savjeti o web dizajnu, SEO optimizaciji, digitalnim vaučerima i online prisutnosti za obrtnike i male poduzetnike u Hrvatskoj.",
+  },
+  privacy: {
+    title: "Pravila privatnosti | Volt Web Studio",
+    description:
+      "Pravila privatnosti Volt Web Studija. Saznajte kako prikupljamo, koristimo i štitimo vaše osobne podatke u skladu s GDPR-om.",
+  },
+  terms: {
+    title: "Uvjeti korištenja | Volt Web Studio",
+    description:
+      "Uvjeti korištenja web stranice volt.hr. Informacije o uslugama, intelektualnom vlasništvu, ograničenju odgovornosti i mjerodavnom pravu.",
   },
 } as const
 
