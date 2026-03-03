@@ -9,6 +9,14 @@ import { CtaPanel } from "@/components/sections/CtaPanel"
 export const metadata: Metadata = {
   title: SEO.about.title,
   description: SEO.about.description,
+  alternates: { canonical: "/o-nama" },
+  openGraph: {
+    title: SEO.about.title,
+    description: SEO.about.description,
+    url: "/o-nama",
+    type: "website",
+    locale: "hr_HR",
+  },
 }
 
 export default function ONamaPage() {

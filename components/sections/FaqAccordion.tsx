@@ -53,8 +53,9 @@ export function FaqAccordion() {
 
                 <button
                   onClick={() => toggle(i)}
-                  className="flex w-full items-center justify-between py-5 text-left sm:py-6"
-                  style={{ paddingLeft: isOpen ? 16 : 0, transition: "padding-left 0.3s ease" }}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
+                  className={`flex w-full items-center justify-between py-5 text-left sm:py-6 transition-[padding-left] duration-300 ease-out ${isOpen ? "pl-4" : "pl-0"}`}
                 >
                   <span
                     className={`pr-4 text-base font-semibold ${isOpen ? "text-[#0D0D0D]" : "text-[#555550]"}`}
@@ -76,6 +77,8 @@ export function FaqAccordion() {
                 <AnimatePresence>
                   {isOpen && (
                     <m.div
+                      id={`faq-answer-${i}`}
+                      role="region"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

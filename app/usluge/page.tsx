@@ -7,6 +7,14 @@ import { CtaPanel } from "@/components/sections/CtaPanel"
 export const metadata: Metadata = {
   title: SEO.services.title,
   description: SEO.services.description,
+  alternates: { canonical: "/usluge" },
+  openGraph: {
+    title: SEO.services.title,
+    description: SEO.services.description,
+    url: "/usluge",
+    type: "website",
+    locale: "hr_HR",
+  },
 }
 
 export default function UslugePage() {

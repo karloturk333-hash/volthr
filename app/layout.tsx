@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import "./globals.css"
-import { SEO, SCHEMA_ORG } from "@/lib/content"
+import { SEO } from "@/lib/content"
 import { MotionProvider } from "@/components/providers/MotionProvider"
 import { Nav } from "@/components/layout/Nav"
 import { Footer } from "@/components/layout/Footer"
@@ -21,6 +21,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://volt.hr"),
   title: {
     default: SEO.home.title,
     template: "%s | Volt Web Studio",
@@ -42,14 +43,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="hr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(SCHEMA_ORG.localBusiness),
-          }}
-        />
-      </head>
       <body className="font-dm antialiased">
         <MotionProvider>
           <Nav />

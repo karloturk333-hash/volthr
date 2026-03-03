@@ -1,21 +1,11 @@
 "use client"
 
 import { m } from "motion/react"
-
-const logoNames = [
-  "AutoServis Vrbovec",
-  "Salon Ljepote Ana",
-  "Građevina Ivan",
-  "Pekara Sunce",
-  "Cvjećarnica Flora",
-  "Elektro Marko",
-  "Stolarija Hrast",
-  "Foto Studio Lux",
-]
+import { CLIENT_LOGOS } from "@/lib/content"
 
 export function ClientLogos() {
   // Duplicate for seamless loop
-  const doubled = [...logoNames, ...logoNames]
+  const doubled = [...CLIENT_LOGOS.placeholders, ...CLIENT_LOGOS.placeholders]
 
   return (
     <section id="trust-bar" className="overflow-hidden bg-white py-8">

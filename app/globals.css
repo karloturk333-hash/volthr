@@ -112,3 +112,24 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ── BrowserMockup ambient animations ── */
+@keyframes orb-pulse-tl {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.15); opacity: 0.55; }
+}
+
+@keyframes orb-pulse-br {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.45; }
+}
+
+@keyframes v-glow-pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes circuit-dot-blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.4; }
+}

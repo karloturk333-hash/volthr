@@ -49,8 +49,7 @@ export function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative font-dm text-[14px] font-medium [transition:color_0.2s_ease] hover:text-[#0D0D0D]"
-                  style={{ color: isActive ? "#0D0D0D" : "#333333" }}
+                  className={`relative font-dm text-[14px] font-medium [transition:color_0.2s_ease] hover:text-[#0D0D0D] ${isActive ? "text-[#0D0D0D]" : "text-[#333333]"}`}
                 >
                   {link.label}
                   {isActive && (
@@ -133,11 +132,7 @@ export function Nav() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="font-space text-3xl font-bold tracking-tight"
-                      style={{
-                        color: isActive ? "#0D0D0D" : "#888880",
-                        transition: "color 0.15s ease",
-                      }}
+                      className={`font-space text-3xl font-bold tracking-tight [transition:color_0.15s_ease] ${isActive ? "text-[#0D0D0D]" : "text-[#888880]"}`}
                     >
                       {link.label}
                     </Link>
