@@ -7,7 +7,7 @@ import { slideFromLeft, slideFromRight } from "@/lib/animations"
 
 export function AboutStory() {
   return (
-    <section className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32">
+    <section className="bg-transparent px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
 

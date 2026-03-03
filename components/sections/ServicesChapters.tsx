@@ -26,7 +26,7 @@ export function ServicesChapters() {
     <>
       {SERVICES_PAGE.services.map((service, i) => {
         const isEven = i % 2 === 0
-        const bg = isEven ? "bg-[#F5F4F0]" : "bg-white"
+        const bg = i === 0 ? "bg-transparent" : isEven ? "bg-[#F5F4F0]" : "bg-white"
         const textVariant = isEven ? slideFromLeft : slideFromRight
         const visualVariant = isEven ? slideFromRight : slideFromLeft
         const photoUrl = servicePhotos[service.slug]

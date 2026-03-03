@@ -8,7 +8,7 @@ export function ClientLogos() {
   const doubled = [...CLIENT_LOGOS.placeholders, ...CLIENT_LOGOS.placeholders]
 
   return (
-    <section id="trust-bar" className="overflow-hidden bg-white py-8">
+    <section id="trust-bar" className="overflow-hidden bg-transparent py-8">
       <m.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

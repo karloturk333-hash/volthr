@@ -8,7 +8,7 @@ export function AboutHero() {
   const words = ABOUT_PAGE.hero.heading.split(" ")
 
   return (
-    <section className="bg-[#F5F4F0] px-6 py-32 md:py-40">
+    <section className="bg-transparent px-6 py-32 md:py-40">
       <div className="mx-auto max-w-3xl text-center">
 
         {/* Label + rule */}

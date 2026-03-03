@@ -12,7 +12,7 @@ function buildWhatsAppUrl(message: string): string {
 
 export function PricingTiers() {
   return (
-    <section className="bg-[#F5F4F0] px-6 pb-24 md:pb-32">
+    <section className="bg-transparent px-6 pb-24 md:pb-32">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"
