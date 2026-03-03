@@ -9,7 +9,8 @@ Croatian web studio landing page. Next.js 16 App Router + React 19 + Tailwind CS
 - Animations: Motion 12.x — import from `motion/react`, NOT `framer-motion`
 - Icons: lucide-react
 - Deployment: Vercel (auto-deploy on push to main)
-- No backend — static/marketing site
+- CMS: Sanity (next-sanity + @sanity/client + @sanity/image-url) — data fetching only, Studio runs separately
+- No backend — static/marketing site (except /api/contact for Resend email)
 - Dev tooling: Playwright (visual regression via scripts/design-check.js)
 
 ## Commands
@@ -83,17 +84,18 @@ app/                  # Next.js 16 App Router (Turbopack default)
 ├── o-nama/page.tsx   # About page — AboutHero, AboutStory, AboutValues, AboutProcess, CtaPanel
 ├── usluge/page.tsx   # Services — ServicesHero, ServicesChapters, CtaPanel
 ├── cijene/page.tsx   # Pricing — PricingHero, PricingTiers, EuGrantBanner, FaqAccordion, CtaPanel
-├── kontakt/          # Contact form + Leaflet map (NOT YET BUILT)
-├── projekti/         # Portfolio, Sanity-powered (NOT YET BUILT)
+├── kontakt/page.tsx  # Contact form + Leaflet map
+├── projekti/page.tsx # Portfolio grid — fetches from Sanity with hardcoded fallback
 ├── blog/[slug]/      # Blog, Sanity-powered (NOT YET BUILT)
-└── api/contact/      # Resend + WhatsApp redirect (NOT YET BUILT)
+└── api/contact/      # Resend email API route
 components/
 ├── layout/           # Nav, Footer
 ├── ui/               # LightningBolt, Counter, BrowserMockup, shimmer-button, rainbow-button, text-reveal, bento-grid, glowing-effect, aurora-background
-├── sections/         # Hero, AboutSplit, ServicesGrid, StatsCounters, PortfolioGrid, WhyUs, Testimonials, EuGrantBanner, PricingPreview, FaqAccordion, CtaPanel, + page-specific sections
+├── sections/         # Hero, AboutSplit, ServicesGrid, StatsCounters, PortfolioGrid, ProjektiGrid, WhyUs, Testimonials, EuGrantBanner, PricingPreview, FaqAccordion, CtaPanel, ContactForm, ContactMap, + page-specific sections
 └── providers/        # MotionProvider (LazyMotion wrapper)
-lib/                  # content.ts, seo.ts, utils.ts, animations.ts
-sanity/schemas/       # blog, project, testimonial
+lib/                  # content.ts, utils.ts, animations.ts
+lib/sanity/           # client.ts, image.ts, queries.ts, types.ts, fallback.ts, index.ts
+sanity/schemas/       # project, testimonial, euGrant (reference for Sanity Studio)
 ```
 
 ## Code Style
@@ -116,7 +118,7 @@ Each is a separate component in `components/sections/`. This is the actual rende
 | 2 | About Split | `AboutSplit` (static import) | Image left (rounded-xl) + vision/mission text right |
 | 3 | Services Grid | `ServicesGrid` (dynamic) | Bento grid with glowing hover effect — 4 service cards |
 | 4 | Stats Counters | `StatsCounters` (dynamic) | Animated count-up: 7 days, 100% transparent, 85% EU, €0 hidden |
-| 5 | Portfolio Grid | `PortfolioGrid` (dynamic) | Empty state with CTA to /cijene + WhatsApp (no fake projects) |
+| 5 | Portfolio Grid | `PortfolioGrid` (dynamic) | Sanity-powered project cards (Villa Aurea, Nema Fleka) with fallback; links to /projekti |
 | 6 | Why Us | `WhyUs` (dynamic) | 3 value proposition cards |
 | 7 | Testimonials | `Testimonials` (dynamic) | Quote carousel (placeholder testimonials) |
 | 8 | EU Grant Banner | `EuGrantBanner` (dynamic) | "Do 85% financirano" — digital voucher info |
@@ -150,9 +152,12 @@ Each is a separate component in `components/sections/`. This is the actual rende
 - **Light background is non-negotiable**: #F5F4F0 everywhere. Never revert to dark theme.
 - **Space Grotesk max weight is 700**: `font-black` (900) silently falls back to 700. Use `font-bold` (700) or load weight 800/900 in layout.tsx.
 - /cijene page is BUILT (ported from reference/volt-pricing.html).
+- /projekti page is BUILT — fetches from Sanity CMS, falls back to hardcoded data (Villa Aurea + Nema Fleka) when Sanity env vars are missing.
+- /blog is NOT YET BUILT — Sanity schemas exist but no page, no Article JSON-LD, no [slug] routing yet.
 - EU grant info (ITP + digital vouchers) changes often. Keep banner Sanity-editable.
 - WhatsApp is primary contact for obrtnici. Every CTA needs WhatsApp option.
-- All primary CTAs link to `SITE.whatsapp` (https://wa.me/385953765343) since /kontakt is NOT YET BUILT. When /kontakt is built, update `HERO.cta.primary.href` and `CTA_SECTION.cta.primary.href` in lib/content.ts.
+- /kontakt page is BUILT with contact form (Resend) + Leaflet map.
+- Primary CTAs still link to `SITE.whatsapp` — update `HERO.cta.primary.href` and `CTA_SECTION.cta.primary.href` in lib/content.ts if you want them pointing to /kontakt instead.
 - NEVER hardcode content strings. Use constants file or Sanity. Import from lib/content.ts.
 - All content objects in lib/content.ts use `as const` for full TypeScript inference.
 
