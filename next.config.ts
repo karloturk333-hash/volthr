@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
     ],
   },
   headers: async () => [
@@ -26,8 +30,8 @@ const nextConfig: NextConfig = {
             "script-src 'self' 'unsafe-inline'",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
-            "img-src 'self' data: https://images.unsplash.com",
-            "connect-src 'self'",
+            "img-src 'self' data: https://images.unsplash.com https://cdn.sanity.io",
+            "connect-src 'self' https://*.api.sanity.io https://cdn.sanity.io",
             "frame-ancestors 'none'",
           ].join("; "),
         },

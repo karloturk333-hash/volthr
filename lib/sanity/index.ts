@@ -1,0 +1,5 @@
+export { client } from "./client"
+export { urlFor } from "./image"
+export { ALL_PROJECTS_QUERY, FEATURED_PROJECTS_QUERY } from "./queries"
+export { FALLBACK_PROJECTS } from "./fallback"
+export type { SanityProject, SanityTestimonial, SanityEuGrant } from "./types"
