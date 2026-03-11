@@ -1,5 +1,5 @@
 // =============================================================================
-// VOLT WEB STUDIO — Complete Site Content (Croatian)
+// VOLT — Complete Site Content (Croatian)
 // =============================================================================
 // This file contains ALL user-facing text for the Volt website.
 // Import and use directly in components. No hardcoded strings.
@@ -12,12 +12,12 @@
 
 export const SITE = {
   name: "Volt",
-  fullName: "Volt Web Studio",
-  tagline: "Web koji zarađuje.",
+  fullName: "Volt",
+  tagline: "Mi vodimo tvoju digitalnu prisutnost.",
   domain: "volt.hr",
   email: "info@volt.hr",
-  phone: "+385 95 3765 343", 
-  whatsapp: "https://wa.me/385953765343", 
+  phone: "+385 95 3765 343",
+  whatsapp: "https://wa.me/385953765343",
   address: {
     street: "Kolodvorska 21",
     city: "Vrbovec",
@@ -30,7 +30,7 @@ export const SITE = {
     linkedin: "https://linkedin.com/company/volt-hr",
     facebook: "https://facebook.com/volt.hr",
   },
-  copyright: `© ${new Date().getFullYear()} Volt Web Studio. Sva prava pridržana.`,
+  copyright: `© ${new Date().getFullYear()} Volt. Sva prava pridržana.`,
 } as const
 
 // ---------------------------------------------------------------------------
@@ -42,14 +42,14 @@ export const NAV = {
     { label: "Početna", href: "/" },
     { label: "O nama", href: "/o-nama" },
     { label: "Usluge", href: "/usluge" },
-    { label: "Projekti", href: "/projekti" },
     { label: "Cijene", href: "/cijene" },
+    { label: "Projekti", href: "/projekti" },
     { label: "Blog", href: "/blog" },
     { label: "Kontakt", href: "/kontakt" },
   ],
   cta: {
-    label: "Započni projekt",
-    href: "/kontakt",
+    label: "Piši na WhatsApp",
+    href: "https://wa.me/385953765343",
   },
 } as const
 
@@ -58,15 +58,16 @@ export const NAV = {
 // ---------------------------------------------------------------------------
 
 export const HERO = {
-  label: "Web studio iz Vrbovca",
-  heading: "Izrada web stranica za obrtnike i poduzetnike",
+  label: "Agencija za obrtnike",
+  heading: "Ti radiš svoj posao. Mi vodimo digitalnu prisutnost.",
   descriptor:
-    "Od dizajna do lansiranja — profesionalna web stranica za vaš obrt u 7 dana.",
+    "Web stranica, Instagram, Facebook, Google profil — sve vodimo mi. Ti samo odobriš sadržaj na WhatsAppu. Bez dashboarda, bez kompliciranja.",
   cta: {
-    primary: { label: "Besplatna konzultacija", href: "https://wa.me/385953765343" },
+    primary: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
     secondary: { label: "Pogledaj cijene", href: "/cijene" },
+    tertiary: { label: "Kako radimo", href: "/o-nama" },
   },
-  trust: "Potpuno transparentno. Od €399.",
+  trust: "Fiksne cijene. Bez ugovora. Otkaži bilo kad.",
   speedBadge: {
     score: 100,
     label: "Lighthouse Score",
@@ -88,41 +89,41 @@ export const CLIENT_LOGOS = {
 
 export const ABOUT_SECTION = {
   label: "O Voltu",
-  heading: "Web studio koji razumije male poduzetnike.",
-  body: "Znamo kako izgleda kad trčite između narudžbi, računa i dostava — a web stranica je zadnja stvar na koju mislite. Zato smo napravili proces koji ne traži vaše vrijeme. Vi se javite, mi napravimo sve ostalo. Za 7 dana imate stranicu koja privlači kupce, a ne samo sjedi na internetu.",
+  heading: "Digitalna prisutnost bez tvog vremena.",
+  body: "133.640 obrtnika u Hrvatskoj. Većina nema web stranicu, Instagram profil ni Google Business. Ne zato što ne žele — nego jer nemaju vremena. Volt vodi kompletnu digitalnu prisutnost za tebe. Ti radiš svoj posao, mi vodimo web, sadržaj i profile.",
   vision: {
     label: "Naša vizija",
-    text: "Svaki obrtnik u Hrvatskoj zaslužuje web prisutnost jednako profesionalnu kao i posao koji obavlja. Ne trebate tisuće eura ni mjesece čekanja da to dobijete.",
+    text: "Svaki obrtnik u Hrvatskoj zaslužuje profesionalnu digitalnu prisutnost jednako kvalitetnu kao i posao koji obavlja.",
   },
   mission: {
     label: "Naša misija",
-    text: "Omogućiti svakom obrtniku profesionalnu web stranicu — brzo, pošteno, bez kompromisa na kvaliteti. Koristimo moderne alate i AI da ubrzamo proces, a ljudsku ruku da dotjeramo svaki detalj.",
+    text: "Vodimo kompletnu digitalnu prisutnost za obrtnike — web, društvene mreže, Google profil i recenzije. Mi radimo, ti se fokusiraš na svoj zanat.",
   },
 } as const
 
 // Services accordion for redesigned homepage
 export const SERVICES_ACCORDION = {
-  label: "Usluge",
+  label: "Naše usluge",
   items: [
     {
-      title: "Web dizajn",
+      title: "Upravljanje društvenim mrežama",
       description:
-        "Kreiramo vizualni identitet koji odgovara vašem poslu. Moderno, čisto, profesionalno — bez generičnih predložaka.",
+        "Kreiramo i objavljujemo sadržaj za Instagram i Facebook — prilagođen tvojoj branši, na hrvatskom. Ti samo odobriš na WhatsAppu.",
     },
     {
-      title: "Branding",
+      title: "Web stranica",
       description:
-        "Cjelovit vizualni identitet — od logotipa do boja i tipografije. Sve usklađeno s vašom web stranicom.",
+        "Profesionalna web stranica za tvoj obrt u 7 dana. Mobilni dizajn, SEO optimizacija, kontakt forma i Google Maps — sve uključeno u Standard i Premium plan.",
     },
     {
-      title: "SEO optimizacija",
+      title: "Google Business upravljanje",
       description:
-        "Strukturirani podaci, brzina učitavanja, meta tagovi — sve što Google traži da vas klijenti pronađu.",
+        "Postavljamo i ažuriramo tvoj Google Business profil, odgovaramo na recenzije i objavljujemo tjedne novosti. Tvoji klijenti te nalaze na Googleu.",
     },
     {
-      title: "E-commerce",
+      title: "Mjesečni izvještaji",
       description:
-        "Potpuni web shop s košaricom, sigurnim plaćanjem i upravljanjem proizvodima. Vi dodajete proizvode, kupci plaćaju.",
+        "Svaki tjedan ili mjesec dobiješ izvještaj s brojem objava, dosegom i angažmanom. Transparentno i mjerljivo.",
     },
   ],
 } as const
@@ -132,16 +133,16 @@ export const WHY_US = {
   label: "Zašto Volt",
   items: [
     {
-      title: "Brza isporuka",
-      body: "Gotova web stranica u 7 dana. Ako zakasnimo — 10% popusta po danu kašnjenja. Bez izgovora.",
+      title: "Samo WhatsApp",
+      body: "Ne trebaš se prijavljivati nigdje. Novi sadržaj dobiješ na WhatsApp — odobri ili odbij jednim dodirom. Gotovo.",
     },
     {
-      title: "Fiksna cijena",
-      body: "Znate točno koliko plaćate prije nego što krenemo. Nema ponuda na upit, nema varijabilnih stavki.",
+      title: "Fiksne cijene",
+      body: "€149, €299 ili €499 mjesečno. Bez ponuda na upit, bez cjenkanja, bez iznenađenja na računu.",
     },
     {
-      title: "Rezultati koji prodaju",
-      body: "Ne prodajemo piksele — gradimo web stranice koje privlače kupce i pretvaraju posjetitelje u klijente.",
+      title: "Profesionalan sadržaj",
+      body: "Svaka objava je prilagođena tvojoj branši, na hrvatskom, s hashtagovima i CTA-om. Mi stvaramo, ti odobriš.",
     },
   ],
 } as const
@@ -183,16 +184,16 @@ export const TESTIMONIALS_TABLE = {
 } as const
 
 export const MARQUEE_WORDS = [
-  "web dizajn",
-  "razvoj",
-  "SEO",
-  "automatizacija",
-  "branding",
-  "web shopovi",
-  "landing stranice",
-  "održavanje",
-  "konzultacije",
-  "brzina",
+  "Instagram postovi",
+  "Facebook objave",
+  "Google Business",
+  "upravljanje sadržajem",
+  "WhatsApp odobrenja",
+  "mjesečni izvještaji",
+  "odgovori na recenzije",
+  "tjedni kalendar",
+  "web stranice",
+  "SEO optimizacija",
 ] as const
 
 export const PORTFOLIO = {
@@ -211,17 +212,19 @@ export const STATS = {
     {
       value: 7,
       suffix: "",
-      label: "dana do gotove stranice",
+      label: "dana za web stranicu",
+      displayValue: "7",
     },
     {
-      value: 100,
-      suffix: "%",
-      label: "transparentne cijene",
+      value: 50,
+      suffix: "+",
+      label: "objava mjesečno",
     },
     {
-      value: 85,
-      suffix: "%",
-      label: "moguće sufinanciranje putem EU vaučera",
+      value: 0,
+      suffix: "",
+      label: "tvojih sati rada",
+      displayValue: "0",
     },
     {
       value: 0,
@@ -234,54 +237,56 @@ export const STATS = {
 
 export const PRICING_PREVIEW = {
   label: "Cijene",
-  heading: "Fiksne cijene. Bez iznenađenja.",
-  subheading: "Znate točno koliko plaćate — prije nego što krenemo.",
+  heading: "Jednostavne cijene. Bez iznenađenja.",
+  subheading: "Sve uključeno. Bez ugovora. Otkaži bilo kad.",
   tiers: [
     {
-      name: "Start",
-      price: "399",
-      period: "jednokratno",
-      maintenance: "55",
-      description: "Za obrtnike koji trebaju profesionalnu online prisutnost.",
-      features: ["Do 3 stranice", "Mobilni dizajn", "Osnovna SEO optimizacija", "Kontakt forma"],
+      name: "Starter",
+      price: "149",
+      period: "/mj",
+      maintenance: "",
+      description: "Za obrtnike koji žele profesionalnu prisutnost na mrežama.",
+      features: [
+        "8 IG/FB objava mjesečno",
+        "Google Business setup",
+        "Odgovaranje na recenzije",
+        "Mjesečni izvještaj",
+      ],
       popular: false,
     },
     {
-      name: "Profesionalni",
-      price: "699",
-      period: "jednokratno",
-      maintenance: "85",
-      description: "Za poduzetnike koji žele rast i nove klijente.",
+      name: "Standard",
+      price: "299",
+      period: "/mj",
+      maintenance: "",
+      description: "Web stranica + aktivne društvene mreže. Najpopularniji izbor.",
       features: [
-        "Do 10 stranica",
-        "Custom dizajn",
-        "CMS sustav",
-        "Napredni SEO",
-        "Google Analytics",
-        "WhatsApp integracija",
+        "16 IG/FB objava mjesečno",
+        "Web stranica uključena",
+        "Google Business tjedne objave",
+        "Odgovaranje na recenzije",
+        "Tjedni izvještaj",
       ],
       popular: true,
     },
     {
       name: "Premium",
-      price: "1.299",
-      period: "jednokratno",
-      maintenance: "149",
-      description: "Za tvrtke kojima web donosi stvarni prihod.",
+      price: "499",
+      period: "/mj",
+      maintenance: "",
+      description: "Potpuno upravljanje — web, mreže, oglasi i prioritetna podrška.",
       features: [
-        "Neograničen broj stranica",
-        "Web shop ili booking",
-        "Višejezični sadržaj",
-        "Blog sustav",
-        "Premium SEO paket",
-        "Mjesečno izvješće",
+        "30 IG/FB objava + Stories",
+        "Google Business + Google Ads",
+        "Web + mjesečna ažuriranja",
         "Prioritetna podrška",
+        "Tjedni izvještaj s metrikama",
       ],
       popular: false,
     },
   ],
   cta: { label: "Pogledaj sve detalje", href: "/cijene" },
-  note: "Svi paketi uključuju: SSL certifikat, hosting, tehničku podršku. Cijene u EUR bez PDV-a.",
+  note: "Setup fee: €199 jednokratno (besplatno za Premium). Bez ugovora o vezanju.",
   popularBadge: "Najpopularniji",
   currency: "€",
   maintenanceLabel: "/mj",
@@ -291,93 +296,78 @@ export const PRICING_PAGE = {
   hero: {
     label: "Cijene",
     heading: "Transparentne cijene. Bez sitnog tiska.",
-    subheading: "Znate točno koliko plaćate — prije nego što krenemo. Bez ponuda na upit, bez skrivenih troškova.",
+    subheading: "Sve uključeno u mjesečnu cijenu. Bez ugovora o vezanju — otkaži bilo kad.",
     trustBadges: [
-      { icon: "zap", text: "Gotovo za 7 dana" },
+      { icon: "zap", text: "Rezultati od prvog mjeseca" },
       { icon: "shield-check", text: "Fiksne cijene" },
       { icon: "file-x", text: "Bez ugovora o vezanju" },
     ],
   },
   tiers: [
     {
-      name: "Start",
-      price: "399",
-      period: "jednokratno",
-      maintenance: "55",
-      description: "Za obrtnike koji trebaju profesionalnu online prisutnost.",
+      name: "Starter",
+      price: "149",
+      period: "/mj",
+      description: "Za obrtnike koji žele profesionalnu prisutnost na mrežama.",
       features: [
-        "Do 3 stranice (naslovnica, o nama, kontakt)",
-        "Mobilno prilagođen dizajn",
-        "Osnovna SEO optimizacija",
-        "Kontakt forma s email obavijestima",
-        "SSL certifikat uključen",
-        "Google Maps integracija",
-        "Povezivanje s društvenim mrežama",
-        "Obuka za ažuriranje sadržaja",
+        "8 IG/FB objava mjesečno",
+        "Google Business setup + ažuriranja",
+        "Odgovaranje na recenzije",
+        "Mjesečni izvještaj s metrikama",
+        "WhatsApp odobrenje sadržaja",
+        "Setup fee: €199 jednokratno",
       ],
       popular: false,
-      whatsappMessage: "Bok! Zanima me Start paket (€399) za izradu web stranice. Možemo li dogovoriti besplatnu konzultaciju?",
+      whatsappMessage: "Bok! Zanima me Starter plan (€149/mj) za upravljanje digitalnom prisutnošću. Možemo li dogovoriti besplatnu konzultaciju?",
     },
     {
-      name: "Profesionalni",
-      price: "699",
-      period: "jednokratno",
-      maintenance: "85",
-      description: "Za poduzetnike koji žele rast i nove klijente.",
+      name: "Standard",
+      price: "299",
+      period: "/mj",
+      description: "Web stranica + aktivne društvene mreže. Najpopularniji izbor.",
       features: [
-        "Do 10 stranica",
-        "Custom dizajn prilagođen vašem brandu",
-        "CMS sustav za samostalno ažuriranje",
-        "Napredna SEO optimizacija",
-        "Google Analytics postavljanje",
-        "WhatsApp integracija za brzi kontakt",
-        "Blog sustav",
-        "Schema.org strukturirani podaci",
-        "Brzina učitavanja < 2 sekunde",
-        "2 runde revizija dizajna",
+        "16 IG/FB objava mjesečno",
+        "Web stranica (izrada uključena)",
+        "Google Business tjedne objave",
+        "Odgovaranje na recenzije",
+        "Tjedni izvještaj s metrikama",
+        "WhatsApp odobrenje sadržaja",
+        "Setup fee: €199 jednokratno",
       ],
       popular: true,
-      whatsappMessage: "Bok! Zanima me Profesionalni paket (€699) za izradu web stranice. Možemo li dogovoriti besplatnu konzultaciju?",
+      whatsappMessage: "Bok! Zanima me Standard plan (€299/mj) s web stranicom i upravljanjem mrežama. Možemo li dogovoriti besplatnu konzultaciju?",
     },
     {
       name: "Premium",
-      price: "1.299",
-      period: "jednokratno",
-      maintenance: "149",
-      description: "Za tvrtke kojima web donosi stvarni prihod.",
+      price: "499",
+      period: "/mj",
+      description: "Potpuno upravljanje — web, mreže, oglasi i prioritetna podrška.",
       features: [
-        "Neograničen broj stranica",
-        "Web shop ili booking sustav",
-        "Višejezični sadržaj (HR + EN)",
-        "Blog sustav s kategorijama",
-        "Premium SEO paket s mjesečnim praćenjem",
-        "Mjesečno izvješće o performansama",
+        "30 IG/FB objava + Stories",
+        "Google Business + Google Ads upravljanje",
+        "Web stranica + mjesečna ažuriranja",
         "Prioritetna podrška (odgovor unutar 4h)",
-        "Stripe integracija za plaćanje",
-        "Automatski emailovi za narudžbe",
-        "A/B testiranje landing stranica",
-        "Google Search Console postavljanje",
-        "Prilagođene animacije i interakcije",
+        "Tjedni izvještaj s detaljnim metrikama",
+        "WhatsApp odobrenje sadržaja",
+        "Setup fee: besplatno",
       ],
       popular: false,
-      whatsappMessage: "Bok! Zanima me Premium paket (€1.299) za izradu web stranice. Možemo li dogovoriti besplatnu konzultaciju?",
+      whatsappMessage: "Bok! Zanima me Premium plan (€499/mj) s punim upravljanjem digitalne prisutnosti. Možemo li dogovoriti besplatnu konzultaciju?",
     },
   ],
   allInclude: {
-    heading: "Svi paketi uključuju",
-    items: ["SSL certifikat", "Hosting prvi mjesec", "Tehničku podršku", "Mobilni dizajn", "Obuku za korištenje", "GDPR kolačići"],
+    heading: "Svi planovi uključuju",
+    items: ["WhatsApp odobrenja", "Profesionalan sadržaj", "Hrvatsko tržište", "Bez ugovora", "Mjesečni/tjedni izvještaji", "GDPR sukladnost"],
   },
   guarantee: {
     heading: "Naše jamstvo",
-    text: "Ako zakasnimo s isporukom, dobivate 10% popusta po danu kašnjenja. Bez izgovora.",
+    text: "Ako niste zadovoljni nakon prvog mjeseca, vraćamo novac. Bez pitanja.",
   },
   currency: "€",
-  maintenanceLabel: "/mj",
   popularBadge: "Najpopularniji",
   ctaPrimary: "Piši na WhatsApp",
   ctaSecondary: "Pošalji upit",
-  maintenanceNote: "održavanje (opcionalno)",
-  note: "Sve cijene su u EUR bez PDV-a. Održavanje je opcionalno — bez ugovora o vezanju.",
+  note: "Sve cijene su u EUR bez PDV-a. Bez ugovora o vezanju — otkaži bilo kad.",
   addons: {
     heading: "Dodaci za rast",
     subheading: "Nadogradite plan kad budete spremni. Bez ugovora o vezanju.",
@@ -399,20 +389,19 @@ export const PRICING_PAGE = {
         whatsappMessage: "Bok! Zanima me Google Ads upravljanje add-on za €99/mj. Možemo li dogovoriti poziv?",
       },
       {
-        name: "Google Business upravljanje",
-        price: "29",
+        name: "Dodatne objave",
+        price: "49",
         period: "/mj",
-        description: "Vaš profil na Google Mapama — aktivan i optimiziran svaki tjedan.",
+        description: "Trebate više od osnovnog paketa? Dodajte još 10 objava mjesečno.",
         note: null,
         features: [
-          "Tjedne objave na Google Businessu",
-          "Odgovaranje na recenzije",
-          "Ažuriranje radnog vremena i usluga",
-          "Upload novih fotografija radova",
-          "Praćenje pozicije na Google Mapama",
+          "+10 IG/FB objava mjesečno",
+          "Isti profesionalni standard",
+          "WhatsApp odobrenje uključeno",
+          "Kombinira se s bilo kojim planom",
         ],
         badge: null,
-        whatsappMessage: "Bok! Zanima me Google Business upravljanje add-on za €29/mj. Možemo li dogovoriti poziv?",
+        whatsappMessage: "Bok! Zanima me dodatak od 10 extra objava za €49/mj. Možemo li dogovoriti poziv?",
       },
     ],
   },
@@ -420,32 +409,32 @@ export const PRICING_PAGE = {
 
 export const EU_GRANT = {
   label: "EU Potpore",
-  heading: "Do 85% troška pokriveno EU vaučerima.",
-  body: "Hrvatska poduzeća mogu iskoristiti digitalne vaučere iz Nacionalnog plana oporavka i otpornosti (NPOO) za sufinanciranje izrade web stranica, web shopova i digitalnih alata. Mi vam pomažemo s kompletnom prijavom.",
+  heading: "EU vaučeri za digitalizaciju — pratimo sve pozive za vas.",
+  body: "Kroz Nacionalni plan oporavka i otpornosti (NPOO), Hrvatska je dosad ponudila digitalne vaučere koji su pokrivali do 90% troškova izrade web stranica, web shopova i digitalnih alata za mala i srednja poduzeća. Pratimo sve nove pozive i obavještavamo vas čim se otvore.",
   highlights: [
     {
       title: "Vaučer za digitalni marketing",
-      description: "Do €2.500 za izradu web stranice, landing stranice i SEO optimizaciju.",
-      intensity: "90%",
+      description: "Prethodni pozivi pokrivali do €2.500 za izradu web stranice, landing stranice i SEO optimizaciju.",
+      intensity: "Do 90%",
     },
     {
       title: "Vaučer za složena digitalna rješenja",
-      description: "Do €19.900 za web aplikacije, automatizaciju i napredne sustave.",
-      intensity: "60–90%",
+      description: "Prethodni pozivi pokrivali do €19.900 za web aplikacije, automatizaciju i napredne sustave.",
+      intensity: "Do 90%",
     },
     {
-      title: "Novi poziv — Q2 2026",
+      title: "Novi pozivi u najavi",
       description:
-        "Alokacija od 3,9 mil. EUR za mikro, male i srednje poduzetnike. Pratimo najave i obavještavamo vas čim se otvori.",
-      intensity: "TBD",
+        "Očekuju se novi natječaji za digitalizaciju MSP-ova. Pratimo sve najave — javimo vam se čim se otvori prilika.",
+      intensity: "Pratimo",
     },
   ],
   cta: {
-    label: "Saznaj više o vaučerima",
+    label: "Kontaktirajte nas za informacije",
     href: "/kontakt",
   },
   disclaimer:
-    "Informacije o EU potporama su indikativne i podložne promjenama. Konačni uvjeti ovise o službenoj natječajnoj dokumentaciji. Volt nije konzultantska agencija za EU fondove — pomažemo s tehničkim dijelom prijave.",
+    "Prikazane informacije temelje se na dosadašnjim NPOO pozivima i podložne su promjenama. Dostupnost novih vaučera ovisi o službenoj natječajnoj dokumentaciji. Volt nije konzultantska agencija za EU fondove — pomažemo s tehničkim dijelom prijave.",
 } as const
 
 export const FAQ = {
@@ -453,52 +442,52 @@ export const FAQ = {
   heading: "Imate pitanja? Mi imamo odgovore.",
   items: [
     {
-      question: "Koliko dugo traje izrada web stranice?",
+      question: "Kako to funkcionira? Što ja moram raditi?",
       answer:
-        "Standardni rok je 7 radnih dana od početka rada. Složeniji projekti (web shopovi, višejezične stranice) mogu trajati 10–14 dana. Točan rok dogovaramo na konzultaciji.",
+        "Gotovo ništa. Mi kreiramo sadržaj za tvoj obrt — objave za Instagram, Facebook, Google Business. Ti samo na WhatsAppu odobriš ili odbiješ. Jednim dodirom.",
     },
     {
-      question: "Što ako nisam zadovoljan dizajnom?",
+      question: "Trebam li nešto instalirati ili otvarati račune?",
       answer:
-        "Svaki paket uključuje do 2 runde revizija dizajna. Prije nego što krenemo s razvojem, odobravate vizualni koncept. Ne gradimo ništa dok niste zadovoljni.",
-    },
-    {
-      question: "Trebam li plaćati mjesečno održavanje?",
-      answer:
-        "Održavanje je opcionalno, ali preporučeno. Uključuje hosting, SSL, tehničku podršku, sigurnosne nadogradnje i manje izmjene sadržaja. Bez održavanja, stranicu preuzimate i sami brinete o hostingu.",
+        "Ne. Sve vodimo mi. Jedino nam trebaš dati pristup svojim profilima na mrežama (ili ih kreiramo za tebe). Komunikacija ide preko WhatsAppa.",
     },
     {
       question: "Mogu li dobiti EU sufinanciranje?",
       answer:
-        "Da — ako ste mikro, malo ili srednje poduzeće, imate pravo na digitalne vaučere iz NPOO programa. Sufinanciranje pokriva 60–90% troškova, ovisno o vrsti vaučera. Mi vam pomažemo s tehničkim dijelom prijave.",
+        "Moguće — Hrvatska je kroz NPOO program dosad nudila digitalne vaučere koji su pokrivali do 90% troškova digitalizacije za mikro, mala i srednja poduzeća. Aktivno pratimo sve nove natječaje i obavještavamo vas čim se otvore. Kontaktirajte nas za aktualne informacije.",
     },
     {
-      question: "Radite li web shopove?",
+      question: "Što ako nisam zadovoljan sadržajem?",
       answer:
-        "Da. Premium paket uključuje potpuni web shop s košaricom, plaćanjem i upravljanjem proizvodima. Koristi se Stripe za sigurno procesiranje uplata, a vi dobivate CMS za upravljanje proizvodima bez programiranja.",
+        "Svaku objavu odobriš prije objavljivanja. Ako ti se ne sviđa — odbiješ i mi napravimo novu verziju. Bez dodatnih troškova.",
     },
     {
-      question: "Što se dogodi nakon što mi napravite stranicu?",
+      question: "Mogu li otkazati bilo kad?",
       answer:
-        "Dobivate kompletnu obuku za ažuriranje sadržaja (tekst, slike, blog). Ako imate paket održavanja, mi brinemo o svemu tehničkom — nadogradnje, sigurnost, brzina. Ako nemate, stranicu preuzimate u potpunosti.",
+        "Da. Nema ugovora o vezanju. Otkaži na kraju bilo kojeg mjeseca. Ako nisi zadovoljan nakon prvog mjeseca, vraćamo novac.",
+    },
+    {
+      question: "Koliko košta i što je sve uključeno?",
+      answer:
+        "Starter je €149/mj (8 objava + Google Business). Standard je €299/mj (16 objava + web stranica). Premium je €499/mj (30 objava + Stories + Google Ads + prioritetna podrška). Setup fee je €199 jednokratno (besplatno za Premium). Bez skrivenih troškova.",
     },
   ],
 } as const
 
 export const CTA_SECTION = {
-  heading: "Izgradimo nešto zajedno",
+  heading: "Tvoj obrt zaslužuje digitalnu prisutnost",
   subheading:
-    "Vaš obrt zaslužuje web stranicu koja prodaje.",
+    "Piši nam na WhatsApp i dogovorimo besplatnu konzultaciju. Bez obveza.",
   cta: {
-    primary: { label: "Besplatna konzultacija →", href: "https://wa.me/385953765343" },
+    primary: { label: "Piši na WhatsApp →", href: "https://wa.me/385953765343" },
     whatsapp: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
   },
-  trust: "Odgovaramo unutar 2 sata radnim danom.",
+  trust: "Fiksne cijene. Bez ugovora. 133.640 obrtnika u Hrvatskoj — svaki zaslužuje biti vidljiv online.",
 } as const
 
 export const FOOTER = {
   description:
-    "Volt je web studio iz Vrbovca specijaliziran za izradu brzih, modernih web stranica za obrtnike i male poduzetnike.",
+    "Volt je agencija za digitalnu prisutnost obrtnika i malih poduzetnika u Hrvatskoj. Web, sadržaj, društvene mreže — sve vodimo mi.",
   columns: {
     navigation: {
       title: "Navigacija",
@@ -506,8 +495,8 @@ export const FOOTER = {
         { label: "Početna", href: "/" },
         { label: "O nama", href: "/o-nama" },
         { label: "Usluge", href: "/usluge" },
-        { label: "Projekti", href: "/projekti" },
         { label: "Cijene", href: "/cijene" },
+        { label: "Projekti", href: "/projekti" },
         { label: "Blog", href: "/blog" },
         { label: "Kontakt", href: "/kontakt" },
       ],
@@ -515,11 +504,11 @@ export const FOOTER = {
     services: {
       title: "Usluge",
       links: [
-        { label: "Web dizajn", href: "/usluge#dizajn" },
-        { label: "Web razvoj", href: "/usluge#razvoj" },
-        { label: "SEO optimizacija", href: "/usluge#seo" },
-        { label: "Web shopovi", href: "/usluge#web-shop" },
-        { label: "Održavanje", href: "/usluge#odrzavanje" },
+        { label: "Društvene mreže", href: "/usluge" },
+        { label: "Web stranice", href: "/usluge" },
+        { label: "Google Business", href: "/usluge" },
+        { label: "SEO optimizacija", href: "/usluge" },
+        { label: "Google Ads", href: "/usluge" },
       ],
     },
     contact: {
@@ -548,7 +537,7 @@ export const ABOUT_PAGE = {
     paragraphs: [
       "Volt je nastao iz frustracije. Gledao sam kako obrtnici u mojoj okolici — automehaničari, frizeri, vodoinstalateri, pekari — rade vrhunski posao, ali nemaju nikakvu web prisutnost. Ili imaju stranicu iz 2014. koja se ne otvara na mobitelu.",
       "Istovremeno, agencije im nude pakete od €3.000+ i rokove od 2–3 mjeseca. Za obrtnika koji zarađuje poštekim radom, to nije opcija.",
-      "Volt rješava taj problem. Koristim moderne alate i AI-potpomognut razvoj da isporučim profesionalne web stranice u 7 dana po fiksnoj cijeni. Bez cjenkanja, bez skrivenih troškova, bez neugodnih iznenađenja.",
+      "Volt rješava taj problem. Vodimo kompletnu digitalnu prisutnost — web stranicu, društvene mreže, Google Business — sve za fiksnu mjesečnu cijenu. Ti samo odobriš sadržaj na WhatsAppu i fokusiraš se na svoj posao.",
     ],
   },
   values: {
@@ -622,35 +611,48 @@ export const ABOUT_PAGE = {
 export const SERVICES_PAGE = {
   hero: {
     label: "Usluge",
-    heading: "Sve što vam treba za uspjeh na webu.",
+    heading: "Sve što vam treba za digitalnu prisutnost.",
     subheading:
-      "Od jednostavne prezentacijske stranice do potpunog web shopa — pokrivamo sve.",
+      "Od društvenih mreža do web stranice i Google Ads-a — pokrivamo sve. Vi radite svoj posao, mi brinemo o ostatku.",
   },
   services: [
     {
-      slug: "dizajn",
-      title: "Web dizajn",
-      headline: "Dizajn koji ne izgleda kao predložak.",
+      slug: "drustvene-mreze",
+      title: "Upravljanje društvenim mrežama",
+      headline: "Profesionalan sadržaj, bez tvog vremena.",
       description:
-        "Svaka stranica je dizajnirana od nule, prilagođena vašem poslu i ciljanoj publici. Koristim moderne tipografije, čiste layoute i pametnu hijerarhiju informacija da vaša poruka dođe do kupca u sekundama.",
+        "Kreiramo i objavljujemo sadržaj za Instagram i Facebook prilagođen tvom obrtu. Svaku objavu odobriš jednim dodirom na WhatsAppu. Mi pišemo, dizajniramo i objavljujemo — ti samo kažeš da ili ne.",
       features: [
-        "Custom dizajn — nema predložaka ni tema",
-        "Mobilno prilagođen od prvog piksela",
-        "Do 2 runde revizija dizajna",
-        "Konzistentan vizualni identitet",
+        "8–30 objava mjesečno (ovisno o planu)",
+        "Profesionalni tekstovi na hrvatskom",
+        "Hashtagovi i CTA prilagođeni branši",
+        "WhatsApp odobrenje prije objave",
       ],
     },
     {
-      slug: "razvoj",
-      title: "Web razvoj",
-      headline: "Brze stranice koje Google voli.",
+      slug: "web-stranica",
+      title: "Web stranica",
+      headline: "Profesionalna stranica u 7 dana.",
       description:
-        "Kodiram ručno u Next.js — bez WordPressa, bez sporih tema, bez pluginova koji usporavaju stranicu. Rezultat: stranica koja se učitava za manje od sekunde i koja je optimizirana za pretraživače od prvog dana.",
+        "Kodiram ručno u Next.js — bez WordPressa, bez sporih tema, bez pluginova koji usporavaju stranicu. Rezultat: stranica koja se učitava za manje od sekunde i koja je optimizirana za pretraživače od prvog dana. Uključeno u Standard i Premium plan.",
       features: [
         "Next.js 16 — najbrži React framework",
         "Lighthouse score 90+ garantiran",
-        "SSL certifikat uključen",
-        "Automatski backup sadržaja",
+        "Mobilno prilagođen dizajn",
+        "SSL certifikat i hosting uključen",
+      ],
+    },
+    {
+      slug: "google-business",
+      title: "Google Business upravljanje",
+      headline: "Neka te klijenti nađu na Googleu.",
+      description:
+        "Postavljamo i ažuriramo tvoj Google Business profil, odgovaramo na recenzije, objavljujemo tjedne novosti i uploadamo fotografije tvojih radova. Tvoji klijenti te nalaze kad pretražuju Google Maps.",
+      features: [
+        "Tjedne objave na Google Businessu",
+        "Odgovaranje na sve recenzije",
+        "Ažuriranje radnog vremena i usluga",
+        "Praćenje pozicije na Google Mapama",
       ],
     },
     {
@@ -658,7 +660,7 @@ export const SERVICES_PAGE = {
       title: "SEO optimizacija",
       headline: "Nađite se na prvoj stranici Googlea.",
       description:
-        "Svaka stranica koju radim dolazi s ugrađenom SEO optimizacijom — od strukturiranih podataka i meta tagova do brzine učitavanja i mobilne prilagodbe. Za klijente koji žele više, nudim napredni SEO paket s mjesečnim praćenjem.",
+        "Svaka stranica koju radim dolazi s ugrađenom SEO optimizacijom — od strukturiranih podataka i meta tagova do brzine učitavanja i mobilne prilagodbe.",
       features: [
         "Tehnički SEO — brzina, sitemap, robots.txt",
         "Schema.org strukturirani podaci",
@@ -667,30 +669,16 @@ export const SERVICES_PAGE = {
       ],
     },
     {
-      slug: "web-shop",
-      title: "Web shopovi",
-      headline: "Prodajte online — bez komplikacija.",
+      slug: "google-ads",
+      title: "Google Ads upravljanje",
+      headline: "Mi vodimo oglase. Vi dižete telefon.",
       description:
-        "Potpuni web shop s košaricom, sigurnim plaćanjem putem Stripe-a, upravljanjem proizvodima i automatskim obavijestima. Vi dodajete proizvode, kupci plaćaju — mi brinemo o tehnici.",
+        "Postavljamo i optimiziramo Google Ads kampanje za lokalne usluge. Fokus na pozive i upite, ne na klikove. Mjesečni izvještaj s brojem leadova. Dostupno kao dodatak uz bilo koji plan.",
       features: [
-        "Stripe integracija za kartično plaćanje",
-        "Upravljanje proizvodima bez programiranja",
-        "Automatski emailovi za narudžbe",
-        "Responsive dizajn za kupovinu s mobitela",
-      ],
-    },
-    {
-      slug: "odrzavanje",
-      title: "Održavanje",
-      headline: "Mi brinemo. Vi radite svoj posao.",
-      description:
-        "Web stranica nije projekt koji napravite i zaboravite. Treba joj redovito ažuriranje, sigurnosne zakrpe i praćenje performansi. Naši planovi održavanja pokrivaju sve — tako da vi ne morate razmišljati o tome.",
-      features: [
-        "Hosting i SSL uključen",
-        "Sigurnosne nadogradnje",
-        "Manje izmjene sadržaja (tekst, slike)",
-        "Mjesečno izvješće (Premium)",
-        "Prioritetna podrška",
+        "Kampanje za lokalnu uslugu",
+        "Tjedna optimizacija ključnih riječi",
+        "A/B testiranje oglasa",
+        "Mjesečni izvještaj s brojem poziva",
       ],
     },
   ],
@@ -715,11 +703,11 @@ export const CONTACT_PAGE = {
       service: {
         label: "Što vas zanima?",
         options: [
-          "Web stranica",
-          "Web shop",
-          "Redizajn postojeće stranice",
-          "SEO optimizacija",
-          "Održavanje",
+          "Upravljanje društvenim mrežama",
+          "Web stranica + mreže (Standard plan)",
+          "Kompletno upravljanje (Premium plan)",
+          "Google Ads",
+          "Samo web stranica",
           "Nešto drugo",
         ],
       },
@@ -730,10 +718,10 @@ export const CONTACT_PAGE = {
       budget: {
         label: "Okvirni budžet",
         options: [
-          "Do €500",
-          "€500 – €1.000",
-          "€1.000 – €2.000",
-          "Više od €2.000",
+          "Do €200/mj",
+          "€200 – €350/mj",
+          "€350 – €500/mj",
+          "Više od €500/mj",
           "Ne znam još",
         ],
       },
@@ -792,11 +780,11 @@ export const PRIVACY_PAGE = {
   sections: [
     {
       title: "Voditelj obrade podataka",
-      content: "Volt Web Studio, Kolodvorska 21, 10340 Vrbovec, Hrvatska. Email: info@volt.hr. Telefon: +385 95 3765 343.",
+      content: "Volt, Kolodvorska 21, 10340 Vrbovec, Hrvatska. Email: info@volt.hr. Telefon: +385 95 3765 343.",
     },
     {
       title: "Koje podatke prikupljamo",
-      content: "Prikupljamo samo podatke koje nam dobrovoljno dostavite putem kontakt forme: ime i prezime, email adresa, telefonski broj (opcionalno) i sadržaj poruke. Ne prikupljamo podatke putem korisničkih računa jer ih nemamo. Ne prodajemo proizvode online.",
+      content: "Prikupljamo samo podatke koje nam dobrovoljno dostavite putem kontakt forme: ime i prezime, email adresa, telefonski broj (opcionalno) i sadržaj poruke. Za klijente s aktivnim planom, obrađujemo i podatke potrebne za pružanje usluge (pristup društvenim mrežama, Google Business profilu).",
     },
     {
       title: "Kolačići",
@@ -804,11 +792,11 @@ export const PRIVACY_PAGE = {
     },
     {
       title: "Svrha obrade",
-      content: "Vaše podatke koristimo isključivo za odgovaranje na vaš upit i eventualnu pripremu ponude. Podatke ne prosljeđujemo trećim stranama, osim pružatelju email usluge (Resend) koji obrađuje slanje emailova u naše ime.",
+      content: "Vaše podatke koristimo isključivo za odgovaranje na vaš upit, pripremu ponude i pružanje ugovorenih usluga. Podatke ne prosljeđujemo trećim stranama, osim pružatelju email usluge (Resend) koji obrađuje slanje emailova u naše ime.",
     },
     {
       title: "Pohrana podataka",
-      content: "Podatke iz kontakt forme pohranjujemo najdulje 12 mjeseci od primitka upita. Analitički podaci u GA4 anonimiziraju se i pohranjuju prema Googleovim pravilima zadržavanja podataka.",
+      content: "Podatke iz kontakt forme pohranjujemo najdulje 12 mjeseci od primitka upita. Podatke klijenata s aktivnim planom čuvamo za vrijeme trajanja usluge i 6 mjeseci nakon prekida. Analitički podaci u GA4 anonimiziraju se i pohranjuju prema Googleovim pravilima zadržavanja podataka.",
     },
     {
       title: "Vaša prava",
@@ -838,27 +826,27 @@ export const TERMS_PAGE = {
   sections: [
     {
       title: "Opći uvjeti",
-      content: "Korištenjem web stranice volt.hr (u daljnjem tekstu: \"Stranica\") prihvaćate ove uvjete korištenja. Stranica je u vlasništvu Volt Web Studio, Kolodvorska 21, 10340 Vrbovec, Hrvatska.",
+      content: "Korištenjem web stranice volt.hr (u daljnjem tekstu: \"Stranica\") prihvaćate ove uvjete korištenja. Stranica je u vlasništvu Volt, Kolodvorska 21, 10340 Vrbovec, Hrvatska.",
     },
     {
       title: "Usluge",
-      content: "Volt Web Studio pruža usluge izrade web stranica, web dizajna, SEO optimizacije i srodnih digitalnih usluga. Sve cijene navedene na Stranici su u eurima (EUR) bez PDV-a, osim ako nije drugačije naznačeno. Konačni opseg i cijena usluge definiraju se pisanom ponudom.",
+      content: "Volt pruža usluge upravljanja digitalnom prisutnošću, izrade web stranica, upravljanja društvenim mrežama, Google Business profila i srodnih digitalnih usluga. Sve cijene navedene na Stranici su u eurima (EUR) bez PDV-a, osim ako nije drugačije naznačeno.",
     },
     {
       title: "Intelektualno vlasništvo",
-      content: "Sav sadržaj na Stranici — uključujući tekstove, grafiku, logotipe, ikone, slike i programski kod — vlasništvo je Volt Web Studio ili se koristi uz dopuštenje vlasnika. Zabranjena je reprodukcija, distribucija ili javno prikazivanje sadržaja bez prethodne pisane suglasnosti.",
+      content: "Sav sadržaj na Stranici — uključujući tekstove, grafiku, logotipe, ikone, slike i programski kod — vlasništvo je Volt ili se koristi uz dopuštenje vlasnika. Zabranjena je reprodukcija, distribucija ili javno prikazivanje sadržaja bez prethodne pisane suglasnosti.",
     },
     {
       title: "Isporuka projekata",
-      content: "Nakon završetka projekta i potpune uplate, klijent dobiva puna prava korištenja isporučene web stranice. Volt Web Studio zadržava pravo prikazivanja projekta u svom portfoliju, osim ako se drugačije pisano dogovori.",
+      content: "Nakon završetka projekta i potpune uplate, klijent dobiva puna prava korištenja isporučene web stranice. Volt zadržava pravo prikazivanja projekta u svom portfoliju, osim ako se drugačije pisano dogovori.",
     },
     {
       title: "Ograničenje odgovornosti",
-      content: "Volt Web Studio ne odgovara za neizravne, posljedične ili posebne štete proizašle iz korištenja Stranice ili naših usluga. Naša ukupna odgovornost ograničena je na iznos koji je klijent platio za konkretnu uslugu. Ne garantiramo specifične rezultate u pogledu rangiranja na tražilicama ili poslovnih rezultata.",
+      content: "Volt ne odgovara za neizravne, posljedične ili posebne štete proizašle iz korištenja Stranice ili naših usluga. Naša ukupna odgovornost ograničena je na iznos koji je klijent platio za konkretnu uslugu. Ne garantiramo specifične rezultate u pogledu rangiranja na tražilicama ili poslovnih rezultata.",
     },
     {
       title: "Otkazivanje i povrat",
-      content: "Klijent može otkazati projekt prije početka razvoja uz puni povrat uplaćenog iznosa. Nakon početka razvoja, povrat se obračunava razmjerno dovršenom poslu. Mjesečno održavanje može se otkazati u bilo kojem trenutku, bez ugovora o vezanju.",
+      content: "Klijent može otkazati mjesečni plan u bilo kojem trenutku bez ugovora o vezanju. Jednokratni setup fee se ne vraća nakon početka rada. Ako klijent nije zadovoljan nakon prvog mjeseca, vraćamo mjesečnu naknadu u cijelosti.",
     },
     {
       title: "Privatnost",
@@ -893,6 +881,120 @@ export const BLOG_PAGE = {
   readMore: "Čitaj više →",
   publishedLabel: "Objavljeno",
   backLabel: "← Natrag na blog",
+  featuredLabel: "Istaknuto",
+  recentLabel: "Najnoviji članci",
+  ctaHeading: "Ne propusti korisne savjete",
+  ctaBody: "Pratite nas za praktične članke o web dizajnu, SEO-u i EU potporama za obrtnike.",
+  ctaCta: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
+} as const
+
+// ---------------------------------------------------------------------------
+// AI CONTENT GENERATOR (Internal tooling — admin panel only)
+// ---------------------------------------------------------------------------
+
+export const AI_CONTENT = {
+  dashboard: {
+    heading: "AI Content Generator",
+    subheading: "Generiraj gotove objave za klijente u sekundi.",
+    inputPlaceholder: "Opiši današnju ponudu, akciju ili događaj u 1–3 rečenice (npr. 'Danas akcija na muške šišanja -20%, dođite do 18h!')",
+    generateButton: "Generiraj Volt postove",
+    generatingText: "Generiranje u tijeku...",
+    copySuccess: "Kopirano!",
+    copyButton: "Kopiraj",
+    imagePromptLabel: "Za Midjourney / DALL-E / Flux",
+    historyHeading: "Povijest generiranja",
+    historyEmpty: "Još nema generiranja. Započni iznad!",
+    limitReached: "Dosegnut limit generiranja.",
+    upgradeCta: "Nadogradi plan",
+    counterLabel: "generiranja ovaj mjesec",
+    platforms: {
+      instagram: "Instagram",
+      facebook: "Facebook",
+    },
+    industryLabel: "Branša",
+    industryPlaceholder: "Odaberi branšu...",
+    industryClear: "Bez filtera",
+    modeLabel: "Način",
+    modeSingle: "Pojedinačni postovi",
+    modeCalendar: "Tjedni kalendar",
+    modeReviewReply: "Odgovor na recenziju",
+    modeListing: "Opis smjestaja",
+    modeDailySpecial: "Dnevni meni / specijal",
+    modeWhatsapp: "WhatsApp predlosci",
+    modeEmail: "Email predlosci",
+    modeBio: "Bio / Profil",
+    calendarHeading: "Tjedni kalendar sadržaja",
+    calendarDayLabel: "Dan",
+    calendarThemeLabel: "Tema",
+    reviewReplyHeading: "Odgovori na recenziju",
+    reviewReplyInputPlaceholder: "Zalijepi recenziju gosta ovdje...",
+    reviewReplyToneProfessional: "Profesionalan",
+    reviewReplyToneFriendly: "Prijateljski",
+    reviewReplyToneApologetic: "Empatican",
+    listingHeading: "Opisi smjestaja",
+    listingAirbnb: "Airbnb",
+    listingBooking: "Booking.com",
+    listingNjuskalo: "Njuskalo",
+    listingHighlights: "Kljucne prednosti",
+    dailySpecialHeading: "Dnevni specijal",
+    whatsappHeading: "WhatsApp predlosci",
+    whatsappCopyLabel: "Kopiraj poruku",
+    emailHeading: "Email predlosci",
+    emailSubjectLabel: "Predmet",
+    emailCopyLabel: "Kopiraj email",
+    bioHeading: "Bio / Profil opisi",
+    bioCopyLabel: "Kopiraj bio",
+    storiesHeading: "Instagram Stories",
+    promoEmailHeading: "Promo email",
+    promoEmailSubjectLabel: "Predmet",
+    promoEmailCopyLabel: "Kopiraj email",
+    industries: {
+      ciscenje: "Čišćenje",
+      frizerski_salon: "Frizerski salon",
+      automehanicar: "Auto mehaničar",
+      pekara: "Pekara",
+      vodoinstalater: "Vodoinstalater",
+      elektricar: "Električar",
+      fitness_trener: "Fitness trener",
+      fotograf: "Fotograf",
+      ostalo: "Ostalo",
+      kafic: "Kafic",
+      restoran: "Restoran",
+      hotel: "Hotel / Hostel",
+      villa_apartman: "Villa / Apartman",
+    },
+  },
+  brandVoice: {
+    heading: "Stil komunikacije",
+    description: "Odaberi kako zvuči tvoj sadržaj. Jednom postavi — vrijedi za svako generiranje.",
+    saved: "Spremljeno!",
+    noPreference: "Bez preferencije",
+    presets: {
+      casual: {
+        label: "Opušten i prijateljski",
+        description: "Ti-forma, emojiji, opušteno — kao da pišeš prijatelju",
+      },
+      professional: {
+        label: "Profesionalan i stručan",
+        description: "Vi-forma, manje emojija, naglasak na činjenice i stručnost",
+      },
+      warm: {
+        label: "Topao i osoban",
+        description: "Kao da domaćin osobno piše — priče, detalji, autentičnost",
+      },
+      energetic: {
+        label: "Energičan i prodajan",
+        description: "Hitnost, akcije, CTA-ovi — kratke udaračke rečenice",
+      },
+    },
+  },
+  seasons: {
+    ljeto: "Ljeto",
+    advent: "Advent",
+    uskrs: "Uskrs",
+    valentinovo: "Valentinovo",
+    none: "Bez teme",
+  },
 } as const
 
 // ---------------------------------------------------------------------------
@@ -901,58 +1003,58 @@ export const BLOG_PAGE = {
 
 export const SEO = {
   home: {
-    title: "Izrada web stranica za obrtnike | Volt Web Studio",
+    title: "Volt — Agencija za digitalnu prisutnost obrtnika | Web, mreže, Google Business",
     description:
-      "Profesionalna izrada web stranica za obrtnike u 7 dana. Od €399. Prihvaćamo digitalne vaučere — do 85% sufinanciranja. Web dizajn, SEO, web shopovi.",
+      "Agencija za obrtnike u Hrvatskoj. Vodimo web stranicu, Instagram, Facebook, Google Business — sve za fiksnu mjesečnu cijenu. Ti odobriš na WhatsAppu, mi objavimo.",
     keywords: [
-      "izrada web stranica",
-      "web dizajn hrvatska",
+      "agencija za obrtnike",
+      "upravljanje društvenim mrežama",
+      "digitalna prisutnost obrtnici",
       "web stranice za obrtnike",
-      "web agencija vrbovec",
-      "izrada web shopa",
-      "SEO optimizacija",
-      "volt web studio",
+      "google business upravljanje",
+      "volt agencija",
+      "social media za obrtnike hrvatska",
     ],
   },
   about: {
-    title: "O nama — Volt Web Studio | Web Dizajn Vrbovec",
+    title: "O nama — Volt agencija za digitalnu prisutnost obrtnika",
     description:
-      "Volt je web studio iz Vrbovca specijaliziran za brzu izradu profesionalnih web stranica za obrtnike i male poduzetnike. Fiksne cijene, 7 dana isporuke.",
+      "Volt vodi kompletnu digitalnu prisutnost za obrtnike u Hrvatskoj. Web stranica u 7 dana, upravljanje mrežama i Google Business — sve za fiksnu cijenu.",
   },
   services: {
-    title: "Usluge — Web Dizajn, Razvoj, SEO | Volt Web Studio",
+    title: "Usluge — Društvene mreže, web, Google Business, SEO | Volt",
     description:
-      "Web dizajn, razvoj, SEO optimizacija, web shopovi i održavanje. Sve što vam treba za profesionalnu web prisutnost — na jednom mjestu.",
+      "Upravljanje društvenim mrežama, izrada web stranica, Google Business, SEO optimizacija i Google Ads za obrtnike. Fiksne mjesečne cijene.",
   },
   projects: {
-    title: "Projekti — Portfolio Web Stranica | Volt Web Studio",
+    title: "Projekti — Portfolio | Volt",
     description:
-      "Pogledajte naše web projekte — stranice, shopove i landing stranice izrađene za obrtnike i male poduzetnike u Hrvatskoj.",
+      "Pogledajte kako Volt pomaže obrtnicima da izgrade digitalnu prisutnost — web stranice i upravljanje društvenim mrežama.",
   },
   pricing: {
-    title: "Cijene — Web Stranice od €399 | Volt Web Studio",
+    title: "Cijene — Starter €149/mj, Standard €299/mj, Premium €499/mj | Volt",
     description:
-      "Fiksne cijene izrade web stranica. Start €399, Profesionalni €699, Premium €1.299. Transparentno, bez skrivenih troškova. EU vaučeri prihvaćeni.",
+      "Fiksne mjesečne cijene za upravljanje digitalnom prisutnošću. Starter €149/mj, Standard €299/mj (web uključen), Premium €499/mj. Bez ugovora, otkaži bilo kad.",
   },
   contact: {
-    title: "Kontakt — Besplatna Konzultacija | Volt Web Studio",
+    title: "Kontakt — Besplatna konzultacija | Volt",
     description:
-      "Kontaktirajte Volt web studio za besplatnu konzultaciju. Odgovaramo unutar 2 sata. WhatsApp, email ili poziv — kako vam odgovara.",
+      "Kontaktirajte Volt za besplatnu konzultaciju. Odgovaramo unutar 2 sata. WhatsApp, email ili poziv — kako vam odgovara.",
   },
   blog: {
-    title: "Blog — Web Dizajn Savjeti i EU Potpore | Volt Web Studio",
+    title: "Blog — Digitalni marketing za obrtnike | Volt",
     description:
-      "Savjeti o web dizajnu, SEO optimizaciji, digitalnim vaučerima i online prisutnosti za obrtnike i male poduzetnike u Hrvatskoj.",
+      "Savjeti o digitalnoj prisutnosti, društvenim mrežama, EU potporama i SEO-u za obrtnike i male poduzetnike u Hrvatskoj.",
   },
   privacy: {
-    title: "Pravila privatnosti | Volt Web Studio",
+    title: "Pravila privatnosti | Volt",
     description:
-      "Pravila privatnosti Volt Web Studija. Saznajte kako prikupljamo, koristimo i štitimo vaše osobne podatke u skladu s GDPR-om.",
+      "Pravila privatnosti Volt agencije. Saznajte kako prikupljamo, koristimo i štitimo vaše osobne podatke u skladu s GDPR-om.",
   },
   terms: {
-    title: "Uvjeti korištenja | Volt Web Studio",
+    title: "Uvjeti korištenja | Volt",
     description:
-      "Uvjeti korištenja web stranice volt.hr. Informacije o uslugama, intelektualnom vlasništvu, ograničenju odgovornosti i mjerodavnom pravu.",
+      "Uvjeti korištenja web stranice volt.hr. Informacije o uslugama, intelektualnom vlasništvu i mjerodavnom pravu.",
   },
 } as const
 
@@ -965,14 +1067,13 @@ export const SCHEMA_ORG = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": "https://volt.hr/#business",
-    name: "Volt Web Studio",
+    name: "Volt",
     description:
-      "Web studio specijaliziran za izradu profesionalnih web stranica, web shopova i SEO optimizaciju za obrtnike i male poduzetnike u Hrvatskoj.",
+      "Agencija za digitalnu prisutnost obrtnika — web stranice, upravljanje društvenim mrežama, Google Business i SEO za obrtnike u Hrvatskoj.",
     url: "https://volt.hr",
     image: "https://volt.hr/images/og-default.png",
     telephone: "+385953765343",
     email: "info@volt.hr",
-    // Address must match SITE.address above
     address: {
       "@type": "PostalAddress",
       streetAddress: "Kolodvorska 21",
@@ -992,7 +1093,7 @@ export const SCHEMA_ORG = {
       { "@type": "AdministrativeArea", name: "Zagrebačka županija" },
       { "@type": "Country", name: "Hrvatska" },
     ],
-    priceRange: "€399 - €2500",
+    priceRange: "€149 - €499/mj",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -1011,50 +1112,42 @@ export const SCHEMA_ORG = {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Koliko dugo traje izrada web stranice?",
+        name: "Kako funkcionira Volt? Što ja moram raditi?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Standardni rok je 7 radnih dana od početka rada. Složeniji projekti mogu trajati 10–14 dana.",
+          text: "Gotovo ništa. Mi kreiramo sadržaj za tvoj obrt. Ti samo na WhatsAppu odobriš ili odbiješ jednim dodirom.",
         },
       },
       {
         "@type": "Question",
-        name: "Što ako nisam zadovoljan dizajnom?",
+        name: "Trebam li nešto instalirati?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Svaki paket uključuje do 2 runde revizija dizajna. Ne gradimo ništa dok niste zadovoljni.",
+          text: "Ne. Sve vodimo mi. Komunikacija ide preko WhatsAppa. Nema dashboarda ni aplikacija za učiti.",
         },
       },
       {
         "@type": "Question",
-        name: "Mogu li dobiti EU sufinanciranje za web stranicu?",
+        name: "Mogu li dobiti EU sufinanciranje?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Da — digitalni vaučeri iz NPOO programa pokrivaju 60–90% troškova izrade web stranice za mikro, mala i srednja poduzeća.",
+          text: "Da — digitalni vaučeri iz NPOO programa pokrivaju 60–90% troškova digitalizacije za mikro, mala i srednja poduzeća.",
         },
       },
       {
         "@type": "Question",
-        name: "Radite li web shopove?",
+        name: "Mogu li otkazati bilo kad?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Da. Premium paket uključuje potpuni web shop s košaricom, Stripe plaćanjem i upravljanjem proizvodima.",
+          text: "Da. Nema ugovora o vezanju. Otkaži na kraju bilo kojeg mjeseca.",
         },
       },
       {
         "@type": "Question",
-        name: "Trebam li plaćati mjesečno održavanje?",
+        name: "Koliko košta?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Održavanje je opcionalno. Uključuje hosting, SSL, tehničku podršku i manje izmjene sadržaja.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Što se dogodi nakon izrade stranice?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Dobivate obuku za ažuriranje sadržaja. S paketom održavanja, mi brinemo o svemu tehničkom.",
+          text: "Starter €149/mj (8 objava + Google Business). Standard €299/mj (16 objava + web). Premium €499/mj (30 objava + Google Ads). Setup fee €199 jednokratno (besplatno za Premium).",
         },
       },
     ],
@@ -1062,9 +1155,9 @@ export const SCHEMA_ORG = {
   pricingPage: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Web stranice — cijene i paketi",
+    name: "Upravljanje digitalnom prisutnošću — cijene i planovi",
     url: "https://volt.hr/cijene",
-    description: "Fiksne cijene izrade web stranica za obrtnike. Start €399, Profesionalni €699, Premium €1.299.",
+    description: "Fiksne mjesečne cijene za upravljanje digitalnom prisutnošću. Starter €149/mj, Standard €299/mj, Premium €499/mj.",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: [
@@ -1073,10 +1166,10 @@ export const SCHEMA_ORG = {
           position: 1,
           item: {
             "@type": "Offer",
-            name: "Start paket",
-            price: "399",
+            name: "Starter plan",
+            price: "149",
             priceCurrency: "EUR",
-            description: "Do 3 stranice, mobilni dizajn, osnovna SEO optimizacija, kontakt forma",
+            description: "8 IG/FB objava mjesečno, Google Business setup, odgovaranje na recenzije, mjesečni izvještaj",
           },
         },
         {
@@ -1084,10 +1177,10 @@ export const SCHEMA_ORG = {
           position: 2,
           item: {
             "@type": "Offer",
-            name: "Profesionalni paket",
-            price: "699",
+            name: "Standard plan",
+            price: "299",
             priceCurrency: "EUR",
-            description: "Do 10 stranica, custom dizajn, CMS sustav, napredna SEO optimizacija",
+            description: "16 IG/FB objava mjesečno, web stranica uključena, Google Business tjedne objave, tjedni izvještaj",
           },
         },
         {
@@ -1095,10 +1188,10 @@ export const SCHEMA_ORG = {
           position: 3,
           item: {
             "@type": "Offer",
-            name: "Premium paket",
-            price: "1299",
+            name: "Premium plan",
+            price: "499",
             priceCurrency: "EUR",
-            description: "Neograničen broj stranica, web shop, višejezični sadržaj, premium SEO paket",
+            description: "30 IG/FB objava + Stories, Google Business + Google Ads, web + mjesečna ažuriranja, prioritetna podrška",
           },
         },
       ],
