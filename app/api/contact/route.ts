@@ -40,6 +40,23 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    // CSRF: Validate Origin header
+    const origin = request.headers.get("origin")
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
+    const vercelUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : null
+
+    if (origin) {
+      const allowedOrigins = [appUrl, vercelUrl].filter(Boolean)
+      if (!allowedOrigins.some((allowed) => origin === allowed)) {
+        return NextResponse.json(
+          { success: false, error: "Nevažeći zahtjev." },
+          { status: 403 }
+        )
+      }
+    }
+
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown"
 
     if (isRateLimited(ip)) {
@@ -50,7 +67,12 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { name, email, phone, service, message, budget } = body
+    const { name, email, phone, service, message, budget, website } = body
+
+    // Honeypot: if hidden field is filled, silently reject
+    if (website) {
+      return NextResponse.json({ success: true, whatsappUrl: null })
+    }
 
     // Validate required fields
     if (!name || !email || !message) {

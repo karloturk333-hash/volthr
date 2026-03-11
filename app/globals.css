@@ -31,6 +31,13 @@
   --aurora-violet-light: #c4b5fd; /* violet-300 */
   --aurora-indigo-dark: #6366f1;  /* indigo-500 */
 
+  /* ── Semantic colors ── */
+  --color-whatsapp: #25D366;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --border-dark: #222222;
+
   /* ── Radius ── */
   --r-sm: 10px;
   --r-md: 16px;
@@ -151,4 +158,12 @@ body {
 @keyframes circuit-dot-blink {
   0%, 100% { opacity: 0; }
   50% { opacity: 0.4; }
+}
+
+/* ── Accessibility: disable infinite CSS animations for users who prefer reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  [style*="animation"] {
+    animation: none !important;
+  }
 }

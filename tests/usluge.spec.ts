@@ -9,7 +9,7 @@ test.describe("/usluge page", () => {
   // ─── 1. Page loads & title ────────────────────────────────────────────────
 
   test("has correct page title", async ({ page }) => {
-    await expect(page).toHaveTitle(/Volt Web Studio/)
+    await expect(page).toHaveTitle(/Volt/)
   })
 
   // ─── 2. Hero section ─────────────────────────────────────────────────────

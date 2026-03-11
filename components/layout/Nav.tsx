@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { m, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
@@ -19,6 +19,16 @@ export function Nav() {
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60)
   })
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add("overflow-hidden")
+    } else {
+      document.body.classList.remove("overflow-hidden")
+    }
+    return () => document.body.classList.remove("overflow-hidden")
+  }, [mobileOpen])
 
   // Stable object reference — only recreates when scrolled boolean flips
   const navStyle = useMemo(() => ({

@@ -55,7 +55,7 @@ export function FaqAccordion() {
                   onClick={() => toggle(i)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${i}`}
-                  className={`flex w-full items-center justify-between py-5 text-left sm:py-6 transition-[padding-left] duration-300 ease-out ${isOpen ? "pl-4" : "pl-0"}`}
+                  className={`flex w-full items-center justify-between py-5 text-left sm:py-6 ${isOpen ? "pl-4" : "pl-0"}`}
                 >
                   <span
                     className={`pr-4 text-base font-semibold ${isOpen ? "text-[#0D0D0D]" : "text-[#555550]"}`}

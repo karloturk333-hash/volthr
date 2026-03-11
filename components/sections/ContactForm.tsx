@@ -30,6 +30,7 @@ export function ContactForm() {
       service: formData.get("service") as string,
       message: formData.get("message") as string,
       budget: formData.get("budget") as string,
+      website: formData.get("website") as string,
     }
 
     try {
@@ -75,7 +76,7 @@ export function ContactForm() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-medium text-white"
+                  className="inline-flex items-center gap-2 rounded-full bg-[var(--color-whatsapp)] px-6 py-3 text-sm font-medium text-white"
                 >
                   <MessageCircle className="h-4 w-4" />
                   Otvori WhatsApp
@@ -84,6 +85,16 @@ export function ContactForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot — hidden from real users */}
+              <div className="absolute opacity-0" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Name */}
                 <div>
@@ -95,6 +106,7 @@ export function ContactForm() {
                     id="name"
                     name="name"
                     required
+                    aria-required="true"
                     placeholder={fields.name.placeholder}
                     className={INPUT_CLASS}
                   />
@@ -110,6 +122,7 @@ export function ContactForm() {
                     id="email"
                     name="email"
                     required
+                    aria-required="true"
                     placeholder={fields.email.placeholder}
                     className={INPUT_CLASS}
                   />
@@ -179,6 +192,7 @@ export function ContactForm() {
                   id="message"
                   name="message"
                   required
+                  aria-required="true"
                   rows={5}
                   placeholder={fields.message.placeholder}
                   className="w-full resize-none rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#999] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
@@ -211,8 +225,8 @@ export function ContactForm() {
           rel="noopener noreferrer"
           className="group block rounded-xl border border-[#E8E6E0] bg-white p-6"
         >
-          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[#25D366]/10">
-            <MessageCircle className="h-5 w-5 text-[#25D366]" />
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-whatsapp)]/10">
+            <MessageCircle className="h-5 w-5 text-[var(--color-whatsapp)]" />
           </div>
           <h3 className="font-space text-lg font-bold text-[#0D0D0D]">
             {alternatives.whatsapp.label}

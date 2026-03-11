@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
         {
           key: "Content-Security-Policy",
           value: [
@@ -31,7 +32,8 @@ const nextConfig: NextConfig = {
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com",
             "font-src 'self' https://fonts.gstatic.com",
             "img-src 'self' data: blob: https://images.unsplash.com https://cdn.sanity.io https://*.tile.openstreetmap.org https://unpkg.com",
-            "connect-src 'self' https://*.api.sanity.io https://cdn.sanity.io https://*.tile.openstreetmap.org https://*.google-analytics.com https://www.googletagmanager.com",
+            "connect-src 'self' https://*.api.sanity.io https://cdn.sanity.io https://*.tile.openstreetmap.org https://*.google-analytics.com https://www.googletagmanager.com https://*.supabase.co https://*.supabase.in",
+            "frame-src 'self'",
             "frame-ancestors 'self'",
           ].join("; "),
         },

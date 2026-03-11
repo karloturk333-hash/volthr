@@ -1,6 +1,6 @@
 "use client"
 
-import { useSyncExternalStore, useCallback } from "react"
+import { useState, useCallback } from "react"
 import { m, AnimatePresence } from "motion/react"
 import { fadeUp } from "@/lib/animations"
 
@@ -9,29 +9,37 @@ function setCookie(name: string, value: string, days: number) {
   document.cookie = `${name}=${encodeURIComponent(value)};max-age=${maxAge};path=/;SameSite=Lax`
 }
 
-// useSyncExternalStore — reads cookie without setState-in-effect
-const subscribe = () => () => {}
-
-function getSnapshot(): boolean {
-  return !document.cookie.match(/(?:^|; )volt_consent=/)
-}
-
-function getServerSnapshot(): boolean {
-  return false // hidden on server to avoid hydration mismatch
+function hasCookie(): boolean {
+  if (typeof document === "undefined") return true
+  return !!document.cookie.match(/(?:^|; )volt_consent=/)
 }
 
 export function CookieConsent() {
-  const shouldShow = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  const [dismissed, setDismissed] = useState(() => hasCookie())
 
   const accept = useCallback((value: "all" | "essential") => {
     setCookie("volt_consent", value, 365)
-    // Reload — layout reads cookie server-side for GA, banner re-checks
-    window.location.reload()
+    setDismissed(true)
+
+    // Dynamically inject GA if user accepted all
+    if (value === "all" && typeof window !== "undefined") {
+      const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+      if (gaId && !document.querySelector(`script[src*="googletagmanager"]`)) {
+        const script = document.createElement("script")
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`
+        script.async = true
+        document.head.appendChild(script)
+
+        const inline = document.createElement("script")
+        inline.textContent = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${gaId}');`
+        document.head.appendChild(inline)
+      }
+    }
   }, [])
 
   return (
     <AnimatePresence>
-      {shouldShow && (
+      {!dismissed && (
         <m.div
           className="fixed inset-x-0 bottom-0 z-50 p-4 md:p-6"
           initial="hidden"

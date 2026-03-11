@@ -29,19 +29,19 @@ export function Counter({
 
   useEffect(() => {
     if (!isInView) return
-    const steps = 60
-    const increment = target / steps
-    let current = 0
-    const timer = setInterval(() => {
-      current += increment
-      if (current >= target) {
-        setCount(target)
-        clearInterval(timer)
-      } else {
-        setCount(Math.round(current))
+    let raf: number
+    let start: number | null = null
+    const step = (timestamp: number) => {
+      if (start === null) start = timestamp
+      const elapsed = timestamp - start
+      const progress = Math.min(elapsed / duration, 1)
+      setCount(Math.round(progress * target))
+      if (progress < 1) {
+        raf = requestAnimationFrame(step)
       }
-    }, duration / steps)
-    return () => clearInterval(timer)
+    }
+    raf = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(raf)
   }, [isInView, target, duration])
 
   return (

@@ -5,7 +5,6 @@ import dynamic from "next/dynamic"
 import { m, useScroll, useTransform } from "motion/react"
 import Link from "next/link"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
-import { SpeedBadge } from "@/components/ui/SpeedBadge"
 import { HERO } from "@/lib/content"
 import { heroStagger, heroWord } from "@/lib/animations"
 
@@ -80,7 +79,7 @@ export function Hero() {
             </p>
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <ShimmerButton
                 href={HERO.cta.primary.href}
                 borderRadius="9999px"
@@ -97,12 +96,19 @@ export function Hero() {
               >
                 {HERO.cta.secondary.label}
               </MotionLink>
+              <MotionLink
+                href={HERO.cta.tertiary.href}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
+                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-[#8B5CF6] bg-transparent px-8 py-3.5 font-dm text-[14px] font-medium text-[#8B5CF6] hover:bg-[#8B5CF6] hover:text-white"
+              >
+                {HERO.cta.tertiary.label}
+              </MotionLink>
             </div>
 
-            {/* Speed badge */}
-            <div className="mt-6">
-              <SpeedBadge />
-            </div>
+            {/* Trust line */}
+            <p className="mt-6 text-sm text-[#888880]">{HERO.trust}</p>
           </m.div>
         </div>
 

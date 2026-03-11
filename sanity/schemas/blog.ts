@@ -40,7 +40,7 @@ export const blogPost = defineType({
       name: "author",
       title: "Autor",
       type: "string",
-      initialValue: "Volt Web Studio",
+      initialValue: "Volt",
     }),
     defineField({
       name: "publishedAt",
@@ -58,6 +58,7 @@ export const blogPost = defineType({
           { title: "SEO", value: "seo" },
           { title: "EU potpore", value: "eu-potpore" },
           { title: "Savjeti", value: "savjeti" },
+          { title: "AI alati", value: "ai-alati" },
         ],
       },
     }),

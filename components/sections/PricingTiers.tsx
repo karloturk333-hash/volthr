@@ -30,7 +30,7 @@ export function PricingTiers() {
               className={[
                 "relative flex flex-col rounded-xl border bg-white p-6 sm:p-8",
                 tier.popular
-                  ? "border-[#8B5CF6]"
+                  ? "border-2 border-[#8B5CF6]"
                   : "border-[#E8E6E0] md:mt-4",
               ].join(" ")}
             >
@@ -59,9 +59,11 @@ export function PricingTiers() {
                 </span>
               </div>
 
-              <p className="mt-1 text-sm text-[#888880]">
-                +{PRICING_PAGE.currency}{tier.maintenance}{PRICING_PAGE.maintenanceLabel} {PRICING_PAGE.maintenanceNote}
-              </p>
+              {tier.period && (
+                <p className="mt-1 text-sm text-[#888880]">
+                  mjesečno, bez ugovora
+                </p>
+              )}
 
               <p className="mt-4 text-sm leading-relaxed text-[#555550]">
                 {tier.description}

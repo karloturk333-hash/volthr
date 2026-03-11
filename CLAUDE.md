@@ -1,17 +1,22 @@
 # Volt Studio — Project Context for Claude
 
 ## What this project is
-Croatian web studio landing page. Next.js 16 App Router + React 19 + Tailwind CSS 4. Deployed on Vercel at volthr.vercel.app. Language: Croatian (HR). Never change any copy unless explicitly asked.
+Croatian digital agency marketing site. Next.js 16 App Router + React 19 + Tailwind CSS 4. Deployed on Vercel at volthr.vercel.app. Language: Croatian (HR). Never change any copy unless explicitly asked.
+
+**Pure marketing site** — public-facing agency pages only. All CTAs point to WhatsApp — no accounts, no login, no dashboard.
+
+**Business model:** Agency for Croatian obrtnici. Clients contact via WhatsApp. Fixed monthly retainers. EU grant navigation included.
 
 ## Stack
 - Framework: Next.js 16 (App Router, Turbopack default)
 - Styling: Tailwind CSS 4 utility classes — no inline styles, no CSS modules unless they already exist
 - Animations: Motion 12.x — import from `motion/react`, NOT `framer-motion`
 - Icons: lucide-react
+- UI primitives: shadcn/ui (avatar, badge, button, card, dropdown-menu, input, label, separator, tabs, textarea)
 - Deployment: Vercel (auto-deploy on push to main)
-- CMS: Sanity (next-sanity + @sanity/client + @sanity/image-url) — data fetching only, Studio runs separately
-- No backend — static/marketing site (except /api/contact for Resend email)
-- Dev tooling: Playwright (visual regression via scripts/design-check.js)
+- CMS: Sanity (next-sanity + @sanity/client + @sanity/image-url) — blog posts, portfolio projects. Graceful fallback when env vars missing.
+- Email: Resend (`resend`) — contact form only
+- Dev tooling: Playwright (visual regression)
 
 ## Commands
 
@@ -77,25 +82,48 @@ npx tsc --noEmit     # Type-check (no npm script defined)
 ## Architecture
 
 ```
-app/                  # Next.js 16 App Router (Turbopack default)
-├── layout.tsx        # Root: fonts (Space Grotesk + DM Sans), metadata, analytics, aurora bg
-├── globals.css       # Design tokens as CSS vars
-├── page.tsx          # Homepage — 11 sections (see Homepage Section Flow)
-├── o-nama/page.tsx   # About page — AboutHero, AboutStory, AboutValues, AboutProcess, CtaPanel
-├── usluge/page.tsx   # Services — ServicesHero, ServicesChapters, CtaPanel
-├── cijene/page.tsx   # Pricing — PricingHero, PricingTiers, EuGrantBanner, FaqAccordion, CtaPanel
-├── kontakt/page.tsx  # Contact form + Leaflet map
-├── projekti/page.tsx # Portfolio grid — fetches from Sanity with hardcoded fallback
-├── blog/[slug]/      # Blog, Sanity-powered (NOT YET BUILT)
-└── api/contact/      # Resend email API route
+app/                          # Next.js 16 App Router (Turbopack default)
+├── layout.tsx                # Root: fonts (Space Grotesk + DM Sans), metadata, analytics, aurora bg
+├── globals.css               # Design tokens as CSS vars
+├── (marketing)/
+│   ├── page.tsx              # Homepage — 11 sections (see Homepage Section Flow)
+│   ├── o-nama/page.tsx       # About page — AboutHero, AboutStory, AboutValues, AboutProcess, CtaPanel
+│   ├── usluge/page.tsx       # Services — ServicesHero, ServicesChapters, CtaPanel
+│   ├── cijene/page.tsx       # Pricing — PricingHero, PricingTiers, EuGrantBanner, FaqAccordion, CtaPanel
+│   ├── kontakt/page.tsx      # Contact form (Resend) + Leaflet map
+│   ├── projekti/page.tsx     # Portfolio grid — fetches from Sanity with hardcoded fallback
+│   ├── blog/page.tsx         # Blog index — Sanity-powered, graceful empty state
+│   ├── blog/[slug]/page.tsx  # Blog post — Sanity PortableText + Article JSON-LD
+│   ├── privatnost/page.tsx   # Privacy policy — renders from lib/content.ts
+│   └── uvjeti/page.tsx       # Terms of service — renders from lib/content.ts
+├── api/
+│   └── contact/route.ts      # POST: rate-limited (5/hr), validates, sends via Resend
+├── sitemap.ts                # Static routes + dynamic blog slugs from Sanity
+├── robots.ts                 # Robots.txt
+└── icon.svg                  # Favicon
 components/
-├── layout/           # Nav, Footer
-├── ui/               # LightningBolt, Counter, BrowserMockup, shimmer-button, rainbow-button, text-reveal, bento-grid, glowing-effect, aurora-background
-├── sections/         # Hero, AboutSplit, ServicesGrid, StatsCounters, PortfolioGrid, ProjektiGrid, WhyUs, Testimonials, EuGrantBanner, PricingPreview, FaqAccordion, CtaPanel, ContactForm, ContactMap, + page-specific sections
-└── providers/        # MotionProvider (LazyMotion wrapper)
-lib/                  # content.ts, utils.ts, animations.ts
-lib/sanity/           # client.ts, image.ts, queries.ts, types.ts, fallback.ts, index.ts
-sanity/schemas/       # project, testimonial, euGrant (reference for Sanity Studio)
+├── layout/                   # Nav, Footer
+├── ui/                       # shadcn/ui primitives + custom (BrowserMockup, Counter, LightningBolt, aurora-background, bento-grid, glowing-effect, rainbow-button, shimmer-button, text-reveal, portableTextComponents)
+├── sections/                 # All section components (see Homepage Section Flow + sub-page sections)
+├── providers/                # MotionProvider (LazyMotion wrapper)
+└── CookieConsent.tsx         # GDPR banner gating Google Analytics
+lib/
+├── content.ts                # ALL Croatian copy, SEO meta, JSON-LD schemas. NEVER hardcode strings.
+├── utils.ts                  # cn() (Tailwind merge) + safeJsonLd() (XSS-safe JSON-LD)
+├── animations.ts             # Motion variant presets: fadeUp, heroStagger, heroWord, staggerContainer, projectCard
+└── sanity/                   # client.ts, image.ts, queries.ts, types.ts, fallback.ts, index.ts
+sanity/schemas/               # project, testimonial, euGrant (reference for Sanity Studio)
+```
+
+## Environment Variables
+
+```env
+# .env.local
+RESEND_API_KEY=                       # Email delivery for contact form
+NEXT_PUBLIC_SANITY_PROJECT_ID=        # Sanity CMS (optional — site works without it)
+NEXT_PUBLIC_SANITY_DATASET=           # Sanity dataset
+SANITY_REVALIDATE_SECRET=             # ISR webhook
+NEXT_PUBLIC_GA_MEASUREMENT_ID=        # Google Analytics (GDPR-gated)
 ```
 
 ## Code Style
@@ -110,19 +138,19 @@ sanity/schemas/       # project, testimonial, euGrant (reference for Sanity Stud
 
 ## Homepage Section Flow
 
-Each is a separate component in `components/sections/`. This is the actual render order in `app/page.tsx`:
+Each is a separate component in `components/sections/`. This is the actual render order in `app/(marketing)/page.tsx`:
 
 | # | Section | Component | Key Details |
 |---|---------|-----------|-------------|
-| 1 | Hero | `Hero` (static import) | Large heading + CTA buttons (WhatsApp + /cijene) + trust badge |
+| 1 | Hero | `Hero` (static import) | Large heading + CTA buttons (WhatsApp + /cijene + /o-nama) + trust line |
 | 2 | About Split | `AboutSplit` (static import) | Image left (rounded-xl) + vision/mission text right |
 | 3 | Services Grid | `ServicesGrid` (dynamic) | Bento grid with glowing hover effect — 4 service cards |
-| 4 | Stats Counters | `StatsCounters` (dynamic) | Animated count-up: 7 days, 100% transparent, 85% EU, €0 hidden |
+| 4 | Stats Counters | `StatsCounters` (dynamic) | Animated count-up: 7 days, 50+ objava, 0 tvojih sati, €0 skrivenih |
 | 5 | Portfolio Grid | `PortfolioGrid` (dynamic) | Sanity-powered project cards (Villa Aurea, Nema Fleka) with fallback; links to /projekti |
 | 6 | Why Us | `WhyUs` (dynamic) | 3 value proposition cards |
 | 7 | Testimonials | `Testimonials` (dynamic) | Quote carousel (placeholder testimonials) |
 | 8 | EU Grant Banner | `EuGrantBanner` (dynamic) | "Do 85% financirano" — digital voucher info |
-| 9 | Pricing Preview | `PricingPreview` (dynamic) | 3 tier cards linking to /cijene |
+| 9 | Pricing Preview | `PricingPreview` (dynamic) | Starter €149, Standard €299, Premium €499 — linking to /cijene |
 | 10 | FAQ Accordion | `FaqAccordion` (dynamic) | 6 questions + Schema.org FAQPage JSON-LD |
 | 11 | CTA Panel | `CtaPanel` (dynamic) | Dark section (#0D0D0D) + WhatsApp button + trust text |
 | — | Footer | `Footer` (in layout) | Logo, Vrbovec address, WhatsApp, email, nav links, ©2026 |
@@ -140,7 +168,8 @@ Each is a separate component in `components/sections/`. This is the actual rende
 
 - Every page: unique title + description + OG image
 - Homepage: LocalBusiness + FAQPage JSON-LD
-- Blog: Article schema. Sitemap: next-sitemap auto-generation
+- Blog: Article JSON-LD (Sanity-powered, fully built)
+- Sitemap: `app/sitemap.ts` — static routes + dynamic blog slugs from Sanity
 - All images: Croatian alt text, lazy-loaded, WebP/AVIF via next/image
 
 ## Gotchas
@@ -151,13 +180,9 @@ Each is a separate component in `components/sections/`. This is the actual rende
 - **"use client" boundary**: Keep it as high as possible. Don't sprinkle on every component.
 - **Light background is non-negotiable**: #F5F4F0 everywhere. Never revert to dark theme.
 - **Space Grotesk max weight is 700**: `font-black` (900) silently falls back to 700. Use `font-bold` (700) or load weight 800/900 in layout.tsx.
-- /cijene page is BUILT (ported from reference/volt-pricing.html).
-- /projekti page is BUILT — fetches from Sanity CMS, falls back to hardcoded data (Villa Aurea + Nema Fleka) when Sanity env vars are missing.
-- /blog is NOT YET BUILT — Sanity schemas exist but no page, no Article JSON-LD, no [slug] routing yet.
+- **Resend test domain**: Contact form sends from `onboarding@resend.dev`. Needs production domain setup.
 - EU grant info (ITP + digital vouchers) changes often. Keep banner Sanity-editable.
-- WhatsApp is primary contact for obrtnici. Every CTA needs WhatsApp option.
-- /kontakt page is BUILT with contact form (Resend) + Leaflet map.
-- Primary CTAs still link to `SITE.whatsapp` — update `HERO.cta.primary.href` and `CTA_SECTION.cta.primary.href` in lib/content.ts if you want them pointing to /kontakt instead.
+- WhatsApp is primary contact for obrtnici. Every CTA points to WhatsApp.
 - NEVER hardcode content strings. Use constants file or Sanity. Import from lib/content.ts.
 - All content objects in lib/content.ts use `as const` for full TypeScript inference.
 
@@ -168,10 +193,15 @@ Each is a separate component in `components/sections/`. This is the actual rende
 - Never change Croatian copy
 - Never install dependencies without asking first (exception: motion is pre-approved)
 - Never use arbitrary Tailwind values not in this system without asking
+- Never add auth, login, admin panels, dashboards, or any backend beyond the contact form API route
 
 ## Brand Positioning
 
-Volt fills an underserved gap: 130+ Croatian agencies target SMEs/enterprises at €3K–€20K. Volt targets obrtnici at €399–€1.299 setup + €55–€149/mo — productized, transparent, fast. Competitive edge: AI-accelerated 7-day delivery, fixed pricing (no quotes), EU grant navigation (digital vouchers up to 90% co-financing).
+Volt is a digital presence agency for Croatian obrtnici. The client contacts via WhatsApp — no accounts, no dashboards.
+
+Monthly retainers: Starter €149/mj (8 posts + GBP), Standard €299/mj (16 posts + web), Premium €499/mj (30 posts + Stories + Google Ads). Setup fee €199 (free for Premium).
+
+Competitive edge: AI-powered content at agency quality, fixed pricing (no quotes), WhatsApp-first workflow, EU grant navigation.
 
 Voice: direct, specific numbers, Croatian-first, zero jargon.
 - ✅ "Gotovo za 7 dana. Ako zakasnimo, 10% popusta po danu."
@@ -183,4 +213,3 @@ Voice: direct, specific numbers, Croatian-first, zero jargon.
 - reference/demo-web-agency.html — Crafto HTML5 template used as design reference
 - @content.ts — ALL Croatian content, SEO meta, JSON-LD schemas. Import from lib/content.ts. NEVER hardcode strings.
 - @sanity-skill/SKILL.md — Sanity CMS integration patterns
-- scripts/design-check.js — Playwright visual comparison (captures localhost:3000 vs eloqwnt.com reference)

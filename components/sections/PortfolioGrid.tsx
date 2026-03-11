@@ -64,7 +64,7 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                 >
                   {/* Cover image, static image, or gradient fallback */}
                   <div
-                    className="relative h-60 w-full overflow-hidden md:h-72"
+                    className="relative aspect-[7/4] w-full overflow-hidden"
                     style={
                       project.coverImage || project.staticImage
                         ? undefined
@@ -84,7 +84,7 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                         src={project.staticImage}
                         alt={`${project.title} — ${project.category}`}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     ) : (
@@ -119,7 +119,7 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                     </p>
                     <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
                       Posjeti stranicu
-                      <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight size={14} />
                     </span>
                   </div>
                 </m.a>

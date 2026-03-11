@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import Script from "next/script"
-import { cookies } from "next/headers"
+import { cookies, headers } from "next/headers"
 import "./globals.css"
 import { SEO } from "@/lib/content"
 import { MotionProvider } from "@/components/providers/MotionProvider"
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://volt.hr"),
   title: {
     default: SEO.home.title,
-    template: "%s | Volt Web Studio",
+    template: "%s | Volt",
   },
   description: SEO.home.description,
   keywords: [...SEO.home.keywords],
@@ -49,10 +49,22 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const headersList = await headers()
+  const pathname = headersList.get("x-nextjs-matched-path") || headersList.get("x-invoke-path") || ""
+  const isStudio = pathname.startsWith("/studio")
+
   const cookieStore = await cookies()
   const consent = cookieStore.get("volt_consent")?.value
   const rawGaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
   const gaId = rawGaId && /^G-[A-Z0-9]+$/.test(rawGaId) ? rawGaId : null
+
+  if (isStudio) {
+    return (
+      <html lang="hr">
+        <body style={{ margin: 0 }}>{children}</body>
+      </html>
+    )
+  }
 
   return (
     <html lang="hr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
@@ -85,9 +97,7 @@ export default async function RootLayout({
 
         <MotionProvider>
           <div className="relative z-10">
-            <Nav />
             {children}
-            <Footer />
           </div>
           {/* GDPR Cookie Consent */}
           <CookieConsent />

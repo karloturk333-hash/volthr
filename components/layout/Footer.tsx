@@ -9,10 +9,16 @@ const socialIcons = {
   facebook: Facebook,
 } as const
 
+const socialLabels: Record<string, string> = {
+  instagram: "Posjetite nas na Instagramu",
+  linkedin: "Posjetite nas na LinkedInu",
+  facebook: "Posjetite nas na Facebooku",
+}
+
 export function Footer() {
   return (
     <footer id="footer" className="bg-[#0D0D0D]">
-      <div className="border-t border-[#222]" />
+      <div className="border-t border-[var(--border-dark)]" />
 
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-12">
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
@@ -44,8 +50,8 @@ export function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#333] text-[#888880] hover:border-[#888880] hover:text-white"
-                  aria-label={key}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-dark)] text-[#888880] hover:border-[#888880] hover:text-white"
+                  aria-label={socialLabels[key] ?? key}
                 >
                   <Icon size={16} />
                 </a>
@@ -56,7 +62,7 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#222]">
+      <div className="border-t border-[var(--border-dark)]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row md:px-12">
           <p className="text-xs text-[#555550]">
             {SITE.copyright}
