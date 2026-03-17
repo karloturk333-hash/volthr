@@ -408,33 +408,50 @@ export const PRICING_PAGE = {
 } as const
 
 export const EU_GRANT = {
-  label: "EU Potpore",
-  heading: "EU vaučeri za digitalizaciju — pratimo sve pozive za vas.",
-  body: "Kroz Nacionalni plan oporavka i otpornosti (NPOO), Hrvatska je dosad ponudila digitalne vaučere koji su pokrivali do 90% troškova izrade web stranica, web shopova i digitalnih alata za mala i srednja poduzeća. Pratimo sve nove pozive i obavještavamo vas čim se otvore.",
-  highlights: [
-    {
-      title: "Vaučer za digitalni marketing",
-      description: "Prethodni pozivi pokrivali do €2.500 za izradu web stranice, landing stranice i SEO optimizaciju.",
-      intensity: "Do 90%",
-    },
-    {
-      title: "Vaučer za složena digitalna rješenja",
-      description: "Prethodni pozivi pokrivali do €19.900 za web aplikacije, automatizaciju i napredne sustave.",
-      intensity: "Do 90%",
-    },
-    {
-      title: "Novi pozivi u najavi",
-      description:
-        "Očekuju se novi natječaji za digitalizaciju MSP-ova. Pratimo sve najave — javimo vam se čim se otvori prilika.",
-      intensity: "Pratimo",
-    },
+  label: "✦ AKTIVNI NATJEČAJ",
+  deadlineBadge: "Rok prijave: 3. travnja 2026.",
+  heading: "Do €1.500 od Zagrebačke županije. Za vašu web stranicu.",
+  pool: "Fond: €400.000 — lani odobreno svih 206 prijava.",
+  breakdown: [
+    { amount: "€2.000", label: "Cijena web stranice", highlight: false },
+    { amount: "€1.500", label: "Povrat od Županije (75%)", highlight: false },
+    { amount: "€500", label: "Vaš stvarni trošak", highlight: true },
   ],
+  steps: [
+    { num: "01", title: "Naručite stranicu", desc: "Dogovorimo izradu web stranice." },
+    { num: "02", title: "Prijavite se za potporu", desc: "Pomažemo s dokumentacijom." },
+    { num: "03", title: "Dobijete 75% natrag", desc: "Do €1.500 na vaš račun." },
+  ],
+  eligibility:
+    "Potporu mogu ostvariti mikro poduzetnici (obrt, j.d.o.o., d.o.o.) s poslovnim nastanom u Zagrebačkoj županiji, registrirani najdulje 2 godine.",
   cta: {
-    label: "Kontaktirajte nas za informacije",
-    href: "/kontakt",
+    label: "Pitajte nas o potpori",
+    href: "https://wa.me/385953765343?text=Zanima%20me%20potpora%20Zaga%C5%ADeba%C4%8Dke%20%C5%BEupanije%20za%20web%20stranicu",
   },
   disclaimer:
-    "Prikazane informacije temelje se na dosadašnjim NPOO pozivima i podložne su promjenama. Dostupnost novih vaučera ovisi o službenoj natječajnoj dokumentaciji. Volt nije konzultantska agencija za EU fondove — pomažemo s tehničkim dijelom prijave.",
+    'Natje\u010daj \u201ePotpore za po\u010detak poslovanja poduzetnika za 2026.\u201c \u2014 Zagreba\u010dka \u017eupanija. Provjerite uvjete u slu\u017ebenoj natje\u010dajnoj dokumentaciji. Volt nije konzultant za EU fondove \u2014 poma\u017eemo s tehni\u010dkim dijelom.',
+} as const
+
+export const WEBSITE_OFFER = {
+  badge: "75% povrat od Županije",
+  name: "Web stranica + EU potpora",
+  originalPrice: "2.000",
+  netPrice: "500",
+  grantLabel: "€1.500 financira Zagrebačka županija",
+  period: "jednokratno",
+  features: [
+    "5-straničan responzivni web",
+    "Domena + hosting 1 godinu",
+    "SEO postavljanje",
+    "Google Business profil",
+    "Kontakt forma",
+    "QR vizitka",
+  ],
+  cta: {
+    label: "Pitajte nas o potpori →",
+    href: "https://wa.me/385953765343?text=Zanima%20me%20potpora%20Zaga%C5%ADeba%C4%8Dke%20%C5%BEupanije%20za%20web%20stranicu",
+  },
+  note: "Dostupno za mikro poduzetnike u Zagrebačkoj županiji registrirane do 2 god.",
 } as const
 
 export const FAQ = {

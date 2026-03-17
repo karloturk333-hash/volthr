@@ -4,7 +4,7 @@ import { m } from "motion/react"
 import Link from "next/link"
 import { Check } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { PRICING_PREVIEW } from "@/lib/content"
+import { PRICING_PREVIEW, WEBSITE_OFFER } from "@/lib/content"
 import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function PricingPreview() {
@@ -112,6 +112,63 @@ export function PricingPreview() {
         >
           {PRICING_PREVIEW.note}
         </m.p>
+
+        {/* Website + EU grant one-time offer */}
+        <m.div
+          variants={fadeUp}
+          className="relative mx-auto mt-16 max-w-2xl rounded-xl border-2 border-[#8B5CF6] bg-white p-8"
+        >
+          {/* Purple badge top-right */}
+          <div className="absolute -top-4 right-6 rounded-full bg-[#8B5CF6] px-4 py-1.5 text-xs font-bold text-white">
+            {WEBSITE_OFFER.badge}
+          </div>
+
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex-1">
+              <h3 className="font-space text-xl font-bold text-[#0D0D0D]">
+                {WEBSITE_OFFER.name}
+              </h3>
+
+              {/* Price display */}
+              <div className="mt-4 flex items-baseline gap-3">
+                <span className="text-lg text-[#888880] line-through">
+                  €{WEBSITE_OFFER.originalPrice}
+                </span>
+                <span className="font-space text-5xl font-bold text-[#0D0D0D]">
+                  €{WEBSITE_OFFER.netPrice}
+                </span>
+                <span className="text-sm text-[#888880]">{WEBSITE_OFFER.period}</span>
+              </div>
+              <p className="mt-1 text-sm font-medium text-[#15803D]">
+                {WEBSITE_OFFER.grantLabel}
+              </p>
+
+              {/* Features */}
+              <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+                {WEBSITE_OFFER.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm">
+                    <Check size={14} className="mt-0.5 shrink-0 text-[#8B5CF6]" />
+                    <span className="text-[#555550]">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CTA column */}
+            <div className="flex flex-col items-start gap-3 sm:items-end">
+              <a
+                href={WEBSITE_OFFER.cta.href}
+                className="whitespace-nowrap rounded-full bg-[#8B5CF6] px-7 py-3.5 text-base font-semibold text-white"
+              >
+                {WEBSITE_OFFER.cta.label}
+              </a>
+            </div>
+          </div>
+
+          <p className="mt-6 border-t border-[#E8E6E0] pt-4 text-xs text-[#888880]">
+            {WEBSITE_OFFER.note}
+          </p>
+        </m.div>
       </m.div>
     </section>
   )
