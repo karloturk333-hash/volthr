@@ -178,7 +178,7 @@ export default async function CaseStudyPage({
           <h2 className="mt-4 mb-10 font-space text-2xl font-bold text-[#0D0D0D] md:text-3xl">
             Dizajnirane vizitke za oba suvlasnika
           </h2>
-          <BusinessCard3D cards={study.businessCards} />
+          <BusinessCard3D />
         </div>
       </section>
 
