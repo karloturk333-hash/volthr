@@ -18,7 +18,7 @@ export function EuGrantBanner() {
         <m.div variants={fadeUp} className="mb-5 flex flex-wrap items-center gap-3">
           <span className="section-label">{EU_GRANT.label}</span>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FEF2F2] px-3 py-1 text-xs font-semibold text-[#DC2626]">
-            📅 {EU_GRANT.deadlineBadge}
+            📅 {EU_GRANT.deadline}
           </span>
         </m.div>
 

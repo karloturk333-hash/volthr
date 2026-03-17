@@ -20,6 +20,19 @@ export function PricingTiers() {
         viewport={{ once: true, amount: 0.1 }}
         variants={staggerContainer}
       >
+        {/* Section label */}
+        <m.div variants={fadeUp} className="mb-14 text-center">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-[#8B5CF6]">
+            {PRICING_PAGE.monthlyLabel}
+          </p>
+          <h2 className="font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl">
+            {PRICING_PAGE.monthlyHeading}
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm font-medium text-[#8B5CF6]">
+            {PRICING_PAGE.monthlyNote}
+          </p>
+        </m.div>
+
         {/* Card grid */}
         <div className="grid items-start gap-5 md:grid-cols-3">
           {PRICING_PAGE.tiers.map((tier) => (

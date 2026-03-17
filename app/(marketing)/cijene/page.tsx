@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { SEO, SCHEMA_ORG } from "@/lib/content"
 import { safeJsonLd } from "@/lib/utils"
-import { PricingHero } from "@/components/sections/PricingHero"
+import { GrantPackageHero } from "@/components/sections/GrantPackageHero"
+import { GrantProcess } from "@/components/sections/GrantProcess"
 import { PricingTiers } from "@/components/sections/PricingTiers"
-import { EuGrantBanner } from "@/components/sections/EuGrantBanner"
 import { CtaPanel } from "@/components/sections/CtaPanel"
 
 const FaqAccordion = dynamic(() =>
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 export default function CijenePage() {
   return (
     <main>
-      <PricingHero />
+      <GrantPackageHero />
+      <GrantProcess />
       <PricingTiers />
-      <EuGrantBanner />
       <FaqAccordion />
       <CtaPanel />
       <script

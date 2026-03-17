@@ -237,59 +237,54 @@ export const STATS = {
 
 export const PRICING_PREVIEW = {
   label: "Cijene",
-  heading: "Jednostavne cijene. Bez iznenađenja.",
-  subheading: "Sve uključeno. Bez ugovora. Otkaži bilo kad.",
-  tiers: [
-    {
-      name: "Starter",
-      price: "149",
-      period: "/mj",
-      maintenance: "",
-      description: "Za obrtnike koji žele profesionalnu prisutnost na mrežama.",
-      features: [
-        "8 IG/FB objava mjesečno",
-        "Google Business setup",
-        "Odgovaranje na recenzije",
-        "Mjesečni izvještaj",
-      ],
-      popular: false,
+  heading: "Sve što trebate za digitalni start.",
+  subheading: "Web stranica uz potporu Županije + mjesečno održavanje.",
+  grantPackage: {
+    badge: "75% financira Županija",
+    name: "Digitalna prisutnost — kompletni paket",
+    originalPrice: "2.000",
+    netPrice: "500",
+    grantLabel: "€1.500 financira Zagrebačka županija",
+    features: [
+      "Web stranica (5 stranica)",
+      "Google Business profil + lokalni SEO",
+      "Domena + hosting (2 godine)",
+      "Vizualni identitet (logo + vizitke)",
+      "Pomoć s prijavom za potporu",
+    ],
+    cta: {
+      label: "Rezervirajte svoj termin →",
+      href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije.",
     },
-    {
-      name: "Standard",
-      price: "299",
-      period: "/mj",
-      maintenance: "",
-      description: "Web stranica + aktivne društvene mreže. Najpopularniji izbor.",
-      features: [
-        "16 IG/FB objava mjesečno",
-        "Web stranica uključena",
-        "Google Business tjedne objave",
-        "Odgovaranje na recenzije",
-        "Tjedni izvještaj",
-      ],
-      popular: true,
-    },
-    {
-      name: "Premium",
-      price: "499",
-      period: "/mj",
-      maintenance: "",
-      description: "Potpuno upravljanje — web, mreže, oglasi i prioritetna podrška.",
-      features: [
-        "30 IG/FB objava + Stories",
-        "Google Business + Google Ads",
-        "Web + mjesečna ažuriranja",
-        "Prioritetna podrška",
-        "Tjedni izvještaj s metrikama",
-      ],
-      popular: false,
-    },
-  ],
+  },
+  monthly: {
+    label: "✦ NAKON IZRADE",
+    heading: "Nakon što je vaša stranica gotova, mi ju održavamo živom.",
+    tiers: [
+      {
+        name: "Starter",
+        price: "149",
+        period: "/mj",
+        features: ["8 IG/FB objava", "Google Business", "Mjesečni izvještaj"],
+      },
+      {
+        name: "Standard",
+        price: "299",
+        period: "/mj",
+        features: ["16 IG/FB objava", "Google Business tjedne objave", "Tjedni izvještaj"],
+        popular: true,
+      },
+      {
+        name: "Premium",
+        price: "499",
+        period: "/mj",
+        features: ["30 objava + Stories", "Google Ads upravljanje", "Prioritetna podrška"],
+      },
+    ],
+  },
   cta: { label: "Pogledaj sve detalje", href: "/cijene" },
   note: "Setup fee: €199 jednokratno (besplatno za Premium). Bez ugovora o vezanju.",
-  popularBadge: "Najpopularniji",
   currency: "€",
-  maintenanceLabel: "/mj",
 } as const
 
 export const PRICING_PAGE = {
@@ -405,31 +400,77 @@ export const PRICING_PAGE = {
       },
     ],
   },
+  monthlyLabel: "\u2726 NAKON IZRADE \u2014 MJESE\u010CNO ODR\u017DAVANJE",
+  monthlyHeading: "Va\u0161a stranica je gotova. Sad ju treba odr\u017Eavati \u017Eivom.",
+  monthlyNote: "Ve\u0107ina na\u0161ih klijenata uz potporu odabire Standard paket za mjese\u010Dno odr\u017Eavanje.",
+} as const
+
+export const GRANT_HERO = {
+  label: "\u2726 JEDNOKRATNI PAKET S POTPOROM",
+  badge: "Svi tro\u0161kovi prihvatljivi za potporu",
+  name: "Digitalna prisutnost",
+  subtitle: "Kompletna web prisutnost za va\u0161 obrt \u2014 od stranice do Google-a.",
+  originalPrice: "2.000",
+  netPrice: "500",
+  features: [
+    "Responzivna web stranica (5 stranica)",
+    "Google Business profil + lokalni SEO",
+    "Domena + hosting (2 godine)",
+    "Vizualni identitet (logo + vizitke)",
+    "Pomo\u0107 s prijavom na potporu + dokumentacija",
+  ],
+  priceBreakdown: {
+    total: { label: "Ukupna cijena", amount: "\u20AC2.000" },
+    grant: { label: "Povrat od \u017Dupanije (75%)", amount: "-\u20AC1.500" },
+    net: { label: "Vi pla\u0107ate", amount: "\u20AC500" },
+  },
+  cta: {
+    label: "Rezervirajte svoj termin",
+    href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije.",
+  },
+  finePrint: [
+    "Rok prijave: 3. travnja 2026.",
+    "Za mikro poduzetnike u Zagreba\u010Dkoj \u017Eupaniji registrirane od 2. o\u017Eujka 2024.",
+    "Isplata s poslovnog ra\u010Duna. Min. vrijednost projekta: \u20AC2.000.",
+    "Grad Zagreb nije dio Zagreba\u010Dke \u017Eupanije.",
+  ],
+} as const
+
+export const GRANT_PROCESS = {
+  label: "\u2726 KAKO DO POTPORE?",
+  heading: "4 koraka do va\u0161e web stranice za \u20AC500.",
+  steps: [
+    { num: "01", title: "Kontaktirajte nas", desc: "Dogovorimo projekt \u2014 sadr\u017Eaj, dizajn, rokove." },
+    { num: "02", title: "Izdajemo ponudu", desc: "Dobijete predra\u010Dun koji prila\u017Eete uz prijavu." },
+    { num: "03", title: "Prijavite se na natje\u010Daj", desc: "Prijava ide preko e-prijave.hr \u2014 poma\u017Eemo s dokumentacijom." },
+    { num: "04", title: "\u017Dupanija odobri", desc: "Lani odobreno svih 206 prijava. Povrat na va\u0161 poslovni ra\u010Dun." },
+  ],
 } as const
 
 export const EU_GRANT = {
-  label: "✦ AKTIVNI NATJEČAJ",
-  deadlineBadge: "Rok prijave: 3. travnja 2026.",
-  heading: "Do €1.500 od Zagrebačke županije. Za vašu web stranicu.",
-  pool: "Fond: €400.000 — lani odobreno svih 206 prijava.",
+  label: "\u2726 AKTIVNI NATJE\u010CAJ",
+  heading: "Va\u0161a web stranica za \u20AC500.",
+  subheading: "Zagreba\u010Dka \u017Eupanija financira 75%. Vi pla\u0107ate samo \u20AC500.",
+  deadline: "3. travnja 2026.",
+  deadlineISO: "2026-04-03",
+  pool: "Fond: \u20AC400.000 \u2014 lani 206 prijava, svi odobreni.",
   breakdown: [
-    { amount: "€2.000", label: "Cijena web stranice", highlight: false },
-    { amount: "€1.500", label: "Povrat od Županije (75%)", highlight: false },
-    { amount: "€500", label: "Vaš stvarni trošak", highlight: true },
+    { amount: "\u20AC2.000", label: "Puna cijena", highlight: false },
+    { amount: "\u20AC1.500", label: "Pla\u0107a \u017Dupanija (75%)", highlight: false },
+    { amount: "\u20AC500", label: "Vi pla\u0107ate", highlight: true },
   ],
   steps: [
-    { num: "01", title: "Naručite stranicu", desc: "Dogovorimo izradu web stranice." },
-    { num: "02", title: "Prijavite se za potporu", desc: "Pomažemo s dokumentacijom." },
-    { num: "03", title: "Dobijete 75% natrag", desc: "Do €1.500 na vaš račun." },
+    { num: "01", title: "Naru\u010Dite stranicu", desc: "Dogovorimo sadr\u017Eaj i dizajn va\u0161e web stranice.", icon: "monitor" as const },
+    { num: "02", title: "Prijavite se za potporu", desc: "Poma\u017Eemo s kompletnom dokumentacijom.", icon: "file-text" as const },
+    { num: "03", title: "Dobijete 75% natrag", desc: "Do \u20AC1.500 natrag na va\u0161 poslovni ra\u010Dun.", icon: "wallet" as const },
   ],
-  eligibility:
-    "Potporu mogu ostvariti mikro poduzetnici (obrt, j.d.o.o., d.o.o.) s poslovnim nastanom u Zagrebačkoj županiji, registrirani najdulje 2 godine.",
+  eligibility: "Mikro poduzetnici (obrt, d.o.o., zadruga) u Zagreba\u010Dkoj \u017Eupaniji, registrirani od 2. o\u017Eujka 2024. ili kasnije. Vlasnik ne smije imati kumulativno vi\u0161e od 2 godine vlasni\u0161tva u bilo kojem subjektu.",
+  finePrint: "Grad Zagreb nije dio Zagreba\u010Dke \u017Eupanije. Isplata mora biti s poslovnog ra\u010Duna. Min. vrijednost projekta: \u20AC2.000.",
   cta: {
-    label: "Pitajte nas o potpori",
-    href: "https://wa.me/385953765343?text=Zanima%20me%20potpora%20Zaga%C5%ADeba%C4%8Dke%20%C5%BEupanije%20za%20web%20stranicu",
+    label: "Rezervirajte svoj termin",
+    href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije.",
   },
-  disclaimer:
-    'Natje\u010daj \u201ePotpore za po\u010detak poslovanja poduzetnika za 2026.\u201c \u2014 Zagreba\u010dka \u017eupanija. Provjerite uvjete u slu\u017ebenoj natje\u010dajnoj dokumentaciji. Volt nije konzultant za EU fondove \u2014 poma\u017eemo s tehni\u010dkim dijelom.',
+  disclaimer: 'Natje\u010Daj \u201EPotpore za po\u010Detak poslovanja poduzetnika za 2026.\u201C \u2014 Zagreba\u010Dka \u017Eupanija. Volt nije konzultant za EU fondove \u2014 poma\u017Eemo s tehni\u010Dkim dijelom prijave.',
 } as const
 
 export const GRANT_PACKAGES = {
@@ -477,8 +518,8 @@ export const GRANT_PACKAGES = {
     {
       name: "Starter paket",
       originalPrice: "2.000",
-      netPrice: "500",
-      grantReturn: "€1.500 financira Županija",
+      netPrice: "300",
+      grantReturn: "€1.700 financira Županija",
       badge: "Sve u jednom",
       popular: false,
       description: "Web + branding + društvene mreže.",
@@ -516,34 +557,34 @@ export const FAQ = {
   heading: "Imate pitanja? Mi imamo odgovore.",
   items: [
     {
-      question: "Kako to funkcionira? Što ja moram raditi?",
+      question: "Tko se može prijaviti za potporu?",
       answer:
-        "Gotovo ništa. Mi kreiramo sadržaj za tvoj obrt — objave za Instagram, Facebook, Google Business. Ti samo na WhatsAppu odobriš ili odbiješ. Jednim dodirom.",
+        "Mikro poduzetnici (obrt, d.o.o., zadruga) s poslovnim nastanom u Zagrebačkoj županiji, registrirani od 2. ožujka 2024. ili kasnije. Vlasnik ne smije imati kumulativno više od 2 godine vlasništva u bilo kojem poslovnom subjektu. Grad Zagreb nije dio Zagrebačke županije.",
     },
     {
-      question: "Trebam li nešto instalirati ili otvarati račune?",
+      question: "Koliko dugo traje postupak?",
       answer:
-        "Ne. Sve vodimo mi. Jedino nam trebaš dati pristup svojim profilima na mrežama (ili ih kreiramo za tebe). Komunikacija ide preko WhatsAppa.",
+        "Rok prijave je 3. travnja 2026. Prijave se obrađuju po redoslijedu zaprimanja (first-come-first-served). Lani je svih 206 prijava odobreno. Mi vašu stranicu možemo napraviti u 14 dana — dovoljno vremena za prijavu.",
     },
     {
-      question: "Mogu li dobiti EU sufinanciranje?",
+      question: "Mogu li se prijaviti ako sam već napravio stranicu?",
       answer:
-        "Moguće — Hrvatska je kroz NPOO program dosad nudila digitalne vaučere koji su pokrivali do 90% troškova digitalizacije za mikro, mala i srednja poduzeća. Aktivno pratimo sve nove natječaje i obavještavamo vas čim se otvore. Kontaktirajte nas za aktualne informacije.",
+        "Da — troškovi nastali u 2026. godini su prihvatljivi retroaktivno. Ako ste već naručili izradu web stranice ove godine, možete je prijaviti za potporu uz odgovarajuću dokumentaciju.",
     },
     {
-      question: "Što ako nisam zadovoljan sadržajem?",
+      question: "Što ako mi ne odobre potporu?",
       answer:
-        "Svaku objavu odobriš prije objavljivanja. Ako ti se ne sviđa — odbiješ i mi napravimo novu verziju. Bez dodatnih troškova.",
+        "Lani je odobreno svih 206 prijava — fond od €400.000 nije bio iscrpljen. Šanse su vrlo visoke. Ako ipak ne bude odobreno, cijena web stranice ostaje €2.000 i plaća se u cijelosti.",
     },
     {
-      question: "Mogu li otkazati bilo kad?",
+      question: "Moram li platiti odmah puni iznos?",
       answer:
-        "Da. Nema ugovora o vezanju. Otkaži na kraju bilo kojeg mjeseca. Ako nisi zadovoljan nakon prvog mjeseca, vraćamo novac.",
+        "Da. Isplata mora biti s poslovnog računa (ne privatnog). Vi plaćate puni iznos od €2.000, a nakon odobrenja potpore Županija vam vraća 75% (do €1.500) na poslovni račun.",
     },
     {
-      question: "Koliko košta i što je sve uključeno?",
+      question: "Što uključuje hosting 2 godine?",
       answer:
-        "Starter je €149/mj (8 objava + Google Business). Standard je €299/mj (16 objava + web stranica). Premium je €499/mj (30 objava + Stories + Google Ads + prioritetna podrška). Setup fee je €199 jednokratno (besplatno za Premium). Bez skrivenih troškova.",
+        "Domena po vašem izboru (.hr ili .com), cloud hosting s SSL certifikatom, tehničku podršku, redovite sigurnosne nadogradnje i backup. Nakon 2 godine, hosting se nastavlja za €99/god.",
     },
   ],
 } as const
