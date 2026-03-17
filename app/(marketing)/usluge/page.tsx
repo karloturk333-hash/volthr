@@ -1,8 +1,13 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import { SEO } from "@/lib/content"
 import { ServicesHero } from "@/components/sections/ServicesHero"
 import { ServicesChapters } from "@/components/sections/ServicesChapters"
 import { CtaPanel } from "@/components/sections/CtaPanel"
+
+const ServicesGrid = dynamic(() =>
+  import("@/components/sections/ServicesGrid").then((m) => ({ default: m.ServicesGrid }))
+)
 
 export const metadata: Metadata = {
   title: SEO.services.title,
@@ -21,6 +26,7 @@ export default function UslugePage() {
   return (
     <main>
       <ServicesHero />
+      <ServicesGrid />
       <ServicesChapters />
       <CtaPanel />
     </main>
