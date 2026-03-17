@@ -7,6 +7,33 @@ import type { SanityProject } from "./types"
  */
 export const FALLBACK_PROJECTS: SanityProject[] = [
   {
+    _id: "fallback-pub-cubismo",
+    _type: "project",
+    title: "Pub Cubismo",
+    slug: { current: "pub-cubismo" },
+    description:
+      "Kompletna digitalna transformacija za irski pub s 20+ godina tradicije. Moderna stranica s jelovnikom (190+ artikala), WhatsApp rezervacijama i premium vizitkama.",
+    category: "Web stranice",
+    url: "https://pub-cubismo.vercel.app",
+    staticImage: "/images/portfolio/pub-cubismo.svg",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Motion"],
+    features: [
+      "Lighthouse 100/100",
+      "190+ artikala s cijenama",
+      "WhatsApp rezervacije",
+      "Google Business optimizacija",
+      "Premium vizitke za 2 suvlasnika",
+      "Responzivni dizajn",
+      "Lokalni SEO",
+    ],
+    featured: true,
+    order: 0,
+    client: "Pub Cubismo",
+    location: "Lonjica / Vrbovec",
+    language: "hr",
+    caseStudySlug: "pub-cubismo",
+  },
+  {
     _id: "fallback-villa-aurea",
     _type: "project",
     title: "Villa Aurea",

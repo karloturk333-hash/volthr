@@ -117,10 +117,22 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                     <p className="mb-5 line-clamp-2 font-dm text-[15px] leading-relaxed text-[#555550]">
                       {project.description}
                     </p>
-                    <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
-                      Posjeti stranicu
-                      <ArrowUpRight size={14} />
-                    </span>
+                    <div className="flex items-center gap-4">
+                      <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
+                        Posjeti stranicu
+                        <ArrowUpRight size={14} />
+                      </span>
+                      {project.caseStudySlug && (
+                        <Link
+                          href={`/projekti/${project.caseStudySlug}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#0D0D0D] hover:text-[#8B5CF6]"
+                        >
+                          Studija slučaja
+                          <ArrowRight size={14} />
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </m.a>
               ))}

@@ -785,6 +785,61 @@ export const PROJECTS_PAGE = {
 } as const
 
 // ---------------------------------------------------------------------------
+// CASE STUDIES
+// ---------------------------------------------------------------------------
+
+export const PUB_CUBISMO = {
+  title: "Pub Cubismo",
+  headline: "Kompletna digitalna transformacija",
+  subtitle: "20+ godina tradicije. Novo digitalno lice.",
+  tags: ["Web dizajn", "Vizitke", "Branding"],
+  url: "https://pub-cubismo.vercel.app",
+  challenge:
+    "Pub Cubismo je imao zastarjelu WordPress stranicu iz 2020. koja nije bila mobilno prilagodena, nije imala jelovnik s cijenama, i nije generirala rezervacije.",
+  solution:
+    "Izradili smo modernu, brzu stranicu s kompletnim jelovnikom (190+ artikala), sustavom za WhatsApp rezervacije, Google Reviews integracijom, i optimizacijom za lokalni SEO. Dodatno smo dizajnirali premium vizitke za oba suvlasnika.",
+  stats: [
+    { value: "100/100", label: "Performance" },
+    { value: "100/100", label: "Accessibility" },
+    { value: "14", label: "Dana izrade" },
+    { value: "190+", label: "Artikala u jelovniku" },
+    { value: "2", label: "Premium vizitke" },
+    { value: "1", label: "Google Business profil" },
+  ],
+  results: [
+    "Lighthouse: 100/100 Performance, 100/100 Accessibility",
+    "Vrijeme izrade: 14 dana",
+    "Jelovnik: 190+ artikala s cijenama",
+    "WhatsApp rezervacije integrirane",
+    "Premium vizitke za 2 suvlasnika",
+    "Google Business profil optimiziran",
+  ],
+  businessCards: [
+    {
+      name: "Miroslav Colig",
+      role: "CEO / Event Manager",
+      frontColor: "#1a4a2e",
+      backColor: "#241C10",
+    },
+    {
+      name: "Mario Colig",
+      role: "Suvlasnik / BBQ Chef",
+      frontColor: "#1a4a2e",
+      backColor: "#241C10",
+    },
+  ],
+  cta: {
+    label: "Trebate slican projekt?",
+    href: "https://wa.me/385953765343?text=Zanima%20me%20izrada%20web%20stranice%20za%20moj%20posao",
+  },
+  seo: {
+    title: "Pub Cubismo — Studija slucaja | Volt",
+    description:
+      "Kako smo za Pub Cubismo izgradili modernu web stranicu s jelovnikom od 190+ artikala, WhatsApp rezervacijama i Lighthouse 100/100.",
+  },
+} as const
+
+// ---------------------------------------------------------------------------
 // /PRIVATNOST PAGE
 // ---------------------------------------------------------------------------
 

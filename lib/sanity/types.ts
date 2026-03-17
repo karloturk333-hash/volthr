@@ -22,6 +22,7 @@ export interface SanityProject {
   client: string
   location: string
   language: string
+  caseStudySlug?: string
 }
 
 export interface SanityTestimonial {

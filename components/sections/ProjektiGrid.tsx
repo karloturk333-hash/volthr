@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { m } from "motion/react"
 import Image from "next/image"
-import { ArrowUpRight, MapPin } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react"
 import { PROJECTS_PAGE } from "@/lib/content"
 import { projectCard, staggerContainerProjects, fadeUp } from "@/lib/animations"
 import type { SanityProject } from "@/lib/sanity/types"
@@ -139,11 +140,23 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                     ))}
                   </div>
 
-                  {/* External link indicator */}
-                  <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
-                    Posjeti stranicu
-                    <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
+                  {/* Links */}
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
+                      Posjeti stranicu
+                      <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </span>
+                    {project.caseStudySlug && (
+                      <Link
+                        href={`/projekti/${project.caseStudySlug}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#0D0D0D] hover:text-[#8B5CF6]"
+                      >
+                        Studija slučaja
+                        <ArrowRight size={14} />
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </m.a>
             ))}
