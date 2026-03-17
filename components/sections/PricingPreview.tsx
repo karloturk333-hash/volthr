@@ -3,15 +3,14 @@
 import { m } from "motion/react"
 import Link from "next/link"
 import { Check } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { PRICING_PREVIEW, WEBSITE_OFFER } from "@/lib/content"
+import { PRICING_PREVIEW } from "@/lib/content"
 import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function PricingPreview() {
   return (
     <section className="border-b border-t border-[#E8E6E0] bg-[#F5F4F0] px-6 py-24 md:py-32 lg:py-36">
       <m.div
-        className="max-w-7xl mx-auto"
+        className="mx-auto max-w-7xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -30,145 +29,123 @@ export function PricingPreview() {
 
         <m.p
           variants={fadeUp}
-          className="mt-4 text-center text-base text-[#555550]"
+          className="mt-4 text-center font-dm text-base text-[#555550]"
         >
           {PRICING_PREVIEW.subheading}
         </m.p>
 
-        <div className="mt-14 grid items-start gap-5 md:grid-cols-3">
-          {PRICING_PREVIEW.tiers.map((tier) => (
-            <m.div
-              key={tier.name}
-              variants={fadeUp}
-              whileHover={{ y: -4 }}
-              className={cn(
-                "relative flex flex-col rounded-xl border bg-white p-6 sm:p-8",
-                tier.popular ? "border-[#8B5CF6]" : "border-[#E8E6E0] md:mt-4",
-              )}
-            >
-              {/* Solid top stripe for popular */}
-              {tier.popular && (
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#8B5CF6]" />
-              )}
-
-              {/* Popular badge */}
-              {tier.popular && (
-                <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#8B5CF6] px-5 py-1.5 text-xs font-bold text-white">
-                  {PRICING_PREVIEW.popularBadge}
-                </div>
-              )}
-
-              <h3 className="font-space text-xl font-bold text-[#0D0D0D]">
-                {tier.name}
-              </h3>
-
-              <div className="mt-4">
-                <span className="font-space text-4xl font-bold text-[#0D0D0D]">
-                  {PRICING_PREVIEW.currency}{tier.price}
-                </span>
-                <span className="ml-2 text-sm text-[#888880]">
-                  {tier.period}
-                </span>
-              </div>
-
-              <p className="mt-1 text-sm text-[#888880]">
-                +{PRICING_PREVIEW.currency}{tier.maintenance}{PRICING_PREVIEW.maintenanceLabel}
-              </p>
-
-              <p className="mt-4 text-sm leading-relaxed text-[#555550]">
-                {tier.description}
-              </p>
-
-              <ul className="mt-6 flex flex-1 flex-col gap-3">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-sm">
-                    <Check
-                      size={16}
-                      className="mt-0.5 shrink-0 text-[#8B5CF6]"
-                    />
-                    <span className="text-[#555550]">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href="/cijene"
-                className={cn(
-                  "mt-8 block rounded-full py-3 text-center text-sm font-semibold",
-                  tier.popular
-                    ? "bg-[#8B5CF6] text-white"
-                    : "border border-[#0D0D0D] bg-transparent text-[#0D0D0D]",
-                )}
-              >
-                {PRICING_PREVIEW.cta.label}
-              </Link>
-            </m.div>
-          ))}
-        </div>
-
-        <m.p
-          variants={fadeUp}
-          className="mt-8 text-center text-xs text-[#888880]"
-        >
-          {PRICING_PREVIEW.note}
-        </m.p>
-
-        {/* Website + EU grant one-time offer */}
+        {/* ============ PRIMARY: Grant Package ============ */}
         <m.div
           variants={fadeUp}
-          className="relative mx-auto mt-16 max-w-2xl rounded-xl border-2 border-[#8B5CF6] bg-white p-8"
+          className="relative mx-auto mt-14 max-w-3xl rounded-xl border-2 border-[#8B5CF6] bg-white p-8 md:p-10"
         >
-          {/* Purple badge top-right */}
-          <div className="absolute -top-4 right-6 rounded-full bg-[#8B5CF6] px-4 py-1.5 text-xs font-bold text-white">
-            {WEBSITE_OFFER.badge}
+          {/* Badge */}
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#8B5CF6] px-5 py-1.5 text-xs font-bold text-white">
+            {PRICING_PREVIEW.grantPackage.badge}
           </div>
 
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
             <div className="flex-1">
-              <h3 className="font-space text-xl font-bold text-[#0D0D0D]">
-                {WEBSITE_OFFER.name}
+              <h3 className="font-space text-xl font-bold text-[#0D0D0D] md:text-2xl">
+                {PRICING_PREVIEW.grantPackage.name}
               </h3>
 
-              {/* Price display */}
-              <div className="mt-4 flex items-baseline gap-3">
-                <span className="text-lg text-[#888880] line-through">
-                  €{WEBSITE_OFFER.originalPrice}
+              {/* Price */}
+              <div className="mt-5 flex items-baseline gap-3">
+                <span className="font-dm text-xl text-[#888880] line-through">
+                  {PRICING_PREVIEW.currency}{PRICING_PREVIEW.grantPackage.originalPrice}
                 </span>
-                <span className="font-space text-5xl font-bold text-[#0D0D0D]">
-                  €{WEBSITE_OFFER.netPrice}
+                <span className="font-space text-5xl font-bold text-[#0D0D0D] md:text-6xl">
+                  {PRICING_PREVIEW.currency}{PRICING_PREVIEW.grantPackage.netPrice}
                 </span>
-                <span className="text-sm text-[#888880]">{WEBSITE_OFFER.period}</span>
               </div>
-              <p className="mt-1 text-sm font-medium text-[#15803D]">
-                {WEBSITE_OFFER.grantLabel}
+              <p className="mt-1 font-dm text-sm font-medium text-[#15803D]">
+                {PRICING_PREVIEW.grantPackage.grantLabel}
               </p>
 
               {/* Features */}
-              <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-                {WEBSITE_OFFER.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm">
-                    <Check size={14} className="mt-0.5 shrink-0 text-[#8B5CF6]" />
+              <ul className="mt-6 space-y-3">
+                {PRICING_PREVIEW.grantPackage.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 font-dm text-sm">
+                    <Check size={16} className="mt-0.5 shrink-0 text-[#8B5CF6]" />
                     <span className="text-[#555550]">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* CTA column */}
-            <div className="flex flex-col items-start gap-3 sm:items-end">
+            {/* CTA */}
+            <div className="flex flex-col items-start gap-3 md:items-end md:pt-8">
               <a
-                href={WEBSITE_OFFER.cta.href}
-                className="whitespace-nowrap rounded-full bg-[#8B5CF6] px-7 py-3.5 text-base font-semibold text-white"
+                href={PRICING_PREVIEW.grantPackage.cta.href}
+                className="whitespace-nowrap rounded-full bg-[#8B5CF6] px-7 py-3.5 font-dm text-base font-semibold text-white"
               >
-                {WEBSITE_OFFER.cta.label}
+                {PRICING_PREVIEW.grantPackage.cta.label}
               </a>
             </div>
           </div>
-
-          <p className="mt-6 border-t border-[#E8E6E0] pt-4 text-xs text-[#888880]">
-            {WEBSITE_OFFER.note}
-          </p>
         </m.div>
+
+        {/* ============ SECONDARY: Monthly Tiers ============ */}
+        <m.div variants={fadeUp} className="mt-20">
+          <div className="mb-4 flex items-center justify-center">
+            <span className="font-dm text-[11px] font-semibold uppercase tracking-widest text-[#8B5CF6]">
+              {PRICING_PREVIEW.monthly.label}
+            </span>
+          </div>
+          <p className="mb-10 text-center font-dm text-base text-[#555550]">
+            {PRICING_PREVIEW.monthly.heading}
+          </p>
+
+          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-3">
+            {PRICING_PREVIEW.monthly.tiers.map((tier) => (
+              <div
+                key={tier.name}
+                className={
+                  "popular" in tier && tier.popular
+                    ? "rounded-xl border border-[#8B5CF6] bg-white p-5"
+                    : "rounded-xl border border-[#E8E6E0] bg-white p-5"
+                }
+              >
+                <div className="flex items-baseline justify-between">
+                  <h4 className="font-space text-base font-bold text-[#0D0D0D]">
+                    {tier.name}
+                  </h4>
+                  <div>
+                    <span className="font-space text-2xl font-bold text-[#0D0D0D]">
+                      {PRICING_PREVIEW.currency}{tier.price}
+                    </span>
+                    <span className="font-dm text-xs text-[#888880]">{tier.period}</span>
+                  </div>
+                </div>
+                <ul className="mt-4 space-y-2">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 font-dm text-xs">
+                      <Check size={12} className="mt-0.5 shrink-0 text-[#8B5CF6]" />
+                      <span className="text-[#555550]">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center">
+            <Link
+              href={PRICING_PREVIEW.cta.href}
+              className="font-dm text-sm font-medium text-[#8B5CF6] hover:underline"
+            >
+              {PRICING_PREVIEW.cta.label}
+            </Link>
+          </div>
+        </m.div>
+
+        <m.p
+          variants={fadeUp}
+          className="mt-8 text-center font-dm text-xs text-[#888880]"
+        >
+          {PRICING_PREVIEW.note}
+        </m.p>
       </m.div>
     </section>
   )

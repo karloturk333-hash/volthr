@@ -258,27 +258,27 @@ export const PRICING_PREVIEW = {
     },
   },
   monthly: {
-    label: "✦ NAKON IZRADE",
+    label: "✦ MJESEČNO ODRŽAVANJE",
     heading: "Nakon što je vaša stranica gotova, mi ju održavamo živom.",
     tiers: [
       {
-        name: "Starter",
-        price: "149",
+        name: "Održavanje",
+        price: "49",
         period: "/mj",
-        features: ["8 IG/FB objava", "Google Business", "Mjesečni izvještaj"],
+        features: ["Hosting + SSL + backupi", "Sigurnosne nadogradnje", "1 izmjena sadržaja/mj"],
       },
       {
-        name: "Standard",
-        price: "299",
+        name: "Rast",
+        price: "99",
         period: "/mj",
-        features: ["16 IG/FB objava", "Google Business tjedne objave", "Tjedni izvještaj"],
+        features: ["4 objave na mrežama", "Google Business tjedno", "Mjesečni izvještaj"],
         popular: true,
       },
       {
-        name: "Premium",
-        price: "499",
+        name: "Partner",
+        price: "199",
         period: "/mj",
-        features: ["30 objava + Stories", "Google Ads upravljanje", "Prioritetna podrška"],
+        features: ["12 objava na mrežama", "Google Ads osnovno", "Podrška isti dan"],
       },
     ],
   },
@@ -445,6 +445,113 @@ export const GRANT_PROCESS = {
     { num: "03", title: "Prijavite se na natje\u010Daj", desc: "Prijava ide preko e-prijave.hr \u2014 poma\u017Eemo s dokumentacijom." },
     { num: "04", title: "\u017Dupanija odobri", desc: "Lani odobreno svih 206 prijava. Povrat na va\u0161 poslovni ra\u010Dun." },
   ],
+} as const
+
+export const ONE_TIME_PACKAGES = {
+  label: "\u2726 JEDNOKRATNI PAKETI",
+  heading: "Web stranica za va\u0161 obrt.",
+  grantNote: "Bez potpore? Imamo i pakete bez natje\u010Daja.",
+  packages: [
+    {
+      name: "Brzi Start",
+      price: "399",
+      badge: "Najpovoljniji",
+      popular: false,
+      delivery: "5 radnih dana",
+      features: [
+        "3-strani\u010Dna responzivna web stranica",
+        "Mobilno optimizirano",
+        "Osnovni SEO (meta tagovi, sitemap)",
+        "Kontakt forma (WhatsApp ili email)",
+        "Google Maps integracija",
+      ],
+      whatsappMessage: "Bok! Zanima me paket 'Brzi Start' za \u20AC399.",
+    },
+    {
+      name: "Digitalna Prisutnost",
+      price: "799",
+      badge: "Najpopularniji",
+      popular: true,
+      delivery: "7 radnih dana",
+      features: [
+        "5-strani\u010Dna responzivna web stranica",
+        "Custom dizajn",
+        "Full SEO (Schema.org, JSON-LD, lokalni SEO)",
+        "Google Business profil + optimizacija",
+        "Domena (.hr ili .com, 1 godina)",
+        "WhatsApp integracija",
+      ],
+      whatsappMessage: "Bok! Zanima me paket 'Digitalna Prisutnost' za \u20AC799.",
+    },
+    {
+      name: "Kompletni Paket",
+      price: "1.299",
+      badge: "Sve u jednom",
+      popular: false,
+      delivery: "10 radnih dana",
+      features: [
+        "Sve iz Digitalne Prisutnosti",
+        "Logo dizajn + vizualni identitet",
+        "Digitalne vizitke (QR)",
+        "Domena + hosting (2 godine)",
+        "Setup dru\u0161tvenih mre\u017Ea (IG + FB)",
+        "Print-ready dizajn vizitki",
+      ],
+      whatsappMessage: "Bok! Zanima me 'Kompletni Paket' za \u20AC1.299.",
+    },
+  ],
+} as const
+
+export const MAINTENANCE_TIERS = {
+  label: "\u2726 MJESE\u010CNO ODR\u017DAVANJE",
+  heading: "Va\u0161a stranica je gotova. Sad ju treba odr\u017Eavati \u017Eivom.",
+  note: "Ve\u0107ina klijenata uz stranicu odabire Rast paket.",
+  tiers: [
+    {
+      name: "Odr\u017Eavanje",
+      price: "49",
+      period: "/mj",
+      features: [
+        "Hosting + SSL + backupi",
+        "Sigurnosne nadogradnje",
+        "1 izmjena sadr\u017Eaja mjese\u010Dno",
+      ],
+    },
+    {
+      name: "Rast",
+      price: "99",
+      period: "/mj",
+      popular: true,
+      features: [
+        "Sve iz Odr\u017Eavanja",
+        "4 objave na dru\u0161tvenim mre\u017Eama",
+        "Google Business post tjedno",
+        "Mjese\u010Dni analytics izvje\u0161taj",
+      ],
+    },
+    {
+      name: "Partner",
+      price: "199",
+      period: "/mj",
+      features: [
+        "Sve iz Rasta",
+        "12 objava na dru\u0161tvenim mre\u017Eama",
+        "Google Ads upravljanje (osnovno)",
+        "Mjese\u010Dni strate\u0161ki poziv (15 min)",
+        "Podr\u0161ka isti dan",
+      ],
+    },
+  ],
+  guarantee: "Bez ugovora. Otka\u017Ei bilo kad.",
+} as const
+
+export const POST_GRANT_BANNER = {
+  heading: "Natje\u010Daj za potporu je zavr\u0161en.",
+  body: "Pratimo sve nove natje\u010Daje \u2014 prijavite se za obavijest kad se otvori sljede\u0107i.",
+  cta: {
+    label: "Prijavi se za obavijest",
+    href: "https://wa.me/385953765343?text=Bok!%20%C5%BDelim%20biti%20obavije%C5%A1ten%2Fa%20o%20sljede%C4%87em%20natje%C4%8Daju%20za%20potporu.",
+  },
 } as const
 
 export const EU_GRANT = {
