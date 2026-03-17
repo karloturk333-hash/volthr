@@ -15,7 +15,7 @@ export const FALLBACK_PROJECTS: SanityProject[] = [
       "Kompletna digitalna transformacija za irski pub s 20+ godina tradicije. Moderna stranica s jelovnikom (190+ artikala), WhatsApp rezervacijama i premium vizitkama.",
     category: "Web stranice",
     url: "https://pub-cubismo.vercel.app",
-    staticImage: "/images/portfolio/pub-cubismo.svg",
+    staticImage: "/images/portfolio/pub-cubismo.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "Motion"],
     features: [
       "Lighthouse 100/100",
