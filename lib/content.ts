@@ -48,8 +48,8 @@ export const NAV = {
     { label: "Kontakt", href: "/kontakt" },
   ],
   cta: {
-    label: "Piši na WhatsApp",
-    href: "https://wa.me/385953765343",
+    label: "€500 web stranica →",
+    href: "/cijene",
   },
 } as const
 
@@ -62,9 +62,10 @@ export const HERO = {
   heading: "Ti radiš svoj posao. Mi vodimo digitalnu prisutnost.",
   descriptor:
     "Web stranica, Instagram, Facebook, Google profil — sve vodimo mi. Ti samo odobriš sadržaj na WhatsAppu. Bez dashboarda, bez kompliciranja.",
+  grantLine: "Iskoristi potporu Županije — web stranica od €500.",
   cta: {
-    primary: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
-    secondary: { label: "Pogledaj cijene", href: "/cijene" },
+    primary: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije." },
+    secondary: { label: "€500 web stranica →", href: "/cijene" },
     tertiary: { label: "Kako radimo", href: "/o-nama" },
   },
   trust: "Fiksne cijene. Bez ugovora. Otkaži bilo kad.",
@@ -699,10 +700,10 @@ export const FAQ = {
 export const CTA_SECTION = {
   heading: "Tvoj obrt zaslužuje digitalnu prisutnost",
   subheading:
-    "Piši nam na WhatsApp i dogovorimo besplatnu konzultaciju. Bez obveza.",
+    "Web stranica od €500 uz potporu Županije. Piši nam — odgovaramo u roku 2 sata.",
   cta: {
-    primary: { label: "Piši na WhatsApp →", href: "https://wa.me/385953765343" },
-    whatsapp: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
+    primary: { label: "Piši na WhatsApp →", href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije." },
+    whatsapp: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije." },
   },
   trust: "Fiksne cijene. Bez ugovora. 133.640 obrtnika u Hrvatskoj — svaki zaslužuje biti vidljiv online.",
 } as const
@@ -736,6 +737,11 @@ export const FOOTER = {
     contact: {
       title: "Kontakt",
     },
+  },
+  grant: {
+    title: "Partneri u digitalizaciji",
+    text: "Potpora Zagrebačke županije za digitalizaciju poduzetnika — do 75% povrata troškova izrade web stranice.",
+    cta: { label: "Saznaj više →", href: "/cijene" },
   },
   legal: {
     privacy: { label: "Pravila privatnosti", href: "/privatnost" },
@@ -1163,7 +1169,7 @@ export const BLOG_PAGE = {
   emptyState: {
     heading: "Blog se priprema.",
     body: "Uskoro objavljujemo prve članke o web dizajnu, SEO-u i EU digitalnim vaučerima. U međuvremenu, javite nam se za besplatnu konzultaciju.",
-    cta: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
+    cta: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije." },
   },
   readMore: "Čitaj više →",
   publishedLabel: "Objavljeno",
@@ -1172,7 +1178,7 @@ export const BLOG_PAGE = {
   recentLabel: "Najnoviji članci",
   ctaHeading: "Ne propusti korisne savjete",
   ctaBody: "Pratite nas za praktične članke o web dizajnu, SEO-u i EU potporama za obrtnike.",
-  ctaCta: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343" },
+  ctaCta: { label: "Piši na WhatsApp", href: "https://wa.me/385953765343?text=Bok!%20Zanima%20me%20izrada%20web%20stranice%20uz%20potporu%20Zagreba%C4%8Dke%20%C5%BEupanije." },
 } as const
 
 // ---------------------------------------------------------------------------
@@ -1290,9 +1296,9 @@ export const AI_CONTENT = {
 
 export const SEO = {
   home: {
-    title: "Volt — Agencija za digitalnu prisutnost obrtnika | Web, mreže, Google Business",
+    title: "Volt — Web stranica za €500 uz potporu Županije | Agencija za obrtnike",
     description:
-      "Agencija za obrtnike u Hrvatskoj. Vodimo web stranicu, Instagram, Facebook, Google Business — sve za fiksnu mjesečnu cijenu. Ti odobriš na WhatsAppu, mi objavimo.",
+      "Web stranica za €500 uz potporu Zagrebačke županije (75% povrat). Rok prijave: 3. travnja 2026. Kompletna digitalna prisutnost za vaš obrt — web, Google Business, vizualni identitet.",
     keywords: [
       "agencija za obrtnike",
       "upravljanje društvenim mrežama",

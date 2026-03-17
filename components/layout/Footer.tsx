@@ -61,6 +61,21 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Grant partner */}
+      <div className="border-t border-[var(--border-dark)]">
+        <div className="mx-auto flex max-w-7xl flex-col items-start gap-2 px-6 py-6 md:px-12">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#8B5CF6]">
+            {FOOTER.grant.title}
+          </p>
+          <p className="max-w-lg text-xs leading-relaxed text-[#555550]">
+            {FOOTER.grant.text}
+          </p>
+          <Link href={FOOTER.grant.cta.href} className="text-xs font-medium text-[#8B5CF6] hover:underline">
+            {FOOTER.grant.cta.label}
+          </Link>
+        </div>
+      </div>
+
       {/* Bottom bar */}
       <div className="border-t border-[var(--border-dark)]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row md:px-12">

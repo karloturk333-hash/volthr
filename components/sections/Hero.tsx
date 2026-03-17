@@ -78,6 +78,11 @@ export function Hero() {
               {HERO.descriptor}
             </p>
 
+            {/* Grant line */}
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#F0FDF4] px-4 py-2 font-dm text-sm font-semibold text-[#15803D]">
+              ✦ {HERO.grantLine}
+            </p>
+
             {/* CTAs */}
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <ShimmerButton
