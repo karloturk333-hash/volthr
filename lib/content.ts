@@ -432,26 +432,83 @@ export const EU_GRANT = {
     'Natje\u010daj \u201ePotpore za po\u010detak poslovanja poduzetnika za 2026.\u201c \u2014 Zagreba\u010dka \u017eupanija. Provjerite uvjete u slu\u017ebenoj natje\u010dajnoj dokumentaciji. Volt nije konzultant za EU fondove \u2014 poma\u017eemo s tehni\u010dkim dijelom.',
 } as const
 
-export const WEBSITE_OFFER = {
-  badge: "75% povrat od Županije",
-  name: "Web stranica + EU potpora",
-  originalPrice: "2.000",
-  netPrice: "500",
-  grantLabel: "€1.500 financira Zagrebačka županija",
-  period: "jednokratno",
-  features: [
-    "5-straničan responzivni web",
-    "Domena + hosting 1 godinu",
-    "SEO postavljanje",
-    "Google Business profil",
-    "Kontakt forma",
-    "QR vizitka",
+export const GRANT_PACKAGES = {
+  label: "JEDNOKRATNI PAKETI",
+  heading: "Uz EU potporu — vaša web stranica od €200.",
+  subheading:
+    "Zagrebačka županija financira 75% troškova. Vi plaćate samo ostatak.",
+  note: "* Potpora Zagrebačke županije — 75% povrat za poduzetnike registrirane do 2 godine.",
+  packages: [
+    {
+      name: "Google vizit karta",
+      originalPrice: "800",
+      netPrice: "200",
+      grantReturn: "€600 financira Županija",
+      badge: "Brzi start",
+      popular: false,
+      description: "Jednostranična stranica i Google prisutnost.",
+      features: [
+        "One-page landing stranica",
+        "Google Business setup + optimizacija",
+        "Osnovni SEO",
+      ],
+      whatsappMessage:
+        "Bok! Zanima me paket 'Google vizit karta' s potporom Županije.",
+    },
+    {
+      name: "Stranica za 500€",
+      originalPrice: "2.000",
+      netPrice: "500",
+      grantReturn: "€1.500 financira Županija",
+      badge: "Najpopularniji",
+      popular: true,
+      description: "Kompletna web stranica za vaš obrt.",
+      features: [
+        "5-straničan responzivni web",
+        "Domena + hosting 1 godinu",
+        "SEO postavljanje",
+        "Google Business profil",
+        "Kontakt forma",
+        "QR vizitka",
+      ],
+      whatsappMessage:
+        "Bok! Zanima me paket 'Stranica za 500€' s potporom Županije.",
+    },
+    {
+      name: "Starter paket",
+      originalPrice: "2.000",
+      netPrice: "500",
+      grantReturn: "€1.500 financira Županija",
+      badge: "Sve u jednom",
+      popular: false,
+      description: "Web + branding + društvene mreže.",
+      features: [
+        "Web stranica",
+        "Logo dizajn",
+        "Dizajn posjetnice",
+        "Setup društvenih mreža",
+        "Google Business profil",
+      ],
+      whatsappMessage:
+        "Bok! Zanima me 'Starter paket' s potporom Županije.",
+    },
   ],
+} as const
+
+// Backward-compatible alias for homepage PricingPreview
+export const WEBSITE_OFFER = {
+  badge: GRANT_PACKAGES.packages[1].badge,
+  name: GRANT_PACKAGES.packages[1].name,
+  originalPrice: GRANT_PACKAGES.packages[1].originalPrice,
+  netPrice: GRANT_PACKAGES.packages[1].netPrice,
+  grantLabel: GRANT_PACKAGES.packages[1].grantReturn,
+  period: "jednokratno" as const,
+  features: GRANT_PACKAGES.packages[1].features,
   cta: {
     label: "Pitajte nas o potpori →",
     href: "https://wa.me/385953765343?text=Zanima%20me%20potpora%20Zaga%C5%ADeba%C4%8Dke%20%C5%BEupanije%20za%20web%20stranicu",
   },
-  note: "Dostupno za mikro poduzetnike u Zagrebačkoj županiji registrirane do 2 god.",
+  note: GRANT_PACKAGES.note,
 } as const
 
 export const FAQ = {
@@ -816,16 +873,26 @@ export const PUB_CUBISMO = {
   ],
   businessCards: [
     {
-      name: "Miroslav Colig",
+      name: "Miroslav \u010Colig",
       role: "CEO / Event Manager",
+      phone: "091 514 8827",
+      email: "miro.colig@gmail.com",
       frontColor: "#1a4a2e",
-      backColor: "#241C10",
+      backColor: "#3d2f1f",
+      borderColor: "#8b7635",
+      accentColor: "#d4a933",
+      services: ["Catering", "Food & Beer truck", "Eventi", "Pub Cubismo", "Platz Cafe & Bistro"],
     },
     {
-      name: "Mario Colig",
+      name: "Mario \u010Colig",
       role: "Suvlasnik / BBQ Chef",
+      phone: "098 979 3656",
+      email: "info@pubcubismo.com",
       frontColor: "#1a4a2e",
-      backColor: "#241C10",
+      backColor: "#3d2f1f",
+      borderColor: "#8b7635",
+      accentColor: "#d4a933",
+      services: ["Catering", "Food & Beer truck", "Eventi", "Pub Cubismo", "Platz Cafe & Bistro"],
     },
   ],
   cta: {
