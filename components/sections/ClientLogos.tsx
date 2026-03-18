@@ -20,7 +20,7 @@ export function ClientLogos() {
           {doubled.map((name, i) => (
             <span
               key={i}
-              className="whitespace-nowrap font-dm text-sm font-medium tracking-wide text-[#999]"
+              className="whitespace-nowrap font-dm text-sm font-medium tracking-wide text-[#888880]"
             >
               {name}
             </span>

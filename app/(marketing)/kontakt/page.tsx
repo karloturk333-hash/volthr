@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO.contact.title,
     description: SEO.contact.description,
+    url: "/kontakt",
+    type: "website",
     locale: "hr_HR",
   },
 }

@@ -14,6 +14,14 @@ import { Button } from "@/components/ui/button"
 export const metadata: Metadata = {
   title: SEO.blog.title,
   description: SEO.blog.description,
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: SEO.blog.title,
+    description: SEO.blog.description,
+    url: "/blog",
+    type: "website",
+    locale: "hr_HR",
+  },
 }
 
 async function getBlogPosts(): Promise<SanityBlogPost[]> {

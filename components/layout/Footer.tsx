@@ -33,7 +33,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-[#888880] hover:text-white"
+                className="text-sm text-[#A8A8A0] hover:text-white"
               >
                 {link.label}
               </Link>
@@ -67,7 +67,7 @@ export function Footer() {
           <p className="text-xs font-semibold uppercase tracking-widest text-[#8B5CF6]">
             {FOOTER.grant.title}
           </p>
-          <p className="max-w-lg text-xs leading-relaxed text-[#555550]">
+          <p className="max-w-lg text-xs leading-relaxed text-[#A8A8A0]">
             {FOOTER.grant.text}
           </p>
           <Link href={FOOTER.grant.cta.href} className="text-xs font-medium text-[#8B5CF6] hover:underline">
@@ -79,14 +79,14 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-[var(--border-dark)]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row md:px-12">
-          <p className="text-xs text-[#555550]">
+          <p className="text-xs text-[#A8A8A0]">
             {SITE.copyright}
           </p>
           <div className="flex gap-6">
-            <Link href={FOOTER.legal.privacy.href} className="text-xs text-[#555550] hover:text-[#888880]">
+            <Link href={FOOTER.legal.privacy.href} className="text-xs text-[#A8A8A0] hover:text-[#888880]">
               {FOOTER.legal.privacy.label}
             </Link>
-            <Link href={FOOTER.legal.terms.href} className="text-xs text-[#555550] hover:text-[#888880]">
+            <Link href={FOOTER.legal.terms.href} className="text-xs text-[#A8A8A0] hover:text-[#888880]">
               {FOOTER.legal.terms.label}
             </Link>
           </div>

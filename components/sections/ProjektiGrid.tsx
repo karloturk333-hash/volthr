@@ -93,7 +93,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                       src={project.staticImage}
                       alt={`${project.title} — ${project.category}`}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   ) : (

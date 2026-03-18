@@ -5,8 +5,6 @@ import { cookies, headers } from "next/headers"
 import "./globals.css"
 import { SEO } from "@/lib/content"
 import { MotionProvider } from "@/components/providers/MotionProvider"
-import { Nav } from "@/components/layout/Nav"
-import { Footer } from "@/components/layout/Footer"
 import { CookieConsent } from "@/components/CookieConsent"
 
 const spaceGrotesk = Space_Grotesk({

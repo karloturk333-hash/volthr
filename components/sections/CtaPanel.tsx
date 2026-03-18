@@ -25,7 +25,7 @@ export function CtaPanel() {
 
         <m.p
           variants={fadeUp}
-          className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-[#888880] md:text-lg"
+          className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-[#A8A8A0] md:text-lg"
         >
           {CTA_SECTION.subheading}
         </m.p>
@@ -48,7 +48,7 @@ export function CtaPanel() {
 
         <m.p
           variants={fadeUp}
-          className="mt-6 text-sm text-[#888880]"
+          className="mt-6 text-sm text-[#A8A8A0]"
         >
           {CTA_SECTION.trust}
         </m.p>

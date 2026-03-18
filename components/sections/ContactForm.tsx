@@ -9,7 +9,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 type FormStatus = "idle" | "submitting" | "success" | "error"
 
 const INPUT_CLASS =
-  "w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#999] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+  "w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#888880] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle")
@@ -195,7 +195,7 @@ export function ContactForm() {
                   aria-required="true"
                   rows={5}
                   placeholder={fields.message.placeholder}
-                  className="w-full resize-none rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#999] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+                  className="w-full resize-none rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#888880] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
                 />
               </div>
 

@@ -4,6 +4,14 @@ import { PRIVACY_PAGE, SEO } from "@/lib/content"
 export const metadata: Metadata = {
   title: SEO.privacy.title,
   description: SEO.privacy.description,
+  alternates: { canonical: "/privatnost" },
+  openGraph: {
+    title: SEO.privacy.title,
+    description: SEO.privacy.description,
+    url: "/privatnost",
+    type: "website",
+    locale: "hr_HR",
+  },
 }
 
 export default function PrivatnostPage() {

@@ -625,9 +625,9 @@ export const GRANT_PACKAGES = {
     },
     {
       name: "Starter paket",
-      originalPrice: "2.000",
+      originalPrice: "1.200",
       netPrice: "300",
-      grantReturn: "€1.700 financira Županija",
+      grantReturn: "€900 financira Županija",
       badge: "Sve u jednom",
       popular: false,
       description: "Web + branding + društvene mreže.",

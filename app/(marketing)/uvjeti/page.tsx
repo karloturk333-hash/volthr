@@ -4,6 +4,14 @@ import { TERMS_PAGE, SEO } from "@/lib/content"
 export const metadata: Metadata = {
   title: SEO.terms.title,
   description: SEO.terms.description,
+  alternates: { canonical: "/uvjeti" },
+  openGraph: {
+    title: SEO.terms.title,
+    description: SEO.terms.description,
+    url: "/uvjeti",
+    type: "website",
+    locale: "hr_HR",
+  },
 }
 
 export default function UvjetiPage() {

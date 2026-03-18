@@ -40,7 +40,7 @@ export function ServicesChapters() {
             {/* Giant decorative number */}
             <span
               className={[
-                "pointer-events-none absolute top-0 select-none font-space font-black leading-none text-[#EBEBEA]",
+                "pointer-events-none absolute top-0 select-none font-space font-bold leading-none text-[#EBEBEA]",
                 isEven ? "right-0 -translate-y-1/4" : "left-0 -translate-y-1/4",
               ].join(" ")}
               style={{ fontSize: "clamp(160px, 18vw, 260px)" }}

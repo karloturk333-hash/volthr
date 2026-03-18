@@ -53,10 +53,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title: post.title,
     description: post.excerpt ?? `${post.title} — ${SITE.fullName} blog`,
+    alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt ?? undefined,
+      url: `/blog/${slug}`,
       type: "article",
+      locale: "hr_HR",
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
   }
