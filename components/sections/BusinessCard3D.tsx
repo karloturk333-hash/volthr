@@ -3,7 +3,19 @@
 import { useState } from "react"
 import Image from "next/image"
 
-export function BusinessCard3D() {
+interface BusinessCard3DProps {
+  frontSrc: string
+  backSrc: string
+  name: string
+  role: string
+}
+
+export function BusinessCard3D({
+  frontSrc,
+  backSrc,
+  name,
+  role,
+}: BusinessCard3DProps) {
   const [flipped, setFlipped] = useState(false)
 
   return (
@@ -17,7 +29,7 @@ export function BusinessCard3D() {
         }}
         tabIndex={0}
         role="button"
-        aria-label="Vizitka za Miroslav Čolig — klikni za okretanje"
+        aria-label={`Vizitka za ${name} — klikni za okretanje`}
       >
         <div
           className="relative w-[min(100%,525px)] transition-transform duration-700"
@@ -32,8 +44,8 @@ export function BusinessCard3D() {
             style={{ backfaceVisibility: "hidden" }}
           >
             <Image
-              src="/images/portfolio/vizitka-front.png"
-              alt="Vizitka prednja strana — Miroslav Čolig, CEO/Event Manager"
+              src={frontSrc}
+              alt={`Vizitka prednja strana — ${name}, ${role}`}
               width={1050}
               height={600}
               className="block w-full h-auto"
@@ -51,8 +63,8 @@ export function BusinessCard3D() {
             }}
           >
             <Image
-              src="/images/portfolio/vizitka-back.png"
-              alt="Vizitka stražnja strana — kontakt podaci"
+              src={backSrc}
+              alt={`Vizitka stražnja strana — ${name}, kontakt podaci`}
               width={1050}
               height={600}
               className="block w-full h-auto"

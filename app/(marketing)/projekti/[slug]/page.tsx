@@ -178,7 +178,30 @@ export default async function CaseStudyPage({
           <h2 className="mt-4 mb-10 font-space text-2xl font-bold text-[#0D0D0D] md:text-3xl">
             Dizajnirane vizitke za oba suvlasnika
           </h2>
-          <BusinessCard3D />
+          <div className="grid gap-12 md:grid-cols-2 md:gap-8">
+            <div>
+              <p className="mb-4 text-center font-dm text-sm font-medium text-[#0D0D0D]">
+                Miroslav Čolig
+              </p>
+              <BusinessCard3D
+                frontSrc="/images/portfolio/vizitka-front.png"
+                backSrc="/images/portfolio/vizitka-back.png"
+                name="Miroslav Čolig"
+                role="CEO / Event Manager"
+              />
+            </div>
+            <div>
+              <p className="mb-4 text-center font-dm text-sm font-medium text-[#0D0D0D]">
+                Mario Čolig
+              </p>
+              <BusinessCard3D
+                frontSrc="/images/portfolio/mario-front.png"
+                backSrc="/images/portfolio/mario-back.png"
+                name="Mario Čolig"
+                role="CEO / Event Manager"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

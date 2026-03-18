@@ -1039,9 +1039,9 @@ export const PUB_CUBISMO = {
     },
     {
       name: "Mario \u010Colig",
-      role: "Suvlasnik / BBQ Chef",
-      phone: "098 979 3656",
-      email: "info@pubcubismo.com",
+      role: "CEO / Event Manager",
+      phone: "091 515 0598",
+      email: "mario.colig@gmail.com",
       frontColor: "#1a4a2e",
       backColor: "#3d2f1f",
       borderColor: "#8b7635",
