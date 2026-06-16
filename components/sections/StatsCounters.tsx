@@ -9,7 +9,7 @@ const counterClasses = "font-space text-4xl font-bold sm:text-5xl md:text-6xl te
 
 export function StatsCounters() {
   return (
-    <section className="bg-[#F5F4F0] border-t border-b border-[#E8E6E0] py-24 md:py-32">
+    <section className="bg-[#F5F4F0] border-t border-b border-[#E8E6E0] py-16 md:py-20">
       <m.div
         className="max-w-7xl mx-auto px-6"
         initial="hidden"

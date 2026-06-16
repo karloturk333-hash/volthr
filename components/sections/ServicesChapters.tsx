@@ -35,7 +35,7 @@ export function ServicesChapters() {
           <section
             key={service.slug}
             id={service.slug}
-            className={`relative overflow-hidden px-6 py-28 md:px-12 md:py-36 ${bg}`}
+            className={`relative overflow-hidden px-6 py-20 md:px-12 md:py-24 ${bg}`}
           >
             {/* Giant decorative number */}
             <span

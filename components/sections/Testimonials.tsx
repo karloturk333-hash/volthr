@@ -6,7 +6,7 @@ import { testimonialRow, staggerContainerTestimonials, fadeUp } from "@/lib/anim
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32 lg:py-36">
+    <section id="testimonials" className="bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20 lg:py-24">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"

@@ -8,7 +8,7 @@ export function AboutProcess() {
   const steps = ABOUT_PAGE.process.steps
 
   return (
-    <section className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32">
+    <section className="bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}

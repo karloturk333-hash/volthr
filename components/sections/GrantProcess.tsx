@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function GrantProcess() {
   return (
-    <section className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32">
+    <section className="bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20">
       <m.div
         className="mx-auto max-w-4xl"
         initial="hidden"

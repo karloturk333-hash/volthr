@@ -25,7 +25,7 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
   return (
     <section id="projects" className="bg-[#F5F4F0]">
       {/* Section label */}
-      <div className="px-6 pt-24 md:px-12 md:pt-32 lg:pt-36">
+      <div className="px-6 pt-16 md:px-12 md:pt-20 lg:pt-24">
         <div className="mx-auto max-w-7xl">
           <m.div
             initial="hidden"
@@ -41,7 +41,7 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
       {/* Scroll-reveal heading */}
       <TextRevealByWord text={PORTFOLIO.heading} />
 
-      <div className="mx-auto max-w-7xl px-6 pb-24 md:px-12 md:pb-32 lg:pb-36">
+      <div className="mx-auto max-w-7xl px-6 pb-16 md:px-12 md:pb-20 lg:pb-24">
         {hasProjects ? (
           <>
             {/* Project cards */}

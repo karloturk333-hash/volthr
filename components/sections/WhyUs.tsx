@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function WhyUs() {
   return (
-    <section id="why-us" className="bg-white px-6 py-24 md:px-12 md:py-32">
+    <section id="why-us" className="bg-white px-6 py-16 md:px-12 md:py-20">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"

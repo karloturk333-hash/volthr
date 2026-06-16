@@ -8,9 +8,17 @@ import { ctaHeadline, fadeUp, staggerContainer } from "@/lib/animations"
 
 export function CtaPanel() {
   return (
-    <section id="cta" className="bg-[#0D0D0D] px-6 py-24 md:px-12 md:py-32">
+    <section id="cta" className="relative overflow-hidden bg-[#0D0D0D] px-6 py-16 md:px-12 md:py-20">
+      {/* Violet brand glow — deploys the accent into the dark band */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[120px]"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(139,92,246,0.45) 0%, rgba(99,102,241,0.18) 40%, transparent 70%)",
+        }}
+      />
       <m.div
-        className="mx-auto max-w-4xl text-center"
+        className="relative z-10 mx-auto max-w-4xl text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}

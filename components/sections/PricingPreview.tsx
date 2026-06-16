@@ -8,7 +8,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function PricingPreview() {
   return (
-    <section className="border-b border-t border-[#E8E6E0] bg-[#F5F4F0] px-6 py-24 md:py-32 lg:py-36">
+    <section className="border-b border-t border-[#E8E6E0] bg-[#F5F4F0] px-6 py-16 md:py-20 lg:py-24">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"

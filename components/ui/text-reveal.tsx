@@ -23,9 +23,9 @@ const TextRevealByWord: FC<TextRevealByWordProps> = ({ text, className }) => {
     <div
       ref={targetRef}
       data-testid="text-reveal-container"
-      className={cn("relative z-0 h-[140vh]", className)}
+      className={cn("relative z-0 h-[90vh]", className)}
     >
-      <div className="sticky top-0 mx-auto flex h-screen max-w-4xl items-center px-[1rem] py-[5rem]">
+      <div className="sticky top-0 mx-auto flex h-[60vh] max-w-4xl items-center px-[1rem] py-[3rem]">
         <p className="flex flex-wrap p-5 font-space text-2xl font-bold text-[#0D0D0D]/20 md:p-8 md:text-3xl lg:p-10 lg:text-4xl xl:text-5xl">
           {words.map((word, i) => {
             const start = i * s

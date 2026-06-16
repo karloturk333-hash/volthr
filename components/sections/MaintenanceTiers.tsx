@@ -8,7 +8,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function MaintenanceTiers() {
   return (
-    <section className="border-t border-[#E8E6E0] bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32">
+    <section className="border-t border-[#E8E6E0] bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20">
       <m.div
         className="mx-auto max-w-5xl"
         initial="hidden"
