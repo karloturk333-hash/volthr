@@ -23,8 +23,8 @@ const WhyUs = dynamic(() =>
 const Testimonials = dynamic(() =>
   import("@/components/sections/Testimonials").then((m) => ({ default: m.Testimonials }))
 )
-const GrantHero = dynamic(() =>
-  import("@/components/sections/GrantHero").then((m) => ({ default: m.GrantHero }))
+const EuGrantBanner = dynamic(() =>
+  import("@/components/sections/EuGrantBanner").then((m) => ({ default: m.EuGrantBanner }))
 )
 const PricingPreview = dynamic(() =>
   import("@/components/sections/PricingPreview").then((m) => ({ default: m.PricingPreview }))
@@ -64,7 +64,7 @@ export default async function HomePage() {
         }}
       />
       <Hero />
-      <GrantHero />
+      <EuGrantBanner />
       <AboutSplit />
       <ServicesGrid />
       <StatsCounters />

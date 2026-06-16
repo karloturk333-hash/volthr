@@ -47,23 +47,23 @@ export function CookieConsent() {
           exit="hidden"
           variants={fadeUp}
         >
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-xl border border-[#E8E6E0] bg-white p-6 shadow-lg sm:flex-row sm:justify-between">
-            <p className="text-sm text-[#555550]">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-xl border border-line bg-card p-6 shadow-lg sm:flex-row sm:justify-between">
+            <p className="text-sm text-muted">
               Koristimo kolačiće za poboljšanje iskustva.{" "}
-              <a href="/privatnost" className="underline hover:text-[#8B5CF6]">
+              <a href="/privatnost" className="underline hover:text-accent">
                 Saznaj više
               </a>
             </p>
             <div className="flex shrink-0 gap-3">
               <button
                 onClick={() => accept("essential")}
-                className="rounded-full border border-[#0D0D0D] px-5 py-2 text-sm font-medium text-[#0D0D0D]"
+                className="rounded-full border border-ink px-5 py-2 text-sm font-medium text-ink"
               >
                 Samo nužni
               </button>
               <button
                 onClick={() => accept("all")}
-                className="rounded-full bg-[#0D0D0D] px-5 py-2 text-sm font-medium text-white"
+                className="rounded-full bg-contrast px-5 py-2 text-sm font-medium text-white"
               >
                 Prihvati sve
               </button>

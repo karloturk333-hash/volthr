@@ -5,11 +5,11 @@ import { STATS } from "@/lib/content"
 import { fadeUp, staggerContainer } from "@/lib/animations"
 import { Counter } from "@/components/ui/Counter"
 
-const counterClasses = "font-space text-4xl font-bold sm:text-5xl md:text-6xl text-[#0D0D0D]"
+const counterClasses = "font-space text-4xl font-bold sm:text-5xl md:text-6xl text-ink"
 
 export function StatsCounters() {
   return (
-    <section className="bg-[#F5F4F0] border-t border-b border-[#E8E6E0] py-24 md:py-32">
+    <section className="bg-paper border-t border-b border-line py-16 md:py-20">
       <m.div
         className="max-w-7xl mx-auto px-6"
         initial="hidden"
@@ -31,12 +31,12 @@ export function StatsCounters() {
                 ) : (
                   <Counter target={item.value} suffix={item.suffix} duration={2000} className={counterClasses} />
                 )}
-                <p className="mt-4 text-sm font-medium text-[#555550]">
+                <p className="mt-4 text-sm font-medium text-muted">
                   {item.label}
                 </p>
                 {/* Vertical divider — not on last item */}
                 {i < STATS.items.length - 1 && (
-                  <div className="absolute right-0 top-1/2 hidden h-12 w-px -translate-y-1/2 bg-[#E8E6E0] lg:block" />
+                  <div className="absolute right-0 top-1/2 hidden h-12 w-px -translate-y-1/2 bg-line lg:block" />
                 )}
               </m.div>
             )

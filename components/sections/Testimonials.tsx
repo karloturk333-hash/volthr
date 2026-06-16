@@ -6,7 +6,7 @@ import { testimonialRow, staggerContainerTestimonials, fadeUp } from "@/lib/anim
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32 lg:py-36">
+    <section id="testimonials" className="bg-paper px-6 py-16 md:px-12 md:py-20 lg:py-24">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -19,18 +19,18 @@ export function Testimonials() {
         </m.div>
         <m.h2
           variants={fadeUp}
-          className="mb-14 font-space text-3xl font-bold leading-tight text-[#0D0D0D] md:text-4xl lg:text-5xl"
+          className="mb-14 font-space text-3xl font-bold leading-tight text-ink md:text-4xl lg:text-5xl"
         >
           {TESTIMONIALS_TABLE.heading}
         </m.h2>
 
         {/* Table rows */}
-        <div className="border-t border-[#E8E6E0]">
+        <div className="border-t border-line">
           {TESTIMONIALS_TABLE.items.map((item) => (
             <m.div
               key={item.number}
               variants={testimonialRow}
-              className="grid grid-cols-[40px_1fr_1fr_60px] items-center gap-4 border-b border-[#E8E6E0] px-2 py-5 hover:bg-white md:grid-cols-[60px_1fr_1fr_80px] md:gap-6 md:px-4 md:py-6"
+              className="grid grid-cols-[40px_1fr_1fr_60px] items-center gap-4 border-b border-line px-2 py-5 hover:bg-card md:grid-cols-[60px_1fr_1fr_80px] md:gap-6 md:px-4 md:py-6"
             >
               {/* Number */}
               <span className="font-space text-lg font-medium text-[#D0CEC8] md:text-xl">
@@ -39,14 +39,14 @@ export function Testimonials() {
 
               {/* Client name + avatar */}
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E8E6E0] font-space text-xs font-bold text-[#555550]">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-line font-space text-xs font-bold text-muted">
                   {item.client[0]}
                 </div>
                 <div>
-                  <p className="font-dm text-sm font-semibold text-[#0D0D0D]">
+                  <p className="font-dm text-sm font-semibold text-ink">
                     {item.client}
                   </p>
-                  <p className="text-xs text-[#888880]">{item.role}</p>
+                  <p className="text-xs text-faint">{item.role}</p>
                 </div>
               </div>
 
@@ -55,7 +55,7 @@ export function Testimonials() {
                 {item.services.map((service) => (
                   <span
                     key={service}
-                    className="rounded-full bg-[rgba(139,92,246,0.08)] px-3 py-1 text-xs font-medium text-[#8B5CF6]"
+                    className="rounded-full bg-[rgba(139,92,246,0.08)] px-3 py-1 text-xs font-medium text-accent"
                   >
                     {service}
                   </span>
@@ -63,7 +63,7 @@ export function Testimonials() {
               </div>
 
               {/* Year */}
-              <span className="text-right font-dm text-sm text-[#888880]">
+              <span className="text-right font-dm text-sm text-faint">
                 {item.year}
               </span>
             </m.div>

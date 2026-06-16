@@ -13,7 +13,7 @@ const stats: readonly { value: number; suffix: string; label: string; prefix?: s
 
 export function AboutSplit() {
   return (
-    <section id="about" className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32 lg:py-36">
+    <section id="about" className="bg-paper px-6 py-16 md:px-12 md:py-20 lg:py-24">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -30,14 +30,14 @@ export function AboutSplit() {
 
             <m.h2
               variants={fadeUp}
-              className="font-space text-3xl font-bold leading-tight text-[#0D0D0D] md:text-4xl lg:text-5xl"
+              className="font-space text-3xl font-bold leading-tight text-ink md:text-4xl lg:text-5xl"
             >
               {ABOUT_SECTION.heading}
             </m.h2>
 
             <m.p
               variants={fadeUp}
-              className="mt-6 text-base leading-[1.7] text-[#555550] md:text-lg"
+              className="mt-6 text-base leading-[1.7] text-muted md:text-lg"
             >
               {ABOUT_SECTION.body}
             </m.p>
@@ -50,8 +50,8 @@ export function AboutSplit() {
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center lg:text-left">
-                <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} duration={1500} className="font-space text-4xl font-bold text-[#0D0D0D] sm:text-5xl" />
-                <p className="mt-2 text-[13px] font-medium text-[#888880]">
+                <Counter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} duration={1500} className="font-space text-4xl font-bold text-ink sm:text-5xl" />
+                <p className="mt-2 text-[13px] font-medium text-faint">
                   {stat.label}
                 </p>
               </div>

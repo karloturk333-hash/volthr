@@ -17,7 +17,7 @@ const socialLabels: Record<string, string> = {
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-[#0D0D0D]">
+    <footer id="footer" className="bg-contrast">
       <div className="border-t border-[var(--border-dark)]" />
 
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-12">
@@ -50,7 +50,7 @@ export function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-dark)] text-[#888880] hover:border-[#888880] hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-dark)] text-faint hover:border-faint hover:text-white"
                   aria-label={socialLabels[key] ?? key}
                 >
                   <Icon size={16} />
@@ -64,13 +64,13 @@ export function Footer() {
       {/* Grant partner */}
       <div className="border-t border-[var(--border-dark)]">
         <div className="mx-auto flex max-w-7xl flex-col items-start gap-2 px-6 py-6 md:px-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#8B5CF6]">
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent">
             {FOOTER.grant.title}
           </p>
           <p className="max-w-lg text-xs leading-relaxed text-[#A8A8A0]">
             {FOOTER.grant.text}
           </p>
-          <Link href={FOOTER.grant.cta.href} className="text-xs font-medium text-[#8B5CF6] hover:underline">
+          <Link href={FOOTER.grant.cta.href} className="text-xs font-medium text-accent hover:underline">
             {FOOTER.grant.cta.label}
           </Link>
         </div>
@@ -83,10 +83,10 @@ export function Footer() {
             {SITE.copyright}
           </p>
           <div className="flex gap-6">
-            <Link href={FOOTER.legal.privacy.href} className="text-xs text-[#A8A8A0] hover:text-[#888880]">
+            <Link href={FOOTER.legal.privacy.href} className="text-xs text-[#A8A8A0] hover:text-faint">
               {FOOTER.legal.privacy.label}
             </Link>
-            <Link href={FOOTER.legal.terms.href} className="text-xs text-[#A8A8A0] hover:text-[#888880]">
+            <Link href={FOOTER.legal.terms.href} className="text-xs text-[#A8A8A0] hover:text-faint">
               {FOOTER.legal.terms.label}
             </Link>
           </div>

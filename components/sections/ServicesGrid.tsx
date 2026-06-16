@@ -118,7 +118,7 @@ export function ServicesGrid() {
   return (
     <section
       id="services"
-      className="bg-[#F5F4F0] px-6 py-24 md:px-12 md:py-32 lg:py-36"
+      className="bg-paper px-6 py-16 md:px-12 md:py-20 lg:py-24"
     >
       <m.div
         className="mx-auto max-w-7xl"

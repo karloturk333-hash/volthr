@@ -48,10 +48,9 @@ next-env.d.ts
 # Test output
 test-results/
 
-# External reference repos
-everything-claude-code/
-
-# Debug screenshots
-nav-desktop-full.png
-nav-desktop-scrolled.png
-nav-mobile.png
+# Screenshot artifacts (regenerable — never commit binaries)
+scripts/screenshots/
+audit/screenshots/
+tests/screenshots/
+*-full.png
+*-scrolled.png

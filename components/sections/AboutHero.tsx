@@ -8,7 +8,7 @@ export function AboutHero() {
   const words = ABOUT_PAGE.hero.heading.split(" ")
 
   return (
-    <section className="bg-transparent px-6 py-32 md:py-40">
+    <section className="bg-transparent px-6 py-20 md:py-28">
       <div className="mx-auto max-w-3xl text-center">
 
         {/* Label + rule */}
@@ -19,12 +19,12 @@ export function AboutHero() {
           className="mb-6 flex flex-col items-center gap-3"
         >
           <span className="section-label">{ABOUT_PAGE.hero.label}</span>
-          <div className="h-px w-12 bg-[#8B5CF6]" />
+          <div className="h-px w-12 bg-accent" />
         </m.div>
 
         {/* Heading — word stagger */}
         <m.h1
-          className="font-space text-4xl font-bold leading-[1.1] text-[#0D0D0D] md:text-5xl lg:text-6xl"
+          className="font-space text-4xl font-bold leading-[1.1] text-ink md:text-5xl lg:text-6xl"
           variants={heroStagger}
           initial="hidden"
           animate="visible"

@@ -55,7 +55,7 @@ const BentoCard = ({
     )}
   >
     {/* Outer glow border wrapper */}
-    <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-[#E8E6E0] p-2 md:rounded-[1.5rem] md:p-3">
+    <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-line p-2 md:rounded-[1.5rem] md:p-3">
       <GlowingEffect
         spread={40}
         glow={true}
@@ -69,18 +69,18 @@ const BentoCard = ({
       <div
         className={cn(
           "relative flex h-full flex-col justify-between overflow-hidden rounded-xl",
-          "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
+          "bg-card [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
         )}
       >
         <div>{background}</div>
 
         {/* Content: no animations on mobile (touch), hover-slide only on sm+ */}
         <div className="pointer-events-none z-10 flex flex-col gap-2.5 p-6 sm:transform-gpu sm:transition-all sm:duration-300 sm:group-hover:-translate-y-6">
-          <Icon className="h-10 w-10 origin-left text-[#8B5CF6] sm:transform-gpu sm:transition-all sm:duration-300 sm:ease-in-out sm:group-hover:scale-90" />
-          <h3 className="text-xl font-semibold text-[#0D0D0D]">
+          <Icon className="h-10 w-10 origin-left text-accent sm:transform-gpu sm:transition-all sm:duration-300 sm:ease-in-out sm:group-hover:scale-90" />
+          <h3 className="text-xl font-semibold text-ink">
             {name}
           </h3>
-          <p className="max-w-lg text-[#555550] leading-relaxed">{description}</p>
+          <p className="max-w-lg text-muted leading-relaxed">{description}</p>
         </div>
 
         {/*
@@ -97,7 +97,7 @@ const BentoCard = ({
         >
           <a
             href={href}
-            className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-full px-4 text-sm font-medium text-[#8B5CF6] hover:bg-[#8B5CF6]/8 hover:text-[#6D28D9]"
+            className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-full px-4 text-sm font-medium text-accent hover:bg-accent/8 hover:text-[#6D28D9]"
           >
             {cta}
             <ArrowRight className="ml-2 h-4 w-4" />

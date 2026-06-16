@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Back link */}
         <Link
           href="/blog"
-          className="mb-8 inline-block text-sm text-[#8B5CF6] hover:underline"
+          className="mb-8 inline-block text-sm text-accent hover:underline"
         >
           {BLOG_PAGE.backLabel}
         </Link>
@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.categories.map((cat) => (
                 <span
                   key={cat}
-                  className="rounded-full bg-[#8B5CF6]/10 px-3 py-1 text-xs font-medium text-[#8B5CF6]"
+                  className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
                 >
                   {cat}
                 </span>
@@ -124,15 +124,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           )}
 
-          <h1 className="font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl lg:text-5xl">
+          <h1 className="font-space text-3xl font-bold text-ink md:text-4xl lg:text-5xl">
             {post.title}
           </h1>
 
-          <div className="mt-4 flex items-center gap-4 text-sm text-[#555550]">
+          <div className="mt-4 flex items-center gap-4 text-sm text-muted">
             {post.author && <span>{post.author}</span>}
             {post.publishedAt && (
               <>
-                <span className="text-[#E8E6E0]">|</span>
+                <span className="text-line">|</span>
                 <span>{formatDate(post.publishedAt)}</span>
               </>
             )}

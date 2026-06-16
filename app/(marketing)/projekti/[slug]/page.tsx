@@ -57,7 +57,7 @@ export default async function CaseStudyPage({
   }
 
   return (
-    <main className="bg-[#F5F4F0]">
+    <main className="bg-paper">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
@@ -68,7 +68,7 @@ export default async function CaseStudyPage({
         <div className="mx-auto max-w-4xl">
           <Link
             href="/projekti"
-            className="mb-6 inline-flex items-center gap-1.5 font-dm text-sm text-[#555550] hover:text-[#0D0D0D]"
+            className="mb-6 inline-flex items-center gap-1.5 font-dm text-sm text-muted hover:text-ink"
           >
             <ArrowLeft size={14} />
             Svi projekti
@@ -79,17 +79,17 @@ export default async function CaseStudyPage({
             {study.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-white px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-[#555550] border border-[#E8E6E0]"
+                className="rounded-full bg-card px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-muted border border-line"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <h1 className="font-space text-4xl font-bold leading-tight text-[#0D0D0D] md:text-5xl lg:text-6xl">
+          <h1 className="font-space text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-6xl">
             {study.title} — {study.headline}
           </h1>
-          <p className="mt-4 max-w-2xl font-dm text-lg leading-relaxed text-[#555550]">
+          <p className="mt-4 max-w-2xl font-dm text-lg leading-relaxed text-muted">
             {study.subtitle}
           </p>
 
@@ -97,7 +97,7 @@ export default async function CaseStudyPage({
             href={study.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0D0D0D] px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
           >
             Posjeti stranicu
             <ArrowUpRight size={16} />
@@ -106,14 +106,14 @@ export default async function CaseStudyPage({
       </section>
 
       {/* Stats row */}
-      <section className="border-y border-[#E8E6E0] bg-white px-6 py-12 md:px-12">
+      <section className="border-y border-line bg-card px-6 py-12 md:px-12">
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-6">
           {study.stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="font-space text-3xl font-bold text-[#0D0D0D]">
+              <div className="font-space text-3xl font-bold text-ink">
                 {stat.value}
               </div>
-              <div className="mt-1 font-dm text-xs text-[#888880]">{stat.label}</div>
+              <div className="mt-1 font-dm text-xs text-faint">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -125,12 +125,12 @@ export default async function CaseStudyPage({
           {/* Challenge */}
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <Target size={20} className="text-[#8B5CF6]" />
-              <span className="font-dm text-xs font-semibold uppercase tracking-widest text-[#8B5CF6]">
+              <Target size={20} className="text-accent" />
+              <span className="font-dm text-xs font-semibold uppercase tracking-widest text-accent">
                 Izazov
               </span>
             </div>
-            <p className="font-dm text-base leading-relaxed text-[#555550] md:text-lg">
+            <p className="font-dm text-base leading-relaxed text-muted md:text-lg">
               {study.challenge}
             </p>
           </div>
@@ -138,12 +138,12 @@ export default async function CaseStudyPage({
           {/* Solution */}
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <Lightbulb size={20} className="text-[#8B5CF6]" />
-              <span className="font-dm text-xs font-semibold uppercase tracking-widest text-[#8B5CF6]">
+              <Lightbulb size={20} className="text-accent" />
+              <span className="font-dm text-xs font-semibold uppercase tracking-widest text-accent">
                 Rješenje
               </span>
             </div>
-            <p className="font-dm text-base leading-relaxed text-[#555550] md:text-lg">
+            <p className="font-dm text-base leading-relaxed text-muted md:text-lg">
               {study.solution}
             </p>
           </div>
@@ -151,8 +151,8 @@ export default async function CaseStudyPage({
           {/* Results */}
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <Trophy size={20} className="text-[#8B5CF6]" />
-              <span className="font-dm text-xs font-semibold uppercase tracking-widest text-[#8B5CF6]">
+              <Trophy size={20} className="text-accent" />
+              <span className="font-dm text-xs font-semibold uppercase tracking-widest text-accent">
                 Rezultati
               </span>
             </div>
@@ -160,9 +160,9 @@ export default async function CaseStudyPage({
               {study.results.map((result) => (
                 <li
                   key={result}
-                  className="flex items-start gap-3 font-dm text-base text-[#555550]"
+                  className="flex items-start gap-3 font-dm text-base text-muted"
                 >
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#8B5CF6]" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" />
                   {result}
                 </li>
               ))}
@@ -172,15 +172,15 @@ export default async function CaseStudyPage({
       </section>
 
       {/* 3D Business Cards */}
-      <section className="border-t border-[#E8E6E0] px-6 py-16 md:px-12 md:py-24">
+      <section className="border-t border-line px-6 py-16 md:px-12 md:py-24">
         <div className="mx-auto max-w-4xl">
           <span className="section-label">✦ PREMIUM VIZITKE</span>
-          <h2 className="mt-4 mb-10 font-space text-2xl font-bold text-[#0D0D0D] md:text-3xl">
+          <h2 className="mt-4 mb-10 font-space text-2xl font-bold text-ink md:text-3xl">
             Dizajnirane vizitke za oba suvlasnika
           </h2>
           <div className="grid gap-12 md:grid-cols-2 md:gap-8">
             <div>
-              <p className="mb-4 text-center font-dm text-sm font-medium text-[#0D0D0D]">
+              <p className="mb-4 text-center font-dm text-sm font-medium text-ink">
                 Miroslav Čolig
               </p>
               <BusinessCard3D
@@ -191,7 +191,7 @@ export default async function CaseStudyPage({
               />
             </div>
             <div>
-              <p className="mb-4 text-center font-dm text-sm font-medium text-[#0D0D0D]">
+              <p className="mb-4 text-center font-dm text-sm font-medium text-ink">
                 Mario Čolig
               </p>
               <BusinessCard3D
@@ -206,7 +206,7 @@ export default async function CaseStudyPage({
       </section>
 
       {/* CTA */}
-      <section className="border-t border-[#E8E6E0] bg-[#0D0D0D] px-6 py-16 md:px-12 md:py-20">
+      <section className="border-t border-line bg-contrast px-6 py-16 md:px-12 md:py-20">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="font-space text-3xl font-bold text-white md:text-4xl">
             Trebate sličan projekt?
@@ -216,7 +216,7 @@ export default async function CaseStudyPage({
           </p>
           <a
             href={study.cta.href}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#8B5CF6] px-8 py-3.5 font-dm text-base font-semibold text-white"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 font-dm text-base font-semibold text-white"
           >
             <MessageCircle size={18} />
             {study.cta.label}

@@ -39,7 +39,7 @@ export function ContactMap() {
       viewport={{ once: true, amount: 0.1 }}
       variants={fadeUp}
     >
-      <div className="overflow-hidden rounded-xl border border-[#E8E6E0]">
+      <div className="overflow-hidden rounded-xl border border-line">
         <MapContainer
           center={VRBOVEC_CENTER}
           zoom={14}
@@ -63,7 +63,7 @@ export function ContactMap() {
       </div>
 
       {/* Address overlay */}
-      <div className="mt-4 text-center text-sm text-[#555550]">
+      <div className="mt-4 text-center text-sm text-muted">
         {SITE.address.street}, {SITE.address.zip} {SITE.address.city}, {SITE.address.county}
       </div>
     </m.div>

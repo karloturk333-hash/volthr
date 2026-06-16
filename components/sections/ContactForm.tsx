@@ -9,7 +9,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 type FormStatus = "idle" | "submitting" | "success" | "error"
 
 const INPUT_CLASS =
-  "w-full rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#888880] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+  "w-full rounded-lg border border-line bg-paper px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle")
@@ -64,13 +64,13 @@ export function ContactForm() {
     >
       {/* Form — 2 cols */}
       <m.div variants={fadeUp} className="lg:col-span-2">
-        <div className="rounded-xl border border-[#E8E6E0] bg-white p-8 md:p-10">
+        <div className="rounded-xl border border-line bg-card p-8 md:p-10">
           {status === "success" ? (
             <div className="flex flex-col items-center gap-6 py-12 text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-50">
                 <Send className="h-7 w-7 text-green-600" />
               </div>
-              <p className="max-w-md text-lg text-[#555550]">{success}</p>
+              <p className="max-w-md text-lg text-muted">{success}</p>
               {whatsappUrl && (
                 <a
                   href={whatsappUrl}
@@ -98,7 +98,7 @@ export function ContactForm() {
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-[#0D0D0D]">
+                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ink">
                     {fields.name.label} *
                   </label>
                   <input
@@ -114,7 +114,7 @@ export function ContactForm() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-[#0D0D0D]">
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink">
                     {fields.email.label} *
                   </label>
                   <input
@@ -132,7 +132,7 @@ export function ContactForm() {
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-[#0D0D0D]">
+                  <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ink">
                     {fields.phone.label}
                   </label>
                   <input
@@ -146,7 +146,7 @@ export function ContactForm() {
 
                 {/* Service */}
                 <div>
-                  <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-[#0D0D0D]">
+                  <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-ink">
                     {fields.service.label}
                   </label>
                   <select
@@ -166,7 +166,7 @@ export function ContactForm() {
 
               {/* Budget */}
               <div>
-                <label htmlFor="budget" className="mb-1.5 block text-sm font-medium text-[#0D0D0D]">
+                <label htmlFor="budget" className="mb-1.5 block text-sm font-medium text-ink">
                   {fields.budget.label}
                 </label>
                 <select
@@ -185,7 +185,7 @@ export function ContactForm() {
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-[#0D0D0D]">
+                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink">
                   {fields.message.label} *
                 </label>
                 <textarea
@@ -195,7 +195,7 @@ export function ContactForm() {
                   aria-required="true"
                   rows={5}
                   placeholder={fields.message.placeholder}
-                  className="w-full resize-none rounded-lg border border-[#E8E6E0] bg-[#F5F4F0] px-4 py-3 text-sm text-[#0D0D0D] placeholder:text-[#888880] focus:border-[#8B5CF6] focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]"
+                  className="w-full resize-none rounded-lg border border-line bg-paper px-4 py-3 text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 />
               </div>
 
@@ -206,7 +206,7 @@ export function ContactForm() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex items-center gap-2 rounded-full bg-[#0D0D0D] px-8 py-3.5 text-sm font-medium text-white disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-full bg-contrast px-8 py-3.5 text-sm font-medium text-white disabled:opacity-50"
               >
                 <Send className="h-4 w-4" />
                 {status === "submitting" ? "Slanje..." : submit}
@@ -223,18 +223,18 @@ export function ContactForm() {
           href={SITE.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          className="group block rounded-xl border border-[#E8E6E0] bg-white p-6"
+          className="group block rounded-xl border border-line bg-card p-6"
         >
           <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-whatsapp)]/10">
             <MessageCircle className="h-5 w-5 text-[var(--color-whatsapp)]" />
           </div>
-          <h3 className="font-space text-lg font-bold text-[#0D0D0D]">
+          <h3 className="font-space text-lg font-bold text-ink">
             {alternatives.whatsapp.label}
           </h3>
-          <p className="mt-1 text-sm text-[#555550]">
+          <p className="mt-1 text-sm text-muted">
             {alternatives.whatsapp.description}
           </p>
-          <span className="mt-3 block text-sm font-medium text-[#8B5CF6]">
+          <span className="mt-3 block text-sm font-medium text-accent">
             {SITE.phone}
           </span>
         </a>
@@ -242,18 +242,18 @@ export function ContactForm() {
         {/* Email */}
         <a
           href={`mailto:${SITE.email}`}
-          className="group block rounded-xl border border-[#E8E6E0] bg-white p-6"
+          className="group block rounded-xl border border-line bg-card p-6"
         >
-          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6]/10">
-            <Mail className="h-5 w-5 text-[#8B5CF6]" />
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+            <Mail className="h-5 w-5 text-accent" />
           </div>
-          <h3 className="font-space text-lg font-bold text-[#0D0D0D]">
+          <h3 className="font-space text-lg font-bold text-ink">
             {alternatives.email.label}
           </h3>
-          <p className="mt-1 text-sm text-[#555550]">
+          <p className="mt-1 text-sm text-muted">
             {alternatives.email.description}
           </p>
-          <span className="mt-3 block text-sm font-medium text-[#8B5CF6]">
+          <span className="mt-3 block text-sm font-medium text-accent">
             {SITE.email}
           </span>
         </a>
@@ -261,18 +261,18 @@ export function ContactForm() {
         {/* Call */}
         <a
           href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-          className="group block rounded-xl border border-[#E8E6E0] bg-white p-6"
+          className="group block rounded-xl border border-line bg-card p-6"
         >
-          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[#0D0D0D]/10">
-            <Phone className="h-5 w-5 text-[#0D0D0D]" />
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-contrast/10">
+            <Phone className="h-5 w-5 text-ink" />
           </div>
-          <h3 className="font-space text-lg font-bold text-[#0D0D0D]">
+          <h3 className="font-space text-lg font-bold text-ink">
             {alternatives.call.label}
           </h3>
-          <p className="mt-1 text-sm text-[#555550]">
+          <p className="mt-1 text-sm text-muted">
             {alternatives.call.description}
           </p>
-          <span className="mt-3 block text-sm font-medium text-[#8B5CF6]">
+          <span className="mt-3 block text-sm font-medium text-accent">
             {SITE.phone}
           </span>
         </a>

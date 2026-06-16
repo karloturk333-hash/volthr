@@ -60,10 +60,10 @@ export default async function BlogPage() {
           <span className="mb-4 block text-[11px] font-medium uppercase tracking-widest text-purple-500">
             ✦ {BLOG_PAGE.hero.label}
           </span>
-          <h1 className="font-space text-4xl font-bold text-[#0D0D0D] md:text-5xl">
+          <h1 className="font-space text-4xl font-bold text-ink md:text-5xl">
             {BLOG_PAGE.hero.heading}
           </h1>
-          <p className="mt-4 text-lg text-[#555550]">
+          <p className="mt-4 text-lg text-muted">
             {BLOG_PAGE.hero.subheading}
           </p>
         </div>
@@ -73,7 +73,7 @@ export default async function BlogPage() {
             {/* Featured Post */}
             {featuredPost && (
               <Link href={`/blog/${featuredPost.slug.current}`} className="group mb-16 block">
-                <Card className="overflow-hidden border-[#E8E6E0] bg-white">
+                <Card className="overflow-hidden border-line bg-card">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* Image */}
                     <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[360px]">
@@ -87,11 +87,11 @@ export default async function BlogPage() {
                           priority
                         />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#8B5CF6]/10 to-[#8B5CF6]/5">
-                          <span className="font-space text-4xl font-bold text-[#8B5CF6]/30">V</span>
+                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent/10 to-accent/5">
+                          <span className="font-space text-4xl font-bold text-accent/30">V</span>
                         </div>
                       )}
-                      <Badge className="absolute left-4 top-4 bg-[#8B5CF6] text-white hover:bg-[#8B5CF6]">
+                      <Badge className="absolute left-4 top-4 bg-accent text-white hover:bg-accent">
                         {BLOG_PAGE.featuredLabel}
                       </Badge>
                     </div>
@@ -100,29 +100,29 @@ export default async function BlogPage() {
                       {featuredPost.categories?.[0] && (
                         <Badge
                           variant="secondary"
-                          className="mb-4 w-fit bg-[#8B5CF6]/10 text-[#8B5CF6] hover:bg-[#8B5CF6]/10"
+                          className="mb-4 w-fit bg-accent/10 text-accent hover:bg-accent/10"
                         >
                           {featuredPost.categories[0]}
                         </Badge>
                       )}
-                      <h2 className="font-space mb-3 text-2xl font-bold text-[#0D0D0D] group-hover:text-[#8B5CF6] md:text-3xl">
+                      <h2 className="font-space mb-3 text-2xl font-bold text-ink group-hover:text-accent md:text-3xl">
                         {featuredPost.title}
                       </h2>
                       {featuredPost.excerpt && (
-                        <p className="mb-4 line-clamp-3 text-[#555550]">
+                        <p className="mb-4 line-clamp-3 text-muted">
                           {featuredPost.excerpt}
                         </p>
                       )}
-                      <div className="mb-6 flex items-center gap-3 text-sm text-[#555550]">
+                      <div className="mb-6 flex items-center gap-3 text-sm text-muted">
                         {featuredPost.author && <span>{featuredPost.author}</span>}
                         {featuredPost.author && featuredPost.publishedAt && (
-                          <span className="text-[#E8E6E0]">|</span>
+                          <span className="text-line">|</span>
                         )}
                         {featuredPost.publishedAt && (
                           <span>{formatDate(featuredPost.publishedAt)}</span>
                         )}
                       </div>
-                      <Button variant="ghost" className="w-fit text-[#8B5CF6] hover:text-[#8B5CF6]">
+                      <Button variant="ghost" className="w-fit text-accent hover:text-accent">
                         {BLOG_PAGE.readMore}
                       </Button>
                     </div>
@@ -135,8 +135,8 @@ export default async function BlogPage() {
             {remainingPosts.length > 0 && (
               <>
                 <div className="mb-8 flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-[#8B5CF6]" />
-                  <h2 className="font-space text-2xl font-bold text-[#0D0D0D]">
+                  <BookOpen className="h-5 w-5 text-accent" />
+                  <h2 className="font-space text-2xl font-bold text-ink">
                     {BLOG_PAGE.recentLabel}
                   </h2>
                 </div>
@@ -148,7 +148,7 @@ export default async function BlogPage() {
                       href={`/blog/${post.slug.current}`}
                       className="group"
                     >
-                      <Card className="h-full overflow-hidden border-[#E8E6E0] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                      <Card className="h-full overflow-hidden border-line bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
                         {/* Image */}
                         <div className="relative aspect-video overflow-hidden">
                           {post.coverImage ? (
@@ -160,14 +160,14 @@ export default async function BlogPage() {
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                           ) : (
-                            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#8B5CF6]/10 to-[#8B5CF6]/5">
-                              <span className="font-space text-2xl font-bold text-[#8B5CF6]/30">V</span>
+                            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent/10 to-accent/5">
+                              <span className="font-space text-2xl font-bold text-accent/30">V</span>
                             </div>
                           )}
                           {post.categories?.[0] && (
                             <Badge
                               variant="secondary"
-                              className="absolute left-3 top-3 bg-[#8B5CF6]/10 text-[#8B5CF6] hover:bg-[#8B5CF6]/10"
+                              className="absolute left-3 top-3 bg-accent/10 text-accent hover:bg-accent/10"
                             >
                               {post.categories[0]}
                             </Badge>
@@ -175,22 +175,22 @@ export default async function BlogPage() {
                         </div>
                         {/* Content */}
                         <CardHeader className="pb-2">
-                          <CardTitle className="font-space text-lg font-bold text-[#0D0D0D] group-hover:text-[#8B5CF6]">
+                          <CardTitle className="font-space text-lg font-bold text-ink group-hover:text-accent">
                             {post.title}
                           </CardTitle>
                           {post.excerpt && (
-                            <CardDescription className="line-clamp-2 text-[#555550]">
+                            <CardDescription className="line-clamp-2 text-muted">
                               {post.excerpt}
                             </CardDescription>
                           )}
                         </CardHeader>
                         <CardContent className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 text-xs text-[#555550]">
+                          <div className="flex items-center gap-2 text-xs text-muted">
                             {post.publishedAt && (
                               <span>{formatDate(post.publishedAt)}</span>
                             )}
                           </div>
-                          <Button variant="ghost" size="sm" className="text-[#8B5CF6] hover:text-[#8B5CF6]">
+                          <Button variant="ghost" size="sm" className="text-accent hover:text-accent">
                             {BLOG_PAGE.readMore}
                           </Button>
                         </CardContent>
@@ -202,20 +202,20 @@ export default async function BlogPage() {
             )}
 
             {/* CTA Section */}
-            <Card className="border-[#E8E6E0] bg-[#F5F4F0]">
+            <Card className="border-line bg-paper">
               <div className="flex flex-col items-center px-6 py-12 text-center md:py-16">
-                <MessageCircle className="mb-4 h-10 w-10 text-[#8B5CF6]" />
-                <h2 className="font-space mb-3 text-2xl font-bold text-[#0D0D0D] md:text-3xl">
+                <MessageCircle className="mb-4 h-10 w-10 text-accent" />
+                <h2 className="font-space mb-3 text-2xl font-bold text-ink md:text-3xl">
                   {BLOG_PAGE.ctaHeading}
                 </h2>
-                <p className="mb-6 max-w-md text-[#555550]">
+                <p className="mb-6 max-w-md text-muted">
                   {BLOG_PAGE.ctaBody}
                 </p>
                 <a
                   href={BLOG_PAGE.ctaCta.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-full bg-[#0D0D0D] px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-[#0D0D0D]/90"
+                  className="inline-flex items-center rounded-full bg-contrast px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-contrast/90"
                 >
                   {BLOG_PAGE.ctaCta.label}
                 </a>
@@ -223,16 +223,16 @@ export default async function BlogPage() {
             </Card>
           </>
         ) : (
-          <div className="mx-auto max-w-lg rounded-xl border border-[#E8E6E0] bg-white p-10 text-center">
-            <h2 className="font-space mb-3 text-2xl font-bold text-[#0D0D0D]">
+          <div className="mx-auto max-w-lg rounded-xl border border-line bg-card p-10 text-center">
+            <h2 className="font-space mb-3 text-2xl font-bold text-ink">
               {BLOG_PAGE.emptyState.heading}
             </h2>
-            <p className="mb-6 text-[#555550]">
+            <p className="mb-6 text-muted">
               {BLOG_PAGE.emptyState.body}
             </p>
             <a
               href={BLOG_PAGE.emptyState.cta.href}
-              className="inline-flex items-center rounded-full bg-[#0D0D0D] px-6 py-3 text-sm font-medium text-white"
+              className="inline-flex items-center rounded-full bg-contrast px-6 py-3 text-sm font-medium text-white"
             >
               {BLOG_PAGE.emptyState.cta.label}
             </a>

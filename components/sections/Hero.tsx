@@ -43,7 +43,7 @@ export function Hero() {
 
             <m.h1
               variants={heroWord}
-              className="font-space font-bold leading-[1.05] text-[#0D0D0D]"
+              className="font-space font-bold leading-[1.05] text-ink"
               style={{
                 fontSize: "clamp(2.8rem, 5.5vw, 5.2rem)",
                 letterSpacing: "-0.035em",
@@ -63,7 +63,7 @@ export function Hero() {
             {/* Purple horizontal rule */}
             <m.div
               variants={heroWord}
-              className="mt-8 h-[2px] w-16 bg-[#8B5CF6]"
+              className="mt-8 h-[2px] w-16 bg-accent"
             />
           </m.div>
 
@@ -74,7 +74,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="font-dm text-lg italic leading-relaxed text-[#555550]">
+            <p className="font-dm text-lg italic leading-relaxed text-muted">
               {HERO.descriptor}
             </p>
 
@@ -97,7 +97,7 @@ export function Hero() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
-                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-[#0D0D0D] bg-transparent px-8 py-3.5 font-dm text-[14px] font-medium text-[#0D0D0D] hover:bg-[#0D0D0D] hover:text-white"
+                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-ink bg-transparent px-8 py-3.5 font-dm text-[14px] font-medium text-ink hover:bg-contrast hover:text-white"
               >
                 {HERO.cta.secondary.label}
               </MotionLink>
@@ -106,14 +106,14 @@ export function Hero() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
-                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-[#8B5CF6] bg-transparent px-8 py-3.5 font-dm text-[14px] font-medium text-[#8B5CF6] hover:bg-[#8B5CF6] hover:text-white"
+                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-accent bg-transparent px-8 py-3.5 font-dm text-[14px] font-medium text-accent hover:bg-accent hover:text-white"
               >
                 {HERO.cta.tertiary.label}
               </MotionLink>
             </div>
 
             {/* Trust line */}
-            <p className="mt-6 text-sm text-[#888880]">{HERO.trust}</p>
+            <p className="mt-6 text-sm text-faint">{HERO.trust}</p>
           </m.div>
         </div>
 
