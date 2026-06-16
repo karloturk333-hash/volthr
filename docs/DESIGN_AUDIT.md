@@ -275,3 +275,75 @@ scroll-linked `revealUp`, `wordStagger` (headings), `countUp` (already have
 9. **Regenerate Playwright visual baselines** and re-run E2E.
 
 Steps 1–2 are done in this branch; 3+ are the design implementation phase.
+
+---
+
+## PART 5 — Visual audit (rendered, not code): the biggest loser
+
+> Captured by running the fixed build locally and scrolling each page fold-by-fold
+> (the sections animate in on scroll, so full-page captures look falsely blank).
+
+### 🥇 Biggest loser: the hero "browser mockup"
+
+It's the single most prominent element on the site — a full-width panel directly
+under the headline — and for an **agency that sells websites**, it shows… no
+website. Inside realistic browser chrome (traffic-light dots + a fake address
+bar that primes you to expect a rendered site) sits a **dark purple gradient void
+with a floating animated "V" logo, a tagline and a button**. It is a glorified
+splash screen wearing a browser costume.
+
+Why this is the worst offender, specifically:
+1. **It breaks its own promise at the most important moment.** The browser frame
+   says "you're about to see a website"; it delivers an empty logo loader. The
+   hero is where the agency proves it can build beautiful sites — and it shows
+   nothing it has built.
+2. **It sets a dark, empty tone** the rest of the (too-sparse) page inherits.
+3. **The fix is trivial and high-leverage:** drop a real client screenshot
+   (Villa Aurea / Pub Cubismo already exist in `public/images/portfolio/`) into
+   that frame — ideally a subtle device-scroll or before/after. The portfolio
+   cards lower down already do exactly this and are the best thing on the site.
+
+What sharpens it: **every other media frame on the site shows real imagery** —
+the `ServicesChapters` photos and `ServicesGrid` bento cards pull Unsplash
+images, and `PortfolioGrid` uses real client screenshots (Villa Aurea / Pub
+Cubismo) that look genuinely good. The hero frame is the **one** that, by design,
+contains no website — just the logo. It's the odd one out at the most important
+moment.
+
+> **Correction (sandbox honesty):** my first pass also called the `/usluge` box
+> and the bento cards "empty placeholders." That was wrong — they're external
+> **Unsplash images that 403'd in this sandbox** (same egress block as Google
+> Fonts). On your Vercel domain they load real photos. The hero mockup is *not*
+> an image (it's an SVG/CSS component), so its emptiness is real on prod.
+
+### The real systemic problem: **dead space / low density**
+
+Independent of images and fonts (this is pure layout, so it's real on prod):
+
+- The homepage document is **~12,100 px tall** for roughly five screens of actual
+  content. Section labels float ~250–300 px below the previous block; the
+  `PortfolioGrid` header sits in a near-empty viewport. The page reads closer to
+  ~40 % content / 60 % void — the opposite of the confident, dense v0 / 21st.dev
+  feel. Section padding (`py-24 md:py-32 lg:py-36`) stacks to ~290 px of gap
+  *between* every section, on top of the in-section spacing.
+
+### Runner-up losers (ranked)
+
+2. **The palette is barely deployed.** Violet shows up as a hairline rule, the
+   label, and two buttons; the aurora is masked away after ~30 % of the fold. The
+   page is ~90 % cream + black. The brand's best asset is on mute.
+3. **One section pattern, repeated ~11×** (label → heading → body → fadeUp), with
+   no light/dark cadence — monotony that the band-based plan in Part 3 addresses.
+
+**Net:** putting a real website screenshot in the hero frame, plus tightening the
+vertical rhythm (and adding light/dark bands), would lift perceived quality more
+than any other change — before a single token is touched.
+
+> **Sandbox artifacts excluded from this critique** (they differ from your Vercel
+> render and are NOT design problems): serif fallback (Google Fonts blocked),
+> blank image frames (Unsplash 403'd), counters caught mid-animation
+> (2/€120/30 % instead of 7/€399/100 %), and a dev-tools overlay in the corner.
+> The local build used `npm ci` — i.e. the **exact dependency versions from
+> `package-lock.json`, identical to what Vercel builds**; nothing was upgraded, so
+> the rendering engine matches production. Only layout, spacing, color and
+> hierarchy were judged.
