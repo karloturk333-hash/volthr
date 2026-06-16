@@ -79,7 +79,7 @@ export default async function CaseStudyPage({
             {study.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-white px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-muted border border-line"
+                className="rounded-full bg-card px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-muted border border-line"
               >
                 {tag}
               </span>
@@ -97,7 +97,7 @@ export default async function CaseStudyPage({
             href={study.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
           >
             Posjeti stranicu
             <ArrowUpRight size={16} />
@@ -106,7 +106,7 @@ export default async function CaseStudyPage({
       </section>
 
       {/* Stats row */}
-      <section className="border-y border-line bg-white px-6 py-12 md:px-12">
+      <section className="border-y border-line bg-card px-6 py-12 md:px-12">
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-6">
           {study.stats.map((stat) => (
             <div key={stat.label} className="text-center">
@@ -206,7 +206,7 @@ export default async function CaseStudyPage({
       </section>
 
       {/* CTA */}
-      <section className="border-t border-line bg-ink px-6 py-16 md:px-12 md:py-20">
+      <section className="border-t border-line bg-contrast px-6 py-16 md:px-12 md:py-20">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="font-space text-3xl font-bold text-white md:text-4xl">
             Trebate sličan projekt?

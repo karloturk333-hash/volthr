@@ -36,7 +36,7 @@ export function AboutValues() {
               key={item.title}
               variants={fadeUp}
               whileHover={{ scale: 1.02 }}
-              className="flex flex-col rounded-xl border border-line bg-white p-8"
+              className="flex flex-col rounded-xl border border-line bg-card p-8"
             >
               <span className="font-mono text-xs text-[#999994]">
                 {String(i + 1).padStart(2, "0")}

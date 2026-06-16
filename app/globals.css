@@ -2,9 +2,10 @@
 
 /* ── Design tokens → Tailwind utilities (bg-paper, text-ink, text-muted, text-accent, border-line …) ── */
 @theme {
-  --color-paper: #F5F4F0;
-  --color-card: #FFFFFF;
-  --color-ink: #0D0D0D;
+  --color-paper: #F5F4F0;     /* page background */
+  --color-card: #FFFFFF;      /* elevated surfaces / cards */
+  --color-contrast: #0D0D0D;  /* deliberately dark bands (CTA, footer) */
+  --color-ink: #0D0D0D;       /* primary text */
   --color-muted: #555550;
   --color-faint: #888880;
   --color-accent: #8B5CF6;
@@ -54,6 +55,31 @@
   --r-md: 16px;
   --r-lg: 24px;
   --r-xl: 32px;
+}
+
+/* ── Dark theme — override the token values; every token-based utility flips automatically ── */
+:root[data-theme="dark"] {
+  --color-paper: #0E0E11;     /* page background */
+  --color-card: #1C1C22;      /* elevated surfaces / cards (most elevated) */
+  --color-contrast: #17171C;  /* dark bands — slightly elevated over page */
+  --color-ink: #F2F1EC;       /* primary text */
+  --color-muted: #A6A69E;
+  --color-faint: #6E6E66;
+  --color-accent: #A78BFA;    /* a touch brighter for contrast on dark */
+  --color-line: #2A2A31;
+
+  /* aurora sits on the dark ground (no light streaks) */
+  --aurora-bg: #0E0E11;
+
+  color-scheme: dark;
+}
+
+/* Aurora reads as a violet glow on dark (screen) instead of washing out (multiply) */
+:root[data-theme="dark"] .aurora-fx {
+  opacity: 0.4;
+}
+:root[data-theme="dark"] .aurora-fx::after {
+  mix-blend-mode: screen;
 }
 
 @theme inline {

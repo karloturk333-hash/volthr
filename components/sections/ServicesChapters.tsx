@@ -26,7 +26,7 @@ export function ServicesChapters() {
     <>
       {SERVICES_PAGE.services.map((service, i) => {
         const isEven = i % 2 === 0
-        const bg = i === 0 ? "bg-transparent" : isEven ? "bg-paper" : "bg-white"
+        const bg = i === 0 ? "bg-transparent" : isEven ? "bg-paper" : "bg-card"
         const textVariant = isEven ? slideFromLeft : slideFromRight
         const visualVariant = isEven ? slideFromRight : slideFromLeft
         const photoUrl = servicePhotos[service.slug]
@@ -73,7 +73,7 @@ export function ServicesChapters() {
                   </p>
                   <Link
                     href={SITE.whatsapp}
-                    className="mt-8 inline-block rounded-full bg-ink px-8 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+                    className="mt-8 inline-block rounded-full bg-contrast px-8 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
                     style={{ transition: "opacity 0.2s ease" }}
                   >
                     Zatraži konzultaciju

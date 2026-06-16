@@ -17,7 +17,7 @@ export function PostGrantBanner() {
       >
         <m.div
           variants={fadeUp}
-          className="flex flex-col items-start gap-4 rounded-xl border border-line bg-white p-6 sm:flex-row sm:items-center sm:justify-between"
+          className="flex flex-col items-start gap-4 rounded-xl border border-line bg-card p-6 sm:flex-row sm:items-center sm:justify-between"
         >
           <div className="flex items-start gap-3">
             <Bell size={20} className="mt-0.5 shrink-0 text-accent" />

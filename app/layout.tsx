@@ -65,8 +65,15 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="hr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
+    <html lang="hr" className={`${spaceGrotesk.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <body className="font-dm antialiased">
+        {/* Set the theme before paint to avoid a flash of the wrong theme. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('volt-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();`,
+          }}
+        />
+
         {/* Google Analytics — loads only after GDPR consent */}
         {consent === "all" && gaId && (
           <>
@@ -95,7 +102,7 @@ export default async function RootLayout({
           }}
         >
           <div
-            className="absolute -inset-[10px] opacity-70 will-change-transform filter blur-[10px] [--aurora-white:repeating-linear-gradient(100deg,var(--aurora-bg)_0%,var(--aurora-bg)_7%,transparent_10%,transparent_12%,var(--aurora-bg)_16%)] [--aurora:repeating-linear-gradient(100deg,var(--aurora-violet)_10%,var(--aurora-indigo)_15%,var(--aurora-blue)_20%,var(--aurora-violet-light)_25%,var(--aurora-indigo-dark)_30%)] [background-image:var(--aurora-white),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] after:content-[''] after:absolute after:inset-0 after:[background-image:var(--aurora-white),var(--aurora)] after:[background-size:200%,_100%] after:animate-aurora after:[background-attachment:fixed] after:mix-blend-multiply"
+            className="aurora-fx absolute -inset-[10px] opacity-70 will-change-transform filter blur-[10px] [--aurora-white:repeating-linear-gradient(100deg,var(--aurora-bg)_0%,var(--aurora-bg)_7%,transparent_10%,transparent_12%,var(--aurora-bg)_16%)] [--aurora:repeating-linear-gradient(100deg,var(--aurora-violet)_10%,var(--aurora-indigo)_15%,var(--aurora-blue)_20%,var(--aurora-violet-light)_25%,var(--aurora-indigo-dark)_30%)] [background-image:var(--aurora-white),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] after:content-[''] after:absolute after:inset-0 after:[background-image:var(--aurora-white),var(--aurora)] after:[background-size:200%,_100%] after:animate-aurora after:[background-attachment:fixed] after:mix-blend-multiply"
           />
         </div>
 

@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function WhyUs() {
   return (
-    <section id="why-us" className="bg-white px-6 py-16 md:px-12 md:py-20">
+    <section id="why-us" className="bg-card px-6 py-16 md:px-12 md:py-20">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -24,7 +24,7 @@ export function WhyUs() {
               key={item.title}
               variants={fadeUp}
               whileHover={{ scale: 1.02 }}
-              className="rounded-xl border border-line bg-white p-8"
+              className="rounded-xl border border-line bg-card p-8"
             >
               <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.15em] text-accent" aria-hidden="true">✦</div>
               <h3 className="font-space text-xl font-bold text-ink">

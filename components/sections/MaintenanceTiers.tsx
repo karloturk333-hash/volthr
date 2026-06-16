@@ -42,7 +42,7 @@ export function MaintenanceTiers() {
               key={tier.name}
               variants={fadeUp}
               className={cn(
-                "rounded-xl border bg-white p-6",
+                "rounded-xl border bg-card p-6",
                 "popular" in tier && tier.popular
                   ? "border-accent"
                   : "border-line",

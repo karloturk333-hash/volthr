@@ -97,7 +97,7 @@ export function Hero() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
-                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-ink bg-transparent px-8 py-3.5 font-dm text-[14px] font-medium text-ink hover:bg-ink hover:text-white"
+                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-ink bg-transparent px-8 py-3.5 font-dm text-[14px] font-medium text-ink hover:bg-contrast hover:text-white"
               >
                 {HERO.cta.secondary.label}
               </MotionLink>

@@ -390,3 +390,38 @@ re-theme blocker the neutral+accent palette was.
 
 **Unlocked by this:** a dark mode is now a `[data-theme="dark"]` token override
 instead of a 399-site find-replace.
+
+---
+
+## PART 7 — Dark mode + toggle (done)
+
+Tokenisation made this a token-override, not a rewrite.
+
+**Token sets** (`app/globals.css`): light values live in `@theme`; dark values
+override the same custom properties under `:root[data-theme="dark"]`, so every
+token-based utility flips automatically. Dark gives a layered hierarchy —
+page `#0E0E11` < band `#17171C` < card `#1C1C22` — with `ink` → `#F2F1EC`,
+`accent` → `#A78BFA`, and the aurora switched to `screen` blend so it reads as a
+violet glow instead of washing out.
+
+**Two surfaces that can't just invert** were split out first:
+- `bg-white` (32×) → `bg-card` (white → dark-elevated)
+- `bg-ink` (18×) → `bg-contrast` — a token that **stays dark in both themes**
+  (CTA band, footer, dark buttons) so it doesn't flip to light.
+
+**Toggle** (`components/ui/ThemeToggle.tsx`) in the nav (all breakpoints): sun/moon,
+persists to `localStorage('volt-theme')`, defaults to system preference.
+
+**No-flash:** a pre-paint inline script in `layout.tsx` sets `data-theme` before
+first paint. React 19 hydration *strips* that attribute (even with
+`suppressHydrationWarning`), so the toggle re-asserts it in a **layout effect**
+(same commit, before paint) — verified: `data-theme` survives hydration and the
+body stays `#0E0E11`.
+
+**Verified:** toggle flips dark↔light and persists; cards/bands/text/accents all
+legible in dark; light mode is pixel-identical (tokens map to the original hexes).
+
+**Known refinement:** the status colors (grant-savings green `#F0FDF4`/`#15803D`,
+error reds) are still literals, so the "€500 recommended" card stays light-green
+in dark mode (reads as an intentional highlight). Making those dark-aware is the
+natural next small step.

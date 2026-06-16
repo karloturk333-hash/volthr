@@ -42,7 +42,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
               className={`rounded-full px-4 py-2 font-dm text-sm font-medium ${
                 activeCategory === cat
                   ? "bg-accent text-white"
-                  : "border border-line bg-white text-muted hover:border-[#D0CEC8]"
+                  : "border border-line bg-card text-muted hover:border-[#D0CEC8]"
               }`}
             >
               {cat}
@@ -69,7 +69,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                 rel="noopener noreferrer"
                 variants={projectCard}
                 whileHover={{ y: -6, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.12)" }}
-                className="group overflow-hidden rounded-xl border border-line bg-white"
+                className="group overflow-hidden rounded-xl border border-line bg-card"
               >
                 {/* Cover image, static image, or gradient fallback */}
                 <div
@@ -167,7 +167,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={fadeUp}
-            className="mx-auto max-w-2xl rounded-xl border border-line bg-white px-8 py-12 text-center"
+            className="mx-auto max-w-2xl rounded-xl border border-line bg-card px-8 py-12 text-center"
           >
             <h3 className="mb-3 font-space text-xl font-bold text-ink">
               {PROJECTS_PAGE.emptyState.heading}
@@ -177,7 +177,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
             </p>
             <a
               href={PROJECTS_PAGE.emptyState.cta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
             >
               {PROJECTS_PAGE.emptyState.cta.label}
             </a>

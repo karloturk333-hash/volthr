@@ -30,7 +30,7 @@ export function Testimonials() {
             <m.div
               key={item.number}
               variants={testimonialRow}
-              className="grid grid-cols-[40px_1fr_1fr_60px] items-center gap-4 border-b border-line px-2 py-5 hover:bg-white md:grid-cols-[60px_1fr_1fr_80px] md:gap-6 md:px-4 md:py-6"
+              className="grid grid-cols-[40px_1fr_1fr_60px] items-center gap-4 border-b border-line px-2 py-5 hover:bg-card md:grid-cols-[60px_1fr_1fr_80px] md:gap-6 md:px-4 md:py-6"
             >
               {/* Number */}
               <span className="font-space text-lg font-medium text-[#D0CEC8] md:text-xl">

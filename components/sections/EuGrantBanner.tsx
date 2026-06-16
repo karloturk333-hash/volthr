@@ -46,7 +46,7 @@ export function EuGrantBanner() {
               className={
                 item.highlight
                   ? "rounded-xl border-2 border-[#1A6B2A] bg-[#F0FDF4] p-6 text-center"
-                  : "rounded-xl border border-line bg-white p-6 text-center"
+                  : "rounded-xl border border-line bg-card p-6 text-center"
               }
             >
               <div
@@ -96,7 +96,7 @@ export function EuGrantBanner() {
         {/* Eligibility */}
         <m.div
           variants={fadeUp}
-          className="mt-10 rounded-xl border border-line bg-white px-6 py-5"
+          className="mt-10 rounded-xl border border-line bg-card px-6 py-5"
         >
           <span className="mr-2 text-sm font-semibold text-ink">Tko može prijaviti?</span>
           <span className="text-sm text-muted">{EU_GRANT.eligibility}</span>

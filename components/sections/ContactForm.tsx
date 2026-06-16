@@ -64,7 +64,7 @@ export function ContactForm() {
     >
       {/* Form — 2 cols */}
       <m.div variants={fadeUp} className="lg:col-span-2">
-        <div className="rounded-xl border border-line bg-white p-8 md:p-10">
+        <div className="rounded-xl border border-line bg-card p-8 md:p-10">
           {status === "success" ? (
             <div className="flex flex-col items-center gap-6 py-12 text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-50">
@@ -206,7 +206,7 @@ export function ContactForm() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-8 py-3.5 text-sm font-medium text-white disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-full bg-contrast px-8 py-3.5 text-sm font-medium text-white disabled:opacity-50"
               >
                 <Send className="h-4 w-4" />
                 {status === "submitting" ? "Slanje..." : submit}
@@ -223,7 +223,7 @@ export function ContactForm() {
           href={SITE.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          className="group block rounded-xl border border-line bg-white p-6"
+          className="group block rounded-xl border border-line bg-card p-6"
         >
           <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-whatsapp)]/10">
             <MessageCircle className="h-5 w-5 text-[var(--color-whatsapp)]" />
@@ -242,7 +242,7 @@ export function ContactForm() {
         {/* Email */}
         <a
           href={`mailto:${SITE.email}`}
-          className="group block rounded-xl border border-line bg-white p-6"
+          className="group block rounded-xl border border-line bg-card p-6"
         >
           <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
             <Mail className="h-5 w-5 text-accent" />
@@ -261,9 +261,9 @@ export function ContactForm() {
         {/* Call */}
         <a
           href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-          className="group block rounded-xl border border-line bg-white p-6"
+          className="group block rounded-xl border border-line bg-card p-6"
         >
-          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-ink/10">
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-contrast/10">
             <Phone className="h-5 w-5 text-ink" />
           </div>
           <h3 className="font-space text-lg font-bold text-ink">

@@ -8,7 +8,7 @@ import { ctaHeadline, fadeUp, staggerContainer } from "@/lib/animations"
 
 export function CtaPanel() {
   return (
-    <section id="cta" className="relative overflow-hidden bg-ink px-6 py-16 md:px-12 md:py-20">
+    <section id="cta" className="relative overflow-hidden bg-contrast px-6 py-16 md:px-12 md:py-20">
       {/* Violet brand glow — deploys the accent into the dark band */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[120px]"

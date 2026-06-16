@@ -24,7 +24,7 @@ export function GrantPackageHero() {
         {/* Main card */}
         <m.div
           variants={fadeUp}
-          className="relative rounded-xl border-2 border-accent bg-white p-8 md:p-10"
+          className="relative rounded-xl border-2 border-accent bg-card p-8 md:p-10"
         >
           {/* Badge */}
           <div className="absolute -top-4 right-6 rounded-full bg-[#15803D] px-4 py-1.5 text-xs font-bold text-white">

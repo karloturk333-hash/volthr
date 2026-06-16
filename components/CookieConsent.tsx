@@ -47,7 +47,7 @@ export function CookieConsent() {
           exit="hidden"
           variants={fadeUp}
         >
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-xl border border-line bg-white p-6 shadow-lg sm:flex-row sm:justify-between">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-xl border border-line bg-card p-6 shadow-lg sm:flex-row sm:justify-between">
             <p className="text-sm text-muted">
               Koristimo kolačiće za poboljšanje iskustva.{" "}
               <a href="/privatnost" className="underline hover:text-accent">
@@ -63,7 +63,7 @@ export function CookieConsent() {
               </button>
               <button
                 onClick={() => accept("all")}
-                className="rounded-full bg-ink px-5 py-2 text-sm font-medium text-white"
+                className="rounded-full bg-contrast px-5 py-2 text-sm font-medium text-white"
               >
                 Prihvati sve
               </button>

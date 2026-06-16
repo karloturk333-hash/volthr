@@ -50,7 +50,7 @@ export function OneTimePackages({ showGrantNote = false }: OneTimePackagesProps)
               variants={fadeUp}
               whileHover={{ y: -4 }}
               className={cn(
-                "relative flex flex-col rounded-xl border bg-white p-6 sm:p-8",
+                "relative flex flex-col rounded-xl border bg-card p-6 sm:p-8",
                 pkg.popular ? "border-accent" : "border-line",
               )}
             >
@@ -58,7 +58,7 @@ export function OneTimePackages({ showGrantNote = false }: OneTimePackagesProps)
               <div
                 className={cn(
                   "absolute -top-4 right-6 rounded-full px-4 py-1.5 text-xs font-bold text-white",
-                  pkg.popular ? "bg-accent" : "bg-ink",
+                  pkg.popular ? "bg-accent" : "bg-contrast",
                 )}
               >
                 {pkg.badge}

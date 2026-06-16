@@ -17,7 +17,7 @@ const socialLabels: Record<string, string> = {
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-ink">
+    <footer id="footer" className="bg-contrast">
       <div className="border-t border-[var(--border-dark)]" />
 
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-12">

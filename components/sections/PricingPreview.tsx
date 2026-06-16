@@ -37,7 +37,7 @@ export function PricingPreview() {
         {/* ============ PRIMARY: Grant Package ============ */}
         <m.div
           variants={fadeUp}
-          className="relative mx-auto mt-14 max-w-3xl rounded-xl border-2 border-accent bg-white p-8 md:p-10"
+          className="relative mx-auto mt-14 max-w-3xl rounded-xl border-2 border-accent bg-card p-8 md:p-10"
         >
           {/* Badge */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-5 py-1.5 text-xs font-bold text-white">
@@ -103,8 +103,8 @@ export function PricingPreview() {
                 key={tier.name}
                 className={
                   "popular" in tier && tier.popular
-                    ? "rounded-xl border border-accent bg-white p-5"
-                    : "rounded-xl border border-line bg-white p-5"
+                    ? "rounded-xl border border-accent bg-card p-5"
+                    : "rounded-xl border border-line bg-card p-5"
                 }
               >
                 <div className="flex items-baseline justify-between">

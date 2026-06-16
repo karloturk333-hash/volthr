@@ -73,7 +73,7 @@ export default async function BlogPage() {
             {/* Featured Post */}
             {featuredPost && (
               <Link href={`/blog/${featuredPost.slug.current}`} className="group mb-16 block">
-                <Card className="overflow-hidden border-line bg-white">
+                <Card className="overflow-hidden border-line bg-card">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* Image */}
                     <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[360px]">
@@ -148,7 +148,7 @@ export default async function BlogPage() {
                       href={`/blog/${post.slug.current}`}
                       className="group"
                     >
-                      <Card className="h-full overflow-hidden border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                      <Card className="h-full overflow-hidden border-line bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
                         {/* Image */}
                         <div className="relative aspect-video overflow-hidden">
                           {post.coverImage ? (
@@ -215,7 +215,7 @@ export default async function BlogPage() {
                   href={BLOG_PAGE.ctaCta.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-full bg-ink px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-ink/90"
+                  className="inline-flex items-center rounded-full bg-contrast px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-contrast/90"
                 >
                   {BLOG_PAGE.ctaCta.label}
                 </a>
@@ -223,7 +223,7 @@ export default async function BlogPage() {
             </Card>
           </>
         ) : (
-          <div className="mx-auto max-w-lg rounded-xl border border-line bg-white p-10 text-center">
+          <div className="mx-auto max-w-lg rounded-xl border border-line bg-card p-10 text-center">
             <h2 className="font-space mb-3 text-2xl font-bold text-ink">
               {BLOG_PAGE.emptyState.heading}
             </h2>
@@ -232,7 +232,7 @@ export default async function BlogPage() {
             </p>
             <a
               href={BLOG_PAGE.emptyState.cta.href}
-              className="inline-flex items-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-white"
+              className="inline-flex items-center rounded-full bg-contrast px-6 py-3 text-sm font-medium text-white"
             >
               {BLOG_PAGE.emptyState.cta.label}
             </a>

@@ -60,7 +60,7 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
                   rel="noopener noreferrer"
                   variants={projectCard}
                   whileHover={{ y: -6, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.12)" }}
-                  className="group overflow-hidden rounded-xl border border-line bg-white"
+                  className="group overflow-hidden rounded-xl border border-line bg-card"
                 >
                   {/* Cover image, static image, or gradient fallback */}
                   <div
@@ -148,7 +148,7 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
             >
               <Link
                 href="/projekti"
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
               >
                 {PORTFOLIO.cta.label}
                 <ArrowRight size={16} />
@@ -163,21 +163,21 @@ export function PortfolioGrid({ projects = [] }: PortfolioGridProps) {
             viewport={{ once: true, amount: 0.1 }}
             variants={projectCard}
           >
-            <div className="mx-auto max-w-2xl rounded-xl border border-line bg-white px-8 py-12 text-center">
+            <div className="mx-auto max-w-2xl rounded-xl border border-line bg-card px-8 py-12 text-center">
               <p className="text-base leading-relaxed text-muted md:text-lg">
                 {PORTFOLIO.emptyState}
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
                   href="/cijene"
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+                  className="inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
                 >
                   Pogledaj cijene
                   <ArrowRight size={16} />
                 </Link>
                 <Link
                   href={SITE.whatsapp}
-                  className="inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 font-dm text-sm font-semibold text-ink hover:bg-ink hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 font-dm text-sm font-semibold text-ink hover:bg-contrast hover:text-white"
                 >
                   <MessageCircle size={16} />
                   Besplatna konzultacija
