@@ -146,7 +146,7 @@ export function BrowserMockup() {
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#8B5CF6]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               {active.label}
             </m.span>
           </AnimatePresence>

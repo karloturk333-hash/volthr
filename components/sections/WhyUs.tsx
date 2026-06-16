@@ -24,13 +24,13 @@ export function WhyUs() {
               key={item.title}
               variants={fadeUp}
               whileHover={{ scale: 1.02 }}
-              className="rounded-xl border border-[#E8E6E0] bg-white p-8"
+              className="rounded-xl border border-line bg-white p-8"
             >
-              <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.15em] text-[#8B5CF6]" aria-hidden="true">✦</div>
-              <h3 className="font-space text-xl font-bold text-[#0D0D0D]">
+              <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.15em] text-accent" aria-hidden="true">✦</div>
+              <h3 className="font-space text-xl font-bold text-ink">
                 {item.title}
               </h3>
-              <p className="mt-3 font-dm text-sm leading-relaxed text-[#555550]">
+              <p className="mt-3 font-dm text-sm leading-relaxed text-muted">
                 {item.body}
               </p>
             </m.div>

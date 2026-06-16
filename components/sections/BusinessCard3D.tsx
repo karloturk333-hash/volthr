@@ -73,7 +73,7 @@ export function BusinessCard3D({
           </div>
         </div>
 
-        <p className="mt-3 text-center font-dm text-[11px] text-[#888880]">
+        <p className="mt-3 text-center font-dm text-[11px] text-faint">
           Klikni za okretanje
         </p>
       </div>

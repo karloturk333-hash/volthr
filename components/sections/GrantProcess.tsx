@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations"
 
 export function GrantProcess() {
   return (
-    <section className="bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20">
+    <section className="bg-paper px-6 py-16 md:px-12 md:py-20">
       <m.div
         className="mx-auto max-w-4xl"
         initial="hidden"
@@ -15,14 +15,14 @@ export function GrantProcess() {
         variants={staggerContainer}
       >
         <m.div variants={fadeUp} className="mb-4">
-          <span className="font-dm text-[11px] font-semibold uppercase tracking-widest text-[#8B5CF6]">
+          <span className="font-dm text-[11px] font-semibold uppercase tracking-widest text-accent">
             {GRANT_PROCESS.label}
           </span>
         </m.div>
 
         <m.h2
           variants={fadeUp}
-          className="mb-12 font-space text-3xl font-bold leading-tight text-[#0D0D0D] md:text-4xl"
+          className="mb-12 font-space text-3xl font-bold leading-tight text-ink md:text-4xl"
         >
           {GRANT_PROCESS.heading}
         </m.h2>
@@ -36,20 +36,20 @@ export function GrantProcess() {
             >
               {/* Timeline column */}
               <div className="flex flex-col items-center">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#8B5CF6] font-space text-sm font-bold text-white">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent font-space text-sm font-bold text-white">
                   {step.num}
                 </div>
                 {i < GRANT_PROCESS.steps.length - 1 && (
-                  <div className="my-1 h-full w-px bg-[#E8E6E0]" />
+                  <div className="my-1 h-full w-px bg-line" />
                 )}
               </div>
 
               {/* Content */}
               <div className="pb-10">
-                <div className="font-space text-base font-bold text-[#0D0D0D]">
+                <div className="font-space text-base font-bold text-ink">
                   {step.title}
                 </div>
-                <div className="mt-1 font-dm text-sm leading-relaxed text-[#555550]">
+                <div className="mt-1 font-dm text-sm leading-relaxed text-muted">
                   {step.desc}
                 </div>
               </div>

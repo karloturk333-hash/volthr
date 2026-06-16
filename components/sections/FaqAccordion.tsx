@@ -14,7 +14,7 @@ export function FaqAccordion() {
   }
 
   return (
-    <section className="bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20">
+    <section className="bg-paper px-6 py-16 md:px-12 md:py-20">
       <m.div
         className="mx-auto max-w-[800px]"
         initial="hidden"
@@ -27,7 +27,7 @@ export function FaqAccordion() {
         </m.div>
         <m.h2
           variants={fadeUp}
-          className="text-center font-space text-4xl font-bold leading-tight text-[#0D0D0D] md:text-5xl"
+          className="text-center font-space text-4xl font-bold leading-tight text-ink md:text-5xl"
         >
           {FAQ.heading}
         </m.h2>
@@ -39,12 +39,12 @@ export function FaqAccordion() {
               <m.div
                 key={i}
                 variants={fadeUp}
-                className="relative overflow-hidden border-b border-[#E8E6E0]"
+                className="relative overflow-hidden border-b border-line"
               >
                 {/* Purple left accent when open */}
                 {isOpen && (
                   <m.div
-                    className="absolute bottom-0 left-0 top-0 w-[2px] bg-[#8B5CF6]"
+                    className="absolute bottom-0 left-0 top-0 w-[2px] bg-accent"
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: 1 }}
                     transition={{ duration: 0.3 }}
@@ -58,7 +58,7 @@ export function FaqAccordion() {
                   className={`flex w-full items-center justify-between py-5 text-left sm:py-6 ${isOpen ? "pl-4" : "pl-0"}`}
                 >
                   <span
-                    className={`pr-4 text-base font-semibold ${isOpen ? "text-[#0D0D0D]" : "text-[#555550]"}`}
+                    className={`pr-4 text-base font-semibold ${isOpen ? "text-ink" : "text-muted"}`}
                   >
                     {item.question}
                   </span>
@@ -69,7 +69,7 @@ export function FaqAccordion() {
                   >
                     <ChevronDown
                       size={18}
-                      className={isOpen ? "text-[#8B5CF6]" : "text-[#888880]"}
+                      className={isOpen ? "text-accent" : "text-faint"}
                     />
                   </m.span>
                 </button>
@@ -84,7 +84,7 @@ export function FaqAccordion() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" as const }}
                     >
-                      <p className="pb-6 pl-4 text-sm leading-relaxed text-[#555550]">
+                      <p className="pb-6 pl-4 text-sm leading-relaxed text-muted">
                         {item.answer}
                       </p>
                     </m.div>

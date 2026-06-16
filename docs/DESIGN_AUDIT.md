@@ -202,7 +202,7 @@ tokenised theme** so violet finally earns its place.
 1. **Tokenise.** Promote the `globals.css` variables into Tailwind v4
    `@theme` colors (`bg-bg`, `text-ink`, `text-accent`, `border-line`…) and
    **replace every hardcoded hex** in components with the token. One mechanical
-   pass; massive payoff.
+   pass; massive payoff. ✅ **Done** — see Part 6.
 2. **Add a dark theme.** Define a `[data-theme="dark"]` token set (ink ground,
    cream text, violet glow). Even if there's no toggle yet, dark *sections* can
    consume the same tokens instead of bespoke `#0D0D0D`.
@@ -347,3 +347,46 @@ than any other change — before a single token is touched.
 > `package-lock.json`, identical to what Vercel builds**; nothing was upgraded, so
 > the rendering engine matches production. Only layout, spacing, color and
 > hierarchy were judged.
+
+---
+
+## PART 6 — Tokenisation pass (done)
+
+Replaced the hardcoded-hex className layer (the #1 structural blocker to a
+re-theme or dark mode) with Tailwind v4 `@theme` tokens. `@theme` is the single
+source of truth; the legacy `:root` semantic vars (`--bg`, `--accent`, `--text`,
+`--black`, `--border`…) are now **aliases** of the tokens, so inline `style`/SVG
+references keep working unchanged.
+
+**Tokens** (`app/globals.css`): `--color-paper #F5F4F0`, `--color-ink #0D0D0D`,
+`--color-muted #555550`, `--color-faint #888880`, `--color-accent #8B5CF6`,
+`--color-line #E8E6E0`, `--color-card #FFFFFF`.
+
+**Replaced** 399 bracketed hex utilities across 41 files (bracketed `[#hex]`
+only ever appears in Tailwind classes, so inline styles/SVG were untouched):
+
+| Before | After |
+|--------|-------|
+| `text-[#0D0D0D]` (90) | `text-ink` |
+| `text-[#555550]` (69) | `text-muted` |
+| `text-[#8B5CF6]` / `bg-` / `border-` (96) | `text/bg/border-accent` |
+| `border-[#E8E6E0]` (46) | `border-line` |
+| `bg-[#F5F4F0]` (34) | `bg-paper` |
+| `text-[#888880]` (25) | `text-faint` |
+
+Opacity modifiers carried over (`text-ink/20`, `bg-accent/10`, `to-accent/5`).
+
+**Verified:** computed styles resolve to the exact original hexes
+(`bg-paper`→rgb(245,244,240), `text-ink`→rgb(13,13,13), `text-accent`→
+rgb(139,92,246), `border-line`→rgb(232,230,224)); home/projekti render with
+pixel parity; the production build compiles all token CSS cleanly (it only fails
+in this sandbox on the blocked Google-Fonts fetch — not on CSS).
+
+**Deliberately left as literals** (low-frequency, semantic/one-off — a smaller
+follow-up if desired): the grant-savings greens (`#15803D`, `#F0FDF4`,
+`#1A6B2A`), form-error reds (`#DC2626`, `#EF4444`, `#FEF2F2`), the dark-CTA muted
+`#A8A8A0`, and decorative gradient/SVG hexes (aurora, mockup). These are not the
+re-theme blocker the neutral+accent palette was.
+
+**Unlocked by this:** a dark mode is now a `[data-theme="dark"]` token override
+instead of a 399-site find-replace.

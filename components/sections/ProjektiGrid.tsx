@@ -41,8 +41,8 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
               onClick={() => setActiveCategory(cat)}
               className={`rounded-full px-4 py-2 font-dm text-sm font-medium ${
                 activeCategory === cat
-                  ? "bg-[#8B5CF6] text-white"
-                  : "border border-[#E8E6E0] bg-white text-[#555550] hover:border-[#D0CEC8]"
+                  ? "bg-accent text-white"
+                  : "border border-line bg-white text-muted hover:border-[#D0CEC8]"
               }`}
             >
               {cat}
@@ -69,7 +69,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                 rel="noopener noreferrer"
                 variants={projectCard}
                 whileHover={{ y: -6, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.12)" }}
-                className="group overflow-hidden rounded-xl border border-[#E8E6E0] bg-white"
+                className="group overflow-hidden rounded-xl border border-line bg-white"
               >
                 {/* Cover image, static image, or gradient fallback */}
                 <div
@@ -110,21 +110,21 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                 {/* Card body */}
                 <div className="p-7">
                   <div className="mb-3 flex items-center gap-2">
-                    <span className="rounded-full bg-[#F5F4F0] px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-[#555550]">
+                    <span className="rounded-full bg-paper px-3 py-1 font-dm text-[11px] font-medium uppercase tracking-wider text-muted">
                       {project.category}
                     </span>
                     {project.location && (
-                      <span className="flex items-center gap-1 font-dm text-xs text-[#888880]">
+                      <span className="flex items-center gap-1 font-dm text-xs text-faint">
                         <MapPin size={12} />
                         {project.location}
                       </span>
                     )}
                   </div>
 
-                  <h3 className="mb-2 font-space text-2xl leading-snug font-bold text-[#0D0D0D]">
+                  <h3 className="mb-2 font-space text-2xl leading-snug font-bold text-ink">
                     {project.title}
                   </h3>
-                  <p className="mb-5 line-clamp-2 font-dm text-[15px] leading-relaxed text-[#555550]">
+                  <p className="mb-5 line-clamp-2 font-dm text-[15px] leading-relaxed text-muted">
                     {project.description}
                   </p>
 
@@ -133,7 +133,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-md border border-[#E8E6E0] bg-transparent px-2.5 py-1 font-dm text-[11px] uppercase tracking-wide text-[#888880]"
+                        className="rounded-md border border-line bg-transparent px-2.5 py-1 font-dm text-[11px] uppercase tracking-wide text-faint"
                       >
                         {tech}
                       </span>
@@ -142,7 +142,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
 
                   {/* Links */}
                   <div className="flex items-center gap-4">
-                    <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#8B5CF6]">
+                    <span className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-accent">
                       Posjeti stranicu
                       <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
@@ -150,7 +150,7 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
                       <Link
                         href={`/projekti/${project.caseStudySlug}`}
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-[#0D0D0D] hover:text-[#8B5CF6]"
+                        className="inline-flex items-center gap-1.5 font-dm text-sm font-medium text-ink hover:text-accent"
                       >
                         Studija slučaja
                         <ArrowRight size={14} />
@@ -167,17 +167,17 @@ export function ProjektiGrid({ projects }: ProjektiGridProps) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={fadeUp}
-            className="mx-auto max-w-2xl rounded-xl border border-[#E8E6E0] bg-white px-8 py-12 text-center"
+            className="mx-auto max-w-2xl rounded-xl border border-line bg-white px-8 py-12 text-center"
           >
-            <h3 className="mb-3 font-space text-xl font-bold text-[#0D0D0D]">
+            <h3 className="mb-3 font-space text-xl font-bold text-ink">
               {PROJECTS_PAGE.emptyState.heading}
             </h3>
-            <p className="mb-6 font-dm text-base leading-relaxed text-[#555550]">
+            <p className="mb-6 font-dm text-base leading-relaxed text-muted">
               {PROJECTS_PAGE.emptyState.body}
             </p>
             <a
               href={PROJECTS_PAGE.emptyState.cta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-[#0D0D0D] px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
             >
               {PROJECTS_PAGE.emptyState.cta.label}
             </a>

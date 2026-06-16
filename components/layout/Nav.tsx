@@ -40,10 +40,10 @@ export function Nav() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50 border-b border-[#E8E6E0] bg-[#F5F4F0] lg:border-0 lg:bg-transparent lg:px-6 lg:pt-3"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-line bg-paper lg:border-0 lg:bg-transparent lg:px-6 lg:pt-3"
       >
         <div
-          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 [transition:box-shadow_0.3s_ease] lg:rounded-2xl lg:border lg:border-[#E8E6E0] lg:bg-white"
+          className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 [transition:box-shadow_0.3s_ease] lg:rounded-2xl lg:border lg:border-line lg:bg-white"
           style={navStyle}
         >
           {/* Logo */}
@@ -59,13 +59,13 @@ export function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative font-dm text-[14px] font-medium [transition:color_0.2s_ease] hover:text-[#0D0D0D] ${isActive ? "text-[#0D0D0D]" : "text-[#333333]"}`}
+                  className={`relative font-dm text-[14px] font-medium [transition:color_0.2s_ease] hover:text-ink ${isActive ? "text-ink" : "text-[#333333]"}`}
                 >
                   {link.label}
                   {isActive && (
                     <m.span
                       layoutId="nav-indicator"
-                      className="absolute -bottom-1.5 left-0 right-0 h-[2px] rounded-full bg-[#8B5CF6]"
+                      className="absolute -bottom-1.5 left-0 right-0 h-[2px] rounded-full bg-accent"
                       transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
                     />
                   )}
@@ -121,7 +121,7 @@ export function Nav() {
       <AnimatePresence>
         {mobileOpen && (
           <m.div
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#F5F4F0] lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-paper lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -142,7 +142,7 @@ export function Nav() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className={`font-space text-3xl font-bold tracking-tight [transition:color_0.15s_ease] ${isActive ? "text-[#0D0D0D]" : "text-[#888880]"}`}
+                      className={`font-space text-3xl font-bold tracking-tight [transition:color_0.15s_ease] ${isActive ? "text-ink" : "text-faint"}`}
                     >
                       {link.label}
                     </Link>
@@ -153,7 +153,7 @@ export function Nav() {
                 <Link
                   href={NAV.cta.href}
                   onClick={() => setMobileOpen(false)}
-                  className="inline-block rounded-full bg-[#0D0D0D] px-10 py-3.5 font-dm text-base font-semibold text-white"
+                  className="inline-block rounded-full bg-ink px-10 py-3.5 font-dm text-base font-semibold text-white"
                 >
                   {NAV.cta.label}
                 </Link>

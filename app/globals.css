@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* ── Design tokens → Tailwind utilities (bg-paper, text-ink, text-muted, text-accent, border-line …) ── */
+@theme {
+  --color-paper: #F5F4F0;
+  --color-card: #FFFFFF;
+  --color-ink: #0D0D0D;
+  --color-muted: #555550;
+  --color-faint: #888880;
+  --color-accent: #8B5CF6;
+  --color-line: #E8E6E0;
+}
+
 :root {
   /* ── Rainbow button colors ── */
   --color-1: 0 100% 63%;
@@ -8,20 +19,20 @@
   --color-4: 195 100% 63%;
   --color-5: 90 100% 63%;
 
-  /* ── Core palette ── */
-  --bg: #F5F4F0;
-  --bg-card: #FFFFFF;
-  --bg-dark: #0D0D0D;
-  --text: #0D0D0D;
-  --text-2: #555550;
-  --text-3: #888880;
-  --text-on-dark: #F5F4F0;
-  --accent: #8B5CF6;
+  /* ── Core palette — aliases of the @theme tokens (single source of truth) ── */
+  --bg: var(--color-paper);
+  --bg-card: var(--color-card);
+  --bg-dark: var(--color-ink);
+  --text: var(--color-ink);
+  --text-2: var(--color-muted);
+  --text-3: var(--color-faint);
+  --text-on-dark: var(--color-paper);
+  --accent: var(--color-accent);
   --accent-soft: rgba(139, 92, 246, 0.08);
   --accent-border: rgba(139, 92, 246, 0.2);
-  --border: #E8E6E0;
+  --border: var(--color-line);
   --border-hover: #D0CEC8;
-  --black: #0D0D0D;
+  --black: var(--color-ink);
 
   /* ── Aurora background ── */
   --aurora-bg: #F5F4F0;

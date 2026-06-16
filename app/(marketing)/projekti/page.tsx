@@ -41,20 +41,20 @@ export default async function ProjektiPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-[#F5F4F0] px-6 pt-32 pb-12 md:px-12 md:pt-40 md:pb-16">
+      <section className="bg-paper px-6 pt-32 pb-12 md:px-12 md:pt-40 md:pb-16">
         <div className="mx-auto max-w-7xl">
           <span className="section-label">{PROJECTS_PAGE.hero.label}</span>
-          <h1 className="mt-4 font-space text-4xl font-bold leading-tight text-[#0D0D0D] md:text-5xl lg:text-6xl">
+          <h1 className="mt-4 font-space text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-6xl">
             {PROJECTS_PAGE.hero.heading}
           </h1>
-          <p className="mt-4 max-w-2xl font-dm text-lg leading-relaxed text-[#555550]">
+          <p className="mt-4 max-w-2xl font-dm text-lg leading-relaxed text-muted">
             {PROJECTS_PAGE.hero.subheading}
           </p>
         </div>
       </section>
 
       {/* Grid with filters */}
-      <section className="bg-[#F5F4F0]">
+      <section className="bg-paper">
         <ProjektiGrid projects={projects} />
       </section>
     </main>

@@ -8,7 +8,7 @@ export function AboutProcess() {
   const steps = ABOUT_PAGE.process.steps
 
   return (
-    <section className="bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20">
+    <section className="bg-paper px-6 py-16 md:px-12 md:py-20">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -20,7 +20,7 @@ export function AboutProcess() {
           className="mb-16"
         >
           <span className="section-label mb-3 block">{ABOUT_PAGE.process.label}</span>
-          <h2 className="font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl">
+          <h2 className="font-space text-3xl font-bold text-ink md:text-4xl">
             {ABOUT_PAGE.process.heading}
           </h2>
         </m.div>
@@ -41,30 +41,30 @@ export function AboutProcess() {
             >
               {/* Left connecting line */}
               {i > 0 && (
-                <div className="absolute left-0 top-[21px] h-px w-1/2 bg-[#E8E6E0]" />
+                <div className="absolute left-0 top-[21px] h-px w-1/2 bg-line" />
               )}
               {/* Right connecting line */}
               {i < steps.length - 1 && (
-                <div className="absolute right-0 top-[21px] h-px w-1/2 bg-[#E8E6E0]" />
+                <div className="absolute right-0 top-[21px] h-px w-1/2 bg-line" />
               )}
 
               {/* Node */}
-              <div className="relative z-10 mb-4 flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-[#8B5CF6] bg-[#F5F4F0]">
-                <div className="h-3 w-3 rounded-full bg-[#8B5CF6]" />
+              <div className="relative z-10 mb-4 flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-accent bg-paper">
+                <div className="h-3 w-3 rounded-full bg-accent" />
               </div>
 
               {/* Day */}
-              <span className="mb-1 font-mono text-[11px] font-semibold uppercase tracking-widest text-[#8B5CF6]">
+              <span className="mb-1 font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
                 {step.day}
               </span>
 
               {/* Title */}
-              <h3 className="font-space text-sm font-bold text-[#0D0D0D]">
+              <h3 className="font-space text-sm font-bold text-ink">
                 {step.title}
               </h3>
 
               {/* Description */}
-              <p className="mt-2 text-xs leading-relaxed text-[#555550]">
+              <p className="mt-2 text-xs leading-relaxed text-muted">
                 {step.description}
               </p>
             </m.div>
@@ -87,23 +87,23 @@ export function AboutProcess() {
             >
               {/* Node + vertical line */}
               <div className="flex shrink-0 flex-col items-center">
-                <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-[#8B5CF6] bg-[#F5F4F0]">
-                  <div className="h-3 w-3 rounded-full bg-[#8B5CF6]" />
+                <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-accent bg-paper">
+                  <div className="h-3 w-3 rounded-full bg-accent" />
                 </div>
                 {i < steps.length - 1 && (
-                  <div className="mt-2 w-px flex-1 bg-[#E8E6E0]" />
+                  <div className="mt-2 w-px flex-1 bg-line" />
                 )}
               </div>
 
               {/* Content */}
               <div className="pt-2 pb-2">
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-widest text-[#8B5CF6]">
+                <span className="font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
                   {step.day}
                 </span>
-                <h3 className="mt-1 font-space text-base font-bold text-[#0D0D0D]">
+                <h3 className="mt-1 font-space text-base font-bold text-ink">
                   {step.title}
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-[#555550]">
+                <p className="mt-1 text-sm leading-relaxed text-muted">
                   {step.description}
                 </p>
               </div>

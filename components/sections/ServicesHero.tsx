@@ -19,12 +19,12 @@ export function ServicesHero() {
           className="mb-6 flex flex-col items-center gap-3"
         >
           <span className="section-label">{SERVICES_PAGE.hero.label}</span>
-          <div className="h-px w-12 bg-[#8B5CF6]" />
+          <div className="h-px w-12 bg-accent" />
         </m.div>
 
         {/* H1 — word stagger */}
         <m.h1
-          className="font-space text-4xl font-bold leading-[1.08] text-[#0D0D0D] md:text-5xl lg:text-6xl"
+          className="font-space text-4xl font-bold leading-[1.08] text-ink md:text-5xl lg:text-6xl"
           variants={heroStagger}
           initial="hidden"
           animate="visible"
@@ -45,7 +45,7 @@ export function ServicesHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 text-base leading-relaxed text-[#555550] md:text-lg"
+          className="mt-6 text-base leading-relaxed text-muted md:text-lg"
         >
           {SERVICES_PAGE.hero.subheading}
         </m.p>
@@ -61,10 +61,10 @@ export function ServicesHero() {
             <a
               key={service.slug}
               href={`#${service.slug}`}
-              className="font-mono text-[11px] uppercase tracking-widest text-[#888880] hover:text-[#8B5CF6]"
+              className="font-mono text-[11px] uppercase tracking-widest text-faint hover:text-accent"
               style={{ transition: "color 0.2s ease" }}
             >
-              <span className="text-[#8B5CF6]">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-accent">{String(i + 1).padStart(2, "0")}</span>
               {" "}
               {service.title}
             </a>

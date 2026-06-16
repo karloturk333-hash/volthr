@@ -16,7 +16,7 @@ interface OneTimePackagesProps {
 
 export function OneTimePackages({ showGrantNote = false }: OneTimePackagesProps) {
   return (
-    <section className="bg-[#F5F4F0] px-6 py-16 md:px-12 md:py-20">
+    <section className="bg-paper px-6 py-16 md:px-12 md:py-20">
       <m.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -25,20 +25,20 @@ export function OneTimePackages({ showGrantNote = false }: OneTimePackagesProps)
         variants={staggerContainer}
       >
         <m.div variants={fadeUp} className="mb-4 text-center">
-          <span className="font-dm text-[11px] font-semibold uppercase tracking-widest text-[#8B5CF6]">
+          <span className="font-dm text-[11px] font-semibold uppercase tracking-widest text-accent">
             {ONE_TIME_PACKAGES.label}
           </span>
         </m.div>
 
         <m.h2
           variants={fadeUp}
-          className="text-center font-space text-3xl font-bold text-[#0D0D0D] md:text-4xl"
+          className="text-center font-space text-3xl font-bold text-ink md:text-4xl"
         >
           {ONE_TIME_PACKAGES.heading}
         </m.h2>
 
         {showGrantNote && (
-          <m.p variants={fadeUp} className="mt-3 text-center font-dm text-sm text-[#555550]">
+          <m.p variants={fadeUp} className="mt-3 text-center font-dm text-sm text-muted">
             {ONE_TIME_PACKAGES.grantNote}
           </m.p>
         )}
@@ -51,26 +51,26 @@ export function OneTimePackages({ showGrantNote = false }: OneTimePackagesProps)
               whileHover={{ y: -4 }}
               className={cn(
                 "relative flex flex-col rounded-xl border bg-white p-6 sm:p-8",
-                pkg.popular ? "border-[#8B5CF6]" : "border-[#E8E6E0]",
+                pkg.popular ? "border-accent" : "border-line",
               )}
             >
               {/* Badge */}
               <div
                 className={cn(
                   "absolute -top-4 right-6 rounded-full px-4 py-1.5 text-xs font-bold text-white",
-                  pkg.popular ? "bg-[#8B5CF6]" : "bg-[#0D0D0D]",
+                  pkg.popular ? "bg-accent" : "bg-ink",
                 )}
               >
                 {pkg.badge}
               </div>
 
-              <h3 className="font-space text-xl font-bold text-[#0D0D0D]">{pkg.name}</h3>
+              <h3 className="font-space text-xl font-bold text-ink">{pkg.name}</h3>
 
               <div className="mt-4">
-                <span className="font-space text-4xl font-bold text-[#0D0D0D]">€{pkg.price}</span>
+                <span className="font-space text-4xl font-bold text-ink">€{pkg.price}</span>
               </div>
 
-              <div className="mt-2 flex items-center gap-1.5 font-dm text-xs text-[#888880]">
+              <div className="mt-2 flex items-center gap-1.5 font-dm text-xs text-faint">
                 <Clock size={12} />
                 {pkg.delivery}
               </div>
@@ -78,8 +78,8 @@ export function OneTimePackages({ showGrantNote = false }: OneTimePackagesProps)
               <ul className="mt-6 flex flex-1 flex-col gap-3">
                 {pkg.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 font-dm text-sm">
-                    <Check size={16} className="mt-0.5 shrink-0 text-[#8B5CF6]" />
-                    <span className="text-[#555550]">{feature}</span>
+                    <Check size={16} className="mt-0.5 shrink-0 text-accent" />
+                    <span className="text-muted">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -89,8 +89,8 @@ export function OneTimePackages({ showGrantNote = false }: OneTimePackagesProps)
                 className={cn(
                   "mt-8 block rounded-full py-3 text-center font-dm text-sm font-semibold",
                   pkg.popular
-                    ? "bg-[#8B5CF6] text-white"
-                    : "border border-[#0D0D0D] bg-transparent text-[#0D0D0D]",
+                    ? "bg-accent text-white"
+                    : "border border-ink bg-transparent text-ink",
                 )}
               >
                 Naruči →

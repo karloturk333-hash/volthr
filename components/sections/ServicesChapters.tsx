@@ -26,7 +26,7 @@ export function ServicesChapters() {
     <>
       {SERVICES_PAGE.services.map((service, i) => {
         const isEven = i % 2 === 0
-        const bg = i === 0 ? "bg-transparent" : isEven ? "bg-[#F5F4F0]" : "bg-white"
+        const bg = i === 0 ? "bg-transparent" : isEven ? "bg-paper" : "bg-white"
         const textVariant = isEven ? slideFromLeft : slideFromRight
         const visualVariant = isEven ? slideFromRight : slideFromLeft
         const photoUrl = servicePhotos[service.slug]
@@ -65,15 +65,15 @@ export function ServicesChapters() {
                   className={isEven ? "" : "lg:order-2"}
                 >
                   <span className="section-label mb-3 block">{service.title}</span>
-                  <h2 className="font-space text-3xl font-bold leading-tight text-[#0D0D0D] md:text-4xl lg:text-5xl">
+                  <h2 className="font-space text-3xl font-bold leading-tight text-ink md:text-4xl lg:text-5xl">
                     {service.headline}
                   </h2>
-                  <p className="mt-6 text-base leading-relaxed text-[#555550] md:text-lg">
+                  <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">
                     {service.description}
                   </p>
                   <Link
                     href={SITE.whatsapp}
-                    className="mt-8 inline-block rounded-full bg-[#0D0D0D] px-8 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
+                    className="mt-8 inline-block rounded-full bg-ink px-8 py-3 font-dm text-sm font-semibold text-white hover:opacity-90"
                     style={{ transition: "opacity 0.2s ease" }}
                   >
                     Zatraži konzultaciju
@@ -85,7 +85,7 @@ export function ServicesChapters() {
                   variants={visualVariant}
                   className={isEven ? "" : "lg:order-1"}
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[#E8E6E0]">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line">
                     <Image
                       src={photoUrl}
                       alt={service.title}
@@ -109,8 +109,8 @@ export function ServicesChapters() {
                         variants={fadeUp}
                         className="flex items-start gap-3"
                       >
-                        <Check size={16} className="mt-0.5 shrink-0 text-[#8B5CF6]" />
-                        <span className="text-sm text-[#555550]">{feature}</span>
+                        <Check size={16} className="mt-0.5 shrink-0 text-accent" />
+                        <span className="text-sm text-muted">{feature}</span>
                       </m.li>
                     ))}
                   </m.ul>
